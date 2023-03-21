@@ -37,8 +37,7 @@ Grupo SavPets
 
 ##### Definição de pronto
 > O sprint será considerado concluido quando:
-> 1) Os casos de teste de aceitação forem executados e obtiverem 100% de satisfatorios. Os casos de teste (CT) são rastreáveis para os requisiitos (REQ). O elo de rastreabilidade
-é estabelecido pelo identificador do caso de teste.
+> 1) Os casos de teste de aceitação forem executados e obtiverem 100% de satisfatorios. Os casos de teste (CT) são rastreáveis para os requisitos (REQ). O elo de rastreabilidade é estabelecido pelo identificador do caso de teste.
 > 2) Depois de executado os casos de teste com 100% de satisfatorios o código deve ser armazenado no github (commit).
 ##### Casos de teste
 | Identificador | Cenário de uso |
