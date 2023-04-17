@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!--=============== HEAD ===============-->
+<head th:insert="~{fragments/headMain}"></head>
+
+<body> <!-- alterar para saber a página -->
+    <!--=============== HEADER ===============-->
+    <header th:insert="~{fragments/headerMain}"></header>
+
+    <!--=============== MAIN ===============-->
+    <main>
+        <!--=============== IDENTIFY ===============-->
+        <section class="identify content">
+            <div class="identify-container wrapper container-main_content">
+
+                <div class="identify-container_information container-information">
+                    <h5>CADASTRAR</h5>
+                    <h3>Insira os dados para criar uma conta</h3>
+                    <p>Preencha todos os campos para que seja criada uma conta para você.</p>
+
+                    <div class="identify-information_options container-information_options">
+                        <a href="/">Entrar</a>
+                        <a href="/cadastrar" class="container-option_active">Cadastrar-se</a>
+                    </div>
+                </div>
+
+                <div class="identify-container_form container-form">
+                    <form class="form" action="" method="post">
+                        <div class="form-instruction">
+                            <p>Preenchimento obrigatório</p><span>*</span>
+                        </div>
+
+                        <div class="form-dision">
+                            <div class="form-dision_half">
+                                <input class="form-dision_inputfull" type="text" placeholder="Primeiro nome *" name="firstName" required>
+                                <input class="form-dision_inputfull" type="text" placeholder="Último nome *" name="lastName" required>
+                            </div>
+
+                            <input class="form-dision_inputfull" type="email" placeholder="Email *" name="email" required>
+                            <input class="form-dision_inputfull" type="password" placeholder="Senha *" name="password" required>
+                            <input class="form-dision_inputfull" type="password" placeholder="Confirmar senha *" name="confirmedPassword" required>
+                        </div>
+    
+                        <a href="./panel.html" class="btn">Cadastrar</a>
+                    </form>
+                </div>
+
+                <div class="identify-container_alternative container-alternative">
+                    <p>Já possui uma conta?</p>
+                    <a href="/">Entre em sua conta</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--=============== SCRIPTS ===============-->
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!--=============== HEAD ===============-->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!--=============== FAVICON AND TITLE ===============-->
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <title>SavPets</title>
+
+    <!--=============== GOOGLE FONTS ===============-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="./css/hamburguer.css">
+    <link rel="stylesheet" href="./css/main-management.css">
+</head>
+
+<body class="panel">
+    <!--=============== HEADER ===============-->
+    <header th:insert="~{fragments/management/header}"></header>
+
+    <!--=============== PANEL ===============-->
+    <section class="wrapper">
+
+        <!--=============== TOP BAR ===============-->
+        <section th:insert="~{fragments/management/topBar}"></section>
+
+        <!--=============== CONTENT ===============-->
+        <main class="main">
+            <section class="main-content">
+                <img class="main-content_img-default" src="img/panel-default.svg"
+                    alt="Desenho de uma pessoa organizando informações">
+
+                <h3>Escolha qual opção desejar no menu lateral.</h3>
+            </section>
+        </main>
+    </section>
+
+    <!--=============== SCRIPTS ===============-->
+    <div th:insert="~{fragments/management/scriptsNoTable}"></div>
+</body>
+
+</html>

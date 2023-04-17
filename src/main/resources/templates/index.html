@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<!--=============== HEAD ===============-->
+<head th:insert="~{fragments/headMain}"></head>
+
+<body> <!-- alterar para saber a página -->
+	<!--=============== HEADER ===============-->
+	<header th:insert="~{fragments/headerMain}"></header>
+
+	<!--=============== MAIN ===============-->
+	<main>
+		<!--=============== IDENTIFY ===============-->
+		<section class="identify content">
+			<div class="identify-container wrapper container-main_content">
+
+				<div class="identify-container_information container-information">
+					<h5>ENTRAR</h5>
+					<h3>Insira os dados da sua conta</h3>
+					<p>Entre em sua conta para que possa gerenciar as opções desejadas.</p>
+
+					<div class="identify-information_options container-information_options">
+						<a href="/" class="container-option_active">Entrar</a>
+						<a href="/cadastrar">Cadastrar-se</a>
+					</div>
+				</div>
+
+				<div class="identify-container_form container-form">
+					<form class="form" action="" method="post">
+						<div class="form-instruction">
+							<p>Preenchimento obrigatório</p><span>*</span>
+						</div>
+
+						<div class="form-dision">
+							<input class="form-dision_inputfull" type="email" placeholder="Email *" name="email"
+								required>
+							<input class="form-dision_inputfull form-dision_top_right" type="password"
+								placeholder="Senha *" name="password" required>
+						</div>
+
+						<a href="/painel" class="btn">Entrar</a>
+					</form>
+				</div>
+
+				<div class="identify-container_alternative container-alternative">
+					<p>Esqueceu a senha?</p>
+					<a href="/alterar-senha">Altere sua senha</a>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<!--=============== SCRIPTS ===============-->
+	<script src="js/main.js"></script>
+</body>
+
+</html>
