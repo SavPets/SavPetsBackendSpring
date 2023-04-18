@@ -1,6 +1,6 @@
 // =============== MENU ===============
 (function activeMenuOnCurrentPage() {
-    const page = `./${document.body.classList}.html`
+    const page = `/${document.body.classList}`
     const headerListOption = document.querySelector(`.header-content_menu a[href="${page}"]`)
 
     headerListOption.classList.add('menu-management-active')
@@ -49,7 +49,7 @@ quitOption.forEach(option => {
                 title: 'Saindo da sessão'
                 })
     
-                setTimeout(() => window.location.href = "./index.html", 3100)
+                setTimeout(() => window.location.href = "/", 3100)
             }
         })
     })
