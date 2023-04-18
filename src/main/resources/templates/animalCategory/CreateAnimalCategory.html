@@ -6,7 +6,7 @@
 <!--=============== HEAD ===============-->
 <head th:insert="~{fragments/management/headNoTable}"></head>
 
-<body class="animal-category">
+<body class="categorias-animais">
     <!--=============== HEADER ===============-->
     <header th:insert="~{fragments/management/header}"></header>
 
@@ -21,9 +21,10 @@
             <section class="main-content main-register">
                 <div class="main-content_box">
                     <a class="btn btn-cancel" href="/categorias-animais">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16.0714 0H1.92857C0.863839 0 0 0.863839 0 1.92857V16.0714C0 17.1362 0.863839 18 1.92857 18H16.0714C17.1362 18 18 17.1362 18 16.0714V1.92857C18 0.863839 17.1362 0 16.0714 0ZM14.7857 10.125C14.7857 10.3902 14.5687 10.6071 14.3036 10.6071H10.6071V14.3036C10.6071 14.5687 10.3902 14.7857 10.125 14.7857H7.875C7.60982 14.7857 7.39286 14.5687 7.39286 14.3036V10.6071H3.69643C3.43125 10.6071 3.21429 10.3902 3.21429 10.125V7.875C3.21429 7.60982 3.43125 7.39286 3.69643 7.39286H7.39286V3.69643C7.39286 3.43125 7.60982 3.21429 7.875 3.21429H10.125C10.3902 3.21429 10.6071 3.43125 10.6071 3.69643V7.39286H14.3036C14.5687 7.39286 14.7857 7.60982 14.7857 7.875V10.125Z" fill="white"/>
+                        <svg width="20" height="18" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.6429 0.326172H1.92857C0.863839 0.326172 0 1.19001 0 2.25474V16.3976C0 17.4623 0.863839 18.3262 1.92857 18.3262H18.6429C19.7076 18.3262 20.5714 17.4623 20.5714 16.3976V2.25474C20.5714 1.19001 19.7076 0.326172 18.6429 0.326172ZM15.2839 11.998C15.4768 12.1909 15.4768 12.5043 15.2839 12.6972L13.6567 14.3244C13.4638 14.5172 13.1504 14.5172 12.9576 14.3244L10.2857 11.6284L7.61384 14.3244C7.42098 14.5172 7.10759 14.5172 6.91473 14.3244L5.2875 12.6972C5.09464 12.5043 5.09464 12.1909 5.2875 11.998L7.98348 9.32617L5.2875 6.6543C5.09464 6.46144 5.09464 6.14805 5.2875 5.95519L6.91473 4.32796C7.10759 4.1351 7.42098 4.1351 7.61384 4.32796L10.2857 7.02394L12.9576 4.32796C13.1504 4.1351 13.4638 4.1351 13.6567 4.32796L15.2839 5.95519C15.4768 6.14805 15.4768 6.46144 15.2839 6.6543L12.5879 9.32617L15.2839 11.998Z" fill="#ffffff"/>
                         </svg>
+
                         Cancelar    
                     </a>
 
@@ -35,9 +36,15 @@
     
                             <div class="form-dision">
                                 <input class="form-dision_inputfull" type="number" placeholder="Código *" name="code" required>
-                                
                                 <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Nome *" name="name" required>
-                                <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Categoria pela idade *" name="initials" required>
+
+                                <div class="form-dision_half">
+                                    <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Raça *" name="breed" required>
+                                    <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Gênero *" name="gender" required>
+                                </div>
+
+                                <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Porte *" name="size" required>
+                                <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Cor *" name="color" required>
                             </div>
         
                             <a href="/categorias-animais" class="btn">Cadastrar</a>
