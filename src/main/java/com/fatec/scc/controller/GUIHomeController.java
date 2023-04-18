@@ -12,7 +12,7 @@ public class GUIHomeController {
 	
 	@GetMapping("/")
 	public ModelAndView menu() {
-			return new ModelAndView("paginaMenu");
+			return new ModelAndView("index");
 	}
 	/**
 	 * processa a requisicao localhost:8080/clientes

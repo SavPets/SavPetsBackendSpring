@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!--=============== FAVICON AND TITLE ===============-->
+    <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
+    <title>SavPets</title>
+
+    <!--=============== GOOGLE FONTS ===============-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!--=============== CSS ===============-->
+    <link href="../css/main.css" th:href="@{/css/main.css}" rel="stylesheet" />
+    <link href="../css/form.css" th:href="@{/css/form.css}" rel="stylesheet" />
+</head>
+<header th:replace="fragments/header :: menuSuperior">
+	<div>header</div>
+</header>
+<body> <!-- alterar para saber a página -->
+	<!--=============== MAIN ===============-->
+    <main>
+        <!--=============== IDENTIFY ===============-->
+        <section class="identify content">
+            <div class="identify-container wrapper container-main_content">
+
+                <div class="identify-container_information container-information">
+                    <h5>ENTRAR</h5>
+                    <h3>Insira os dados da sua conta</h3>
+                    <p>Entre em sua conta para que possa gerenciar as opções desejadas.</p>
+
+                    <div class="identify-information_options container-information_options">
+                        <a href="./index.html" class="container-option_active">Entrar</a>
+                        <a href="./signup.html">Cadastrar-se</a>
+                    </div>
+                </div>
+
+                <div class="identify-container_form container-form">
+                    <form class="form" action="" method="post">
+                        <div class="form-instruction">
+                            <p>Preenchimento obrigatório</p><span>*</span>
+                        </div>
+
+                        <div class="form-dision">
+                            <input class="form-dision_inputfull" type="email" placeholder="Email *" name="email" required>
+                            <input class="form-dision_inputfull form-dision_top_right" type="password" placeholder="Senha *" name="password" required>
+                        </div>
+    
+                        <a href="./panel.html" class="btn">Entrar</a>
+                    </form>
+                </div>
+
+                <div class="identify-container_alternative container-alternative">
+                    <p>Esqueceu a senha?</p>
+                    <a href="./change-password.html">Altere sua senha</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--=============== SCRIPTS ===============-->
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>
