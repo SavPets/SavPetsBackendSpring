@@ -27,39 +27,39 @@ public class MantemCategoriaAnimalI implements MantemCategoriaAnimal {
 	@Autowired
 	MantemCategoriaAnimalRepository repository;
 
-	public List<CategoriaAnimal> consultaTodos() {
+	public List<CategoriaAnimal> FindAll() {
 		logger.info(">>>>>> servico consultaTodos chamado");
 		return repository.findAll();
 	}
 
 	@Override
-	public Optional<CategoriaAnimal> consultaPorNome (String nome) {
+	public Optional<CategoriaAnimal> searchByNome (String nome) {
 		logger.info(">>>>>> servico consultaPorNome chamado");
 		return repository.findByNome(nome);
 	}
 
 	@Override
-	public Optional<CategoriaAnimal> consultaPorId(Long id) {
+	public Optional<CategoriaAnimal> searchById(Long id) {
 		logger.info(">>>>>> servico consultaPorId chamado");
 		return repository.findById(id);
 	}
 	@Override
-	public Optional<CategoriaAnimal> consultaPorRaca(String raca) {
+	public Optional<CategoriaAnimal> searchByRaca (String raca) {
 		logger.info(">>>>>> servico consultaPorRaca chamado");
 		return repository.findByRaca(raca);
 	}
 	@Override
-	public Optional<CategoriaAnimal> consultaPorSexo(String sexo) {
+	public Optional<CategoriaAnimal> searchBySexo(String sexo) {
 		logger.info(">>>>>> servico consultaPorSexo chamado");
 		return repository.findBySexo(sexo);
 	}
 	@Override
-	public Optional<CategoriaAnimal> consultaPorPorte(String porte) {
+	public Optional<CategoriaAnimal> searchByPorte (String porte) {
 		logger.info(">>>>>> servico consultaPorPorte chamado");
 		return repository.findByPorte(porte);
 	}
 	@Override
-	public Optional<CategoriaAnimal> consultaPorCorPelagem(String corPelagem) {
+	public Optional<CategoriaAnimal> searchByCorPelagem (String corPelagem) {
 		logger.info(">>>>>> servico consultaPorCorPelagem chamado");
 		return repository.findByCorPelagem(corPelagem);
 	}
@@ -78,7 +78,7 @@ public class MantemCategoriaAnimalI implements MantemCategoriaAnimal {
 
 	// Verificar: 
 	@Override
-	public Optional<CategoriaAnimal> atualiza(Long id, CategoriaAnimal categoriaAnimal) {
+	public Optional<CategoriaAnimal> updates (Long id, CategoriaAnimal categoriaAnimal) {
 		logger.info(">>>>>> 1.servico atualiza informações de cliente chamado");
 		
 		CategoriaAnimal categoriaAnimalModificado = new CategoriaAnimal(categoriaAnimal.getNome(), categoriaAnimal.getRaca(), categoriaAnimal.getSexo(),
@@ -88,6 +88,14 @@ public class MantemCategoriaAnimalI implements MantemCategoriaAnimal {
 		logger.info(">>>>>> 2. servico atualiza informacoes de cliente cep valido para o id => "
 				+ categoriaAnimalModificado.getId());
 		return Optional.ofNullable(repository.save(categoriaAnimalModificado));
+	}
+
+
+
+	@Override
+	public List<CategoriaAnimal> searchAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
