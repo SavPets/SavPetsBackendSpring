@@ -29,25 +29,25 @@
                     </a>
 
                     <div class="main-container_form">
-                        <form class="form" action="" method="post">
+                        <form class="form" th:action="@{/atualizar-categoria-animal/{id} (id=${categoriaAnimal.id})}" th:object="${categoriaAnimal}" method="post">
                             <div class="form-instruction">
                                 <p>Preenchimento obrigatório</p><span>*</span>
                             </div>
     
                             <div class="form-dision">
-                                <input class="form-dision_inputfull" type="number" placeholder="Código *" name="code" value="1" required>
-                                <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Nome *" name="name" value="Piscadinha" required>
+                                <input class="form-dision_inputfull" type="number" placeholder="Código *" th:field="*{id}" th:value="${categoriaAnimal.id}" required>
+                                <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Nome *" th:field="*{nome}" th:value="${categoriaAnimal.nome}" required>
 
                                 <div class="form-dision_half">
-                                    <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Raça *" name="breed" value="Labrador" required>
-                                    <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Gênero *" name="gender" value="Macho" required>
+                                    <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Raça *" th:field="*{raca}" th:value="${categoriaAnimal.raca}" required>
+                                    <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Gênero *" th:field="*{sexo}" th:value="${categoriaAnimal.sexo}" required>
                                 </div>
 
-                                <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Porte *" name="size" value="Médio" required>
-                                <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Cor *" name="color" value="Marrom" required>
+                                <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Porte *" th:field="*{porte}" th:value="${categoriaAnimal.porte}" required>
+                                <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Cor *" th:field="*{corPelagem}" th:value="${categoriaAnimal.corPelagem}" required>
                             </div>
         
-                            <a href="/categorias-animais" class="btn">Atualizar</a>
+                            <input type="submit" value="Atualizar" class="btn">
                         </form>
                     </div>
                 </div>
