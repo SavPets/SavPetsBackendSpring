@@ -7,9 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 public class CategoriaAnimalDTO {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+
 	@NotBlank(message = "Nome da categoria é requerido")
 	private String nome;
 
@@ -36,13 +34,6 @@ public class CategoriaAnimalDTO {
 	public CategoriaAnimalDTO() {
 	}
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getNome() {
 		return nome;

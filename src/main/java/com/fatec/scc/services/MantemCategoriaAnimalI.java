@@ -27,7 +27,7 @@ public class MantemCategoriaAnimalI implements MantemCategoriaAnimal {
 	@Autowired
 	MantemCategoriaAnimalRepository repository;
 
-	public List<CategoriaAnimal> FindAll() {
+	public List<CategoriaAnimal> searchAll() {
 		logger.info(">>>>>> servico consultaTodos chamado");
 		return repository.findAll();
 	}
@@ -89,15 +89,5 @@ public class MantemCategoriaAnimalI implements MantemCategoriaAnimal {
 				+ categoriaAnimalModificado.getId());
 		return Optional.ofNullable(repository.save(categoriaAnimalModificado));
 	}
-
-
-
-	@Override
-	public List<CategoriaAnimal> searchAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
 	
 }
