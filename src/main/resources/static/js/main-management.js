@@ -40,15 +40,15 @@ quitOption.forEach(option => {
                     timer: 3000,
                     timerProgressBar: true,
                     didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
                 })
                 Toast.fire({
-                icon: 'warning',
-                title: 'Saindo da sessão'
+                    icon: 'warning',
+                    title: 'Saindo da sessão'
                 })
-    
+
                 setTimeout(() => window.location.href = "/", 3100)
             }
         })
@@ -58,18 +58,27 @@ quitOption.forEach(option => {
 // =============== DATATABLES SETTINGS ===============
 $(document).ready(function () {
     $('#example').DataTable({
-        responsive: true
+        responsive: true,
+        language: {
+            "url": "//cdn.datatables.net/plug-ins/1.10.22/i18n/Portuguese-Brasil.json"
+        }
     });
 });
 
 // =============== ACTIONS TABLE SETTINGS ===============
-const deleteBtn = document.querySelectorAll('.column-action_delete')
+function executeDeleteMethod() {
+    const deleteBtn = document.querySelectorAll('.column-action_delete a')
 
-deleteBtn.forEach(btn => {
-    btn.addEventListener('click', onClickDeleteBtn)
-});
+    let url = deleteBtn[0].href.split('/')
+    url = url.filter(Boolean)[2]  // 0º(http)://1º(host)/2º(objective)/3º(id)
+    url = '/' + url
 
-function onClickDeleteBtn() {
+    const id = deleteBtn[0].href.charAt(deleteBtn[0].href.length - 1)
+
+    window.location.href = `${url}/${id}`
+}
+
+function showDeleteConfirmationModal() {
     Swal.fire({
         title: 'Tem certeza?',
         text: "Você não poderá reverter isso!",
@@ -80,12 +89,14 @@ function onClickDeleteBtn() {
         cancelButtonText: 'Cancelar',
         confirmButtonText: 'Sim, deletar!'
     }).then((result) => {
-        if (result.isConfirmed) {
+        if (result.isConfirmed) {      
             Swal.fire(
                 'Deletado!',
                 'Registro apagado com sucesso.',
                 'success'
             )
+
+            executeDeleteMethod()
         }
     })
 }
