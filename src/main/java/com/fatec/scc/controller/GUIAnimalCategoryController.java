@@ -73,10 +73,14 @@ public class GUIAnimalCategoryController {
 			
 			return new RedirectView("/atualizar-categoria-animal/{id}");
 		}
-		
 		service.updates(id, categoriaAnimal);
 				
 		return new RedirectView("/categorias-animais");
 	}
 
+	@GetMapping("/deletar-categoria-animal/{id}")
+	public RedirectView deleteAnimalCategory(@PathVariable("id") Long id) {
+		service.delete(id);
+		return new RedirectView("/categorias-animais");
+	}
 }
