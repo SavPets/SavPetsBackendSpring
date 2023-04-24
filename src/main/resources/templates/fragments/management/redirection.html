@@ -1,0 +1,16 @@
+<body 
+    style="
+        margin: 0; 
+        padding: 0; 
+        background-color: #A4CBE0; 
+        width: 100vw; 
+        heigth: 100vh"
+>
+    <form class="form-redirect" method="post" action="/deletar-funcionario/controle/<%=idEmployee%>"></form>
+
+    <script>
+        window.onload = () => {
+            document.querySelector('.form-redirect').submit()
+        }
+    </script>
+</body>
