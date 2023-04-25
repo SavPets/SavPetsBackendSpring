@@ -31,7 +31,7 @@ public class GUIFornecedorController {
 
 		@GetMapping("/fornecedores")
 		public ModelAndView showFornecedores(Fornecedor fornecedor) {
-			ModelAndView modelAndView = new ModelAndView("/provider/provider");
+			ModelAndView modelAndView = new ModelAndView("provider/provider");
 			modelAndView.addObject("fornecedores", service.consultaTodos());
 
 			return modelAndView;
@@ -39,7 +39,7 @@ public class GUIFornecedorController {
 
 		@GetMapping("/criar-fornecedor")
 	    public ModelAndView showCreateProvider(Fornecedor fornecedor) {
-			ModelAndView modelAndView = new ModelAndView("/provider/CreateProvider");
+			ModelAndView modelAndView = new ModelAndView("provider/CreateProvider");
 			modelAndView.addObject("fornecedor", fornecedor);
 
 			return modelAndView;
@@ -51,7 +51,7 @@ public class GUIFornecedorController {
 			}
 
 			if (!service.save(fornecedor).isPresent()) {
-				ModelAndView modelAndView = new ModelAndView("/provider/CreateProvider");
+				ModelAndView modelAndView = new ModelAndView("provider/CreateProvider");
 				modelAndView.addObject("message", "Dados invalidos");
 			}
 
@@ -62,7 +62,7 @@ public class GUIFornecedorController {
 		
 		@GetMapping("/atualizar-fornecedor/{id}")
 	    public ModelAndView showUpdateAnimalCategory(@PathVariable("id") Long id) {
-			ModelAndView modelAndView = new ModelAndView("/provider/UpdateProvider");
+			ModelAndView modelAndView = new ModelAndView("provider/UpdateProvider");
 			modelAndView.addObject("fornecedor", service.consultaPorId(id).get());
 
 			return modelAndView;
