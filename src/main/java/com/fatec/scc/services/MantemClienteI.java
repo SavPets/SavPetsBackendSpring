@@ -13,6 +13,7 @@ import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
 import com.fatec.scc.model.Endereco;
+//import com.fatec.scc.model.Endereco;
 import com.fatec.scc.model.cliente.Cliente;
 import com.fatec.scc.model.cliente.MantemClienteRepository;
 
@@ -28,6 +29,8 @@ import com.fatec.scc.model.cliente.MantemClienteRepository;
  */
 @Service
 public class MantemClienteI implements MantemCliente {
+	// Todo o código que está comentado será implementado futuramente com a API "ViaCEP"
+	
 	Logger logger = LogManager.getLogger(this.getClass());
 	@Autowired
 	MantemClienteRepository repository;
@@ -53,8 +56,8 @@ public class MantemClienteI implements MantemCliente {
 	@Override 
 	public Optional<Cliente> save(Cliente cliente) { 
 	 logger.info(">>>>>> servico save chamado ");
-	 Endereco endereco = obtemEndereco(cliente.getCep()); 
-	 cliente.setEndereco(endereco.getLogradouro()); 
+	 String endereco = cliente.getEndereco();
+	 cliente.setEndereco(endereco);
 	 return Optional.ofNullable(repository.save(cliente)); 
 	}
 
@@ -71,7 +74,7 @@ public class MantemClienteI implements MantemCliente {
 		Endereco endereco = obtemEndereco(cliente.getCep());
 		Cliente clienteModificado = new Cliente(cliente.getPrimeiroNome(), cliente.getUltimoNome(), cliente.getCpf(), cliente.getTelefone(), cliente.getCep(), cliente.getEndereco(), cliente.getNumeroLocal(), cliente.getComplemento());
 		clienteModificado.setId(id);
-		clienteModificado.setEndereco(endereco.getLogradouro());
+//		clienteModificado.setEndereco(endereco.getLogradouro());
 		logger.info(">>>>>> 2. servico atualiza informacoes de cliente cep valido para o id => "
 				+ clienteModificado.getId());
 		return Optional.ofNullable(repository.save(clienteModificado));

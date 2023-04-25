@@ -42,12 +42,12 @@
 							</div>
 
 							<div class="form-dision_half">
-								<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Telefone *" th:field="*{telefone}" required>
-								<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="CPF *" th:field="*{cpf}" required>
+								<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Telefone *" th:field="*{telefone}" id="telefone" minlength="14" maxlength="14" required>
+								<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="CPF *" th:field="*{cpf}" id="cpf" minlength="14" maxlength="14" required>
 							</div>
 
 							<div class="form-dision_half">
-								<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="CEP *" th:field="*{cep}" required>
+								<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="CEP *" th:field="*{cep}" id="cep" minlength="9" maxlength="9" required>
 								<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Endereço *" th:field="*{endereco}" required>
 							</div>
 
@@ -67,5 +67,7 @@
 
 <!--=============== SCRIPTS ===============-->
 <div th:insert="~{fragments/management/scriptsNoTable}"></div>
-</body>
+
+<!-- Regex Script -->
+<script th:src="@{js/regex.js}"></script>
 </html>
