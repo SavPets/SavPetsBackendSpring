@@ -14,75 +14,72 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fatec.scc.model.cliente.Cliente;
 import com.fatec.scc.services.MantemCliente;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
-@RequestMapping(path = "/scc")
+@RequestMapping
 public class GUIClienteController {
 	Logger logger = LogManager.getLogger(GUIClienteController.class);
 	@Autowired
-	MantemCliente servico;
+	MantemCliente service;
 
 	@GetMapping("/clientes")
-	public ModelAndView retornaFormDeConsultaTodosClientes() {
+	public ModelAndView showAllClients() {
 		logger.info(">>>>>> controller consulta todos chamado");
-		ModelAndView modelAndView = new ModelAndView("consultarCliente");
-		modelAndView.addObject("clientes", servico.consultaTodos());
+		ModelAndView modelAndView = new ModelAndView("client/client");
+		modelAndView.addObject("clientes", service.searchAll());
 		return modelAndView;
 	}
 
-	@GetMapping("/cliente")
-	public ModelAndView retornaFormDeCadastroDe(Cliente cliente) {
-		ModelAndView mv = new ModelAndView("cadastrarCliente");
+	// Requisição GET que irá mostrar a página de criação de cliente
+	@GetMapping("/criar-cliente")
+	public ModelAndView showCreateClient(Cliente cliente) {
+		ModelAndView mv = new ModelAndView("client/CreateClient");
 		mv.addObject("cliente", cliente);
 		return mv;
 	}
 
-	@GetMapping("/clientes/{cpf}") // diz ao metodo que ira responder a uma requisicao do tipo get
-	public ModelAndView retornaFormParaEditarCliente(@PathVariable("cpf") String cpf) {
-		ModelAndView modelAndView = new ModelAndView("atualizarCliente");
-		modelAndView.addObject("cliente", servico.consultaPorCpf(cpf).get()); // retorna um objeto do tipo cliente
-		return modelAndView; // addObject adiciona objetos para view
-	}
-
-	@GetMapping("/clientes/id/{id}")
-	public ModelAndView excluirNoFormDeConsultaCliente(@PathVariable("id") Long id) {
-		servico.delete(id);
-		logger.info(">>>>>> 1. servico de exclusao chamado para o id => " + id);
-		ModelAndView modelAndView = new ModelAndView("consultarCliente");
-		modelAndView.addObject("clientes", servico.consultaTodos());
-		return modelAndView;
-	}
-
-	@PostMapping("/clientes")
-	public ModelAndView save(@Valid Cliente cliente, BindingResult result) {
-		ModelAndView modelAndView = new ModelAndView("consultarCliente");
+	// Requisição POST que irá criar um novo Cliente
+	@PostMapping("/criar-cliente")
+	public RedirectView createClient(@Valid Cliente cliente, BindingResult result) {
 		if (result.hasErrors()) {
-			modelAndView.setViewName("cadastrarCliente");
-		} else {
-			if (servico.save(cliente).isPresent()) {
-				logger.info(">>>>>> controller chamou adastrar e consulta todos");
-				modelAndView.addObject("clientes", servico.consultaTodos());
-			} else {
-				logger.info(">>>>>> controller cadastrar com dados invalidos");
-				modelAndView.setViewName("cadastrarCliente");
-				modelAndView.addObject("message", "Dados invalidos");
-			}
+			return new RedirectView("/criar-cliente");
 		}
+
+		if (!service.save(cliente).isPresent()) {
+			ModelAndView modelAndView = new ModelAndView("client/CreateClient");
+			modelAndView.addObject("message", "Dados inválidos");
+		}
+
+		return new RedirectView("/clientes");
+	}
+
+	// Requisição GET que irá renderizar a página de Atualização de Cliente
+	@GetMapping("/atualizar-cliente/{id}")
+	public ModelAndView showUpdateClient(@PathVariable("id") Long id) {
+		ModelAndView modelAndView = new ModelAndView("client/UpdateClient");
+		modelAndView.addObject("cliente", service.searchById(id).get());
+
 		return modelAndView;
 	}
 
-	@PostMapping("/clientes/id/{id}")
-	public ModelAndView atualizaCliente(@PathVariable("id") Long id, @Valid Cliente cliente, BindingResult result) {
-		ModelAndView modelAndView = new ModelAndView("consultarCliente");
-		logger.info(">>>>>> servico para atualizacao de dados chamado");
+	// Requisição POST que irá atualizar um cliente
+	@PostMapping("/atualizar-cliente/{id}")
+	public RedirectView updateClient(@PathVariable("id") Long id, @Valid Cliente ciente, BindingResult result) {
 		if (result.hasErrors()) {
-			logger.info(">>>>>> servico para atualizacao de dados com erro");
-			cliente.setId(id);
-			return new ModelAndView("atualizarCliente");
-		} else {
-			servico.atualiza(id, cliente);
-			modelAndView.addObject("clientes", servico.consultaTodos());
+			ciente.setId(id);
+
+			return new RedirectView("/atualizar-cliente/{id}");
 		}
-		return modelAndView;
+		service.updates(id, ciente);
+
+		return new RedirectView("/clientes");
+	}
+
+	// Requisição GET que irá renderizar a página para deletar um cliente
+	@GetMapping("/deletar-cliente/{id}")
+	public RedirectView deleteClient(@PathVariable("id") Long id) {
+		service.delete(id);
+		return new RedirectView("/clientes");
 	}
 }

@@ -43,14 +43,9 @@ public class APIClienteController {
 			logger.info(">>>>>> apicontroller validacao da entrada dados invalidos" + result.getFieldError());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		}
-		if (mantemCliente.consultaPorCpf(clienteDTO.getCpf()).isPresent()) {
+		if (mantemCliente.searchByCpf(clienteDTO.getCpf()).isPresent()) {
 			logger.info(">>>>>> apicontroller consultaporcpf cpf ja cadastrado");
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("CPF já cadastrado");
-		}
-		try {
-			cliente.setDataNascimento(clienteDTO.getDataNascimento());
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}
 		Optional<Endereco> endereco = Optional.ofNullable(mantemCliente.obtemEndereco(clienteDTO.getCep()));
 		logger.info(">>>>>> apicontroller obtem endereco => " + clienteDTO.getCep());
@@ -67,13 +62,13 @@ public class APIClienteController {
 	@CrossOrigin // desabilita o cors do spring security
 	@GetMapping
 	public ResponseEntity<List<Cliente>> consultaTodos() {
-		return ResponseEntity.status(HttpStatus.OK).body(mantemCliente.consultaTodos());
+		return ResponseEntity.status(HttpStatus.OK).body(mantemCliente.searchAll());
 	}
 
 	@CrossOrigin // desabilita o cors do spring security
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> deletePorId(@PathVariable(value = "id") Long id) {
-		Optional<Cliente> cliente = mantemCliente.consultaPorId(id);
+		Optional<Cliente> cliente = mantemCliente.searchById(id);
 		if (cliente.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 		}
@@ -90,7 +85,7 @@ public class APIClienteController {
 			logger.info(">>>>>> apicontroller atualiza informações de cliente chamado dados invalidos");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		}
-		Optional<Cliente> c = mantemCliente.consultaPorId(id);
+		Optional<Cliente> c = mantemCliente.searchById(id);
 		if (c.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 		}
@@ -98,7 +93,7 @@ public class APIClienteController {
 		if (e.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("CEP não localizado.");
 		}
-		Optional<Cliente> cliente = mantemCliente.atualiza(id, clienteDTO.retornaUmCliente());
+		Optional<Cliente> cliente = mantemCliente.updates(id, clienteDTO.retornaUmCliente());
 		return ResponseEntity.status(HttpStatus.OK).body(cliente.get());
 	}
 
@@ -106,7 +101,7 @@ public class APIClienteController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> consultaPorId(@PathVariable Long id) {
 		logger.info(">>>>>> apicontroller consulta por id chamado");
-		Optional<Cliente> cliente = mantemCliente.consultaPorId(id);
+		Optional<Cliente> cliente = mantemCliente.searchById(id);
 		if (cliente.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 		}
