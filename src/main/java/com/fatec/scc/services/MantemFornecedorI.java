@@ -69,7 +69,6 @@ public class MantemFornecedorI implements MantemFornecedor {
 		Endereco endereco = obtemEndereco(fornecedor.getCep());
 		Fornecedor fornecedorModificado = new Fornecedor(fornecedor.getNome(), fornecedor.getCnpj(), fornecedor.getCep(), fornecedor.getComplemento());
 		fornecedorModificado.setId(id);
-		fornecedorModificado.obtemDataAtual(new DateTime());
 		fornecedorModificado.setEndereco(endereco.getLogradouro());
 		logger.info(">>>>>> 2. servico atualiza informacoes de cliente cep valido para o id => "
 				+ fornecedorModificado.getId());
