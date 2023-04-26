@@ -42,11 +42,11 @@
                                 
                                 <div class="form-dision_half">
                                     <input class="form-dision_inputfull form-dision_top_right" type="number" placeholder="CEP *" th:field="*{cep}" required>
-                                    <input class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Endereço *" th:field="*{endereco}" required>
+                                    <input class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Endereço *" th:field="*{endereco}" th:value="*{endereco}" required>
                                     
                                 </div>
                             	<input class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Complemento *" th:field="*{complemento}" required>
-
+                            </div>
         
                               <input type="submit" value="Cadastrar" class="btn">
                         </form>

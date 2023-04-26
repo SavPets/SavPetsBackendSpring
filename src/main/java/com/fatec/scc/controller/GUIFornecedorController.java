@@ -1,10 +1,14 @@
 package com.fatec.scc.controller;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.fatec.scc.model.Endereco;
 import com.fatec.scc.model.categoriaAnimal.CategoriaAnimal;
 import com.fatec.scc.model.fornecedor.Fornecedor;
 import com.fatec.scc.services.MantemFornecedor;
@@ -41,7 +46,9 @@ public class GUIFornecedorController {
 	    public ModelAndView showCreateProvider(Fornecedor fornecedor) {
 			ModelAndView modelAndView = new ModelAndView("provider/CreateProvider");
 			modelAndView.addObject("fornecedor", fornecedor);
-
+			
+			//service.obtemEndereco(fornecedor.getCep());
+			
 			return modelAndView;
 	    }
 		@PostMapping("/criar-fornecedor")
@@ -49,13 +56,11 @@ public class GUIFornecedorController {
 			if (result.hasErrors()) {
 				return new RedirectView("/criar-fornecedor");
 			}
-
 			if (!service.save(fornecedor).isPresent()) {
 				ModelAndView modelAndView = new ModelAndView("provider/CreateProvider");
 				modelAndView.addObject("message", "Dados invalidos");
 			}
-
-			return new RedirectView("/fornecedores");
+			return new RedirectView("/fornecedores"); 
 		}
 		
 		

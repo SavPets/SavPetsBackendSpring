@@ -22,7 +22,7 @@ public class Fornecedor {
 	@CNPJ
 	@Column(unique = true)
 	private String cnpj;
-	@NotBlank(message = "O CEP é obrigatório.")
+	@NotBlank(message = "O CNPJ é obrigatório.")
 	private String cep;
 	private String endereco;
 	@NotBlank(message = "O complemento deve ser informado")

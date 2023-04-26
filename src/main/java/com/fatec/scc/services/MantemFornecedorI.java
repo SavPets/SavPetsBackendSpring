@@ -52,8 +52,6 @@ public class MantemFornecedorI implements MantemFornecedor {
 	@Override
 	public Optional<Fornecedor> save(Fornecedor fornecedor) {
 		logger.info(">>>>>> servico save chamado ");
-		Endereco endereco = obtemEndereco(fornecedor.getCep());
-		fornecedor.setEndereco(endereco.getLogradouro());
 		return Optional.ofNullable(repository.save(fornecedor));
 	}
 
@@ -66,29 +64,27 @@ public class MantemFornecedorI implements MantemFornecedor {
 	@Override
 	public Optional<Fornecedor> atualiza(Long id, Fornecedor fornecedor) {
 		logger.info(">>>>>> 1.servico atualiza informações de cliente chamado");
-		Endereco endereco = obtemEndereco(fornecedor.getCep());
+		//Endereco endereco = obtemEndereco(fornecedor.getCep());
 		Fornecedor fornecedorModificado = new Fornecedor(fornecedor.getNome(), fornecedor.getCnpj(), fornecedor.getCep(), fornecedor.getComplemento());
 		fornecedorModificado.setId(id);
-		fornecedorModificado.setEndereco(endereco.getLogradouro());
+		//fornecedorModificado.setEndereco(endereco.getLogradouro());
 		logger.info(">>>>>> 2. servico atualiza informacoes de cliente cep valido para o id => "
 				+ fornecedorModificado.getId());
 		return Optional.ofNullable(repository.save(fornecedorModificado));
 	}
-
-	public Endereco obtemEndereco(String cep) {
-		RestTemplate template = new RestTemplate();
-		String url = "https://viacep.com.br/ws/{cep}/json/";
-		logger.info(">>>>>> servico consultaCep - " + cep);
-		ResponseEntity<Endereco> resposta = null;
-		try {
-			resposta = template.getForEntity(url, Endereco.class, cep);
-			return resposta.getBody();
-		} catch (ResourceAccessException e) {
-			logger.info(">>>>>> consulta CEP erro nao esperado ");
-			return null;
-		} catch (HttpClientErrorException e) {
-			logger.info(">>>>>> consulta CEP inválido erro HttpClientErrorException =>" + e.getMessage());
-			return null;
-		}
-	}
+	//public Endereco obtemEndereco(String cep) {
+		//RestTemplate template = new RestTemplate();
+		//String url = "https://viacep.com.br/ws/{cep}/json/";
+		//logger.info(">>>>>> servico consultaCep - " + cep);
+		//ResponseEntity<Endereco> resposta = null;
+		//try {
+			//resposta = template.getForEntity(url, Endereco.class, cep);
+			//return resposta.getBody();
+		//} catch (ResourceAccessException e) {
+			//logger.info(">>>>>> consulta CEP erro nao esperado ");
+		//} catch (HttpClientErrorException e) {
+			//logger.info(">>>>>> consulta CEP inválido erro HttpClientErrorException =>" + e.getMessage());
+			//return null;
+		//}
+	//}
 }
