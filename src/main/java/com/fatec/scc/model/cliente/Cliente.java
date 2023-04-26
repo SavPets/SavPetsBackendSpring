@@ -32,7 +32,7 @@ public class Cliente {
 	@Column(unique = true) // nao funciona com @Valid tem que tratar na camada de persistencia
 	private String cpf;
 
-	@Pattern(regexp = "\\(\\d{2,}\\) \\d{4,}\\-\\d{4}")
+	
 	private String telefone;
 
 	@NotBlank(message = "O CEP é obrigatório.")

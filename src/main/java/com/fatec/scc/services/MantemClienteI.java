@@ -16,6 +16,7 @@ import com.fatec.scc.model.Endereco;
 //import com.fatec.scc.model.Endereco;
 import com.fatec.scc.model.cliente.Cliente;
 import com.fatec.scc.model.cliente.MantemClienteRepository;
+import com.fatec.scc.model.fornecedor.Fornecedor;
 
 /**
  * A classe mantem cliente implementa o padrao Service. Servce eh um padrao que
@@ -71,9 +72,36 @@ public class MantemClienteI implements MantemCliente {
 	@Override
 	public Optional<Cliente> updates(Long id, Cliente cliente) {
 		logger.info(">>>>>> 1.servico atualiza informações de cliente chamado");
-		Endereco endereco = obtemEndereco(cliente.getCep());
-		Cliente clienteModificado = new Cliente(cliente.getPrimeiroNome(), cliente.getUltimoNome(), cliente.getCpf(), cliente.getTelefone(), cliente.getCep(), cliente.getEndereco(), cliente.getNumeroLocal(), cliente.getComplemento());
-		clienteModificado.setId(id);
+		Cliente clienteModificado = this.repository.findById(id).get();
+		cliente.setId(id);
+		
+		if (cliente.getPrimeiroNome() == null) {
+			cliente.setPrimeiroNome(clienteModificado.getPrimeiroNome());
+		}
+		
+		if (cliente.getUltimoNome() == null) {
+			cliente.setUltimoNome(clienteModificado.getUltimoNome());
+		}
+		
+		if (cliente.getCpf() == null) {
+			cliente.setCpf(clienteModificado.getCpf());
+		}
+		if(cliente.getTelefone() == null) {
+			cliente.setTelefone(clienteModificado.getTelefone());
+		}
+		if (cliente.getCep() == null) {
+			cliente.setCep(clienteModificado.getCep());
+		}
+		if(cliente.getEndereco() == null) {
+			cliente.setEndereco(clienteModificado.getEndereco());
+		}
+		if(cliente.getComplemento() == null) {
+			cliente.setComplemento(clienteModificado.getComplemento());
+		}
+		if(cliente.getNumeroLocal() == 0) {
+			cliente.setNumeroLocal(clienteModificado.getNumeroLocal());
+		}
+	
 //		clienteModificado.setEndereco(endereco.getLogradouro());
 		logger.info(">>>>>> 2. servico atualiza informacoes de cliente cep valido para o id => "
 				+ clienteModificado.getId());

@@ -5,7 +5,7 @@
 
 <!--=============== HEAD ===============-->
 <head th:insert="~{fragments/management/headNoTable}"></head>
-<body class="provider">
+<body class="fornecedores">
     <!--=============== HEADER ===============-->
     <header th:insert="~{fragments/management/header}"></header>
     <!--=============== PANEL ===============-->
@@ -35,16 +35,16 @@
                             <div class="form-dision">
                                 <!--  <input class="form-dision_inputfull" type="number" placeholder="Código do Fornecedor*" name="code" required> -->
                                 <div class="form-dision_half">
-                                    <input class="form-dision_inputfull" type="text" placeholder="Fornecedor *" th:field="*{nome}" th:value="${fornecedor.nome}" required>
+                                    <input class="form-dision_inputfull" type="text" placeholder="Fornecedor *" th:field="*{nome}" required>
                                     <input class="form-dision_inputfull" type="text" placeholder="CNPJ *" th:field="*{cnpj}" required>
                                 </div>
                                 
                                 <div class="form-dision_half">
-                                    <input class="form-dision_inputfull form-dision_top_right" type="number" placeholder="CEP *" th:field="*{cep}" th:value="${fornecedor.cep}" required>
-                                    <input class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Endereço *" th:field="*{endereco}" th:value="${fornecedor.endereco}" required>
+                                    <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="CEP *" th:field="*{cep}" required>
+                                    <input class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Endereço *" th:field="*{endereco}"  required>
                                     
                                 </div>
-                            	<input class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Complemento *" th:field="*{complemento}" th:value="${fornecedor.complemento}" required>
+                            	<input class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Complemento *" th:field="*{complemento}" required>
 
                             </div>
                               <input type="submit" value="Atualizar" class="btn">

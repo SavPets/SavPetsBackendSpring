@@ -64,14 +64,39 @@ public class MantemFornecedorI implements MantemFornecedor {
 	@Override
 	public Optional<Fornecedor> atualiza(Long id, Fornecedor fornecedor) {
 		logger.info(">>>>>> 1.servico atualiza informações de cliente chamado");
-		//Endereco endereco = obtemEndereco(fornecedor.getCep());
-		Fornecedor fornecedorModificado = new Fornecedor(fornecedor.getNome(), fornecedor.getCnpj(), fornecedor.getCep(), fornecedor.getComplemento());
-		fornecedorModificado.setId(id);
+		//Endereco endereco = obtemEndereco(fornecedor.getCep());;
 		//fornecedorModificado.setEndereco(endereco.getLogradouro());
+		
+		Fornecedor fornecedorModificado2 = this.repository.findById(id).get();
+		fornecedor.setId(id);
+		
+		if (fornecedor.getCep() == null) {
+			fornecedor.setCep(fornecedorModificado2.getCep());
+		}
+		
+		if (fornecedor.getCnpj() == null) {
+			fornecedor.setCnpj(fornecedorModificado2.getCnpj());
+		}
+		
+		if (fornecedor.getComplemento() == null) {
+			fornecedor.setComplemento(fornecedorModificado2.getComplemento());
+		}
+		if (fornecedor.getEndereco() == null) {
+			fornecedor.setEndereco(fornecedorModificado2.getEndereco());
+		}
+		if(fornecedor.getNome() == null) {
+			fornecedor.setNome(fornecedorModificado2.getNome());
+		}
+		
+		
+		
 		logger.info(">>>>>> 2. servico atualiza informacoes de cliente cep valido para o id => "
-				+ fornecedorModificado.getId());
-		return Optional.ofNullable(repository.save(fornecedorModificado));
+				+ fornecedorModificado2.getId());
+		return Optional.ofNullable(repository.save(fornecedor));
 	}
+	
+	
+	
 	//public Endereco obtemEndereco(String cep) {
 		//RestTemplate template = new RestTemplate();
 		//String url = "https://viacep.com.br/ws/{cep}/json/";

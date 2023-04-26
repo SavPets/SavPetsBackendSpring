@@ -34,8 +34,24 @@ inputTelefone.addEventListener("keypress", () => {
 const inputCEP = document.getElementById("cep");
 
 inputCEP.addEventListener("keypress", () => {
-	const inputLength = inputTelefone.value.length;
+	const inputLength = inputCEP.value.length;
 	
+	if (inputLength === 5)
+		inputCEP.value += "-";
+})
+
+// Regex CNPJ
+const inputCNPJ = document.getElementById("cnpj");
+
+inputCNPJ.addEventListener("keypress", () => {
+	const inputLength = inputCNPJ.value.length;
+	
+	if (inputLength === 2)
+		inputCNPJ.value += ".";
 	if (inputLength === 6)
-		inputCEP.value += "-"
+		inputCNPJ.value += ".";
+	if (inputLength === 10)
+		inputCNPJ.value += "/";	
+	if (inputLength === 15)
+		inputCNPJ.value += "-";	
 })
