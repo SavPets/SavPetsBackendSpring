@@ -15,9 +15,9 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface KeepsOccupationRepository extends JpaRepository<Occupation, Long> {
-	Optional<Occupation> findByNome(String nome);
+	Optional<Occupation> findByName(String name);
 
 	Optional<Occupation> findByDescription(String description);
 
-	List<Occupation> findAllByNomeIgnoreCaseContaining(String nome);
+	List<Occupation> findAllByNameIgnoreCaseContaining(String name);
 }
