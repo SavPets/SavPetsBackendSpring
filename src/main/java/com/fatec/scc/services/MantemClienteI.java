@@ -17,6 +17,7 @@ import com.fatec.scc.model.Endereco;
 import com.fatec.scc.model.cliente.Cliente;
 import com.fatec.scc.model.cliente.MantemClienteRepository;
 import com.fatec.scc.model.fornecedor.Fornecedor;
+import com.fatec.scc.model.funcionario.Funcionario;
 
 /**
  * A classe mantem cliente implementa o padrao Service. Servce eh um padrao que
@@ -71,41 +72,42 @@ public class MantemClienteI implements MantemCliente {
 
 	@Override
 	public Optional<Cliente> updates(Long id, Cliente cliente) {
-		logger.info(">>>>>> 1.servico atualiza informações de cliente chamado");
-		Cliente clienteModificado = this.repository.findById(id).get();
+		logger.info(">>>>>> 1.servico atualiza informações de funcionario chamado");
+		//Cliente clienteModificado = new Cliente(cliente.getPrimeiroNome(), cliente.getUltimoNome(), cliente.getCpf(), cliente.getTelefone(), cliente.getCep(), cliente.getEndereco(), cliente.getNumeroLocal(), cliente.getComplemento());
+		//clienteModificado.setId(id);
+		Cliente clienteMod = this.repository.findById(id).get();
 		cliente.setId(id);
 		
 		if (cliente.getPrimeiroNome() == null) {
-			cliente.setPrimeiroNome(clienteModificado.getPrimeiroNome());
+			cliente.setPrimeiroNome(clienteMod.getPrimeiroNome());
 		}
 		
 		if (cliente.getUltimoNome() == null) {
-			cliente.setUltimoNome(clienteModificado.getUltimoNome());
+			cliente.setUltimoNome(clienteMod.getUltimoNome());
 		}
 		
 		if (cliente.getCpf() == null) {
-			cliente.setCpf(clienteModificado.getCpf());
+			cliente.setCpf(clienteMod.getCpf());
 		}
 		if(cliente.getTelefone() == null) {
-			cliente.setTelefone(clienteModificado.getTelefone());
+			cliente.setTelefone(clienteMod.getTelefone());
 		}
 		if (cliente.getCep() == null) {
-			cliente.setCep(clienteModificado.getCep());
+			cliente.setCep(clienteMod.getCep());
 		}
-		if(cliente.getEndereco() == null) {
-			cliente.setEndereco(clienteModificado.getEndereco());
+		if (cliente.getEndereco() == null) {
+			cliente.setEndereco(clienteMod.getEndereco());
 		}
-		if(cliente.getComplemento() == null) {
-			cliente.setComplemento(clienteModificado.getComplemento());
+		if (cliente.getNumeroLocal() == null) {
+			cliente.setNumeroLocal(clienteMod.getNumeroLocal());
 		}
-		if(cliente.getNumeroLocal() == 0) {
-			cliente.setNumeroLocal(clienteModificado.getNumeroLocal());
+		if (cliente.getComplemento() == null) {
+			cliente.setComplemento(clienteMod.getComplemento());
 		}
-	
-//		clienteModificado.setEndereco(endereco.getLogradouro());
+		
 		logger.info(">>>>>> 2. servico atualiza informacoes de cliente cep valido para o id => "
-				+ clienteModificado.getId());
-		return Optional.ofNullable(repository.save(clienteModificado));
+				+ clienteMod.getId());
+		return Optional.ofNullable(repository.save(cliente));
 	}
 
 	public Endereco obtemEndereco(String cep) {

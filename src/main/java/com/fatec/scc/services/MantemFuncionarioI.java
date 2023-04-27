@@ -6,6 +6,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.fatec.scc.model.fornecedor.Fornecedor;
 import com.fatec.scc.model.funcionario.Funcionario;
 import com.fatec.scc.model.funcionario.MantemFuncionarioRepository;
 
@@ -35,6 +37,8 @@ public class MantemFuncionarioI implements MantemFuncionario {
 	@Override
 	public Optional<Funcionario> save(Funcionario funcionario) {
 		logger.info(">>>>>> servico save chamado ");
+		funcionario.setSenha("123");
+		funcionario.setRepetirSenha("123");
 		return Optional.ofNullable(repository.save(funcionario));
 	}
 
@@ -48,7 +52,17 @@ public class MantemFuncionarioI implements MantemFuncionario {
 	public Optional<Funcionario> atualiza(Long id, Funcionario funcionario) {
 		logger.info(">>>>>> 1.servico atualiza informações de funcionario chamado");
 		Funcionario funcionarioModificado = new Funcionario(funcionario.getNome(), funcionario.getSobrenome(), funcionario.getEmail(), funcionario.getSenha(), funcionario.getRepetirSenha(), funcionario.getCpf(), funcionario.getCep(), funcionario.getEndereco(), funcionario.getComplemento(), funcionario.getNumeroConta());
+		Funcionario funcionarioModificado2 = this.repository.findById(id).get();
+
 		funcionarioModificado.setId(id);
+		
+		
+		if (funcionario.getCpf() == null) {
+			funcionario.setCpf(funcionarioModificado2.getCpf());
+		}
+		
+		
+		funcionarioModificado.setCpf(funcionario.getCpf());
 		return Optional.ofNullable(repository.save(funcionarioModificado));
 	}
 }
