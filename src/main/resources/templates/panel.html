@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!--=============== FAVICON AND TITLE ===============-->
-    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" th:href="@{/img/favicon.ico}" type="image/x-icon">
     <title>SavPets</title>
 
     <!--=============== GOOGLE FONTS ===============-->
@@ -19,11 +19,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!--=============== CSS ===============-->
-    <link rel="stylesheet" href="./css/hamburguer.css">
-    <link rel="stylesheet" href="./css/main-management.css">
+    <link rel="stylesheet" th:href="@{/css/hamburguer.css}">
+    <link rel="stylesheet" th:href="@{/css/main-management.css}">
 </head>
 
-<body class="panel">
+<body class="painel">
     <!--=============== HEADER ===============-->
     <header th:insert="~{fragments/management/header}"></header>
 
@@ -36,7 +36,7 @@
         <!--=============== CONTENT ===============-->
         <main class="main">
             <section class="main-content">
-                <img class="main-content_img-default" src="img/panel-default.svg"
+                <img class="main-content_img-default" th:src="@{/img/panel-default.svg}"
                     alt="Desenho de uma pessoa organizando informações">
 
                 <h3>Escolha qual opção desejar no menu lateral.</h3>

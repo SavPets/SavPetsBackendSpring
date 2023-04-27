@@ -28,23 +28,23 @@
                 </div>
 
                 <div class="identify-container_form container-form">
-                    <form class="form" action="" method="post">
+                    <form class="form" th:action="@{/criar-cadastro}" th:object="${cadastro}" method="post">
                         <div class="form-instruction">
                             <p>Preenchimento obrigatório</p><span>*</span>
                         </div>
 
                         <div class="form-dision">
                             <div class="form-dision_half">
-                                <input class="form-dision_inputfull" type="text" placeholder="Primeiro nome *" name="firstName" required>
-                                <input class="form-dision_inputfull" type="text" placeholder="Último nome *" name="lastName" required>
+                                <input class="form-dision_inputfull" type="text" placeholder="Primeiro nome *" name="firstName" th:field="*{nome}" required>
+                                <input class="form-dision_inputfull" type="text" placeholder="Último nome *" name="lastName"th:field="*{sobrenome}" required>
                             </div>
 
-                            <input class="form-dision_inputfull" type="email" placeholder="Email *" name="email" required>
-                            <input class="form-dision_inputfull" type="password" placeholder="Senha *" name="password" required>
-                            <input class="form-dision_inputfull" type="password" placeholder="Confirmar senha *" name="confirmedPassword" required>
+                            <input class="form-dision_inputfull" type="email" placeholder="Email *" name="email" th:field="*{email}" required>
+                            <input class="form-dision_inputfull" type="password" placeholder="Senha *" name="password" th:field="*{senha}" required>
+                            <input class="form-dision_inputfull" type="password" placeholder="Confirmar senha *" name="confirmedPassword" th:field="*{repetirSenha}" required>
                         </div>
     
-                        <a href="./panel.html" class="btn">Cadastrar</a>
+    					<input type="submit" value="Cadastrar" class="btn">
                     </form>
                 </div>
 

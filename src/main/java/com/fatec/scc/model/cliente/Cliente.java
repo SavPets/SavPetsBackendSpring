@@ -23,33 +23,40 @@ public class Cliente {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@NotBlank(message = "Nome é requerido")
-	private String nome;
-	@Pattern(regexp = "^(0?[1-9]|[12][0-9]|3[01])[\\/-](0?[1-9]|1[012])[\\/-]\\d{4}$", message = "A data de nascimento deve estar no formato dd/MM/YYYY")
-//https://www.regular-expressions.info/
-	private String dataNascimento;
-	private String dataCadastro;
-	@NotBlank(message = "Sexo M/F")
-	private String sexo;
+	private String primeiroNome;
+
+	@NotBlank(message = "Nome é requerido")
+	private String ultimoNome;
+
 	@CPF
 	@Column(unique = true) // nao funciona com @Valid tem que tratar na camada de persistencia
 	private String cpf;
+
+	
+	private String telefone;
+
 	@NotBlank(message = "O CEP é obrigatório.")
 	private String cep;
+
 	private String endereco;
-	@NotBlank(message = "O complemento deve ser informado")
+
+	@NotBlank(message = "O número do endereço é obrigatório")
+	private Integer numeroLocal;
+
 	private String complemento;
 
-	public Cliente(String nome, String dataNascimento, String sexo, String cpf, String cep, String complemento) {
-		this.nome = nome;
-		setDataNascimento(dataNascimento);
-		setDataCadastro(new DateTime());
-		this.sexo = sexo;
-		this.cpf = cpf;
-		this.cep = cep;
-		this.complemento = complemento;
+	public Cliente() {
 	}
 
-	public Cliente() {
+	public Cliente(String primeiroNome, String ultimoNome, String cpf, String telefone, String cep, String endereco, Integer numeroLocal, String complemento) {
+		this.primeiroNome = primeiroNome;
+		this.ultimoNome = ultimoNome;
+		this.cpf = cpf;
+		this.telefone = telefone;
+		this.cep = cep;
+		this.endereco = endereco;
+		this.numeroLocal = numeroLocal;
+		this.complemento = complemento;
 	}
 
 	public Long getId() {
@@ -60,40 +67,20 @@ public class Cliente {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getPrimeiroNome() {
+		return primeiroNome;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setPrimeiroNome(String primeiroNome) {
+		this.primeiroNome = primeiroNome;
 	}
 
-	public String getDataCadastro() {
-		return dataCadastro;
+	public String getUltimoNome() {
+		return ultimoNome;
 	}
 
-	public void setDataCadastro(DateTime dataAtual) {
-		this.dataCadastro = obtemDataAtual(dataAtual);
-	}
-
-	public String getDataNascimento() {
-		return dataNascimento;
-	}
-
-	public void setDataNascimento(String dataNascimento) {
-		if (validaData(dataNascimento) == true) {
-			this.dataNascimento = dataNascimento;
-		} else {
-			throw new IllegalArgumentException("Data invalida");
-		}
-	}
-
-	public String getSexo() {
-		return sexo;
-	}
-
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
+	public void setUltimoNome(String ultimoNome) {
+		this.ultimoNome = ultimoNome;
 	}
 
 	public String getCpf() {
@@ -102,6 +89,14 @@ public class Cliente {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 
 	public String getCep() {
@@ -120,27 +115,19 @@ public class Cliente {
 		this.endereco = endereco;
 	}
 
+	public Integer getNumeroLocal() {
+		return numeroLocal;
+	}
+
+	public void setNumeroLocal(Integer numeroLocal) {
+		this.numeroLocal = numeroLocal;
+	}
+
 	public String getComplemento() {
 		return complemento;
 	}
 
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
-	}
-
-	public boolean validaData(String data) {
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-		df.setLenient(false); //
-		try {
-			df.parse(data); // data válida (exemplo 30 fev - 31 nov)
-			return true;
-		} catch (ParseException ex) {
-			return false;
-		}
-	}
-
-	public String obtemDataAtual(DateTime dataAtual) {
-		DateTimeFormatter fmt = DateTimeFormat.forPattern("dd/MM/YYYY");
-		return dataAtual.toString(fmt);
 	}
 }

@@ -13,8 +13,11 @@ import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
 import com.fatec.scc.model.Endereco;
+//import com.fatec.scc.model.Endereco;
 import com.fatec.scc.model.cliente.Cliente;
 import com.fatec.scc.model.cliente.MantemClienteRepository;
+import com.fatec.scc.model.fornecedor.Fornecedor;
+import com.fatec.scc.model.funcionario.Funcionario;
 
 /**
  * A classe mantem cliente implementa o padrao Service. Servce eh um padrao que
@@ -28,23 +31,25 @@ import com.fatec.scc.model.cliente.MantemClienteRepository;
  */
 @Service
 public class MantemClienteI implements MantemCliente {
+	// Todo o código que está comentado será implementado futuramente com a API "ViaCEP"
+	
 	Logger logger = LogManager.getLogger(this.getClass());
 	@Autowired
 	MantemClienteRepository repository;
 
-	public List<Cliente> consultaTodos() {
+	public List<Cliente> searchAll() {
 		logger.info(">>>>>> servico consultaTodos chamado");
 		return repository.findAll();
 	}
 
 	@Override
-	public Optional<Cliente> consultaPorCpf(String cpf) {
+	public Optional<Cliente> searchByCpf(String cpf) {
 		logger.info(">>>>>> servico consultaPorCpf chamado");
 		return repository.findByCpf(cpf);
 	}
 
 	@Override
-	public Optional<Cliente> consultaPorId(Long id) {
+	public Optional<Cliente> searchById(Long id) {
 		logger.info(">>>>>> servico consultaPorId chamado");
 		return repository.findById(id);
 	}
@@ -52,10 +57,9 @@ public class MantemClienteI implements MantemCliente {
 	
 	@Override 
 	public Optional<Cliente> save(Cliente cliente) { 
-	 logger.info(">>>>>> servico save chamado "); 
-	 cliente.setDataCadastro(new DateTime()); 
-	 Endereco endereco = obtemEndereco(cliente.getCep()); 
-	 cliente.setEndereco(endereco.getLogradouro()); 
+	 logger.info(">>>>>> servico save chamado ");
+	 String endereco = cliente.getEndereco();
+	 cliente.setEndereco(endereco);
 	 return Optional.ofNullable(repository.save(cliente)); 
 	}
 
@@ -67,17 +71,43 @@ public class MantemClienteI implements MantemCliente {
 	}
 
 	@Override
-	public Optional<Cliente> atualiza(Long id, Cliente cliente) {
-		logger.info(">>>>>> 1.servico atualiza informações de cliente chamado");
-		Endereco endereco = obtemEndereco(cliente.getCep());
-		Cliente clienteModificado = new Cliente(cliente.getNome(), cliente.getDataNascimento(), cliente.getSexo(),
-				cliente.getCpf(), cliente.getCep(), cliente.getComplemento());
-		clienteModificado.setId(id);
-		clienteModificado.obtemDataAtual(new DateTime());
-		clienteModificado.setEndereco(endereco.getLogradouro());
+	public Optional<Cliente> updates(Long id, Cliente cliente) {
+		logger.info(">>>>>> 1.servico atualiza informações de funcionario chamado");
+		//Cliente clienteModificado = new Cliente(cliente.getPrimeiroNome(), cliente.getUltimoNome(), cliente.getCpf(), cliente.getTelefone(), cliente.getCep(), cliente.getEndereco(), cliente.getNumeroLocal(), cliente.getComplemento());
+		//clienteModificado.setId(id);
+		Cliente clienteMod = this.repository.findById(id).get();
+		cliente.setId(id);
+		
+		if (cliente.getPrimeiroNome() == null) {
+			cliente.setPrimeiroNome(clienteMod.getPrimeiroNome());
+		}
+		
+		if (cliente.getUltimoNome() == null) {
+			cliente.setUltimoNome(clienteMod.getUltimoNome());
+		}
+		
+		if (cliente.getCpf() == null) {
+			cliente.setCpf(clienteMod.getCpf());
+		}
+		if(cliente.getTelefone() == null) {
+			cliente.setTelefone(clienteMod.getTelefone());
+		}
+		if (cliente.getCep() == null) {
+			cliente.setCep(clienteMod.getCep());
+		}
+		if (cliente.getEndereco() == null) {
+			cliente.setEndereco(clienteMod.getEndereco());
+		}
+		if (cliente.getNumeroLocal() == null) {
+			cliente.setNumeroLocal(clienteMod.getNumeroLocal());
+		}
+		if (cliente.getComplemento() == null) {
+			cliente.setComplemento(clienteMod.getComplemento());
+		}
+		
 		logger.info(">>>>>> 2. servico atualiza informacoes de cliente cep valido para o id => "
-				+ clienteModificado.getId());
-		return Optional.ofNullable(repository.save(clienteModificado));
+				+ clienteMod.getId());
+		return Optional.ofNullable(repository.save(cliente));
 	}
 
 	public Endereco obtemEndereco(String cep) {
@@ -89,7 +119,7 @@ public class MantemClienteI implements MantemCliente {
 			resposta = template.getForEntity(url, Endereco.class, cep);
 			return resposta.getBody();
 		} catch (ResourceAccessException e) {
-			logger.info(">>>>>> consulta CEP erro nao esperado ");
+			logger.info(">>>>>> consulta CEP erro não esperado ");
 			return null;
 		} catch (HttpClientErrorException e) {
 			logger.info(">>>>>> consulta CEP inválido erro HttpClientErrorException =>" + e.getMessage());

@@ -16,5 +16,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MantemClienteRepository extends JpaRepository<Cliente, Long> {
 	Optional<Cliente> findByCpf(String cpf);
-	List<Cliente> findAllByNomeIgnoreCaseContaining(String nome);
+	List<Cliente> findAllByPrimeiroNomeIgnoreCaseContaining(String primeiroNome);
 }

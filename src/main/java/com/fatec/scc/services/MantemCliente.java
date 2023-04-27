@@ -7,17 +7,17 @@ import com.fatec.scc.model.Endereco;
 import com.fatec.scc.model.cliente.Cliente;
 
 public interface MantemCliente {
-	List<Cliente> consultaTodos();
+	List<Cliente> searchAll();
 
-	Optional<Cliente> consultaPorCpf(String cpf);
+	Optional<Cliente> searchByCpf(String cpf);
 
-	Optional<Cliente> consultaPorId(Long id);
+	Optional<Cliente> searchById(Long id);
 
 	Optional<Cliente> save(Cliente cliente);
 
 	void delete(Long id);
 
-	Optional<Cliente> atualiza(Long id, Cliente cliente);
+	Optional<Cliente> updates(Long id, Cliente cliente);
 
 	Endereco obtemEndereco(String cep);
 }

@@ -19,5 +19,6 @@ public interface MantemFornecedor {
 
 	Optional<Fornecedor> atualiza(Long id, Fornecedor fornecedor);
 
-	Endereco obtemEndereco(String cep);
+	//Endereco obtemEndereco(String cep);
+
 }

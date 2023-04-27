@@ -27,19 +27,18 @@
 				</div>
 
 				<div class="identify-container_form container-form">
-					<form class="form" action="" method="post">
+					<form class="form" th:action="@{/}" th:object="${cadastro}" method="post">
 						<div class="form-instruction">
 							<p>Preenchimento obrigatório</p><span>*</span>
 						</div>
 
 						<div class="form-dision">
-							<input class="form-dision_inputfull" type="email" placeholder="Email *" name="email"
-								required>
+							<input class="form-dision_inputfull" type="email" placeholder="Email *" name="email" th:field="*{email}" required>
 							<input class="form-dision_inputfull form-dision_top_right" type="password"
-								placeholder="Senha *" name="password" required>
+								placeholder="Senha *" name="password" th:field="*{senha}" required>
 						</div>
-
-						<a href="/painel" class="btn">Entrar</a>
+						
+						<input type="submit" value="Entrar" class="btn">
 					</form>
 				</div>
 

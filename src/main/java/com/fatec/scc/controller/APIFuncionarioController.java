@@ -18,42 +18,31 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.fatec.scc.model.Endereco;
-import com.fatec.scc.model.fornecedor.Fornecedor;
-import com.fatec.scc.services.MantemFornecedorI;
+import com.fatec.scc.model.funcionario.Funcionario;
+import com.fatec.scc.services.MantemFuncionarioI;
 
 @RestController
-@RequestMapping("/api/v1/fornecedores")
-/*
- * Trata as requisicoes HTTP enviadas pelo usuario do servico
- */
-public class APIFornecedorController {
+@RequestMapping("/api/v1/funcionarios")
+public class APIFuncionarioController {
 	@Autowired
-	MantemFornecedorI mantemFornecedor;
-	Fornecedor fornecedor;
+	MantemFuncionarioI mantemFuncionario;
+	Funcionario funcionario;
 	Logger logger = LogManager.getLogger(this.getClass());
 
 	@CrossOrigin // desabilita o cors do spring security
 	@PostMapping
-	public ResponseEntity<Object> saveFornecedor(@RequestBody @Valid Fornecedor fornecedor, BindingResult result) {
-		fornecedor = new Fornecedor();
+	public ResponseEntity<Object> saveFuncionario(@RequestBody @Valid Funcionario funcionario, BindingResult result) {
+		funcionario = new Funcionario();
 		if (result.hasErrors()) {
 			logger.info(">>>>>> apicontroller validacao da entrada dados invalidos" + result.getFieldError());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		}
-		if (mantemFornecedor.consultaPorCnpj(fornecedor.getCnpj()).isPresent()) {
+		if (mantemFuncionario.consultaPorCPF(funcionario.getCpf()).isPresent()) {
 			logger.info(">>>>>> apicontroller consultaporcpf cpf ja cadastrado");
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("CPF já cadastrado");
 		}
-		
-		//Optional<Endereco> endereco = Optional.ofNullable(mantemFornecedor.obtemEndereco(fornecedor.getCep()));
-		//logger.info(">>>>>> apicontroller obtem endereco => " + fornecedor.getCep());
-		//if (endereco.isEmpty()) {
-		//	return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("CEP invalido");
-		//}
 		try {
-			return ResponseEntity.status(HttpStatus.CREATED).body(mantemFornecedor.save(fornecedor.retornaUmFornecedor()));
+			return ResponseEntity.status(HttpStatus.CREATED).body(mantemFuncionario.save(funcionario.retornaUmFuncionario()));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro não esperado ");
 		}
@@ -61,50 +50,46 @@ public class APIFornecedorController {
 
 	@CrossOrigin // desabilita o cors do spring security
 	@GetMapping
-	public ResponseEntity<List<Fornecedor>> consultaTodos() {
-		return ResponseEntity.status(HttpStatus.OK).body(mantemFornecedor.consultaTodos());
+	public ResponseEntity<List<Funcionario>> consultaTodos() {
+		return ResponseEntity.status(HttpStatus.OK).body(mantemFuncionario.consultaTodos());
 	}
 
 	@CrossOrigin // desabilita o cors do spring security
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> deletePorId(@PathVariable(value = "id") Long id) {
-		Optional<Fornecedor> fornecedor = mantemFornecedor.consultaPorId(id);
-		if (fornecedor.isEmpty()) {
+		Optional<Funcionario> funcionario = mantemFuncionario.consultaPorId(id);
+		if (funcionario.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 		}
-		mantemFornecedor.delete(fornecedor.get().getId());
-		return ResponseEntity.status(HttpStatus.OK).body("Fornecedor excluido");
+		mantemFuncionario.delete(funcionario.get().getId());
+		return ResponseEntity.status(HttpStatus.OK).body("Funcionário excluido");
 	}
 
 	@CrossOrigin // desabilita o cors do spring security
 	@PutMapping("/{id}")
-	public ResponseEntity<Object> atualiza(@PathVariable long id, @RequestBody @Valid Fornecedor fornecedor,
+	public ResponseEntity<Object> atualiza(@PathVariable long id, @RequestBody @Valid Funcionario funcionario,
 			BindingResult result) {
-		logger.info(">>>>>> api atualiza informações de cliente chamado");
+		logger.info(">>>>>> api atualiza informações de funcionario chamado");
 		if (result.hasErrors()) {
-			logger.info(">>>>>> apicontroller atualiza informações de cliente chamado dados invalidos");
+			logger.info(">>>>>> apicontroller atualiza informações de funcionario chamado dados invalidos");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		}
-		Optional<Fornecedor> c = mantemFornecedor.consultaPorId(id);
-		if (c.isEmpty()) {
+		Optional<Funcionario> f = mantemFuncionario.consultaPorId(id);
+		if (f.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 		}
-		//Optional<Endereco> e = Optional.ofNullable(mantemFornecedor.obtemEndereco(fornecedor.getCep()));
-		//if (e.isEmpty()) {
-			//return ResponseEntity.status(HttpStatus.NOT_FOUND).body("CEP não localizado.");
-		//}
-		Optional<Fornecedor> cliente = mantemFornecedor.atualiza(id, fornecedor.retornaUmFornecedor());
-		return ResponseEntity.status(HttpStatus.OK).body(cliente.get());
+		Optional<Funcionario> func = mantemFuncionario.atualiza(id, funcionario.retornaUmFuncionario());
+		return ResponseEntity.status(HttpStatus.OK).body(func.get());
 	}
 
 	@CrossOrigin // desabilita o cors do spring security
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> consultaPorId(@PathVariable Long id) {
 		logger.info(">>>>>> apicontroller consulta por id chamado");
-		Optional<Fornecedor> fornecedor = mantemFornecedor.consultaPorId(id);
-		if (fornecedor.isEmpty()) {
+		Optional<Funcionario> funcionario = mantemFuncionario.consultaPorId(id);
+		if (funcionario.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 		}
-		return ResponseEntity.status(HttpStatus.OK).body(fornecedor.get());
+		return ResponseEntity.status(HttpStatus.OK).body(funcionario.get());
 	}
 }
