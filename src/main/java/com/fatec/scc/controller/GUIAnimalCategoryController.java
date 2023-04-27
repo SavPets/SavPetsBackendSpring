@@ -47,7 +47,7 @@ public class GUIAnimalCategoryController {
     @PostMapping("/criar-categoria-animal")
 	public RedirectView createAnimalCategory(@Valid CategoriaAnimal categoriaAnimal, BindingResult result) {
 		if (result.hasErrors()) {
-			return new RedirectView("/criar-categoria-animal");
+			return new RedirectView("/criar-categoria-animal?status=Erro&text=Revise_os_campos_do_registro!");
 		}
 
 		if (!service.save(categoriaAnimal).isPresent()) {
@@ -55,7 +55,7 @@ public class GUIAnimalCategoryController {
 			modelAndView.addObject("message", "Dados invalidos");
 		}
 
-		return new RedirectView("/categorias-animais");
+		return new RedirectView("/categorias-animais?status=Cadastrado");
 	}
 
 	@GetMapping("/atualizar-categoria-animal/{id}")
@@ -71,11 +71,11 @@ public class GUIAnimalCategoryController {
 		if (result.hasErrors()) {
 			categoriaAnimal.setId(id);
 			
-			return new RedirectView("/atualizar-categoria-animal/{id}");
+			return new RedirectView("/atualizar-categoria-animal/{id}?status=Erro&text=Revise_os_campos_do_registro!");
 		}
 		service.updates(id, categoriaAnimal);
 				
-		return new RedirectView("/categorias-animais");
+		return new RedirectView("/categorias-animais?status=Atualizado");
 	}
 
 	@GetMapping("/deletar-categoria-animal/{id}")
