@@ -31,6 +31,7 @@
                                     <table id="example" class="table table-striped display nowrap" cellspacing="0" style="width:100%">
                                         <thead>
                                             <tr>
+												<th>#</th>
                                                 <th>Nome</th>
                                                 <th>Sobrenome</th>
                                                 <th>Email</th>
@@ -48,7 +49,8 @@
                                                 <td th:text="${Funcionario.id}"></td >
                                                 <td th:text="${Funcionario.nome}"></td>
                                                 <td th:text="${Funcionario.sobrenome}"></td>
-                                                <td th:text="${Funcionario.cpf}"></td>
+                                                <td th:text="${Funcionario.email}"></td>
+                                                <td th:text="${Funcionario.cpf}" id="cpf"></td>
                                                 <td th:text="${Funcionario.cep}"></td>
                                                 <td th:text="${Funcionario.endereco}"></td>
                                                 <td th:text="${Funcionario.complemento}"></td>

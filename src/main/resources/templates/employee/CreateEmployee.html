@@ -6,7 +6,7 @@
 <!--=============== HEAD ===============-->
 <head th:insert="~{fragments/management/headNoTable}"></head>
 
-<body class="provider">
+<body class="funcionarios">
    <!--=============== HEADER ===============-->
     <header th:insert="~{fragments/management/header}"></header>
 
@@ -32,24 +32,25 @@
                             <div class="form-instruction">
                                 <p>Preenchimento obrigatório</p><span>*</span>
                             </div>
-    
                             <div class="form-dision">
                                 <div class="form-dision_half">
                                     <input class="form-dision_inputfull" type="text" placeholder="Nome *" th:field="*{nome}" required>
                                     <input class="form-dision_inputfull" type="text" placeholder="Sobrenome *" th:field="*{sobrenome}" required>
                                 </div>
-                                
+                                <input class="form-dision_inputfull" type="email" placeholder="Email *" name="email" th:field="*{email}" required>
                                 <div class="form-dision_half">
-									<input class="form-dision_inputfull" type="email" placeholder="Email *" name="email" th:field="*{email}" required>
                             		<input class="form-dision_inputfull" type="password" placeholder="Senha *" name="password" th:field="*{senha}" required>
                             		<input class="form-dision_inputfull" type="password" placeholder="Confirmar senha *" name="confirmedPassword" th:field="*{repetirSenha}" required>
-                            		<input class="form-dision_inputfull form-dision_top_right" type="number" placeholder="CPF *" th:field="*{cpf}" required>
-                                    <input class="form-dision_inputfull form-dision_top_right" type="number" placeholder="CEP *" th:field="*{cep}" required>
-                                    <input class="form-dision_inputfull form-dision_top_left" type="number" placeholder="Número da conta *" th:field="*{numeroConta}" th:value="*{numeroConta}" required>
-
                                 </div>
-                                <input class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Endereço *" th:field="*{endereco}" th:value="*{endereco}" required>
+                                <div class="form-dision_half">
+									<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="CPF *" th:field="*{cpf}" id="cpf" minlength="14" maxlength="14" required>
+                                    <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="CEP *" th:field="*{cep}" id="cep" minlength="9" maxlength="9" required>
+								</div>
+								<div class="form-dision_half">
+									<input class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Endereço *" th:field="*{endereco}" th:value="*{endereco}" required>
                             	<input class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Complemento *" th:field="*{complemento}" required>
+								</div>
+                            	<input class="form-dision_inputfull form-dision_top_left" type="number" placeholder="Número da conta *" th:field="*{numeroConta}" th:value="*{numeroConta}" required>
                             </div>
         
                               <input type="submit" value="Cadastrar" class="btn">
@@ -62,5 +63,7 @@
 
   <!--=============== SCRIPTS ===============-->
     <div th:insert="~{fragments/management/scriptsNoTable}"></div>
+    <!-- Regex Script -->
+	<script th:src="@{js/regex.js}"></script>
 </body>
 </html>

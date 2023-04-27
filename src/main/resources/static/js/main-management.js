@@ -1,8 +1,14 @@
 // =============== MENU ===============
-(function activeMenuOnCurrentPage() {
+function setCurrentPage() {
     const page = `/${document.body.classList}`
-    const headerListOption = document.querySelector(`.header-content_menu a[href="${page}"]`)
+    const currentPage = document.querySelector(`.header-content_menu a[href="${page}"]`)
 
+    return currentPage
+}
+
+(function activeMenuOnCurrentPage() {
+    const headerListOption = setCurrentPage()
+    
     headerListOption.classList.add('menu-management-active')
 })()
 
@@ -15,6 +21,60 @@ function openMobileMenu(burger) {
     burger.classList.toggle('open')
     headerContent.classList.toggle('side-menu--management-active')
 }
+
+// =============== TOP BAR ===============
+(function createBreadCrumb() {
+    const topBarPath = document.querySelector('.top-bar_path:first-child')
+    const currentPage = setCurrentPage().textContent.trim()
+    let newPath
+
+    switch(currentPage) {
+        case 'Cargos':
+            newPath = '<a class="top-bar_path" href="/cargos">Cargos</a>'
+            topBarPath.insertAdjacentHTML('afterend', newPath)
+            break
+        case 'Departamentos':
+            newPath = '<a class="top-bar_path" href="/departamentos">Departamentos</a>'
+            topBarPath.insertAdjacentHTML('afterend', newPath)
+            break
+        case 'Funcionários':
+            newPath = '<a class="top-bar_path" href="/funcionarios">Funcionários</a>'
+            topBarPath.insertAdjacentHTML('afterend', newPath)
+            break
+        case 'Clientes':
+            newPath = '<a class="top-bar_path" href="/clientes">Clientes</a>'
+            topBarPath.insertAdjacentHTML('afterend', newPath)
+            break
+        case 'Adoções':
+            newPath = '<a class="top-bar_path" href="/adocoes">Adoções</a>'
+            topBarPath.insertAdjacentHTML('afterend', newPath)
+            break
+        case 'Relatórios de animais':
+            newPath = '<a class="top-bar_path" href="/relatorios-animais">Relatórios de animais</a>'
+            topBarPath.insertAdjacentHTML('afterend', newPath)
+            break
+        case 'Categorias de animais':
+            newPath = '<a class="top-bar_path" href="/categorias-animais">Categorias de animais</a>'
+            topBarPath.insertAdjacentHTML('afterend', newPath)
+            break
+        case 'Medicamentos':
+            newPath = '<a class="top-bar_path" href="/medicamentos">Medicamentos</a>'
+            topBarPath.insertAdjacentHTML('afterend', newPath)
+            break
+        case 'Alimentos':
+            newPath = '<a class="top-bar_path" href="/alimentos">Alimentos</a>'
+            topBarPath.insertAdjacentHTML('afterend', newPath)
+            break
+        case 'Equipamentos':
+            newPath = '<a class="top-bar_path" href="/equipamentos">Equipamentos</a>'
+            topBarPath.insertAdjacentHTML('afterend', newPath)
+            break
+        case 'Fornecedores':
+            newPath = '<a class="top-bar_path" href="/fornecedores">Fornecedores</a>'
+            topBarPath.insertAdjacentHTML('afterend', newPath)
+            break   
+    }
+})()
 
 // =============== QUIT OPTIONS SETTINGS ===============
 const quitOption = document.querySelectorAll('.option-quit')

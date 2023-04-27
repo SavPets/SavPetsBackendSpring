@@ -1,4 +1,5 @@
 package com.fatec.scc.controller;
+
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -39,7 +40,8 @@ public class GUIHomeController {
 		}
 		cadastro = service.searchByEmail(cadastro.getEmail());
 		if (service.verify(cadastro.getEmail(), cadastro.getSenha())) {
-			return new RedirectView("/painel/"+String.valueOf(cadastro.getId()));
+			return new RedirectView("/painel");
+			//return new RedirectView("/painel/"+String.valueOf(cadastro.getId()));
 		}
 		return new RedirectView("/");
 	}
@@ -62,7 +64,7 @@ public class GUIHomeController {
 			modelAndView.addObject("message", "Dados inválidos");
 		}
 
-		return new RedirectView("/");
+		return new RedirectView("/painel");
 	}
 	
 	@GetMapping("/alterar-senha")
@@ -82,10 +84,10 @@ public class GUIHomeController {
 		return new RedirectView("/");
 	}
 
-	@GetMapping("/painel/{id}")
-	public ModelAndView showPanel(@PathVariable Long id, @Valid Optional<Cadastro> cadastro, BindingResult result) {
+	@GetMapping("/painel")
+	public ModelAndView showPanel(@Valid Optional<Cadastro> cadastro, BindingResult result) {
 		ModelAndView mv = new ModelAndView("panel");
-		cadastro = service.searchById(id);
+		//cadastro = service.searchById(id);
 		mv.addObject("cadastro", cadastro);
 		return mv;
 	}
