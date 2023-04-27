@@ -28,18 +28,17 @@
                     </a>
 
                     <div class="main-container_form">
-                        <form class="form" action="" method="post">
+                        <form class="form" th:action="@{/criar-departamento}" th:object="${departament}" method="post">
                             <div class="form-instruction">
                                 <p>Preenchimento obrigatório</p><span>*</span>
                             </div>
     
                             <div class="form-dision">
-                                <input class="form-dision_inputfull" type="number" placeholder="Código *" name="code" required>
-                                <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Nome *" name="name" required>
-                                <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Sigla *" name="initials" required>
+                                <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Nome *" th:field="*{name}" required>
+                                <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Sigla *" th:field="*{initials}" required>
                             </div>
         
-                            <a href="/departamentos" class="btn">Cadastrar</a>
+                            <input type="submit" value="Cadastrar" class="btn">
                         </form>
                     </div>
                 </div>

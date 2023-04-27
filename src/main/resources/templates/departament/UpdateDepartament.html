@@ -3,7 +3,6 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 
-
 <!--=============== HEAD ===============-->
 <head th:insert="~{fragments/management/headNoTable}"></head>
 
@@ -30,18 +29,17 @@
                     </a>
 
                     <div class="main-container_form">
-                        <form class="form" action="" method="post">
+                        <form class="form" th:action="@{/atualizar-departamento/{id} (id=${departament.id})}" th:object="${departament}" method="post">
                             <div class="form-instruction">
                                 <p>Preenchimento obrigatório</p><span>*</span>
                             </div>
     
                             <div class="form-dision">
-                                <input class="form-dision_inputfull" type="number" placeholder="Código *" name="code" value="1" required>
-                                <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Nome *" value="Marketing" name="name" required>
-                                <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Sigla *" value="MK" name="initials" required>
+                                <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Nome *" th:field="*{name}" th:value="${departament.name}" required>
+                                <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Sigla *" th:field="*{initials}" th:value="${departament.initials}" required>
                             </div>
         
-                            <a href="/departamentos" class="btn">Atualizar</a>
+                            <input type="submit" value="Atualizar" class="btn">
                         </form>
                     </div>
                 </div>
