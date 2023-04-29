@@ -2,8 +2,6 @@ package com.fatec.scc.services;
 
 import java.util.List;
 import java.util.Optional;
-
-import com.fatec.scc.model.Endereco;
 import com.fatec.scc.model.fornecedor.Fornecedor;
 
 public interface MantemFornecedor {

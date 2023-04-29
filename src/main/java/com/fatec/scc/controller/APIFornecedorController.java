@@ -18,8 +18,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.fatec.scc.model.Endereco;
 import com.fatec.scc.model.fornecedor.Fornecedor;
 import com.fatec.scc.services.MantemFornecedorI;
 

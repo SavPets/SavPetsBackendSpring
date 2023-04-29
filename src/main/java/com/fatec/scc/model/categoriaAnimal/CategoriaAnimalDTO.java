@@ -2,10 +2,6 @@ package com.fatec.scc.model.categoriaAnimal;
 
 import javax.validation.constraints.NotBlank;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
 public class CategoriaAnimalDTO {
 
 	@NotBlank(message = "Nome da categoria é requerido")

@@ -6,8 +6,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.fatec.scc.model.fornecedor.Fornecedor;
 import com.fatec.scc.model.funcionario.Funcionario;
 import com.fatec.scc.model.funcionario.MantemFuncionarioRepository;
 

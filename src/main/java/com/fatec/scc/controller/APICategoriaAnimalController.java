@@ -18,12 +18,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.fatec.scc.model.Endereco;
 import com.fatec.scc.model.categoriaAnimal.CategoriaAnimal;
 import com.fatec.scc.model.categoriaAnimal.CategoriaAnimalDTO;
-import com.fatec.scc.model.cliente.Cliente;
-import com.fatec.scc.model.cliente.ClienteDTO;
 import com.fatec.scc.services.MantemCategoriaAnimalI;
 
 @RestController

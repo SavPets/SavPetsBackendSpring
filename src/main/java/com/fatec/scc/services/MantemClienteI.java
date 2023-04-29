@@ -4,20 +4,15 @@ import java.util.List;
 import java.util.Optional;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
-
 import com.fatec.scc.model.Endereco;
-//import com.fatec.scc.model.Endereco;
 import com.fatec.scc.model.cliente.Cliente;
 import com.fatec.scc.model.cliente.MantemClienteRepository;
-import com.fatec.scc.model.fornecedor.Fornecedor;
-import com.fatec.scc.model.funcionario.Funcionario;
 
 /**
  * A classe mantem cliente implementa o padrao Service. Servce eh um padrao que
