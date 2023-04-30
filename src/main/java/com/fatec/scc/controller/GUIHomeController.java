@@ -37,7 +37,6 @@ public class GUIHomeController {
 		if (!service.existsByEmail(cadastro.getEmail())) {
 			return new RedirectView("/cadastrar");
 		}
-		cadastro = service.searchByEmail(cadastro.getEmail());
 		if (service.verify(cadastro.getEmail(), cadastro.getSenha())) {
 			return new RedirectView("/painel");
 			//return new RedirectView("/painel/"+String.valueOf(cadastro.getId()));
@@ -54,6 +53,10 @@ public class GUIHomeController {
 	
 	@PostMapping("/criar-cadastro")
 	public RedirectView createCadastro(@Valid Cadastro cadastro, BindingResult result) {
+		if (!cadastro.getSenha().equals(cadastro.getRepetirSenha())) {
+			return new RedirectView("/cadastrar");
+		}
+		
 		if (result.hasErrors()) {
 			return new RedirectView("/cadastrar");
 		}
@@ -75,6 +78,10 @@ public class GUIHomeController {
 	
 	@PostMapping("/alterar-senha")
 	public RedirectView updateCadastro(@Valid Cadastro cadastro, BindingResult result) {
+		if (!cadastro.getSenha().equals(cadastro.getRepetirSenha())) {
+			return new RedirectView("/alterar-senha");
+		}
+		
 		if (result.hasErrors()) {
 			return new RedirectView("/alterar-senha");
 		}
@@ -86,7 +93,6 @@ public class GUIHomeController {
 	@GetMapping("/painel")
 	public ModelAndView showPanel(@Valid Optional<Cadastro> cadastro, BindingResult result) {
 		ModelAndView mv = new ModelAndView("panel");
-		//cadastro = service.searchById(id);
 		mv.addObject("cadastro", cadastro);
 		return mv;
 	}

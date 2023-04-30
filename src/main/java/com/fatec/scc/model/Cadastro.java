@@ -2,6 +2,7 @@ package com.fatec.scc.model;
 
 import javax.validation.constraints.NotBlank;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,6 +19,7 @@ public class Cadastro {
 	@NotBlank(message = "Sobrenome é requerido")
 	private String sobrenome;
 	
+	@Column(unique = true)
 	@NotBlank(message = "Email é requerido")
 	private String email;
 
