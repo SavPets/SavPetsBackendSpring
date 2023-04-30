@@ -42,9 +42,9 @@
                                 </div>
                                 
                                 <div class="form-dision_half">
-                                	<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="CEP *" th:field="*{cep}" id="cep" minlength="9" maxlength="9" required>
-                                    <!--<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="CEP *" th:field="*{cep}" id="cep" minlength="9" maxlength="9" required>-->
-                                    <input class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Endereço *" th:field="*{endereco}" th:value="*{endereco}" required>
+                                	<input class="form-dision_inputfull form-dision_top_right" type="text" id="cep" placeholder="CEP *" th:field="*{cep}" value="" size="10" maxlength="9"
+               onblur="pesquisacep(this.value);" required>
+                                    <input class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Endereço *" th:field="*{endereco}" id="rua" size="60" required>
                                     
                                 </div>
                             	<input class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Complemento *" th:field="*{complemento}" required>
@@ -64,5 +64,6 @@
   <!-- Regex Script -->
 
 <script th:src="@{js/regex.js}"></script>
+<script th:src="@{js/viacep.js}"></script>
 
 </html>
