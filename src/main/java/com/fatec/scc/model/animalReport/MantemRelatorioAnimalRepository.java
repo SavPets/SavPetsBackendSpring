@@ -7,7 +7,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MantemRelatorioAnimalRepository extends JpaRepository<RelatorioAnimal, Long> {
 	
+	Optional<RelatorioAnimal> findByMedicamento(String Medicamento);
 	
+	Optional<RelatorioAnimal> findByCategoriaAnimal(String CategoriaAnimal);
+
+
 	
 	Optional <RelatorioAnimal> findByDataChegada(String dataChegada);
 	

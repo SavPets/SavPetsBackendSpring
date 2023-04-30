@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.fatec.scc.model.animalReport.*;
-import com.fatec.scc.services.MantemRelatorioAnimal;
+import com.fatec.scc.services.relatorioAnimal.MantemRelatorioAnimal;
 
 @Controller
 @RequestMapping
@@ -56,7 +56,7 @@ public class GUIRelatorioAnimalController {
 	}
 
 	@GetMapping("/atualizar-relatorio-animal/{id}")
-    public ModelAndView showUpdateAnimalCategory(@PathVariable("id") Long id) {
+    public ModelAndView showUpdateRelatorioAnimal(@PathVariable("id") Long id) {
 		ModelAndView modelAndView = new ModelAndView("animalCategory/UpdateAnimalCategory");
 		modelAndView.addObject("categoriaAnimal", service.searchById(id).get());
 
@@ -64,7 +64,7 @@ public class GUIRelatorioAnimalController {
     }
 
 	@PostMapping("/atualizar-relatorio-animal/{id}")
-	public RedirectView updateAnimalCategory(@PathVariable("id") Long id, @Valid RelatorioAnimal relatorioAnimal, BindingResult result) {
+	public RedirectView updateRelatorioAnimal(@PathVariable("id") Long id, @Valid RelatorioAnimal relatorioAnimal, BindingResult result) {
 		if (result.hasErrors()) {
 			relatorioAnimal.setId(id);
 			
@@ -76,7 +76,7 @@ public class GUIRelatorioAnimalController {
 	}
 
 	@GetMapping("/deletar-relatorio-animal/{id}")
-	public RedirectView deleteAnimalCategory(@PathVariable("id") Long id) {
+	public RedirectView deleteRelatorioAnimal(@PathVariable("id") Long id) {
 		service.delete(id);
 		return new RedirectView("/relatorios-animais");
 }
