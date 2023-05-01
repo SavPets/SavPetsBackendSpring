@@ -49,32 +49,9 @@ public class APIRelatorioAnimalController {
 			logger.info(">>>>>> apicontroller validacao da entrada dados invalidos" + result.getFieldError());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		}
-		if (mantemRelatorioAnimal.searchByDataChegada(relatorioAnimalDTO.getdataChegada()).isPresent()) {
-			logger.info(">>>>>> apicontroller consultapornome categoria ja cadastrado");
-			return ResponseEntity.status(HttpStatus.CONFLICT).body("Categoria já cadastrada");
-		}
+		
 		try {
 			relatorioAnimal.setMedicamento(relatorioAnimalDTO.getMedicamento());
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-		}
-		try {
-			relatorioAnimal.setcategoriaAnimal(relatorioAnimalDTO.getcategoriaAnimal());
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-		}
-		try {
-			relatorioAnimal.setdataChegada(relatorioAnimalDTO.getdataChegada());
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-		}
-		try {
-			relatorioAnimal.setlocal(relatorioAnimalDTO.getlocal());
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-		}
-		try {
-			relatorioAnimal.setdescricao(relatorioAnimalDTO.getdescricao());
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}

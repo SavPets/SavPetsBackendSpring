@@ -39,6 +39,7 @@ public class RelatorioAnimal {
 		this.descricao = descricao;
 	}
 
+	
 	public Long getId() {
 		return id;
 	}
@@ -50,41 +51,43 @@ public class RelatorioAnimal {
 	public String getMedicamento() {
 		return medicamento;
 	}
+
 	public void setMedicamento(String medicamento) {
-		this.medicamento=medicamento;
+		this.medicamento = medicamento;
 	}
-	
-	public String getcategoriaAnimal() {
+
+	public String getCategoriaAnimal() {
 		return categoriaAnimal;
 	}
-	
-	public void setcategoriaAnimal(String categoriaAnimal) {
-		this.categoriaAnimal=categoriaAnimal;
+
+	public void setCategoriaAnimal(String categoriaAnimal) {
+		this.categoriaAnimal = categoriaAnimal;
 	}
-	
-	public String getdataChegada() {
+
+	public String getDataChegada() {
 		return dataChegada;
 	}
 
-	public void setdataChegada(String dataChegada) {
+	public void setDataChegada(String dataChegada) {
 		this.dataChegada = dataChegada;
 	}
 
-	public String getlocal() {
+	public String getLocal() {
 		return local;
 	}
 
-	public void setlocal(String local) {
+	public void setLocal(String local) {
 		this.local = local;
 	}
 
-	public String getdescricao() {
+	public String getDescricao() {
 		return descricao;
 	}
 
-	public void setdescricao(String descricao) {
+	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
 	public RelatorioAnimal retornoumRelatorioAnimal () {
 		return new RelatorioAnimal(medicamento,categoriaAnimal,dataChegada,local,descricao);
 	}

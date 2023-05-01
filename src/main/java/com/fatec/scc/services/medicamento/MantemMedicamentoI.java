@@ -20,6 +20,10 @@ public class MantemMedicamentoI implements MantemMedicamento {
 	MantemMedicamentoRepository repository;
 	@Autowired
 	MantemFornecedorRepository repositoryF;
+	
+	
+	
+	
 	public List<Medicamento> searchAll() {
 		logger.info(">>>>>> servico consultaTodos chamado");
 		return repository.findAll();

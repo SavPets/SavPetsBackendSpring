@@ -40,7 +40,6 @@
                                                 <th>Código</th>
                                                 <th>Id Medicamento</th>
                                                 <th>Id Animal</th>
-                                                <!--<th>Id Funcionário</th>-->
                                                 <th>Data Chegada</th>
                                                 <th>Local Encontrado</th>
                                                 <th>Descrição</th>
@@ -49,14 +48,14 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr th:each="RelatorioAnimal : ${relatoriosanimais}">
+                                            <tr th:each="RelatorioAnimal : ${relatorios}">
                                                 <td th:text="${RelatorioAnimal.id}"></td>
                                                 <td th:text="${RelatorioAnimal.medicamento}"></td>
                                                 <td th:text="${RelatorioAnimal.categoriaAnimal}"></td>
-                                                <!--<td th:text="${RelatorioAnimal.funcionario}"></td>-->
                                                 <td th:text="${RelatorioAnimal.dataChegada}"></td>
                                                 <td th:text="${RelatorioAnimal.local}"></td>
                                                 <td th:text="${RelatorioAnimal.descricao}"></td>
+                                               
                                                 <td class="column-action column-action_edit">
                                                     <a th:href="@{/atualizar-relatorio-animal/{id}(id=${RelatorioAnimal.id})}">
                                                         <svg width="21" height="18" viewBox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -70,7 +70,8 @@
     padding: 2rem;
 }
 
-.form-dision_inputfull::placeholder{
+
+.form-dision_inputfull::placeholder, option{
     color: var(--placeholder-color);
     opacity: .6;
     font: 1.4rem;

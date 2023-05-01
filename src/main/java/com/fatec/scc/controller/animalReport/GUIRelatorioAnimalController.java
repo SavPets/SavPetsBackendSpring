@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.fatec.scc.model.animalReport.*;
+import com.fatec.scc.model.medicamento.Medicamento;
 import com.fatec.scc.services.relatorioAnimal.MantemRelatorioAnimal;
 
 @Controller
@@ -26,9 +27,10 @@ public class GUIRelatorioAnimalController {
 	MantemRelatorioAnimal service;
 
 	@GetMapping("/relatorios-animais")
-	public ModelAndView showRelatorioAnimal(RelatorioAnimal relatorioAnimal) {
+	public ModelAndView showMedicine(RelatorioAnimal relatorio) {
 		ModelAndView modelAndView = new ModelAndView("animalReport/animalReport");
-		modelAndView.addObject("relatorioAnimais", service.searchAll());
+		modelAndView.addObject("relatorios", service.searchAll());
+
 		return modelAndView;
 	}
 
