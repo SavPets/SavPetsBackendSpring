@@ -39,7 +39,6 @@
 
 .form-dision input,
 .form-dision select{
-    border: solid 1px rgba(0, 0, 0, 0.1);
     border-left: none;
     border-top: none;
     border-right: none;
@@ -63,13 +62,15 @@
 }
 
 .form-dision_select{
-    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 1rem 0 0 0;
     border-top: 0;
     border-left: 0;
     padding: 2rem;
 }
 
+select:focus{
+	outline: none;	
+}
 
 .form-dision_inputfull::placeholder{
     color: var(--placeholder-color);
