@@ -1,11 +1,8 @@
-package com.fatec.scc.controller.animalReport;
- 
+package com.fatec.scc.controller.employee;
 
 import java.util.List;
 import java.util.Optional;
-
 import javax.validation.Valid;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,43 +18,31 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.fatec.scc.model.animalReport.*;
-import com.fatec.scc.model.animalReport.RelatorioAnimalDTO;
-import com.fatec.scc.services.relatorioAnimal.*;
+import com.fatec.scc.model.funcionario.Funcionario;
+import com.fatec.scc.services.funcionario.MantemFuncionarioI;
 
 @RestController
-@RequestMapping("/api/v1/relatorio-animais")
-/*
- * Trata as requisicoes HTTP enviadas pelo usuario do servico
- */
-
-public class APIRelatorioAnimalController {
+@RequestMapping("/api/v1/funcionarios")
+public class APIEmployeeController {
 	@Autowired
-	MantemRelatorioAnimalI mantemRelatorioAnimal;
-	RelatorioAnimal relatorioAnimal;
+	MantemFuncionarioI mantemFuncionario;
+	Funcionario funcionario;
 	Logger logger = LogManager.getLogger(this.getClass());
 
 	@CrossOrigin // desabilita o cors do spring security
 	@PostMapping
-	public ResponseEntity<Object> saveRelatorioAnimal(
-			@RequestBody @Valid RelatorioAnimalDTO relatorioAnimalDTO,
-			BindingResult result) {
-		relatorioAnimal = new RelatorioAnimal();
-
+	public ResponseEntity<Object> saveEmployee(@RequestBody @Valid Funcionario funcionario, BindingResult result) {
+		funcionario = new Funcionario();
 		if (result.hasErrors()) {
 			logger.info(">>>>>> apicontroller validacao da entrada dados invalidos" + result.getFieldError());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		}
-		
-		try {
-			relatorioAnimal.setMedicamento(relatorioAnimalDTO.getMedicamento());
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+		if (mantemFuncionario.consultaPorCPF(funcionario.getCpf()).isPresent()) {
+			logger.info(">>>>>> apicontroller consultaporcpf cpf ja cadastrado");
+			return ResponseEntity.status(HttpStatus.CONFLICT).body("CPF já cadastrado");
 		}
 		try {
-			return ResponseEntity.status(HttpStatus.CREATED)
-					.body(mantemRelatorioAnimal.save(relatorioAnimalDTO.retornoumRelatorioAnimal()));
+			return ResponseEntity.status(HttpStatus.CREATED).body(mantemFuncionario.save(funcionario.retornaUmFuncionario()));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro não esperado ");
 		}
@@ -65,50 +50,46 @@ public class APIRelatorioAnimalController {
 
 	@CrossOrigin // desabilita o cors do spring security
 	@GetMapping
-	public ResponseEntity<List<RelatorioAnimal>> FindAll() {
-		return ResponseEntity.status(HttpStatus.OK).body(mantemRelatorioAnimal.searchAll());
+	public ResponseEntity<List<Funcionario>> FindAll() {
+		return ResponseEntity.status(HttpStatus.OK).body(mantemFuncionario.consultaTodos());
 	}
 
 	@CrossOrigin // desabilita o cors do spring security
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> deleteById(@PathVariable(value = "id") Long id) {
-		Optional<RelatorioAnimal> relatorioAnimal = mantemRelatorioAnimal.searchById(id);
-		if (relatorioAnimal.isEmpty()) {
+		Optional<Funcionario> funcionario = mantemFuncionario.consultaPorId(id);
+		if (funcionario.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 		}
-		mantemRelatorioAnimal.delete(relatorioAnimal.get().getId());
-		return ResponseEntity.status(HttpStatus.OK).body("Categoria excluida");
+		mantemFuncionario.delete(funcionario.get().getId());
+		return ResponseEntity.status(HttpStatus.OK).body("Funcionário excluido");
 	}
 
 	@CrossOrigin // desabilita o cors do spring security
 	@PutMapping("/{id}")
-	public ResponseEntity<Object> updates(@PathVariable long id,
-			@RequestBody @Valid RelatorioAnimalDTO relatorioAnimalDTO, BindingResult result) {
-		logger.info(">>>>>> api atualiza informações do relatorio do animal chamada");
+	public ResponseEntity<Object> updates(@PathVariable long id, @RequestBody @Valid Funcionario funcionario,
+			BindingResult result) {
+		logger.info(">>>>>> api atualiza informações de funcionario chamado");
 		if (result.hasErrors()) {
-			logger.info(">>>>>> apicontroller atualiza informações de realtorio chamado dados invalidos");
+			logger.info(">>>>>> apicontroller atualiza informações de funcionario chamado dados invalidos");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		}
-		Optional<RelatorioAnimal> r = mantemRelatorioAnimal.searchById(id);
-		if (r.isEmpty()) {
+		Optional<Funcionario> f = mantemFuncionario.consultaPorId(id);
+		if (f.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 		}
-
-		
-		Optional<RelatorioAnimal> relatorioAnimal = mantemRelatorioAnimal.updates(id,
-				relatorioAnimalDTO.retornoumRelatorioAnimal());
-		return ResponseEntity.status(HttpStatus.OK).body(relatorioAnimal.get());
+		Optional<Funcionario> func = mantemFuncionario.atualiza(id, funcionario.retornaUmFuncionario());
+		return ResponseEntity.status(HttpStatus.OK).body(func.get());
 	}
 
-	
 	@CrossOrigin // desabilita o cors do spring security
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> searchById(@PathVariable Long id) {
 		logger.info(">>>>>> apicontroller consulta por id chamado");
-		Optional<RelatorioAnimal> relatorioAnimal = mantemRelatorioAnimal.searchById(id);
-		if (relatorioAnimal.isEmpty()) {
+		Optional<Funcionario> funcionario = mantemFuncionario.consultaPorId(id);
+		if (funcionario.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 		}
-		return ResponseEntity.status(HttpStatus.OK).body(relatorioAnimal.get());
+		return ResponseEntity.status(HttpStatus.OK).body(funcionario.get());
 	}
 }

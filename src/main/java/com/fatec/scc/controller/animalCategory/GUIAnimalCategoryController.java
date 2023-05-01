@@ -1,4 +1,4 @@
-package com.fatec.scc.controller.categoriaAnimal;
+package com.fatec.scc.controller.animalCategory;
 
 import javax.validation.Valid;
 import org.apache.logging.log4j.LogManager;
@@ -29,7 +29,7 @@ public class GUIAnimalCategoryController {
 	*/
 
 	@GetMapping("/categorias-animais")
-	public ModelAndView showCategoryAnimal(CategoriaAnimal categoriaAnimal) {
+	public ModelAndView showAnimalCategory(CategoriaAnimal categoriaAnimal) {
 		ModelAndView modelAndView = new ModelAndView("animalCategory/animalCategory");
 		modelAndView.addObject("categoriasAnimais", service.searchAll());
 

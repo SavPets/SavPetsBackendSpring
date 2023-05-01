@@ -1,4 +1,4 @@
-package com.fatec.scc.controller.fornecedor;
+package com.fatec.scc.controller.provider;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,7 +26,7 @@ import com.fatec.scc.services.fornecedor.MantemFornecedorI;
 /*
  * Trata as requisicoes HTTP enviadas pelo usuario do servico
  */
-public class APIFornecedorController {
+public class APIProviderController {
 	@Autowired
 	MantemFornecedorI mantemFornecedor;
 	Fornecedor fornecedor;
@@ -34,7 +34,7 @@ public class APIFornecedorController {
 
 	@CrossOrigin // desabilita o cors do spring security
 	@PostMapping
-	public ResponseEntity<Object> saveFornecedor(@RequestBody @Valid Fornecedor fornecedor, BindingResult result) {
+	public ResponseEntity<Object> saveSupplier(@RequestBody @Valid Fornecedor fornecedor, BindingResult result) {
 		fornecedor = new Fornecedor();
 		if (result.hasErrors()) {
 			logger.info(">>>>>> apicontroller validacao da entrada dados invalidos" + result.getFieldError());
@@ -59,13 +59,13 @@ public class APIFornecedorController {
 
 	@CrossOrigin // desabilita o cors do spring security
 	@GetMapping
-	public ResponseEntity<List<Fornecedor>> consultaTodos() {
+	public ResponseEntity<List<Fornecedor>> FindAll() {
 		return ResponseEntity.status(HttpStatus.OK).body(mantemFornecedor.consultaTodos());
 	}
 
 	@CrossOrigin // desabilita o cors do spring security
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Object> deletePorId(@PathVariable(value = "id") Long id) {
+	public ResponseEntity<Object> deleteById(@PathVariable(value = "id") Long id) {
 		Optional<Fornecedor> fornecedor = mantemFornecedor.consultaPorId(id);
 		if (fornecedor.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
@@ -76,7 +76,7 @@ public class APIFornecedorController {
 
 	@CrossOrigin // desabilita o cors do spring security
 	@PutMapping("/{id}")
-	public ResponseEntity<Object> atualiza(@PathVariable long id, @RequestBody @Valid Fornecedor fornecedor,
+	public ResponseEntity<Object> updates(@PathVariable long id, @RequestBody @Valid Fornecedor fornecedor,
 			BindingResult result) {
 		logger.info(">>>>>> api atualiza informações de cliente chamado");
 		if (result.hasErrors()) {
@@ -97,7 +97,7 @@ public class APIFornecedorController {
 
 	@CrossOrigin // desabilita o cors do spring security
 	@GetMapping("/{id}")
-	public ResponseEntity<Object> consultaPorId(@PathVariable Long id) {
+	public ResponseEntity<Object> searchById(@PathVariable Long id) {
 		logger.info(">>>>>> apicontroller consulta por id chamado");
 		Optional<Fornecedor> fornecedor = mantemFornecedor.consultaPorId(id);
 		if (fornecedor.isEmpty()) {

@@ -19,13 +19,13 @@ import com.fatec.scc.services.relatorioAnimal.MantemRelatorioAnimal;
 @Controller
 @RequestMapping
 
-public class GUIRelatorioAnimalController {
-	Logger logger = LogManager.getLogger(GUIRelatorioAnimalController.class);
+public class GUIAnimalReportController {
+	Logger logger = LogManager.getLogger(GUIAnimalReportController.class);
 	@Autowired
 	MantemRelatorioAnimal service;
 
 	@GetMapping("/relatorios-animais")
-	public ModelAndView showRelatorioAnimal(RelatorioAnimal relatorio) {
+	public ModelAndView showAnimalReport(RelatorioAnimal relatorio) {
 		ModelAndView modelAndView = new ModelAndView("animalReport/animalReport");
 		modelAndView.addObject("relatorios", service.searchAll());
 
@@ -33,7 +33,7 @@ public class GUIRelatorioAnimalController {
 	}
 
 	@GetMapping("/criar-relatorio-animal")
-    public ModelAndView showCreateRelatorioAnimal(RelatorioAnimal relatorioAnimal) {
+    public ModelAndView showCreateAnimalReport(RelatorioAnimal relatorioAnimal) {
 		ModelAndView modelAndView = new ModelAndView("animalReport/CreateAnimalReport");
 		modelAndView.addObject("medicamentos", service.serchAllMedicamentos());
 		modelAndView.addObject("categoriasAnimais", service.serchAllCategorias());
@@ -43,7 +43,7 @@ public class GUIRelatorioAnimalController {
     }
 
     @PostMapping("/criar-relatorio-animal")
-	public RedirectView createRelatorioAnimal(@Valid RelatorioAnimal relatorioAnimal, BindingResult result) {
+	public RedirectView createAnimalReport(@Valid RelatorioAnimal relatorioAnimal, BindingResult result) {
 		if (result.hasErrors()) {
 			return new RedirectView("/criar-relatorio-animal?status=Erro&text=Revise_os_campos_do_registro!");
 		}
@@ -57,7 +57,7 @@ public class GUIRelatorioAnimalController {
 	}
 
 	@GetMapping("/atualizar-relatorio-animal/{id}")
-    public ModelAndView showUpdateRelatorioAnimal(@PathVariable("id") Long id) {
+    public ModelAndView showUpdateAnimalReport(@PathVariable("id") Long id) {
 		ModelAndView modelAndView = new ModelAndView("animalReport/UpdateAnimalReport");
 		modelAndView.addObject("relatorioAnimal", service.searchById(id).get());
 		modelAndView.addObject("medicamentos", service.serchAllMedicamentos());
@@ -67,7 +67,7 @@ public class GUIRelatorioAnimalController {
     }
 
 	@PostMapping("/atualizar-relatorio-animal/{id}")
-	public RedirectView updateRelatorioAnimal(@PathVariable("id") Long id, @Valid RelatorioAnimal relatorioAnimal, BindingResult result) {
+	public RedirectView updateAnimalReport(@PathVariable("id") Long id, @Valid RelatorioAnimal relatorioAnimal, BindingResult result) {
 		if (result.hasErrors()) {
 			relatorioAnimal.setId(id);
 			
@@ -79,7 +79,7 @@ public class GUIRelatorioAnimalController {
 	}
 
 	@GetMapping("/deletar-relatorio-animal/{id}")
-	public RedirectView deleteRelatorioAnimal(@PathVariable("id") Long id) {
+	public RedirectView deleteAnimalReport(@PathVariable("id") Long id) {
 		service.delete(id);
 		return new RedirectView("/relatorios-animais");
 }
