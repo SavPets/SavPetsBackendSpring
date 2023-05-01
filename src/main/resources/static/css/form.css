@@ -71,7 +71,7 @@
 }
 
 
-.form-dision_inputfull::placeholder, option{
+.form-dision_inputfull::placeholder{
     color: var(--placeholder-color);
     opacity: .6;
     font: 1.4rem;

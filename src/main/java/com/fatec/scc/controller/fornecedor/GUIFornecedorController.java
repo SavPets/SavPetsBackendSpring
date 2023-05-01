@@ -47,13 +47,13 @@ public class GUIFornecedorController {
 		@PostMapping("/criar-fornecedor")
 		public RedirectView createFornecedor(@Valid Fornecedor fornecedor, BindingResult result) {
 			if (result.hasErrors()) {
-				return new RedirectView("/criar-fornecedor");
+				return new RedirectView("/criar-fornecedor?status=Erro&text=Revise_os_campos_do_registro!");
 			}
 			if (!service.save(fornecedor).isPresent()) {
 				ModelAndView modelAndView = new ModelAndView("provider/CreateProvider");
 				modelAndView.addObject("message", "Dados invalidos");
 			}
-			return new RedirectView("/fornecedores"); 
+			return new RedirectView("/fornecedores?status=Cadastrado"); 
 		}
 		
 		
@@ -71,11 +71,11 @@ public class GUIFornecedorController {
 			if (result.hasErrors()) {
 				fornecedor.setId(id);
 				
-				return new RedirectView("/atualizar-fornecedor/{id}");
+				return new RedirectView("/atualizar-fornecedor/{id}?status=Erro&text=Revise_os_campos_do_registro!");
 			}
 			service.atualiza(id, fornecedor);
 					
-			return new RedirectView("/fornecedores");
+			return new RedirectView("/fornecedores?status=Atualizado");
 		}
 		@GetMapping("/deletar-fornecedor/{id}")
 		public RedirectView deleteFornecedor(@PathVariable("id") Long id) {

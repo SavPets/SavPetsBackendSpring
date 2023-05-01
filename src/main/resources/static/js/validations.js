@@ -24,6 +24,34 @@ const inputsRules = {
     { rule: 'required', errorMessage: 'O campo raça é obrigatório' },
     { rule: 'minLength', value: 3, errorMessage: 'O campo raça deve conter no mínimo 3 caracteres' }
   ],
+  description: [
+ 	{ rule: 'required', errorMessage: 'O campo descrição é obrigatório' }
+  ],
+  utility: [
+  	{ rule: 'required', errorMessage: 'O campo utilidade é obrigatório' }
+  ],
+  medicineName:[
+  	{ rule: 'required', errorMessage: 'O campo nome do medicamento é obrigatório' }
+  ],
+  leaflet:[
+  	{ rule: 'required', errorMessage: 'O campo bula é obrigatório' }
+  ],
+  expirationDate:[
+  	{ rule: 'required', errorMessage: 'O campo data de validade é obrigatório' }
+  ],
+  observation:[
+  	{ rule: 'required', errorMessage: 'O campo observação é obrigatório' }
+  ],
+  arrivalDate:[
+  	{ rule: 'required', errorMessage: 'O campo data de chegada é obrigatório' }
+  ],
+  amount:[
+  	{ rule: 'required', errorMessage: 'O campo quantidade é obrigatório' }
+  ],
+  manufacturingDate:[
+  	{ rule: 'required', errorMessage: 'O campo data de fabricação é obrigatório' }
+  ],
+  
 }
 
 function addFieldWithRules(fieldToAdd) {

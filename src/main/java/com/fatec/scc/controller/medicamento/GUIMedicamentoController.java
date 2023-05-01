@@ -51,13 +51,13 @@ public class GUIMedicamentoController {
 		@PostMapping("/criar-medicamento")
 		public RedirectView createMedicine(@Valid Medicamento medicamento, BindingResult result) {
 			if (result.hasErrors()) {
-				return new RedirectView("/criar-medicamento");
+				return new RedirectView("/criar-medicamento?status=Erro&text=Revise_os_campos_do_registro!");
 			}
 			if (!service.save(medicamento).isPresent()) {
 				ModelAndView modelAndView = new ModelAndView("medicine/CreateMedicine");
 				modelAndView.addObject("message", "Dados invalidos");
 			}
-			return new RedirectView("/medicamentos"); 
+			return new RedirectView("/medicamentos?status=Cadastrado"); 
 		}
 		
 		
@@ -75,11 +75,11 @@ public class GUIMedicamentoController {
 			if (result.hasErrors()) {
 				medicamento.setId(id);
 				
-				return new RedirectView("/atualizar-medicamento/{id}");
+				return new RedirectView("/atualizar-medicamento/{id}?status=Erro&text=Revise_os_campos_do_registro!");
 			}
 			service.updates(id, medicamento);
 					
-			return new RedirectView("/medicamentos");
+			return new RedirectView("/medicamentos?status=Atualizado");
 		}
 		@GetMapping("/deletar-medicamento/{id}")
 		public RedirectView deleteMedicine(@PathVariable("id") Long id) {
