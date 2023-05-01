@@ -28,8 +28,7 @@ public class GUIRelatorioAnimalController {
 	@GetMapping("/relatorios-animais")
 	public ModelAndView showRelatorioAnimal(RelatorioAnimal relatorioAnimal) {
 		ModelAndView modelAndView = new ModelAndView("animalReport/animalReport");
-		modelAndView.addObject("categoriasAnimais", service.searchAll());
-
+		modelAndView.addObject("relatorioAnimais", service.searchAll());
 		return modelAndView;
 	}
 

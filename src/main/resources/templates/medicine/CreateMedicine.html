@@ -35,7 +35,7 @@
     
                             <div class="form-dision">
                                     <select th:field="*{fornecedor}" class="form-dision_inputfull">
-                                       <option selected style="display: none;" value="">Cars</option>
+                                       <option selected style="display: none;" value="">Fornecedores</option>
                                         <option th:each="Fornecedor : ${fornecedores}" th:value="${Fornecedor.nome}" th:text="${Fornecedor.nome}"></option>
                                     </select>
                                     <input class="form-dision_inputfull" type="text" placeholder="Nome do Medicamento *" th:field="*{nomeMedicamento}" required>

@@ -1,5 +1,4 @@
-/*
- * package com.fatec.scc.controller.animalReport;
+package com.fatec.scc.controller.animalReport;
  
 
 import java.util.List;
@@ -32,7 +31,7 @@ import com.fatec.scc.services.relatorioAnimal.*;
 /*
  * Trata as requisicoes HTTP enviadas pelo usuario do servico
  */
-/**
+
 public class APIRelatorioAnimalController {
 	@Autowired
 	MantemRelatorioAnimalI mantemRelatorioAnimal;
@@ -42,7 +41,7 @@ public class APIRelatorioAnimalController {
 	@CrossOrigin // desabilita o cors do spring security
 	@PostMapping
 	public ResponseEntity<Object> saveRelatorioAnimal(
-			@RequestBody @Valid RelatorioAnimal relatorioAnimal,
+			@RequestBody @Valid RelatorioAnimalDTO relatorioAnimalDTO,
 			BindingResult result) {
 		relatorioAnimal = new RelatorioAnimal();
 
@@ -50,38 +49,38 @@ public class APIRelatorioAnimalController {
 			logger.info(">>>>>> apicontroller validacao da entrada dados invalidos" + result.getFieldError());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		}
-		if (mantemRelatorioAnimal.findByDataChegada(RelatorioAnimalDTO.getdataChegada()).isPresent()) {
+		if (mantemRelatorioAnimal.searchByDataChegada(relatorioAnimalDTO.getdataChegada()).isPresent()) {
 			logger.info(">>>>>> apicontroller consultapornome categoria ja cadastrado");
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("Categoria já cadastrada");
 		}
 		try {
-			relatorioAnimal.setmedicamento(RelatorioAnimalDTO.getmedicamento());
+			relatorioAnimal.setMedicamento(relatorioAnimalDTO.getMedicamento());
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}
 		try {
-			relatorioAnimal.setcategoriaAnimal(RelatorioAnimalDTO.getcategoriaAnimal());
+			relatorioAnimal.setcategoriaAnimal(relatorioAnimalDTO.getcategoriaAnimal());
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}
 		try {
-			relatorioAnimal.setdataChegada(RelatorioAnimalDTO.getdataChegada());
+			relatorioAnimal.setdataChegada(relatorioAnimalDTO.getdataChegada());
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}
 		try {
-			relatorioAnimal.setlocal(RelatorioAnimalDTO.getlocal());
+			relatorioAnimal.setlocal(relatorioAnimalDTO.getlocal());
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}
 		try {
-			relatorioAnimal.setdescricao(RelatorioAnimalDTO.getdescricao());
+			relatorioAnimal.setdescricao(relatorioAnimalDTO.getdescricao());
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}
 		try {
 			return ResponseEntity.status(HttpStatus.CREATED)
-					.body(mantemRelatorioAnimal.save(RelatorioAnimalDTO.retornaUmRelatorioAnimal()));
+					.body(mantemRelatorioAnimal.save(relatorioAnimalDTO.retornoumRelatorioAnimal()));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro não esperado ");
 		}
@@ -113,14 +112,14 @@ public class APIRelatorioAnimalController {
 			logger.info(">>>>>> apicontroller atualiza informações de realtorio chamado dados invalidos");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		}
-		Optional<RelatorioAnimal> c = mantemRelatorioAnimal.searchById(id);
-		if (c.isEmpty()) {
+		Optional<RelatorioAnimal> r = mantemRelatorioAnimal.searchById(id);
+		if (r.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 		}
 
 		
 		Optional<RelatorioAnimal> relatorioAnimal = mantemRelatorioAnimal.updates(id,
-				relatorioAnimalDTO.getcategoriaAnimal());
+				relatorioAnimalDTO.retornoumRelatorioAnimal());
 		return ResponseEntity.status(HttpStatus.OK).body(relatorioAnimal.get());
 	}
 
@@ -129,11 +128,10 @@ public class APIRelatorioAnimalController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> searchById(@PathVariable Long id) {
 		logger.info(">>>>>> apicontroller consulta por id chamado");
-		Optional<RelatorioAnimal> relatorioAnimal = searchById(id);
+		Optional<RelatorioAnimal> relatorioAnimal = mantemRelatorioAnimal.searchById(id);
 		if (relatorioAnimal.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 		}
 		return ResponseEntity.status(HttpStatus.OK).body(relatorioAnimal.get());
 	}
 }
-*/

@@ -59,7 +59,7 @@ public class RelatorioAnimal {
 	}
 	
 	public void setcategoriaAnimal(String categoriaAnimal) {
-		this.medicamento=categoriaAnimal;
+		this.categoriaAnimal=categoriaAnimal;
 	}
 	
 	public String getdataChegada() {
