@@ -34,10 +34,9 @@
                             </div>
     
                             <div class="form-dision">
-                                <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Nome *" th:field="*{name}" required>
-                                <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Sigla *" th:field="*{initials}" required>
+                                <input id="nome" class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Nome *" th:field="*{name}">
+                                <input id="iniciais" class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Iniciais *" th:field="*{initials}">
                             </div>
-        
                             <input type="submit" value="Cadastrar" class="btn">
                         </form>
                     </div>
@@ -45,8 +44,7 @@
             </section>
         </main>
     </section>
-
-    <!--=============== SWEET ALERT 2 ===============-->
+    <!--=============== SCRIPTS ===============-->
     <div th:insert="~{fragments/management/scriptsNoTable}"></div>
 </body>
 </html>

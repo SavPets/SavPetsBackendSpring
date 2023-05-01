@@ -35,8 +35,8 @@
                             </div>
     
                             <div class="form-dision">
-                                <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Nome *" th:field="*{name}" th:value="${departament.name}" required>
-                                <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Sigla *" th:field="*{initials}" th:value="${departament.initials}" required>
+                                <input id="nome" class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Nome *" th:field="*{name}" th:value="${departament.name}">
+                                <input id="Iniciais" class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Iniciais *" th:field="*{initials}" th:value="${departament.initials}">
                             </div>
         
                             <input type="submit" value="Atualizar" class="btn">
