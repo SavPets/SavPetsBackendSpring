@@ -15,7 +15,7 @@ public class Medicamento {
 	private Long id;
 	@NotBlank(message = "Fornecedor requerido")
 	private String fornecedor;
-	private String nomeMecicamento;
+	private String nomeMedicamento;
 	private String descricao;
 	private Integer bula;
 	private String utilidade;
@@ -36,7 +36,7 @@ public class Medicamento {
 	public Medicamento(String fornecedor, String nomeMecicamento, String descricao, Integer bula,
 			String utilidade, String dataValidade, String observacao, String dataChegada, Integer quantidade, String dataFabricacao) {
 		this.fornecedor = fornecedor;
-		this.nomeMecicamento = nomeMecicamento;
+		this.nomeMedicamento = nomeMecicamento;
 		this.descricao = descricao;
 		this.bula = bula;
 		this.utilidade = utilidade;
@@ -59,11 +59,11 @@ public class Medicamento {
 	public void setFornecedor(String fornecedor) {
 		this.fornecedor = fornecedor;
 	}
-	public String getNomeMecicamento() {
-		return nomeMecicamento;
+	public String getNomeMedicamento() {
+		return nomeMedicamento;
 	}
-	public void setNomeMecicamento(String nomeMecicamento) {
-		this.nomeMecicamento = nomeMecicamento;
+	public void setNomeMedicamento(String nomeMecicamento) {
+		this.nomeMedicamento = nomeMecicamento;
 	}
 	public String getDescricao() {
 		return descricao;
@@ -114,7 +114,7 @@ public class Medicamento {
 		this.dataFabricacao = dataFabricacao;
 	}
 	public Medicamento retornaUmMedicamento() {
-		return new Medicamento(fornecedor, nomeMecicamento, descricao, bula, utilidade, dataValidade, observacao, dataChegada, quantidade, dataFabricacao);
+		return new Medicamento(fornecedor, nomeMedicamento, descricao, bula, utilidade, dataValidade, observacao, dataChegada, quantidade, dataFabricacao);
 	}
 	
 	
