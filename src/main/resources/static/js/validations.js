@@ -11,21 +11,37 @@ const validator = new JustValidate('.form',
 
 // adicione mais regras para cada campo que for necessário
 const inputsRules = {
-  nome: [
+  name: [
     { rule: 'required', errorMessage: 'O campo nome é obrigatório' },
     { rule: 'minLength', value: 4, errorMessage: 'O campo nome deve conter no mínimo 4 caracteres' }
   ],
-  iniciais: [
+  initials: [
     { rule: 'required', errorMessage: 'O campo iniciais é obrigatório' },
     { rule: 'minLength', value: 2, errorMessage: 'O campo iniciais deve conter no mínimo 2 caracteres' },
     { rule: 'maxLength', value: 3, errorMessage: 'O campo iniciais deve conter no máximo 3 caracteres' }
   ],
-  raca: [
+  race: [
     { rule: 'required', errorMessage: 'O campo raça é obrigatório' },
     { rule: 'minLength', value: 3, errorMessage: 'O campo raça deve conter no mínimo 3 caracteres' }
   ],
+  gender: [
+    { rule: 'required', errorMessage: 'O campo sexo é obrigatório' },
+    { rule: 'minLength', value: 3, errorMessage: 'O campo sexo deve conter no mínimo 3 caracteres' },
+    { rule: 'maxLength', value: 9, errorMessage: 'O campo sexo deve conter no máximo 9 caracteres' }
+
+  ],
+   size: [
+    { rule: 'required', errorMessage: 'O campo porte é obrigatório' },
+    { rule: 'minLength', value: 1, errorMessage: 'O campo porte deve conter no mínimo 1 caracteres' }
+  ],
+   peltColor: [
+    { rule: 'required', errorMessage: 'O campo cor é obrigatório' },
+    { rule: 'minLength', value: 4, errorMessage: 'O campo cor deve conter no mínimo 3 caracteres' }
+
+  ],
   description: [
- 	{ rule: 'required', errorMessage: 'O campo descrição é obrigatório' }
+ 	{ rule: 'required', errorMessage: 'O campo descrição é obrigatório' },
+ 	{ rule: 'minLength', value: 10, errorMessage: 'O campo descrição deve conter no mínimo 10 caracteres' }
   ],
   utility: [
   	{ rule: 'required', errorMessage: 'O campo utilidade é obrigatório' }

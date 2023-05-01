@@ -35,15 +35,15 @@
                             </div>
     
                             <div class="form-dision">
-                                <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Nome *" th:field="*{nome}" required>
+                                <input id="name" class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Nome *" th:field="*{nome}" required>
 
                                 <div class="form-dision_half">
-                                    <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Raça *" th:field="*{raca}" required>
-                                    <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Gênero *" th:field="*{sexo}" required>
+                                    <input id="race" class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Raça *" th:field="*{raca}" required>
+                                    <input id="gender" class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Gênero *" th:field="*{sexo}" required>
                                 </div>
 
-                                <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Porte *" th:field="*{porte}" required>
-                                <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Cor *" th:field="*{corPelagem}" required>
+                                <input id ="sized" class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Porte *" th:field="*{porte}" required>
+                                <input id="peltColor" class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Cor *" th:field="*{corPelagem}" required>
                             </div>
         
                             <input type="submit" value="Cadastrar" class="btn">
