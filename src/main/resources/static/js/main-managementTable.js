@@ -34,7 +34,6 @@ function showDeleteConfirmationModal(event) {
 }
 
 function executeDeleteMethod(event) {
-    // const deleteBtn = document.querySelectorAll('.column-action_delete a')
     const deleteBtn = event.target.closest('a')
 
     let url = deleteBtn.href.split('/')
