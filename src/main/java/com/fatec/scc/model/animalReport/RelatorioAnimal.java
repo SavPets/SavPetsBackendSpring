@@ -30,7 +30,7 @@ public class RelatorioAnimal {
 		
 	}
 	
-	public RelatorioAnimal(String medicamento,String categoriaAnimal,String dataChegada , String local, String descricao) {
+	public RelatorioAnimal(String medicamento,String categoriaAnimal,String dataChegada, String local, String descricao) {
 		
 		this.medicamento = medicamento;
 		this.categoriaAnimal= categoriaAnimal;

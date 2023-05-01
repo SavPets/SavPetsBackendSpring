@@ -63,3 +63,15 @@ if (inputCNPJ != null) {
 			inputCNPJ.value += "-";
 	})
 }
+
+// Regex Data
+const inputData = document.getElementById("data");
+
+if (inputData != null) {
+	inputData.addEventListener("keypress", () => {
+		const inputLength = inputData.value.length;
+
+		if (inputLength === 2 || inputLength === 5)
+			inputData.value += "/";
+	})
+}

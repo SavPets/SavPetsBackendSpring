@@ -36,8 +36,10 @@ public class GUIRelatorioAnimalController {
 	@GetMapping("/criar-relatorio-animal")
     public ModelAndView showCreateRelatorioAnimal(RelatorioAnimal relatorioAnimal) {
 		ModelAndView modelAndView = new ModelAndView("animalReport/CreateAnimalReport");
-		modelAndView.addObject("categoriaAnimal", relatorioAnimal);
-
+		modelAndView.addObject("medicamentos", service.serchAllMedicamentos());
+		modelAndView.addObject("categoriasAnimais", service.serchAllCategorias());
+		modelAndView.addObject("relatorioAnimal", relatorioAnimal);
+		//relatorioAnimal.ge
 		return modelAndView;
     }
 
@@ -57,8 +59,10 @@ public class GUIRelatorioAnimalController {
 
 	@GetMapping("/atualizar-relatorio-animal/{id}")
     public ModelAndView showUpdateRelatorioAnimal(@PathVariable("id") Long id) {
-		ModelAndView modelAndView = new ModelAndView("animalCategory/UpdateAnimalCategory");
-		modelAndView.addObject("categoriaAnimal", service.searchById(id).get());
+		ModelAndView modelAndView = new ModelAndView("animalReport/UpdateAnimalReport");
+		modelAndView.addObject("relatorioAnimal", service.searchById(id).get());
+		modelAndView.addObject("medicamentos", service.serchAllMedicamentos());
+		modelAndView.addObject("categoriasAnimais", service.serchAllCategorias());
 
 		return modelAndView;
     }

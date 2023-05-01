@@ -18,4 +18,6 @@ public interface MantemRelatorioAnimalRepository extends JpaRepository<Relatorio
 	Optional<RelatorioAnimal> findByLocal(String local);
 	
 	Optional <RelatorioAnimal> findByDescricao(String descricao);
+	
+	
 	}

@@ -7,6 +7,10 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.fatec.scc.model.animalReport.RelatorioAnimal;
+import com.fatec.scc.model.categoriaAnimal.CategoriaAnimal;
+import com.fatec.scc.model.categoriaAnimal.MantemCategoriaAnimalRepository;
+import com.fatec.scc.model.medicamento.MantemMedicamentoRepository;
+import com.fatec.scc.model.medicamento.Medicamento;
 import com.fatec.scc.model.animalReport.MantemRelatorioAnimalRepository;
 
 @Service
@@ -14,6 +18,10 @@ public class MantemRelatorioAnimalI implements MantemRelatorioAnimal {
 	Logger logger = LogManager.getLogger(this.getClass());
 	@Autowired
 	MantemRelatorioAnimalRepository repository;
+	@Autowired
+	MantemMedicamentoRepository repositoryMedicamento;
+	@Autowired
+	MantemCategoriaAnimalRepository repositoryCategoria;
 
 	public List<RelatorioAnimal> searchAll() {
 		logger.info(">>>>>> servico consultaTodos chamado");
@@ -82,5 +90,15 @@ public class MantemRelatorioAnimalI implements MantemRelatorioAnimal {
 		logger.info(">>>>>> 2. servico atualiza informacoes de cliente cep valido para o id => "
 				+ relatorioAnimalModificado.getId());
 		return Optional.ofNullable(repository.save(relatorioAnimalModificado));
+	}
+	@Override
+	public List<Medicamento> serchAllMedicamentos() {
+		logger.info(">>>>>> servico consultaTodos chamado");
+		return repositoryMedicamento.findAll();
+	}
+	@Override
+	public List<CategoriaAnimal> serchAllCategorias() {
+		logger.info(">>>>>> servico consultaTodos chamado");
+		return repositoryCategoria.findAll();
 	}
 }

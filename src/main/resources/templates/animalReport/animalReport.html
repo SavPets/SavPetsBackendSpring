@@ -23,7 +23,7 @@
         <main class="main">
             <section class="main-content main-register">
                 <div class="main-content_box">
-                    <a class="btn" href="./criar-relatorio">
+                    <a class="btn" href="/criar-relatorio-animal">
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M16.0714 0H1.92857C0.863839 0 0 0.863839 0 1.92857V16.0714C0 17.1362 0.863839 18 1.92857 18H16.0714C17.1362 18 18 17.1362 18 16.0714V1.92857C18 0.863839 17.1362 0 16.0714 0ZM14.7857 10.125C14.7857 10.3902 14.5687 10.6071 14.3036 10.6071H10.6071V14.3036C10.6071 14.5687 10.3902 14.7857 10.125 14.7857H7.875C7.60982 14.7857 7.39286 14.5687 7.39286 14.3036V10.6071H3.69643C3.43125 10.6071 3.21429 10.3902 3.21429 10.125V7.875C3.21429 7.60982 3.43125 7.39286 3.69643 7.39286H7.39286V3.69643C7.39286 3.43125 7.60982 3.21429 7.875 3.21429H10.125C10.3902 3.21429 10.6071 3.43125 10.6071 3.69643V7.39286H14.3036C14.5687 7.39286 14.7857 7.60982 14.7857 7.875V10.125Z" fill="white"/>
                         </svg>
@@ -40,7 +40,7 @@
                                                 <th>Código</th>
                                                 <th>Id Medicamento</th>
                                                 <th>Id Animal</th>
-                                                <th>Id Funcionário</th>
+                                                <!--<th>Id Funcionário</th>-->
                                                 <th>Data Chegada</th>
                                                 <th>Local Encontrado</th>
                                                 <th>Descrição</th>
@@ -53,7 +53,7 @@
                                                 <td th:text="${RelatorioAnimal.id}"></td>
                                                 <td th:text="${RelatorioAnimal.medicamento}"></td>
                                                 <td th:text="${RelatorioAnimal.categoriaAnimal}"></td>
-                                                <td th:text="${RelatorioAnimal.funcionario}"></td>
+                                                <!--<td th:text="${RelatorioAnimal.funcionario}"></td>-->
                                                 <td th:text="${RelatorioAnimal.dataChegada}"></td>
                                                 <td th:text="${RelatorioAnimal.local}"></td>
                                                 <td th:text="${RelatorioAnimal.descricao}"></td>

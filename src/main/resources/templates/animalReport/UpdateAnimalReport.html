@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!--=============== HEAD ===============-->
+<head th:insert="~{fragments/management/headNoTable}"></head>
+
+<body class="animal-report">
+   <!--=============== HEADER ===============-->
+    <header th:insert="~{fragments/management/header}"></header>
+
+    <!--=============== PANEL ===============-->
+    <section class="wrapper">
+
+         <!--=============== TOP BAR ===============-->
+        <section th:insert="~{fragments/management/topBar}"></section>
+    
+        <!--=============== CONTENT ===============-->
+        <main class="main">
+            <section class="main-content main-register">
+                <div class="main-content_box">
+                    <a class="btn btn-cancel" href="/relatorios-animais">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.0714 0H1.92857C0.863839 0 0 0.863839 0 1.92857V16.0714C0 17.1362 0.863839 18 1.92857 18H16.0714C17.1362 18 18 17.1362 18 16.0714V1.92857C18 0.863839 17.1362 0 16.0714 0ZM14.7857 10.125C14.7857 10.3902 14.5687 10.6071 14.3036 10.6071H10.6071V14.3036C10.6071 14.5687 10.3902 14.7857 10.125 14.7857H7.875C7.60982 14.7857 7.39286 14.5687 7.39286 14.3036V10.6071H3.69643C3.43125 10.6071 3.21429 10.3902 3.21429 10.125V7.875C3.21429 7.60982 3.43125 7.39286 3.69643 7.39286H7.39286V3.69643C7.39286 3.43125 7.60982 3.21429 7.875 3.21429H10.125C10.3902 3.21429 10.6071 3.43125 10.6071 3.69643V7.39286H14.3036C14.5687 7.39286 14.7857 7.60982 14.7857 7.875V10.125Z" fill="white"/>
+                        </svg>
+                        Cancelar    
+                    </a>
+
+                    <div class="main-container_form">
+                        <form class="form" th:action="@{/atualizar-relatorio-animal/{id} (id=${relatorioAnimal.id})}" th:object="${relatorioAnimal}" method="post">
+                            <div class="form-instruction">
+                                <p>Preenchimento obrigatório</p><span>*</span>
+                            </div>
+                            <div class="form-dision">
+                                <div class="form-dision_half">
+                                    <select th:field="*{medicamento}" class="form-dision_inputfull">
+                                        <option selected hidden value="">Medicamento *</option>
+                                        <option th:each="Medicamento : ${medicamentos}" th:value="${Medicamento.id}" th:text="${Medicamento.nomeMedicamento}"></option>
+                                    </select>
+									<select th:field="*{categoriaAnimal}" class="form-dision_inputfull">
+										<option selected hidden value="">Categoria animal *</option>
+								    	<option th:each="CategoriaAnimal : ${categoriasAnimais}" th:value="${CategoriaAnimal.id}" th:text="${CategoriaAnimal.nome}"></option>
+									</select>
+                                </div>
+								<input class="form-dision_inputfull" type="text" placeholder="Data de chegada *" name="dataChegada" id="data" th:field="*{dataChegada}" minlength="10" maxlength="10" required>
+                            	<input class="form-dision_inputfull" type="text" placeholder="Local encontrado *" th:field="*{local}" required>
+                                <input class="form-dision_inputfull" type="text" placeholder="Descrição *" th:field="*{descricao}" required>
+                            </div>
+                              <input type="submit" value="Atualizar" class="btn">
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </section>
+
+  <!--=============== SCRIPTS ===============-->
+    <div th:insert="~{fragments/management/scriptsNoTable}"></div>
+    <!-- Regex Script -->
+	<script th:src="@{js/regex.js}"></script>
+</body>
+</html>

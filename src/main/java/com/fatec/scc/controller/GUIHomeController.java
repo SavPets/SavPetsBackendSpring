@@ -1,7 +1,5 @@
 package com.fatec.scc.controller;
 
-import java.util.Optional;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +16,8 @@ import com.fatec.scc.services.MantemCadastro;
 @Controller
 public class GUIHomeController {
 	// Rotas de acesso
+	
+	String username;
 	
 	@Autowired
 	MantemCadastro service;
@@ -41,6 +41,9 @@ public class GUIHomeController {
 			return new RedirectView("/painel");
 			//return new RedirectView("/painel/"+String.valueOf(cadastro.getId()));
 		}
+		
+		username = cadastro.getNome();
+		
 		return new RedirectView("/");
 	}
 	
@@ -65,7 +68,9 @@ public class GUIHomeController {
 			ModelAndView modelAndView = new ModelAndView("signup");
 			modelAndView.addObject("message", "Dados inválidos");
 		}
-
+		
+		username = cadastro.getNome();
+		
 		return new RedirectView("/painel");
 	}
 	
@@ -91,9 +96,9 @@ public class GUIHomeController {
 	}
 
 	@GetMapping("/painel")
-	public ModelAndView showPanel(@Valid Optional<Cadastro> cadastro, BindingResult result) {
+	public ModelAndView showPanel(@Valid Cadastro cadastro, BindingResult result) {
 		ModelAndView mv = new ModelAndView("panel");
-		mv.addObject("cadastro", cadastro);
+		mv.addObject("username", username);
 		return mv;
 	}
 	
