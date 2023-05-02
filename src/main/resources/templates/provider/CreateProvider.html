@@ -34,18 +34,16 @@
                             </div>
     
                             <div class="form-dision">
-                              <!--  <input class="form-dision_inputfull" type="number" placeholder="Código do Fornecedor*" name="code" required> -->
-                                <div class="form-dision_half">
+                              
                                 
                                     <input class="form-dision_inputfull" type="text" placeholder="Fornecedor *" th:field="*{name}">
                                     <input class="form-dision_inputfull" type="text" placeholder="CNPJ *" th:field="*{cnpj}" id="cnpj" maxlength="18">
-                                </div>
                                 
-                                <div class="form-dision_half">
+                               
                                 	<input class="form-dision_inputfull form-dision_top_right" type="text" id="cep" placeholder="CEP *" th:field="*{cep}" onblur="pesquisacep(this.value);" maxlength="9">
                                     <input class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Endereço *" th:field="*{address}" id="rua" size="60">
                                     
-                                </div>
+                                
                             	<input class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Complemento" th:field="*{complement}">
                             </div>
         

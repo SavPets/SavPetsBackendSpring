@@ -118,20 +118,6 @@ input[type="date"]:valid::before {
     resize: none;
 }
 
-.form-dision_half{
-    display: flex;
-}
-
-.form-dision_half > input:first-child{
-    border-radius: 1rem 0 0 0;
-}
-
-.form-dision_half > input:last-child{
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 0 1rem 0 0;
-    border-top: 0;
-    border-right: 0;
-}
 
 .form > .btn{
     margin: 3.5rem auto 0 auto;

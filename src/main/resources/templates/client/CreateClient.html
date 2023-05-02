@@ -36,25 +36,25 @@
 
 							<div class="form-dision">
 								<!-- <input class="form-dision_inputfull" type="number" placeholder="Código *" name="code" required> -->
-								<div class="form-dision_half">
+							
 									<input id="firstName" class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Primeiro Nome *" th:field="*{firstName}">
 									<input id="lastName" class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Último Nome *" th:field="*{lastName}">
-								</div>
+								
 
-								<div class="form-dision_half">
+								
 									<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Telefone *" th:field="*{telephone}" id="telefone" maxlength="14">
 									<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="CPF *" th:field="*{cpf}" id="cpf" maxlength="14">
-								</div>
+								
 
-								<div class="form-dision_half">
+								
 									<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="CEP *" th:field="*{cep}" id="cep" onblur="pesquisacep(this.value);" maxlength="9">
 									<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Endereço *" th:field="*{address}" id="rua">
-								</div>
+								
 
-								<div class="form-dision_half">
+								
 									<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Número da Residência *" id="locationNumber" th:field="*{locationNumber}">
 									<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Complemento" th:field="*{complement}">
-								</div>
+								
 							</div>
 
 							<input type="submit" value="Cadastrar" class="btn">
