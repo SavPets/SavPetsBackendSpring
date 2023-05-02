@@ -25,9 +25,9 @@ const inputsRules = {
     { rule: 'minLength', value: 3, errorMessage: 'O campo raça deve conter no mínimo 3 caracteres' }
   ],
   gender: [
-    { rule: 'required', errorMessage: 'O campo sexo é obrigatório' },
-    { rule: 'minLength', value: 3, errorMessage: 'O campo sexo deve conter no mínimo 3 caracteres' },
-    { rule: 'maxLength', value: 9, errorMessage: 'O campo sexo deve conter no máximo 9 caracteres' }
+    { rule: 'required', errorMessage: 'O campo gênero é obrigatório' },
+    { rule: 'minLength', value: 3, errorMessage: 'O campo gênero deve conter no mínimo 3 caracteres' },
+    { rule: 'maxLength', value: 9, errorMessage: 'O campo gênero deve conter no máximo 9 caracteres' }
 
   ],
    size: [

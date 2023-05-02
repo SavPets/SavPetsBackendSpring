@@ -18,7 +18,7 @@ public class AnimalCategory {
 	@NotBlank(message = "Nome da raça é obrigatória")
 	private String race;
 
-	@NotBlank(message = "Sexo M/F")
+	@NotBlank(message = "Gênero é obrigatório")
 	private String gender;
 
 	@NotBlank(message = "O porte é obrigatório.")
