@@ -32,19 +32,19 @@ public class GUIHomeController {
 	@PostMapping("/")
 	public RedirectView verifyCadastro(@Valid Register register, BindingResult result) {
 		if (result.hasErrors()) {
-			return new RedirectView("/");
+			return new RedirectView("/?status=Erro&text=Revise_os_campos_de_login!");
 		}
+		
 		if (!service.existsByEmail(register.getEmail())) {
-			return new RedirectView("/cadastrar");
+			return new RedirectView("/cadastrar?status=Erro&text=Cadastre-se_para_acessar_o_sistema!");
 		}
+		
 		if (service.verify(register.getEmail(), register.getPassword())) {
+			username = service.searchByEmail(register.getEmail()).getName();
 			return new RedirectView("/painel");
-			//return new RedirectView("/painel/"+String.valueOf(cadastro.getId()));
 		}
-		
-		username = register.getName();
-		
-		return new RedirectView("/");
+
+		return new RedirectView("/?status=Erro&text=Senha_incorreta!");
 	}
 	
 	@GetMapping("/cadastrar")
@@ -57,11 +57,11 @@ public class GUIHomeController {
 	@PostMapping("/criar-cadastro")
 	public RedirectView createCadastro(@Valid Register register, BindingResult result) {
 		if (!register.getPassword().equals(register.getRepeatPassword())) {
-			return new RedirectView("/cadastrar");
+			return new RedirectView("/cadastrar?status=Erro&text=Senhas_diferentes!");
 		}
 		
 		if (result.hasErrors()) {
-			return new RedirectView("/cadastrar");
+			return new RedirectView("/cadastrar?status=Erro&text=Revise_os_campos!");
 		}
 
 		if (!service.save(register).isPresent()) {
@@ -71,7 +71,7 @@ public class GUIHomeController {
 		
 		username = register.getName();
 		
-		return new RedirectView("/painel");
+		return new RedirectView("/painel?status=Cadastrado");
 	}
 	
 	@GetMapping("/alterar-senha")
@@ -84,15 +84,15 @@ public class GUIHomeController {
 	@PostMapping("/alterar-senha")
 	public RedirectView updateCadastro(@Valid Register register, BindingResult result) {
 		if (!register.getPassword().equals(register.getRepeatPassword())) {
-			return new RedirectView("/alterar-senha");
+			return new RedirectView("/alterar-senha?status=Erro&text=Senhas_diferentes!");
 		}
 		
 		if (result.hasErrors()) {
-			return new RedirectView("/alterar-senha");
+			return new RedirectView("/alterar-senha?status=Erro&text=Revise_os_campos!");
 		}
 		service.updates(register.getEmail(), register.getPassword());
 
-		return new RedirectView("/");
+		return new RedirectView("/?status=Atualizado");
 	}
 
 	@GetMapping("/painel")
