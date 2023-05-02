@@ -15,11 +15,11 @@ Grupo SavPets
 > A SavPets será uma empresa/organização voluntária, na qual ajudará os animais que forem encontrados e encaminhados para ela. Com esse sistema, será capaz de gerenciar de maneira eficiente e eficaz os dados e departamentos da empresa com o objetivo de tornar o trabalho mais claro e fácil, podendo se concentrar em outros aspectos. O sistema será capaz de permitir maior facilidade durante o gerenciamento e controle do funcionamento da organização, com funções claras e objetivas para todos que são responsáveis por registrar novos cadastros, adoções ou atualizações de registros, e aqueles que necessitam desenvolver relatórios e análises sobre os dados de cada atividade realizada pelos diferentes departamentos existentes. 
 
 ##### Product Backlog
-- RU01 - Acesso - Controla e informa o acesso do sistema, de forma que integra o cadastro, a alteração da senha e ingressar no sistema
-- RU02 - Gerenciar ADM - Registra, informa e controla o gerenciamento da parte adiministrativa do SavPets, contendo cadastro do funcionario, cadastro de departamentos , cargos existentes e controle de fluxo de acesso no sistema
+- RU01 - Acesso - Controla e informa o acesso do sistema, de forma que integra o register, a alteração da senha e ingressar no sistema
+- RU02 - Gerenciar ADM - Registra, informa e controla o gerenciamento da parte adiministrativa do SavPets, contendo register do employee, register de departamentos , cargos existentes e controle de fluxo de acesso no sistema
 - RU03 - Relatório - Registra e informa os processos de adoação dos animais, e integra as informações dos dados da data de adoação e categoria do animal 
 ##### Sprint Backlog
-> Cada requisito tem um identificador único de maneira que seja possível rastrear a necessidade do cliente com a implementação do software.
+> Cada requisito tem um identificador único de maneira que seja possível rastrear a necessidade do client com a implementação do software.
 
 | Identificador | Descrição | Prioridade |
 | ------------ | ------------------------------------------------------------------------ | ------|
@@ -27,13 +27,13 @@ Grupo SavPets
 | REQ02 – Gerenciar cargos | Como – funcionário administrativo, Eu quero – controlar os dados dos cargos, De maneira que – possa atializar os cargos existentes e adiconar novos, além de atribuir uma opção a cada funcionário | Média |
 | REQ03 – Gerenciar departamentos | Como – funcionário administrativo, Eu quero – controlar os dados dos departamentos, De maneira que – possa atualizar os departamentos existentes e adicionar novos, além de atribuir uma opção a cada funcionário | Média |
 | REQ04 – Gerenciar funcionários | Como – funcionárop administrativo, Eu quero – controlar os dados dos funcionários, De maneira que – possa obter um controle atualizado de cada membro da empresa, podendo inserir novos, atualizar as informações dos existentes ou deletar| Alta |
-| REQ05 – Gerenciar clientes | Como – atendente, Eu quero –controlar os dados dos clientes, De maneira que – possa obter um controle atualizado de cada cliente que realizou alguma adoção, cadastrando, atualizando ou deletando as informações | Alta 
+| REQ05 – Gerenciar clientes | Como – atendente, Eu quero –controlar os dados dos clientes, De maneira que – possa obter um controle atualizado de cada client que realizou alguma adoção, cadastrando, atualizando ou deletando as informações | Alta 
 | REQ06 – Gerenciar adoções | Como – atendente, Eu quero – administrar os relatórios de adoções, De maneira que – resulte na organização dos relatórios de cada animal adotado, sendo possível gerar novos registros ou editar os existentes | Alta |
 | REQ07 – Gerenciar animais | Como – funcionário da área de controle, Eu quero – administrar os dados dos animais, De maneira que – possa obter um controle atualizado de cada animal que a empresa recebeu, cadastrando, atualizando ou deletando as informações | Alta |
 | REQ08 – Gerenciar relatórios de animais | Como – veterinário, Eu quero – administrar os relatórios de animais, De maneira que – resulte na organização dos relatórios de cada animal examinado, sendo possível gerar novos registros, editar ou excluir os existentes | Média | 
 | REQ09 – Categorizar animais | Como – funcionário da área de controle, Eu quero –documentar as raças e portes de animais, De maneira que – possa ajudar a incluir detalhes nos registros dos animais que a empresa possui, cadastrando, atualizando ou deletando as diferentes categorias | Baixa 
 | REQ010 – Gerenciar medicamentos | Como – funcionário da área de recursos, Eu quero – organizar os dados dos medicamentos, De maneira que – facilite direcionar os registros e controlar o estoque, atraves da inserção, atualização e exclusão dos medicamentos no sistema | Média |
-| REQ11 – Gerenciar fornecedores | Como – funcionário administrativo, Eu quero – organizar os dados dos fornecedores, De maneira que – possa obter um controle atualizado de cada fornecedor que a empresa requisitou, cadastrando, atualizando ou deletando as informações| Média |
+| REQ11 – Gerenciar fornecedores | Como – funcionário administrativo, Eu quero – organizar os dados dos fornecedores, De maneira que – possa obter um controle atualizado de cada provider que a empresa requisitou, cadastrando, atualizando ou deletando as informações| Média |
 
 ##### Definição de pronto
 > O sprint será considerado concluido quando:
@@ -42,8 +42,8 @@ Grupo SavPets
 ##### Casos de teste
 | Identificador | Cenário de uso |
 | ------------ | ------------------------------------------------------------------------ |
-| REQ01CT01 | Dado (setup) que o CPF do cliente não está cadastrado; Quando (ação) o usuário confirma o cadastro; Então (resultado esperado) o sistema envia uma mensagem de cadastro realizado com sucesso |
-| REQ01CT02 | Dado (setup) que o CPF do cliente está cadastrado; Quando (ação) o usuário confirma o cadastro; Então (resultado esperado) o sistema rejeita e envia uma mensagem de dados inválidos |
+| REQ01CT01 | Dado (setup) que o CPF do client não está cadastrado; Quando (ação) o usuário confirma o register; Então (resultado esperado) o sistema envia uma mensagem de register realizado com sucesso |
+| REQ01CT02 | Dado (setup) que o CPF do client está cadastrado; Quando (ação) o usuário confirma o register; Então (resultado esperado) o sistema rejeita e envia uma mensagem de dados inválidos |
 >
 O modelo de dominio (Larman, 2006 - classes conceituais ou classes de negócio) foi definido considerando as seguintes classes:
 ![modelo de dominio](https://user-images.githubusercontent.com/78767371/226613883-0bc4162b-5216-439e-8b05-119b1d9664eb.png)

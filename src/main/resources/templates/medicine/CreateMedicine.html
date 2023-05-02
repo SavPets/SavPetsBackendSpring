@@ -32,32 +32,32 @@
                             <div class="form-instruction">
                                 <p>Preenchimento obrigatório</p><span>*</span>
                             </div>
-                                 <div class="form-dision">  
-                                    <select th:field="*{fornecedor}" class="form-dision_inputfull">
-                                       <option  class="option_full" selected style="display: none; opacity: .6; font: 1.4rem;font-weight: 600; color: 46536D;" value="">Fornecedores *</option>
-                                        <option class="option_full" th:each="Fornecedor : ${fornecedores}" th:value="${Fornecedor.nome}" th:text="${Fornecedor.nome}"></option>
-                                    </select>
+                                 <div class="form-dision">
+                                     <select id="provider" th:field="*{provider}" class="form-dision_inputfull">
+                                         <option  class="option_full" hidden style="display: none; opacity: .6; font: 1.4rem;font-weight: 600; color: #46536D;" value="">Fornecedores *</option>
+                                         <option class="option_full" th:each="Fornecedor : ${fornecedores}" th:value="${Fornecedor.name}" th:text="${Fornecedor.name}"></option>
+                                     </select>
                                     
                                     <div class="form-dision_half">
-                                    <input class="form-dision_inputfull" id="nome" type="text" placeholder="Nome do Medicamento *" th:field="*{nomeMedicamento}">
-                                    	<input class="form-dision_inputfull form-dision_top_right" type="text" id="description" placeholder="Descrição *" th:field="*{descricao}">
+                                        <input class="form-dision_inputfull" id="name" type="text" placeholder="Nome do Medicamento *" th:field="*{medicineName}">
+                                    	<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Descrição *" th:field="*{description}">
                                     </div>
                                     
                                     <div class="form-dision_half">
-                                    	<input class="form-dision_inputfull form-dision_top_right" type="number" id="leaflet" placeholder="Bula *" th:field="*{bula}">
-                                    	<input class="form-dision_inputfull" id="utility" type="text" placeholder="Utilidade *" th:field="*{utilidade}">
+                                    	<input class="form-dision_inputfull form-dision_top_right" type="number" id="leaflet" placeholder="Bula *" th:field="*{leaflet}">
+                                    	<input id="utility" class="form-dision_inputfull" type="text" placeholder="Utilidade *" th:field="*{utility}">
                                     </div>
                                     
                                     <div class="form-dision_half">
-                                    	<input class="form-dision_inputfull" type="date" id="expirationDate"  placeholder="Validade *" th:field="*{dataValidade}">
-                                    	<input class="form-dision_inputfull" type="text" id="observation" placeholder="Observação *" th:field="*{observacao}">
+                                    	<input id="expirationDate" class="form-dision_inputfull" type="date" placeholder="Validade *" th:field="*{expirationDate}">
+                                    	<input id="observation" class="form-dision_inputfull" type="text" placeholder="Observação *" th:field="*{observation}">
                                     </div>
                                     
                                     <div class="form-dision_half">
-                                    	<input class="form-dision_inputfull" type="date" id="arrivalDate" placeholder="Chegada *" th:field="*{dataChegada}">
-                                    	<input class="form-dision_inputfull" type="number" id="amount" placeholder="Quantidade *" th:field="*{quantidade}">
+                                    	<input id="arrivalDate" class="form-dision_inputfull" type="date" placeholder="Chegada *" th:field="*{arrivalDate}">
+                                    	<input id="amount" class="form-dision_inputfull" type="number" placeholder="Quantidade *" th:field="*{amount}">
                                     </div>
-                                    	<input class="form-dision_inputfull" type="date" id="manufacturingDate" style="align-items: center;" placeholder="Fabricação *" th:field="*{dataFabricacao}">
+                                     <input id="manufacturingDate" class="form-dision_inputfull" type="date" style="align-items: center;" placeholder="Fabricação *" th:field="*{manufacturingDate}">
                                  </div>
                               <input type="submit" value="Cadastrar" class="btn">
                         </form>

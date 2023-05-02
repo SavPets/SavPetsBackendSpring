@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fatec.scc.model.cliente.Cliente;
-import com.fatec.scc.services.cliente.MantemCliente;
+import com.fatec.scc.model.client.Client;
+import com.fatec.scc.services.client.MaintainClient;
 
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -22,7 +22,7 @@ import org.springframework.web.servlet.view.RedirectView;
 public class GUIClienteController {
 	Logger logger = LogManager.getLogger(GUIClienteController.class);
 	@Autowired
-	MantemCliente service;
+	MaintainClient service;
 
 	@GetMapping("/clientes")
 	public ModelAndView showAllClients() {
@@ -34,25 +34,25 @@ public class GUIClienteController {
 
 	// Requisição GET que irá mostrar a página de criação de cliente
 	@GetMapping("/criar-cliente")
-	public ModelAndView showCreateClient(Cliente cliente) {
+	public ModelAndView showCreateClient(Client client) {
 		ModelAndView mv = new ModelAndView("client/CreateClient");
-		mv.addObject("cliente", cliente);
+		mv.addObject("cliente", client);
 		return mv;
 	}
 
 	// Requisição POST que irá criar um novo Cliente
 	@PostMapping("/criar-cliente")
-	public RedirectView createClient(@Valid Cliente cliente, BindingResult result) {
+	public RedirectView createClient(@Valid Client client, BindingResult result) {
 		if (result.hasErrors()) {
-			return new RedirectView("/criar-cliente");
+			return new RedirectView("/criar-cliente?status=Erro&text=Revise_os_campos_do_registro!");
 		}
 
-		if (!service.save(cliente).isPresent()) {
+		if (!service.save(client).isPresent()) {
 			ModelAndView modelAndView = new ModelAndView("client/CreateClient");
 			modelAndView.addObject("message", "Dados inválidos");
 		}
 
-		return new RedirectView("/clientes");
+		return new RedirectView("/clientes?status=Cadastrado");
 	}
 
 	// Requisição GET que irá renderizar a página de Atualização de Cliente
@@ -66,15 +66,15 @@ public class GUIClienteController {
 
 	// Requisição POST que irá atualizar um cliente
 	@PostMapping("/atualizar-cliente/{id}")
-	public RedirectView updateClient(@PathVariable("id") Long id, @Valid Cliente ciente, BindingResult result) {
+	public RedirectView updateClient(@PathVariable("id") Long id, @Valid Client client, BindingResult result) {
 		if (result.hasErrors()) {
-			ciente.setId(id);
+			client.setId(id);
 
-			return new RedirectView("/atualizar-cliente/{id}");
+			return new RedirectView("/atualizar-cliente/{id}?status=Erro&text=Revise_os_campos_do_registro!");
 		}
-		service.updates(id, ciente);
+		service.updates(id, client);
 
-		return new RedirectView("/clientes");
+		return new RedirectView("/clientes?status=Atualizado");
 	}
 
 	// Requisição GET que irá renderizar a página para deletar um cliente

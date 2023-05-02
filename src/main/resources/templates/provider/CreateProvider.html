@@ -37,17 +37,16 @@
                               <!--  <input class="form-dision_inputfull" type="number" placeholder="Código do Fornecedor*" name="code" required> -->
                                 <div class="form-dision_half">
                                 
-                                    <input class="form-dision_inputfull" type="text" placeholder="Fornecedor *" th:field="*{nome}" required>
-                                    <input class="form-dision_inputfull" type="text" placeholder="CNPJ *" th:field="*{cnpj}" id="cnpj" minlength="18" maxlength="18"  required>
+                                    <input class="form-dision_inputfull" type="text" placeholder="Fornecedor *" th:field="*{name}">
+                                    <input class="form-dision_inputfull" type="text" placeholder="CNPJ *" th:field="*{cnpj}" id="cnpj" maxlength="18">
                                 </div>
                                 
                                 <div class="form-dision_half">
-                                	<input class="form-dision_inputfull form-dision_top_right" type="text" id="cep" placeholder="CEP *" th:field="*{cep}" value="" size="10" maxlength="9"
-               onblur="pesquisacep(this.value);" required>
-                                    <input class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Endereço *" th:field="*{endereco}" id="rua" size="60" required>
+                                	<input class="form-dision_inputfull form-dision_top_right" type="text" id="cep" placeholder="CEP *" th:field="*{cep}" onblur="pesquisacep(this.value);" maxlength="9">
+                                    <input class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Endereço *" th:field="*{address}" id="rua" size="60">
                                     
                                 </div>
-                            	<input class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Complemento *" th:field="*{complemento}" required>
+                            	<input class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Complemento" th:field="*{complement}">
                             </div>
         
                               <input type="submit" value="Cadastrar" class="btn">
@@ -61,9 +60,8 @@
   <!--=============== SCRIPTS ===============-->
     <div th:insert="~{fragments/management/scriptsNoTable}"></div>
     
-  <!-- Regex Script -->
-
-<script th:src="@{js/regex.js}"></script>
-<script th:src="@{js/viacep.js}"></script>
-
+    <!-- Regex Script -->
+    <script th:src="@{js/regex.js}"></script>
+    <script th:src="@{js/viacep.js}"></script>
+</body>
 </html>

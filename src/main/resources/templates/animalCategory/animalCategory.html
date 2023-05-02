@@ -47,11 +47,11 @@
                                         <tbody>
                                             <tr th:each="CategoriaAnimal : ${categoriasAnimais}">
                                                 <td th:text="${CategoriaAnimal.id}"></td>
-                                                <td th:text="${CategoriaAnimal.nome}"></td>
-                                                <td th:text="${CategoriaAnimal.raca}"></td>
-                                                <td th:text="${CategoriaAnimal.sexo}"></td>
-                                                <td th:text="${CategoriaAnimal.porte}"></td>
-                                                <td th:text="${CategoriaAnimal.corPelagem}"></td>
+                                                <td th:text="${CategoriaAnimal.name}"></td>
+                                                <td th:text="${CategoriaAnimal.race}"></td>
+                                                <td th:text="${CategoriaAnimal.gender}"></td>
+                                                <td th:text="${CategoriaAnimal.size}"></td>
+                                                <td th:text="${CategoriaAnimal.coatColor}"></td>
                                                 <td class="column-action column-action_edit">
                                                     <a th:href="@{/atualizar-categoria-animal/{id} (id=${CategoriaAnimal.id})}">
                                                         <svg width="21" height="18" viewBox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg">

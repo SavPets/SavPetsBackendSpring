@@ -23,8 +23,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fatec.scc.model.animalReport.*;
-import com.fatec.scc.model.animalReport.RelatorioAnimalDTO;
-import com.fatec.scc.services.relatorioAnimal.*;
+import com.fatec.scc.model.animalReport.AnimalReportDTO;
+import com.fatec.scc.services.animalReport.*;
 
 @RestController
 @RequestMapping("/api/v1/relatorio-animais")
@@ -34,16 +34,16 @@ import com.fatec.scc.services.relatorioAnimal.*;
 
 public class APIAnimalReportController {
 	@Autowired
-	MantemRelatorioAnimalI mantemRelatorioAnimal;
-	RelatorioAnimal relatorioAnimal;
+	MaintainAnimalReportI mantemRelatorioAnimal;
+	AnimalReport animalReport;
 	Logger logger = LogManager.getLogger(this.getClass());
 
 	@CrossOrigin // desabilita o cors do spring security
 	@PostMapping
 	public ResponseEntity<Object> saveAnimalReport(
-			@RequestBody @Valid RelatorioAnimalDTO relatorioAnimalDTO,
+			@RequestBody @Valid AnimalReportDTO animalReportDTO,
 			BindingResult result) {
-		relatorioAnimal = new RelatorioAnimal();
+		animalReport = new AnimalReport();
 
 		if (result.hasErrors()) {
 			logger.info(">>>>>> apicontroller validacao da entrada dados invalidos" + result.getFieldError());
@@ -51,13 +51,13 @@ public class APIAnimalReportController {
 		}
 		
 		try {
-			relatorioAnimal.setMedicamento(relatorioAnimalDTO.getMedicamento());
+			animalReport.setMedicine(animalReportDTO.getMedicine());
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}
 		try {
 			return ResponseEntity.status(HttpStatus.CREATED)
-					.body(mantemRelatorioAnimal.save(relatorioAnimalDTO.retornoumRelatorioAnimal()));
+					.body(mantemRelatorioAnimal.save(animalReportDTO.returnAnimalReport()));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro não esperado ");
 		}
@@ -65,14 +65,14 @@ public class APIAnimalReportController {
 
 	@CrossOrigin // desabilita o cors do spring security
 	@GetMapping
-	public ResponseEntity<List<RelatorioAnimal>> FindAll() {
+	public ResponseEntity<List<AnimalReport>> FindAll() {
 		return ResponseEntity.status(HttpStatus.OK).body(mantemRelatorioAnimal.searchAll());
 	}
 
 	@CrossOrigin // desabilita o cors do spring security
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> deleteById(@PathVariable(value = "id") Long id) {
-		Optional<RelatorioAnimal> relatorioAnimal = mantemRelatorioAnimal.searchById(id);
+		Optional<AnimalReport> relatorioAnimal = mantemRelatorioAnimal.searchById(id);
 		if (relatorioAnimal.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 		}
@@ -83,29 +83,29 @@ public class APIAnimalReportController {
 	@CrossOrigin // desabilita o cors do spring security
 	@PutMapping("/{id}")
 	public ResponseEntity<Object> updates(@PathVariable long id,
-			@RequestBody @Valid RelatorioAnimalDTO relatorioAnimalDTO, BindingResult result) {
+										  @RequestBody @Valid AnimalReportDTO animalReportDTO, BindingResult result) {
 		logger.info(">>>>>> api atualiza informações do relatorio do animal chamada");
 		if (result.hasErrors()) {
 			logger.info(">>>>>> apicontroller atualiza informações de realtorio chamado dados invalidos");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		}
-		Optional<RelatorioAnimal> r = mantemRelatorioAnimal.searchById(id);
+		Optional<AnimalReport> r = mantemRelatorioAnimal.searchById(id);
 		if (r.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 		}
 
-		
-		Optional<RelatorioAnimal> relatorioAnimal = mantemRelatorioAnimal.updates(id,
-				relatorioAnimalDTO.retornoumRelatorioAnimal());
+
+		Optional<AnimalReport> relatorioAnimal = mantemRelatorioAnimal.updates(id,
+				animalReportDTO.returnAnimalReport());
 		return ResponseEntity.status(HttpStatus.OK).body(relatorioAnimal.get());
 	}
 
-	
+
 	@CrossOrigin // desabilita o cors do spring security
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> searchById(@PathVariable Long id) {
 		logger.info(">>>>>> apicontroller consulta por id chamado");
-		Optional<RelatorioAnimal> relatorioAnimal = mantemRelatorioAnimal.searchById(id);
+		Optional<AnimalReport> relatorioAnimal = mantemRelatorioAnimal.searchById(id);
 		if (relatorioAnimal.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 		}

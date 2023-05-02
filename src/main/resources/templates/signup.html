@@ -35,13 +35,13 @@
 
                         <div class="form-dision">
                             <div class="form-dision_half">
-                                <input class="form-dision_inputfull" type="text" placeholder="Primeiro nome *" name="firstName" th:field="*{nome}" required>
-                                <input class="form-dision_inputfull" type="text" placeholder="Último nome *" name="lastName"th:field="*{sobrenome}" required>
+                                <input class="form-dision_inputfull" type="text" placeholder="Primeiro nome *" name="firstName" th:field="*{name}" required>
+                                <input class="form-dision_inputfull" type="text" placeholder="Último nome *" name="lastName"th:field="*{surname}" required>
                             </div>
 
                             <input class="form-dision_inputfull" type="email" placeholder="Email *" name="email" th:field="*{email}" required>
-                            <input class="form-dision_inputfull" type="password" placeholder="Senha *" name="password" th:field="*{senha}" required>
-                            <input class="form-dision_inputfull" type="password" placeholder="Confirmar senha *" name="confirmedPassword" th:field="*{repetirSenha}" required>
+                            <input class="form-dision_inputfull" type="password" placeholder="Senha *" name="password" th:field="*{password}" required>
+                            <input class="form-dision_inputfull" type="password" placeholder="Confirmar senha *" name="confirmedPassword" th:field="*{repeatPassword}" required>
                         </div>
     
     					<input type="submit" value="Cadastrar" class="btn">

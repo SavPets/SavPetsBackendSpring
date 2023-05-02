@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
-import com.fatec.scc.model.fornecedor.Fornecedor;
-import com.fatec.scc.services.fornecedor.MantemFornecedor;
+import com.fatec.scc.model.provider.Provider;
+import com.fatec.scc.services.provider.MaintainProvider;
 @Controller
 @RequestMapping
 public class GUIFornecedorController {
 	 Logger logger = LogManager.getLogger(GUIFornecedorController.class);
 		@Autowired
-		MantemFornecedor service;
+		MaintainProvider service;
 
 		/* É necessário adicionar o objeto no modelAndView 
 		 * para que possa utilizar os dados dele no frontend, 
@@ -28,28 +28,28 @@ public class GUIFornecedorController {
 		*/
 
 		@GetMapping("/fornecedores")
-		public ModelAndView showProviders(Fornecedor fornecedor) {
+		public ModelAndView showProviders(Provider provider) {
 			ModelAndView modelAndView = new ModelAndView("provider/provider");
-			modelAndView.addObject("fornecedores", service.consultaTodos());
+			modelAndView.addObject("fornecedores", service.searchAll());
 
 			return modelAndView;
 		}
 
 		@GetMapping("/criar-fornecedor")
-	    public ModelAndView showCreateProvider(Fornecedor fornecedor) {
+	    public ModelAndView showCreateProvider(Provider provider) {
 			ModelAndView modelAndView = new ModelAndView("provider/CreateProvider");
-			modelAndView.addObject("fornecedor", fornecedor);
+			modelAndView.addObject("fornecedor", provider);
 			
 			//service.obtemEndereco(fornecedor.getCep());
 			
 			return modelAndView;
 	    }
 		@PostMapping("/criar-fornecedor")
-		public RedirectView createProvider(@Valid Fornecedor fornecedor, BindingResult result) {
+		public RedirectView createProvider(@Valid Provider provider, BindingResult result) {
 			if (result.hasErrors()) {
 				return new RedirectView("/criar-fornecedor?status=Erro&text=Revise_os_campos_do_registro!");
 			}
-			if (!service.save(fornecedor).isPresent()) {
+			if (!service.save(provider).isPresent()) {
 				ModelAndView modelAndView = new ModelAndView("provider/CreateProvider");
 				modelAndView.addObject("message", "Dados invalidos");
 			}
@@ -61,19 +61,19 @@ public class GUIFornecedorController {
 		@GetMapping("/atualizar-fornecedor/{id}")
 	    public ModelAndView showUpdateProvider(@PathVariable("id") Long id) {
 			ModelAndView modelAndView = new ModelAndView("provider/UpdateProvider");
-			modelAndView.addObject("fornecedor", service.consultaPorId(id).get());
+			modelAndView.addObject("fornecedor", service.searchById(id).get());
 
 			return modelAndView;
 	    }
 
 		@PostMapping("/atualizar-fornecedor/{id}")
-		public RedirectView updateProvider(@PathVariable("id") Long id, @Valid Fornecedor fornecedor, BindingResult result) {
+		public RedirectView updateProvider(@PathVariable("id") Long id, @Valid Provider provider, BindingResult result) {
 			if (result.hasErrors()) {
-				fornecedor.setId(id);
+				provider.setId(id);
 				
 				return new RedirectView("/atualizar-fornecedor/{id}?status=Erro&text=Revise_os_campos_do_registro!");
 			}
-			service.atualiza(id, fornecedor);
+			service.updates(id, provider);
 					
 			return new RedirectView("/fornecedores?status=Atualizado");
 		}

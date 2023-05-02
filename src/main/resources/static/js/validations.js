@@ -67,7 +67,59 @@ const inputsRules = {
   manufacturingDate:[
   	{ rule: 'required', errorMessage: 'O campo data de fabricação é obrigatório' }
   ],
-  
+  cpf: [
+    { rule: 'required', errorMessage: 'O campo CPF é obrigatório' },
+    { rule: 'minLength', value: 14, errorMessage: 'O Campo CPF deve possuir todos os caracteres' },
+    { rule: 'maxLength', value: 14, errorMessage: 'O Campo CPF deve possuir todos os caracteres' },
+  ],
+  firstName: [
+    { rule: 'required', errorMessage: 'O campo de Primeiro Nome é obrigatório' },
+    { rule: 'minLength', value: 2, errorMessage:  'O campo Primeiro Nome deve possuir no mínimo 2 caracteres' }
+  ],
+  lastName: [
+    { rule: 'required', errorMessage: 'O campo de Último Nome é obrigatório' },
+    { rule: 'minLength', value: 2, errorMessage:  'O campo Último Nome deve possuir no mínimo 2 caracteres' }
+  ],
+  animalCategory: [
+    { rule: 'required', errorMessage: 'Uma das opções de Categoria de Animal deve ser selecionada' }
+  ],
+  local: [
+    { rule: 'required', errorMessage: 'O campo Local é obrigatório' },
+    { rule: 'minLength', value: 5, errorMessage: 'O campo Local deve possuir no mínimo 5 caracteres'}
+  ],
+  telefone: [
+    { rule: 'required', errorMessage: 'O campo Telefone é obrigatório' },
+    { rule: 'minLength', value: 14, errorMessage: 'O campo Telefone deve possuir todos caracteres'},
+    { rule: 'maxLength', value: 14, errorMessage: 'O campo Telefone deve possuir todos caracteres'}
+  ],
+  cep: [
+    { rule: 'required', errorMessage: 'O campo CEP é obrigatório' },
+    { rule: 'minLength', value: 9, errorMessage: 'O campo CEP deve possuir todos os caracteres' },
+    { rule: 'maxLength', value: 9, errorMessage: 'O campo CEP deve possuir todos os caracteres' }
+  ],
+  rua: [
+    { rule: 'required', errorMessage: 'O campo Endereço é obrigatório' },
+    { rule: 'minLength', value: 5, errorMessage: 'O campo Endereco deve possuir ao menos 5 caracteres'}
+  ],
+  locationNumber: [
+    { rule: 'required', errorMessage: 'O campo Número da Residência é obrigatório' }
+  ],
+  email: [
+    { rule: 'required', errorMessage: 'O campo E-mail é obrigatório' },
+    { rule: 'email', errorMessage: 'O campo E-mail deve possuir um e-mail válido' }
+  ],
+  surname: [
+    { rule: 'required', errorMessage: 'O campo Sobrenome é obrigatório' },
+    { rule: 'minLength', value: 3, errorMessage: 'O campo Sobrenome deve possuir no mínimo 3 caracteres' }
+  ],
+  provider: [
+    { rule: 'required', errorMessage: 'O campo Fornecedor é obrigatório' }
+  ],
+  cnpj: [
+    { rule: 'required', errorMessage: 'O campo CNPJ é obrigatório' },
+    { rule: 'minLength', value: 18, errorMessage: 'O campo CNPJ deve possuir todos os caracteres' },
+    { rule: 'maxLength', value: 18, errorMessage: 'O campo CNPJ deve possuir todos os caracteres' }
+  ]
 }
 
 function addFieldWithRules(fieldToAdd) {

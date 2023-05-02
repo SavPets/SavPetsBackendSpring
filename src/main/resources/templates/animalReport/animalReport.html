@@ -50,11 +50,11 @@
                                         <tbody>
                                             <tr th:each="RelatorioAnimal : ${relatorios}">
                                                 <td th:text="${RelatorioAnimal.id}"></td>
-                                                <td th:text="${RelatorioAnimal.medicamento}"></td>
-                                                <td th:text="${RelatorioAnimal.categoriaAnimal}"></td>
-                                                <td th:text="${RelatorioAnimal.dataChegada}"></td>
+                                                <td th:text="${RelatorioAnimal.medicine}"></td>
+                                                <td th:text="${RelatorioAnimal.animalCategory}"></td>
+                                                <td th:text="${RelatorioAnimal.arrivalDate}"></td>
                                                 <td th:text="${RelatorioAnimal.local}"></td>
-                                                <td th:text="${RelatorioAnimal.descricao}"></td>
+                                                <td th:text="${RelatorioAnimal.description}"></td>
                                                
                                                 <td class="column-action column-action_edit">
                                                     <a th:href="@{/atualizar-relatorio-animal/{id}(id=${RelatorioAnimal.id})}">

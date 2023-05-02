@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.fatec.scc.model.categoriaAnimal.CategoriaAnimal;
-import com.fatec.scc.model.categoriaAnimal.CategoriaAnimalDTO;
-import com.fatec.scc.services.categoriaAnimal.MantemCategoriaAnimalI;
+import com.fatec.scc.model.animalCategory.AnimalCategory;
+import com.fatec.scc.model.animalCategory.AnimalCategoryDTO;
+import com.fatec.scc.services.animalCategory.MaintainAnimalCategoryI;
 
 @RestController
 @RequestMapping("/api/v1/categorias-animais")
@@ -29,48 +29,48 @@ import com.fatec.scc.services.categoriaAnimal.MantemCategoriaAnimalI;
  */
 public class APIAnimalCategoryController {
 	@Autowired
-	MantemCategoriaAnimalI mantemCategoriaAnimal;
-	CategoriaAnimal categoriaAnimal;
+	MaintainAnimalCategoryI mantemCategoriaAnimal;
+	AnimalCategory animalCategory;
 	Logger logger = LogManager.getLogger(this.getClass());
 
 	@CrossOrigin // desabilita o cors do spring security
 	@PostMapping
 	public ResponseEntity<Object> saveAnimalCategory(
-			@RequestBody @Valid CategoriaAnimalDTO categoriaAnimalDTO,
+			@RequestBody @Valid AnimalCategoryDTO animalCategoryDTO,
 			BindingResult result) {
-		categoriaAnimal = new CategoriaAnimal();
+		animalCategory = new AnimalCategory();
 
 		if (result.hasErrors()) {
 			logger.info(">>>>>> apicontroller validacao da entrada dados invalidos" + result.getFieldError());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		}
-		if (mantemCategoriaAnimal.searchByNome(categoriaAnimalDTO.getNome()).isPresent()) {
+		if (mantemCategoriaAnimal.searchByName(animalCategoryDTO.getName()).isPresent()) {
 			logger.info(">>>>>> apicontroller consultapornome categoria ja cadastrado");
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("Categoria já cadastrada");
 		}
 		try {
-			categoriaAnimal.setRaca(categoriaAnimalDTO.getRaca());
+			animalCategory.setRace(animalCategoryDTO.getRace());
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}
 		try {
-			categoriaAnimal.setSexo(categoriaAnimalDTO.getSexo());
+			animalCategory.setGender(animalCategoryDTO.getGender());
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}
 		try {
-			categoriaAnimal.setPorte(categoriaAnimalDTO.getPorte());
+			animalCategory.setSize(animalCategoryDTO.getSize());
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}
 		try {
-			categoriaAnimal.setCorPelagem(categoriaAnimalDTO.getCorPelagem());
+			animalCategory.setCoatColor(animalCategoryDTO.getCoatColor());
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}
 		try {
 			return ResponseEntity.status(HttpStatus.CREATED)
-					.body(mantemCategoriaAnimal.save(categoriaAnimalDTO.retornaUmaCategoriaAnimal()));
+					.body(mantemCategoriaAnimal.save(animalCategoryDTO.retornaUmaCategoriaAnimal()));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro não esperado ");
 		}
@@ -78,14 +78,14 @@ public class APIAnimalCategoryController {
 
 	@CrossOrigin // desabilita o cors do spring security
 	@GetMapping
-	public ResponseEntity<List<CategoriaAnimal>> FindAll() {
+	public ResponseEntity<List<AnimalCategory>> FindAll() {
 		return ResponseEntity.status(HttpStatus.OK).body(mantemCategoriaAnimal.searchAll());
 	}
 
 	@CrossOrigin // desabilita o cors do spring security
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> deleteById(@PathVariable(value = "id") Long id) {
-		Optional<CategoriaAnimal> categoriaAnimal = mantemCategoriaAnimal.searchById(id);
+		Optional<AnimalCategory> categoriaAnimal = mantemCategoriaAnimal.searchById(id);
 		if (categoriaAnimal.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 		}
@@ -96,20 +96,20 @@ public class APIAnimalCategoryController {
 	@CrossOrigin // desabilita o cors do spring security
 	@PutMapping("/{id}")
 	public ResponseEntity<Object> updates(@PathVariable long id,
-			@RequestBody @Valid CategoriaAnimalDTO categoriaAnimalDTO, BindingResult result) {
+										  @RequestBody @Valid AnimalCategoryDTO animalCategoryDTO, BindingResult result) {
 		logger.info(">>>>>> api atualiza informações da categoria do animal chamada");
 		if (result.hasErrors()) {
 			logger.info(">>>>>> apicontroller atualiza informações de categoria chamado dados invalidos");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		}
-		Optional<CategoriaAnimal> c = mantemCategoriaAnimal.searchById(id);
+		Optional<AnimalCategory> c = mantemCategoriaAnimal.searchById(id);
 		if (c.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 		}
 
 		
-		Optional<CategoriaAnimal> categoriaAnimal = mantemCategoriaAnimal.updates(id,
-				categoriaAnimalDTO.retornaUmaCategoriaAnimal());
+		Optional<AnimalCategory> categoriaAnimal = mantemCategoriaAnimal.updates(id,
+				animalCategoryDTO.retornaUmaCategoriaAnimal());
 		return ResponseEntity.status(HttpStatus.OK).body(categoriaAnimal.get());
 	}
 
@@ -118,7 +118,7 @@ public class APIAnimalCategoryController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> searchById(@PathVariable Long id) {
 		logger.info(">>>>>> apicontroller consulta por id chamado");
-		Optional<CategoriaAnimal> categoriaAnimal = mantemCategoriaAnimal.searchById(id);
+		Optional<AnimalCategory> categoriaAnimal = mantemCategoriaAnimal.searchById(id);
 		if (categoriaAnimal.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 		}

@@ -47,14 +47,14 @@
                                         <tbody>
                                             <tr th:each="Funcionario : ${funcionarios}">
                                                 <td th:text="${Funcionario.id}"></td >
-                                                <td th:text="${Funcionario.nome}"></td>
-                                                <td th:text="${Funcionario.sobrenome}"></td>
+                                                <td th:text="${Funcionario.name}"></td>
+                                                <td th:text="${Funcionario.surname}"></td>
                                                 <td th:text="${Funcionario.email}"></td>
                                                 <td th:text="${Funcionario.cpf}" id="cpf"></td>
                                                 <td th:text="${Funcionario.cep}"></td>
-                                                <td th:text="${Funcionario.endereco}"></td>
-                                                <td th:text="${Funcionario.complemento}"></td>
-                                                <td th:text="${Funcionario.numeroConta}"></td>
+                                                <td th:text="${Funcionario.address}"></td>
+                                                <td th:text="${Funcionario.complement}"></td>
+                                                <td th:text="${Funcionario.accountNumber}"></td>
                                                 <td class="column-action column-action_edit">
                                                     <a th:href="@{/atualizar-funcionario/{id} (id=${Funcionario.id})}">
                                                         <svg width="21" height="18" viewBox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg">

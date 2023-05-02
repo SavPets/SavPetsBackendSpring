@@ -49,16 +49,16 @@
                                         <tbody>
                                             <tr th:each="Medicamento : ${medicamentos}">
                                                 <td th:text="${Medicamento.id}"></td >
-                                                <td th:text="${Medicamento.fornecedor}"></td>
-                                                <td th:text="${Medicamento.nomeMedicamento}"></td>
-                                                <td th:text="${Medicamento.descricao}"></td>
-                                                <td th:text="${Medicamento.bula}"></td>
-                                                <td th:text="${Medicamento.utilidade}"></td>
-                                                <td th:text="${Medicamento.dataChegada}"></td>
-                                                <td th:text="${Medicamento.observacao}"></td>
-                                                <td th:text="${Medicamento.dataFabricacao}"></td>
-                                                <td th:text="${Medicamento.dataValidade}"></td>
-                                                <td th:text="${Medicamento.quantidade}"></td>
+                                                <td th:text="${Medicamento.provider}"></td>
+                                                <td th:text="${Medicamento.medicineName}"></td>
+                                                <td th:text="${Medicamento.description}"></td>
+                                                <td th:text="${Medicamento.leaflet}"></td>
+                                                <td th:text="${Medicamento.utility}"></td>
+                                                <td th:text="${Medicamento.arrivalDate}"></td>
+                                                <td th:text="${Medicamento.observation}"></td>
+                                                <td th:text="${Medicamento.manufacturingDate}"></td>
+                                                <td th:text="${Medicamento.expirationDate}"></td>
+                                                <td th:text="${Medicamento.amount}"></td>
                                                 <td class="column-action column-action_edit">
                                                     <a th:href="@{/atualizar-medicamento/{id} (id=${Medicamento.id})}">
                                                         <svg width="21" height="18" viewBox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg">

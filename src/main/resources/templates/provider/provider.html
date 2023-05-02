@@ -44,11 +44,11 @@
                                         <tbody>
                                             <tr th:each="Fornecedor : ${fornecedores}">
                                                 <td th:text="${Fornecedor.id}"></td >
-                                                <td th:text="${Fornecedor.nome}"></td>
+                                                <td th:text="${Fornecedor.name}"></td>
                                                 <td th:text="${Fornecedor.cnpj}"></td>
                                                 <td th:text="${Fornecedor.cep}"></td>
-                                                <td th:text="${Fornecedor.endereco}"></td>
-                                                <td th:text="${Fornecedor.complemento}"></td>
+                                                <td th:text="${Fornecedor.address}"></td>
+                                                <td th:text="${Fornecedor.complement}"></td>
                                                 
                                                 <td class="column-action column-action_edit">
                                                     <a th:href="@{/atualizar-fornecedor/{id} (id=${Fornecedor.id})}">

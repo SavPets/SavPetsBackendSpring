@@ -48,14 +48,14 @@
 										<tbody>
 										<tr th:each="Cliente : ${clientes}">
 											<td th:text="${Cliente.id}"></td>
-											<td th:text="${Cliente.primeiroNome}"></td>
-											<td th:text="${Cliente.ultimoNome}"></td>
-											<td th:text="${Cliente.telefone}"></td>
+											<td th:text="${Cliente.firstName}"></td>
+											<td th:text="${Cliente.lastName}"></td>
+											<td th:text="${Cliente.telephone}"></td>
 											<td th:text="${Cliente.cpf}"></td>
 											<td th:text="${Cliente.cep}"></td>
-											<td th:text="${Cliente.endereco}"></td>
-											<td th:text="${Cliente.numeroLocal}"></td>
-											<td th:text="${Cliente.complemento}"></td>
+											<td th:text="${Cliente.address}"></td>
+											<td th:text="${Cliente.locationNumber}"></td>
+											<td th:text="${Cliente.complement}"></td>
 											<td class="column-action column-action_edit">
 												<a th:href="@{/atualizar-cliente/{id} (id=${Cliente.id})}">
 													<svg width="21" height="18" viewBox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg">
