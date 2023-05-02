@@ -15,3 +15,8 @@ function onScroll() {
         menu.classList.remove('fixed-menu')
     }
 }
+
+// =============== MENU ===============
+function changeColorMenuOnScroll(menu) {
+    menu.classList.add('fixed-menu')
+}

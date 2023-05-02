@@ -119,6 +119,14 @@ const inputsRules = {
     { rule: 'required', errorMessage: 'O campo CNPJ é obrigatório' },
     { rule: 'minLength', value: 18, errorMessage: 'O campo CNPJ deve possuir todos os caracteres' },
     { rule: 'maxLength', value: 18, errorMessage: 'O campo CNPJ deve possuir todos os caracteres' }
+  ],
+  password: [
+	{ rule: 'required', errorMessage: 'O campo senha é obrigatório' },
+	{ rule: 'strongPassword', errorMessage: 'A senha deve conter pelo menos 8 dígitos, uma letra maiúscula, uma minúscula, um caractere especial e um número' }
+  ],
+  repeatPassword: [
+	{ rule: 'required', errorMessage: 'O campo senha é obrigatório' },
+	{ rule: 'strongPassword', errorMessage: 'A senha deve conter pelo menos 8 dígitos, uma letra maiúscula, uma minúscula, um caractere especial e um número' }
   ]
 }
 

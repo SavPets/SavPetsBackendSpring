@@ -83,6 +83,10 @@ public class GUIHomeController {
 	
 	@PostMapping("/alterar-senha")
 	public RedirectView updateCadastro(@Valid Register register, BindingResult result) {
+		if (!service.existsByEmail(register.getEmail())) {
+			return new RedirectView("/cadastrar?status=Erro&text=Credenciais_sem_cadastro!");
+		}
+		
 		if (!register.getPassword().equals(register.getRepeatPassword())) {
 			return new RedirectView("/alterar-senha?status=Erro&text=Senhas_diferentes!");
 		}
