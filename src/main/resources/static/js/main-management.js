@@ -76,6 +76,9 @@ function openMobileMenu(burger) {
     }
 })()
 
+// =============== SHOW USER SETTINGS =============== 
+username.innerText = localStorage.getItem("username")
+
 // =============== QUIT OPTIONS SETTINGS ===============
 const quitOption = document.querySelectorAll('.option-quit')
 
