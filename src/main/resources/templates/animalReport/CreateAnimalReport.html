@@ -34,7 +34,7 @@
                             </div>
                             <div class="form-dision">
                                 <div class="form-dision_half">
-                                    <select th:field="*{medicine}" class="form-dision_inputfull" id="medicineName">
+                                    <select th:field="*{medicine}" class="form-dision_inputfull">
                                         <option selected hidden value="">Medicamento *</option>
                                         <option th:each="Medicamento : ${medicamentos}" th:value="${Medicamento.id}" th:text="${Medicamento.medicineName}"></option>
                                     </select>

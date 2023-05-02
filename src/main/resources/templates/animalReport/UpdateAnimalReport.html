@@ -43,9 +43,9 @@
 								    	<option th:each="CategoriaAnimal : ${categoriasAnimais}" th:value="${CategoriaAnimal.id}" th:text="${CategoriaAnimal.name}"></option>
 									</select>
                                 </div>
-								<input class="form-dision_inputfull" type="text" placeholder="Data de chegada *" name="dataChegada" id="arrivalDate" th:field="*{arrivalDate}" required>
-                            	<input class="form-dision_inputfull" type="text" placeholder="Local encontrado *" id="local" th:field="*{local}" required>
-                                <input class="form-dision_inputfull" type="text" placeholder="Descrição *" id="description" th:field="*{description}" required>
+								<input class="form-dision_inputfull" type="text" placeholder="Data de chegada *" name="dataChegada" id="arrivalDate" th:field="*{arrivalDate}">
+                            	<input class="form-dision_inputfull" type="text" placeholder="Local encontrado *" id="local" th:field="*{local}">
+                                <input class="form-dision_inputfull" type="text" placeholder="Descrição *" id="description" th:field="*{description}">
                             </div>
                               <input type="submit" value="Atualizar" class="btn">
                         </form>
