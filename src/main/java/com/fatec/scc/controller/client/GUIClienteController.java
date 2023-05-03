@@ -43,6 +43,10 @@ public class GUIClienteController {
 	// Requisição POST que irá criar um novo Cliente
 	@PostMapping("/criar-cliente")
 	public RedirectView createClient(@Valid Client client, BindingResult result) {
+		if (service.existsByCpf(client.getCpf())) {
+			return new RedirectView("/criar-cliente?status=Erro&text=CPF_em_uso!");
+		}
+		
 		if (result.hasErrors()) {
 			return new RedirectView("/criar-cliente?status=Erro&text=Revise_os_campos_do_registro!");
 		}

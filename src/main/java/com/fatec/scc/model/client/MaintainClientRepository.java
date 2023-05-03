@@ -17,4 +17,5 @@ import org.springframework.stereotype.Repository;
 public interface MaintainClientRepository extends JpaRepository<Client, Long> {
 	Optional<Client> findByCpf(String cpf);
 	List<Client> findAllByFirstNameIgnoreCaseContaining(String firstName);
+	boolean existsByCpf(String cpf);
 }

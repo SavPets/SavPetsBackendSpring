@@ -43,6 +43,14 @@ public class GUIEmployeeController {
 		
 		@PostMapping("/criar-funcionario")
 		public RedirectView createEmployee(@Valid Employee employee, BindingResult result) {
+			if (service.existsByEmail(employee.getEmail())) {
+				return new RedirectView("/criar-funcionario?status=Erro&text=Email_em_uso!");
+			}
+			
+			if (service.existsByCpf(employee.getCpf())) {
+				return new RedirectView("/criar-funcionario?status=Erro&text=CPF_em_uso!");
+			}
+			
 			if (result.hasErrors()) {
 				return new RedirectView("/criar-funcionario");
 			}
@@ -65,6 +73,10 @@ public class GUIEmployeeController {
 
 		@PostMapping("/atualizar-funcionario/{id}")
 		public RedirectView updateEmployee(@PathVariable("id") Long id, @Valid Employee employee, BindingResult result) {
+			if (service.existsByEmail(employee.getEmail())) {
+				return new RedirectView("/atualizar-funcionario/{id}?status=Erro&text=Email_em_uso!");
+			}
+			
 			if (result.hasErrors()) {
 				employee.setId(id);
 				

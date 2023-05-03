@@ -122,4 +122,13 @@ public class MaintainClientI implements MaintainClient {
 			return null;
 		}
 	}
+
+	@Override
+	public boolean existsByCpf(String cpf) {
+		logger.info(">>>>>> servico verifica se existe cadastro chamado");
+		if (repository.existsByCpf(cpf)) {
+			return true;
+		}
+		return false;
+	}
 }

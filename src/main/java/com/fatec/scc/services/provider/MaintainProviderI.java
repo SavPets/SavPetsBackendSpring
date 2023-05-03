@@ -88,22 +88,13 @@ public class MaintainProviderI implements MaintainProvider {
 				+ providerModificado2.getId());
 		return Optional.ofNullable(repository.save(provider));
 	}
-	
-	
-	
-	//public Endereco obtemEndereco(String cep) {
-		//RestTemplate template = new RestTemplate();
-		//String url = "https://viacep.com.br/ws/{cep}/json/";
-		//logger.info(">>>>>> servico consultaCep - " + cep);
-		//ResponseEntity<Endereco> resposta = null;
-		//try {
-			//resposta = template.getForEntity(url, Endereco.class, cep);
-			//return resposta.getBody();
-		//} catch (ResourceAccessException e) {
-			//logger.info(">>>>>> consulta CEP erro nao esperado ");
-		//} catch (HttpClientErrorException e) {
-			//logger.info(">>>>>> consulta CEP inválido erro HttpClientErrorException =>" + e.getMessage());
-			//return null;
-		//}
-	//}
+
+	@Override
+	public boolean existsByCnpj(String cnpj) {
+		logger.info(">>>>>> servico verifica se existe cadastro chamado");
+		if (repository.existsByCnpj(cnpj)) {
+			return true;
+		}
+		return false;
+	}
 }

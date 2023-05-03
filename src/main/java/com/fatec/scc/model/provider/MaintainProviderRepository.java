@@ -7,5 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 @Repository
 public interface MaintainProviderRepository extends JpaRepository<Provider, Long> {
 	Optional<Provider> findByCnpj(String cnpj);
+	
 	List<Provider> findAllByNameIgnoreCaseContaining(String name);
+	
+	boolean existsByCnpj(String cnpj);
 }
