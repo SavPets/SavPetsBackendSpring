@@ -56,6 +56,10 @@ public class GUIHomeController {
 	
 	@PostMapping("/criar-cadastro")
 	public RedirectView createCadastro(@Valid Register register, BindingResult result) {
+		if (service.existsByEmail(register.getEmail())) {
+			return new RedirectView("/cadastrar?status=Erro&text=Email_em_uso!");
+		}
+		
 		if (!register.getPassword().equals(register.getRepeatPassword())) {
 			return new RedirectView("/cadastrar?status=Erro&text=Senhas_diferentes!");
 		}

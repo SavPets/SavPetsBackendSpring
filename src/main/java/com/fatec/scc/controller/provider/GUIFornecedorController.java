@@ -40,12 +40,15 @@ public class GUIFornecedorController {
 			ModelAndView modelAndView = new ModelAndView("provider/CreateProvider");
 			modelAndView.addObject("fornecedor", provider);
 			
-			//service.obtemEndereco(fornecedor.getCep());
-			
 			return modelAndView;
 	    }
+		
 		@PostMapping("/criar-fornecedor")
 		public RedirectView createProvider(@Valid Provider provider, BindingResult result) {
+			if (service.existsByCnpj(provider.getCnpj())) {
+				return new RedirectView("/criar-fornecedor?status=Erro&text=CNPJ_em_uso!");
+			}
+			
 			if (result.hasErrors()) {
 				return new RedirectView("/criar-fornecedor?status=Erro&text=Revise_os_campos_do_registro!");
 			}
@@ -55,8 +58,6 @@ public class GUIFornecedorController {
 			}
 			return new RedirectView("/fornecedores?status=Cadastrado"); 
 		}
-		
-		
 		
 		@GetMapping("/atualizar-fornecedor/{id}")
 	    public ModelAndView showUpdateProvider(@PathVariable("id") Long id) {
@@ -77,6 +78,7 @@ public class GUIFornecedorController {
 					
 			return new RedirectView("/fornecedores?status=Atualizado");
 		}
+		
 		@GetMapping("/deletar-fornecedor/{id}")
 		public RedirectView deleteProvider(@PathVariable("id") Long id) {
 			service.delete(id);

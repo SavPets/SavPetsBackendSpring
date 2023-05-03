@@ -84,4 +84,22 @@ public class MaintainEmployeeI implements MaintainEmployee {
 		logger.info(">>>>>> servico consultaTodos chamado");
 		return repositoryO.findAll();
 	}
+
+	@Override
+	public boolean existsByEmail(String email) {
+		logger.info(">>>>>> servico verifica se existe cadastro chamado");
+		if (repository.existsByEmail(email)) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean existsByCpf(String cpf) {
+		logger.info(">>>>>> servico verifica se existe cadastro chamado");
+		if (repository.existsByCpf(cpf)) {
+			return true;
+		}
+		return false;
+	}
 }

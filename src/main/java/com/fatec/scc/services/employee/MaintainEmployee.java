@@ -25,4 +25,8 @@ public interface MaintainEmployee {
 
 	List<Occupation> searchAllOccupations();
 
+	boolean existsByEmail(String email);
+
+	boolean existsByCpf(String email);
+
 }

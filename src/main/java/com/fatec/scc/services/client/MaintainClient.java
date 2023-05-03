@@ -20,4 +20,6 @@ public interface MaintainClient {
 	Optional<Client> updates(Long id, Client client);
 
 	Endereco obtainAddress(String cep);
+
+	boolean existsByCpf(String cpf);
 }

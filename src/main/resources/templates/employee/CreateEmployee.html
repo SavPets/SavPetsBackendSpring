@@ -40,7 +40,7 @@
                               <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="CEP *" th:field="*{cep}" onblur="pesquisacep(this.value);" id="cep" minlength="9" maxlength="9">
 							  <input id="rua" class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Endereço *" th:field="*{address}" th:value="*{address}" minlength="10" size="60">
                               <input class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Complemento" th:field="*{complement}">
-                              <input id="accountNumber" class="form-dision_inputfull form-dision_top_left" type="number" placeholder="Número da conta *" th:field="*{accountNumber}" th:value="*{accountNumber}">
+                              <input id="accountNumber" class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Número da conta *" th:field="*{accountNumber}" th:value="*{accountNumber}">
                               <select th:field="*{departament}" class="form-dision_inputfull">
                               	<option selected hidden value="">Departamento *</option>
                                 <option th:each="Departamento : ${departamentos}" th:value="${Departamento.name}" th:text="${Departamento.Name}"></option>

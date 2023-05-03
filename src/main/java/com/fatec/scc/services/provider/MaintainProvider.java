@@ -17,6 +17,7 @@ public interface MaintainProvider {
 
 	Optional<Provider> updates(Long id, Provider provider);
 
-	//Endereco obtemEndereco(String cep);
+	boolean existsByCnpj(String cnpj);
+
 
 }

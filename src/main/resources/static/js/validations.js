@@ -21,30 +21,33 @@ const inputsRules = {
     { rule: 'required', errorMessage: 'O campo CPF é obrigatório' },
     { rule: 'minLength', value: 14, errorMessage: 'O Campo CPF deve possuir todos os caracteres' },
     { rule: 'maxLength', value: 14, errorMessage: 'O Campo CPF deve possuir todos os caracteres' },
+    { rule: 'minNumber', value: 1, errorMessage: 'Digite apenas os números do CPF' }
   ],
   firstName: [
-    { rule: 'required', errorMessage: 'O campo de Primeiro Nome é obrigatório' },
-    { rule: 'minLength', value: 2, errorMessage:  'O campo Primeiro Nome deve possuir no mínimo 2 caracteres' }
+    { rule: 'required', errorMessage: 'O campo de primeiro nome é obrigatório' },
+    { rule: 'minLength', value: 2, errorMessage:  'O campo primeiro nome deve possuir no mínimo 2 caracteres' }
   ],
   lastName: [
-    { rule: 'required', errorMessage: 'O campo de Último Nome é obrigatório' },
-    { rule: 'minLength', value: 2, errorMessage:  'O campo Último Nome deve possuir no mínimo 2 caracteres' }
+    { rule: 'required', errorMessage: 'O campo de último nome é obrigatório' },
+    { rule: 'minLength', value: 2, errorMessage:  'O campo último nome deve possuir no mínimo 2 caracteres' }
   ],
   cep: [
     { rule: 'required', errorMessage: 'O campo CEP é obrigatório' },
     { rule: 'minLength', value: 9, errorMessage: 'O campo CEP deve possuir todos os caracteres' },
-    { rule: 'maxLength', value: 9, errorMessage: 'O campo CEP deve possuir todos os caracteres' }
+    { rule: 'maxLength', value: 9, errorMessage: 'O campo CEP deve possuir todos os caracteres' },
+    { rule: 'minNumber', value: 1, errorMessage: 'Digite apenas os números do CEP' }
   ],
   rua: [
-    { rule: 'required', errorMessage: 'O campo Endereço é obrigatório' },
-    { rule: 'minLength', value: 5, errorMessage: 'O campo Endereco deve possuir ao menos 5 caracteres'}
+    { rule: 'required', errorMessage: 'O campo endereço é obrigatório' },
+    { rule: 'minLength', value: 5, errorMessage: 'O campo endereço deve possuir ao menos 5 caracteres'}
   ],
   locationNumber: [
-    { rule: 'required', errorMessage: 'O campo Número da Residência é obrigatório' }
+    { rule: 'required', errorMessage: 'O campo número da residência é obrigatório' },
+    { rule: 'minNumber', value: 1, errorMessage: 'Digite apenas o(s) número(s) da residência' }
   ],
   email: [
-    { rule: 'required', errorMessage: 'O campo E-mail é obrigatório' },
-    { rule: 'email', errorMessage: 'O campo E-mail deve possuir um e-mail válido' }
+    { rule: 'required', errorMessage: 'O campo e-mail é obrigatório' },
+    { rule: 'email', errorMessage: 'O campo e-mail deve possuir um e-mail válido' }
   ],
   	
   // REGRAS DO FORMULARIO DEPARTAMENTO
@@ -87,7 +90,8 @@ const inputsRules = {
   	{ rule: 'required', errorMessage: 'O campo nome do medicamento é obrigatório' }
   ],
   leaflet:[
-  	{ rule: 'required', errorMessage: 'O campo bula é obrigatório' }
+  	{ rule: 'required', errorMessage: 'O campo bula é obrigatório' },
+  	{ rule: 'minNumber', value: 1, errorMessage: 'Digite apenas os números da bula' }
   ],
   expirationDate:[
   	{ rule: 'required', errorMessage: 'O campo data de validade é obrigatório' }
@@ -99,33 +103,35 @@ const inputsRules = {
   	{ rule: 'required', errorMessage: 'O campo data de chegada é obrigatório' }
   ],
   amount:[
-  	{ rule: 'required', errorMessage: 'O campo quantidade é obrigatório' }
+  	{ rule: 'required', errorMessage: 'O campo quantidade é obrigatório' },
+  	{ rule: 'minNumber', value: 1, errorMessage: 'Digite apenas números para a quantidade' }
   ],
   manufacturingDate:[
   	{ rule: 'required', errorMessage: 'O campo data de fabricação é obrigatório' }
   ],
   
   // REGRAS DO FORMULARIO FUNCIONARIO
-  
+  accountNumber: [
+	  { rule: 'required', errorMessage: 'O campo número da conta é obrigatório' },
+	  { rule: 'minNumber', value: 1, errorMessage: 'Digite apenas os números da conta' }
+  ],
   
   // REGRAS DO FORMULARIO RELATORIO ANIMAL
   local: [
-    { rule: 'required', errorMessage: 'O campo Local é obrigatório' },
-    { rule: 'minLength', value: 5, errorMessage: 'O campo Local deve possuir no mínimo 5 caracteres'}
+    { rule: 'required', errorMessage: 'O campo local é obrigatório' },
+    { rule: 'minLength', value: 5, errorMessage: 'O campo local deve possuir no mínimo 5 caracteres'}
   ],
   
   // REGRAS DO FORMULARIO CLIENTE
   telefone: [
-    { rule: 'required', errorMessage: 'O campo Telefone é obrigatório' },
-    { rule: 'minLength', value: 14, errorMessage: 'O campo Telefone deve possuir todos caracteres'},
-    { rule: 'maxLength', value: 14, errorMessage: 'O campo Telefone deve possuir todos caracteres'}
+    { rule: 'required', errorMessage: 'O campo telefone é obrigatório' },
+    { rule: 'minLength', value: 14, errorMessage: 'O campo telefone deve possuir todos caracteres'},
+    { rule: 'maxLength', value: 14, errorMessage: 'O campo telefone deve possuir todos caracteres'},
+    { rule: 'minNumber', value: 1, errorMessage: 'Digite apenas os números do telefone' }
   ],
   surname: [
-    { rule: 'required', errorMessage: 'O campo Sobrenome é obrigatório' },
-    { rule: 'minLength', value: 3, errorMessage: 'O campo Sobrenome deve possuir no mínimo 3 caracteres' }
-  ],
-  accountNumber: [
-	  { rule: 'required', errorMessage: 'O campo número da conta é obrigatório' }
+    { rule: 'required', errorMessage: 'O campo sobrenome é obrigatório' },
+    { rule: 'minLength', value: 3, errorMessage: 'O campo sobrenome deve possuir no mínimo 3 caracteres' }
   ],
   
   // REGRAS DO FORMULARIO CADASTRO
@@ -140,12 +146,13 @@ const inputsRules = {
   
   // REGRAS DO FORMULARIO FORNECEDOR
   provider: [
-    { rule: 'required', errorMessage: 'O campo Fornecedor é obrigatório' }
+    { rule: 'required', errorMessage: 'O campo fornecedor é obrigatório' }
   ],
   cnpj: [
     { rule: 'required', errorMessage: 'O campo CNPJ é obrigatório' },
     { rule: 'minLength', value: 18, errorMessage: 'O campo CNPJ deve possuir todos os caracteres' },
-    { rule: 'maxLength', value: 18, errorMessage: 'O campo CNPJ deve possuir todos os caracteres' }
+    { rule: 'maxLength', value: 18, errorMessage: 'O campo CNPJ deve possuir todos os caracteres' },
+    { rule: 'minNumber', value: 1, errorMessage: 'Digite apenas os números do CNPJ' }
   ]
 }
 
