@@ -65,6 +65,7 @@ public class GUIMedicineController {
 	    public ModelAndView showUpdateMedicine(@PathVariable("id") Long id) {
 			ModelAndView modelAndView = new ModelAndView("medicine/UpdateMedicine");
 			modelAndView.addObject("medicamento", service.searchById(id).get());
+			modelAndView.addObject("fornecedores", service.searchAllF());
 
 			return modelAndView;
 	    }

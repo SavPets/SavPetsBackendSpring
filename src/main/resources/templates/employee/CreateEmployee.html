@@ -33,22 +33,16 @@
                                 <p>Preenchimento obrigatório</p><span>*</span>
                             </div>
                             <div class="form-dision">
-                              
-                                    <input id="name" class="form-dision_inputfull" type="text" placeholder="Nome *" th:field="*{name}">
-                                    <input id="surname" class="form-dision_inputfull" type="text" placeholder="Sobrenome *" th:field="*{surname}">
-                               
-                                <input id="email" class="form-dision_inputfull" type="email" placeholder="Email *" name="email" th:field="*{email}">
-                            
-                                
-									<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="CPF *" th:field="*{cpf}" id="cpf" maxlength="14" minlength="14" required>
-                                    <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="CEP *" th:field="*{cep}" id="cep" minlength="9" maxlength="9" required>
-									<input id="rua" class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Endereço *" th:field="*{address}" th:value="*{address}" minlength="10" size="60" required>
-                            	    <input class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Complemento" th:field="*{complement}">
-								
-                            	<input class="form-dision_inputfull form-dision_top_left" type="number" placeholder="Número da conta *" th:field="*{accountNumber}" th:value="*{accountNumber}">
+                              <input id="name" class="form-dision_inputfull" type="text" placeholder="Nome *" th:field="*{name}">
+                              <input id="surname" class="form-dision_inputfull" type="text" placeholder="Sobrenome *" th:field="*{surname}">
+                              <input id="email" class="form-dision_inputfull" type="email" placeholder="Email *" name="email" th:field="*{email}">
+							  <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="CPF *" th:field="*{cpf}" id="cpf" maxlength="14" minlength="14">
+                              <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="CEP *" th:field="*{cep}" onblur="pesquisacep(this.value);" id="cep" minlength="9" maxlength="9">
+							  <input id="rua" class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Endereço *" th:field="*{address}" th:value="*{address}" minlength="10" size="60">
+                              <input class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Complemento" th:field="*{complement}">
+                              <input id="accountNumber" class="form-dision_inputfull form-dision_top_left" type="number" placeholder="Número da conta *" th:field="*{accountNumber}" th:value="*{accountNumber}">
                             </div>
-        
-                              <input type="submit" value="Cadastrar" class="btn">
+                            <input type="submit" value="Cadastrar" class="btn">
                         </form>
                     </div>
                 </div>
@@ -59,6 +53,6 @@
     <!--=============== SCRIPTS ===============-->
     <div th:insert="~{fragments/management/scriptsNoTable}"></div>
    <script th:src="@{/js/regex.js}"></script>
-   <script th:src="@{js/viacep.js}"></script>
+   <script th:src="@{/js/viacep.js}"></script>
 </body>
 </html>

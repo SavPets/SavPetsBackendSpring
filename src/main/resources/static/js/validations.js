@@ -124,6 +124,9 @@ const inputsRules = {
     { rule: 'required', errorMessage: 'O campo Sobrenome é obrigatório' },
     { rule: 'minLength', value: 3, errorMessage: 'O campo Sobrenome deve possuir no mínimo 3 caracteres' }
   ],
+  accountNumber: [
+	  { rule: 'required', errorMessage: 'O campo número da conta é obrigatório' }
+  ],
   
   // REGRAS DO FORMULARIO CADASTRO
   password: [
