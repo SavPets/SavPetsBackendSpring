@@ -11,7 +11,7 @@
         else {
             //CEP não Encontrado.
             limpa_formulário_cep();
-            alert("CEP não encontrado.");
+            showPageStatusModal("error", "CEP não encontrado.", "O CEP inserido não foi encontrado na base de dados.")
         }
     }
         
@@ -45,7 +45,7 @@
             else {
                 //cep é inválido.
                 limpa_formulário_cep();
-                alert("Formato de CEP inválido.");
+                showPageStatusModal("error", "Formato de CEP inválido.", "O formato do CEP inserido não é válido.")
             }
         } //end if.
         else {
