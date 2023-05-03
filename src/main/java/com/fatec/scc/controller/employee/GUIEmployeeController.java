@@ -35,6 +35,8 @@ public class GUIEmployeeController {
 	    public ModelAndView showCreateEmployee(Employee employee) {
 			ModelAndView modelAndView = new ModelAndView("employee/CreateEmployee");
 			modelAndView.addObject("funcionario", employee);
+			modelAndView.addObject("departamentos", service.searchAllDepartaments());
+			modelAndView.addObject("cargos", service.searchAllOccupations());
 			
 			return modelAndView;
 	    }
@@ -55,6 +57,8 @@ public class GUIEmployeeController {
 	    public ModelAndView showUpdateEmployee(@PathVariable("id") Long id) {
 			ModelAndView modelAndView = new ModelAndView("employee/UpdateEmployee");
 			modelAndView.addObject("funcionario", service.searchById(id).get());
+			modelAndView.addObject("departamentos", service.searchAllDepartaments());
+			modelAndView.addObject("cargos", service.searchAllOccupations());
 
 			return modelAndView;
 	    }

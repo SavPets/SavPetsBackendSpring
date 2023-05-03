@@ -40,6 +40,8 @@
                                                 <th>Endereco</th>
                                                 <th>Complemento</th>
                                                 <th>Número da conta</th>
+                                                <th>Departamento</th>
+                                                <th>Cargo</th>
                                                 <th>Editar</th>
                                                 <th>Excluir</th>
                                             </tr>
@@ -55,6 +57,8 @@
                                                 <td th:text="${Funcionario.address}"></td>
                                                 <td th:text="${Funcionario.complement}"></td>
                                                 <td th:text="${Funcionario.accountNumber}"></td>
+                                                <td th:text="${Funcionario.departament}"></td>
+                                                <td th:text="${Funcionario.occupation}"></td>
                                                 <td class="column-action column-action_edit">
                                                     <a th:href="@{/atualizar-funcionario/{id} (id=${Funcionario.id})}">
                                                         <svg width="21" height="18" viewBox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg">
