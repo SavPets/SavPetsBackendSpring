@@ -47,6 +47,12 @@
     font-size: 1.4rem;
 }
 
+.form-dision select {
+    color: var(--placeholder-color);
+    font-weight: 600;
+    opacity: 0.6;
+}
+
 .form-dision input:first-child{
     border-radius: 1rem 1rem 0 0;
 }
@@ -85,12 +91,12 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 input[type="date"]::before {
-    opacity: .6;
     font: 1.4rem;
     font-weight: 600;
-	color: #525760;
+	color: var(--paragraph-color);
+    content: attr(placeholder);
     font-family: 'Poppins', sans-serif;
-	content: attr(placeholder);
+    margin-right: 0.5rem;
 }
 
 input[type="date"] {
@@ -105,8 +111,8 @@ input[type="date"]:valid {
     font-family: 'Poppins', sans-serif;
 }
 
-input[type="date"]:focus::before,
-input[type="date"]:valid::before {
+input[type="date"]:focus,
+input[type="date"]:valid {
 	content: "" !important;
 }
 
