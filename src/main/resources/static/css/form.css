@@ -93,10 +93,11 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type="date"]::before {
     font: 1.4rem;
     font-weight: 600;
-	color: var(--paragraph-color);
+	color: hsl(219, 8%, 35%);
     content: attr(placeholder);
     font-family: 'Poppins', sans-serif;
     margin-right: 0.5rem;
+    opacity: 0.6;
 }
 
 input[type="date"] {
@@ -107,13 +108,8 @@ input[type="date"]:focus,
 input[type="date"]:valid {
 	opacity: 1;
     font-weight: 400;
-	color: #525760;
+	color: hsl(219, 8%, 35%);
     font-family: 'Poppins', sans-serif;
-}
-
-input[type="date"]:focus,
-input[type="date"]:valid {
-	content: "" !important;
 }
 
 .form-dision_textarea{
@@ -123,7 +119,6 @@ input[type="date"]:valid {
     height: 9.8rem;
     resize: none;
 }
-
 
 .form > .btn{
     margin: 3.5rem auto 0 auto;
