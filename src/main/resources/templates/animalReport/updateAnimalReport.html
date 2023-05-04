@@ -32,21 +32,28 @@
                             <div class="form-instruction">
                                 <p>Preenchimento obrigatório</p><span>*</span>
                             </div>
+
                             <div class="form-dision">
 								<input class="form-dision_inputfull" type="text" placeholder="Nome do animal *" id="name" th:field="*{animalName}">
-                                <select th:field="*{medicine}" class="form-dision_inputfull">
-                                    <option hidden value="">Medicamento *</option>
-                                    <option th:each="Medicamento : ${medicamentos}" th:value="${Medicamento.medicineName}" th:text="${Medicamento.medicineName}"></option>
+
+                                <select class="form-dision_inputfull" th:field="*{medicine}">
+                                    <option value="">Medicamento</option>
+                                    <option th:each="Medicamento : ${medicamentos}" th:value="${Medicamento.name}" th:text="${Medicamento.name}"></option>
                                 </select>
-								<select th:field="*{animalCategory}" class="form-dision_inputfull">
-									<option hidden value="">Categoria animal *</option>
-									<option th:each="CategoriaAnimal : ${categoriasAnimais}" th:value="${CategoriaAnimal.race}" th:text="${CategoriaAnimal.race}"></option>
-								</select>
+
+								<select id="necessaryToSelect" class="form-dision_inputfull" th:field="*{animalCategory}">
+									<option selected hidden value="">Categoria animal *</option>
+								    <option th:each="CategoriaAnimal : ${categoriasAnimais}" th:value="${CategoriaAnimal.race}" th:text="${CategoriaAnimal.race}"></option>
+								</select> 
+
 								<input class="form-dision_inputfull" type="date" placeholder="Data de chegada *" name="dataChegada" id="arrivalDate" th:field="*{arrivalDate}" max="9999-12-31">
+
                             	<input class="form-dision_inputfull" type="text" placeholder="Local encontrado *" id="local" th:field="*{local}">
+
                                 <input class="form-dision_inputfull" type="text" placeholder="Descrição *" id="description" th:field="*{description}">
                             </div>
-                              <input type="submit" value="Atualizar" class="btn">
+
+                            <input type="submit" value="Atualizar" class="btn">
                         </form>
                     </div>
                 </div>
@@ -54,7 +61,7 @@
         </main>
     </section>
 
-  <!--=============== SCRIPTS ===============-->
+    <!--=============== SCRIPTS ===============-->
     <div th:insert="~{fragments/management/scriptsNoTable}"></div>
     <!-- Regex Script -->
 	<script th:src="@{js/regex.js}"></script>
