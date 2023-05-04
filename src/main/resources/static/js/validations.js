@@ -89,13 +89,10 @@ const inputsRules = {
   ],
   leaflet:[
   	{ rule: 'required', errorMessage: 'O campo bula é obrigatório' },
-  	{ rule: 'minNumber', value: 1, errorMessage: 'Digite apenas os números da bula' }
+    { rule: 'minLength', value: 10, errorMessage: 'O campo bula deve conter no mínimo 10 caracteres' }
   ],
   expirationDate:[
   	{ rule: 'required', errorMessage: 'O campo data de validade é obrigatório' }
-  ],
-  observation:[
-  	{ rule: 'required', errorMessage: 'O campo observação é obrigatório' }
   ],
   arrivalDate:[
   	{ rule: 'required', errorMessage: 'O campo data de chegada é obrigatório' }

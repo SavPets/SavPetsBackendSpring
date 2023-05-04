@@ -13,29 +13,30 @@ public class Medicine {
 	private Long id;
 	@NotBlank(message = "Fornecedor requerido")
 	private String provider;
+	@NotBlank
 	private String medicineName;
-	private String description;
-	private Integer leaflet;
+	@NotBlank
+	private String leaflet;
+	@NotBlank
 	private String utility;
+	@NotBlank
 	private String expirationDate;
 	private String observation;
+	@NotBlank
 	private String arrivalDate;
+	@NotBlank
 	private Integer amount;
+	@NotBlank
 	private String manufacturingDate;
-	
-	
-	
-	
-	
+
 	public Medicine() {
 		
 	}
 
-	public Medicine(String provider, String nomeMecicamento, String description, Integer leaflet,
+	public Medicine(String provider, String nomeMecicamento, String leaflet,
 					String utility, String expirationDate, String observation, String arrivalDate, Integer amount, String manufacturingDate) {
 		this.provider = provider;
 		this.medicineName = nomeMecicamento;
-		this.description = description;
 		this.leaflet = leaflet;
 		this.utility = utility;
 		this.expirationDate = expirationDate;
@@ -63,16 +64,10 @@ public class Medicine {
 	public void setMedicineName(String nomeMecicamento) {
 		this.medicineName = nomeMecicamento;
 	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public Integer getLeaflet() {
+	public String getLeaflet() {
 		return leaflet;
 	}
-	public void setLeaflet(Integer leaflet) {
+	public void setLeaflet(String leaflet) {
 		this.leaflet = leaflet;
 	}
 	public String getUtility() {
@@ -112,8 +107,6 @@ public class Medicine {
 		this.manufacturingDate = manufacturingDate;
 	}
 	public Medicine returnMedicine() {
-		return new Medicine(provider, medicineName, description, leaflet, utility, expirationDate, observation, arrivalDate, amount, manufacturingDate);
+		return new Medicine(provider, medicineName, leaflet, utility, expirationDate, observation, arrivalDate, amount, manufacturingDate);
 	}
-	
-	
 }

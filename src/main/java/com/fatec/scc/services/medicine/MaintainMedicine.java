@@ -19,6 +19,4 @@ public interface MaintainMedicine {
 	void delete(Long id);
 
 	Optional<Medicine> updates(Long id, Medicine medicine);
-
-	
 }

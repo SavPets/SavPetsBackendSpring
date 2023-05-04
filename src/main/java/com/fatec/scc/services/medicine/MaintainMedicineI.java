@@ -21,10 +21,7 @@ public class MaintainMedicineI implements MaintainMedicine {
 	MaintainMedicineRepository repository;
 	@Autowired
 	MaintainProviderRepository repositoryF;
-	
-	
-	
-	
+
 	public List<Medicine> searchAll() {
 		logger.info(">>>>>> servico consultaTodos chamado");
 		return repository.findAll();
@@ -54,31 +51,9 @@ public class MaintainMedicineI implements MaintainMedicine {
 	@Override
 	public Optional<Medicine> updates(Long id, Medicine medicine) {
 		logger.info(">>>>>> 1.servico atualiza informações de cliente chamado");
-		//Endereco endereco = obtemEndereco(fornecedor.getCep());;
-		//fornecedorModificado.setEndereco(endereco.getLogradouro());
-		
+
 		Medicine modifiedMedicine = this.repository.findById(id).get();
-		medicine.setId(id);
-		
-		//if (fornecedor.getCep() == null) {
-		//	fornecedor.setCep(fornecedorModificado2.getCep());
-		//}
-		
-		//if (fornecedor.getCnpj() == null) {
-			//fornecedor.setCnpj(fornecedorModificado2.getCnpj());
-		//}
-		
-		//if (fornecedor.getComplemento() == null) {
-			//fornecedor.setComplemento(fornecedorModificado2.getComplemento());
-	//	}
-		//if (fornecedor.getEndereco() == null) {
-			//fornecedor.setEndereco(fornecedorModificado2.getEndereco());
-	//	}
-	//	if(fornecedor.getNome() == null) {
-	//	fornecedor.setNome(fornecedorModificado2.getNome());
-		//}
-		
-		
+		medicine.setId(id);	
 		
 		logger.info(">>>>>> 2. servico atualiza informacoes de medicamento valido para o id => "
 				+ modifiedMedicine.getId());
