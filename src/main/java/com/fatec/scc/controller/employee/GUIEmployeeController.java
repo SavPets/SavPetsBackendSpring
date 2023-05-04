@@ -73,9 +73,9 @@ public class GUIEmployeeController {
 
 		@PostMapping("/atualizar-funcionario/{id}")
 		public RedirectView updateEmployee(@PathVariable("id") Long id, @Valid Employee employee, BindingResult result) {
-			// if (employee.getEmail() != service.searchById(id).get().getEmail() && service.existsByEmail(employee.getEmail())) {
-			// 	return new RedirectView("/atualizar-funcionario/{id}?status=Erro&text=Email_em_uso!");
-			// }
+			if (!employee.getEmail().equals(service.searchById(id).get().getEmail()) && service.existsByEmail(employee.getEmail())) {
+				return new RedirectView("/atualizar-funcionario/{id}?status=Erro&text=Email_em_uso!");
+			}
 			
 			if (result.hasErrors()) {
 				employee.setId(id);
