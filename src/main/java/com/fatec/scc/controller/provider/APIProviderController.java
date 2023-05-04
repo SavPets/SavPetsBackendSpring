@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.fatec.scc.model.provider.Provider;
+import com.fatec.scc.model.provider.ProviderDTO;
 import com.fatec.scc.services.provider.MaintainProviderI;
 
 @RestController
@@ -34,13 +35,13 @@ public class APIProviderController {
 
 	@CrossOrigin // desabilita o cors do spring security
 	@PostMapping
-	public ResponseEntity<Object> saveSupplier(@RequestBody @Valid Provider provider, BindingResult result) {
-		provider = new Provider();
+	public ResponseEntity<Object> saveSupplier(@RequestBody @Valid ProviderDTO providerDTO, BindingResult result) {
+		providerDTO = new ProviderDTO();
 		if (result.hasErrors()) {
 			logger.info(">>>>>> apicontroller validacao da entrada dados invalidos" + result.getFieldError());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		}
-		if (mantemFornecedor.searchByCnpj(provider.getCnpj()).isPresent()) {
+		if (mantemFornecedor.searchByCnpj(providerDTO.getCnpj()).isPresent()) {
 			logger.info(">>>>>> apicontroller consultaporcpf cpf ja cadastrado");
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("CPF já cadastrado");
 		}
@@ -51,7 +52,7 @@ public class APIProviderController {
 		//	return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("CEP invalido");
 		//}
 		try {
-			return ResponseEntity.status(HttpStatus.CREATED).body(mantemFornecedor.save(provider.returnProvider()));
+			return ResponseEntity.status(HttpStatus.CREATED).body(mantemFornecedor.save(providerDTO.returnProvider()));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro não esperado ");
 		}
@@ -76,7 +77,7 @@ public class APIProviderController {
 
 	@CrossOrigin // desabilita o cors do spring security
 	@PutMapping("/{id}")
-	public ResponseEntity<Object> updates(@PathVariable long id, @RequestBody @Valid Provider provider,
+	public ResponseEntity<Object> updates(@PathVariable long id, @RequestBody @Valid ProviderDTO providerDTO,
 			BindingResult result) {
 		logger.info(">>>>>> api atualiza informações de cliente chamado");
 		if (result.hasErrors()) {
@@ -91,7 +92,7 @@ public class APIProviderController {
 		//if (e.isEmpty()) {
 			//return ResponseEntity.status(HttpStatus.NOT_FOUND).body("CEP não localizado.");
 		//}
-		Optional<Provider> cliente = mantemFornecedor.updates(id, provider.returnProvider());
+		Optional<Provider> cliente = mantemFornecedor.updates(id, providerDTO.returnProvider());
 		return ResponseEntity.status(HttpStatus.OK).body(cliente.get());
 	}
 
