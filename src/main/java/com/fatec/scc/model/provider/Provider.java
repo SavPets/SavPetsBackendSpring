@@ -24,18 +24,22 @@ public class Provider {
 	private String cnpj;
 	@NotBlank(message = "O CNPJ é obrigatório.")
 	private String cep;
+	@NotBlank
 	private String address;
-	@NotBlank(message = "O complemento deve ser informado")
+	@NotBlank(message = "O número do endereço é obrigatório")
+	private Integer locationNumber;
 	private String complement;
 
 	public Provider() {
 		
 	}
 	
-	public Provider(String name, String cnpj, String cep, String complement) {
+	public Provider(String name, String cnpj, String cep, String address, Integer locationNumber, String complement) {
 		this.name = name;
 		this.cnpj = cnpj;
 		this.cep = cep;
+		this.address = address;
+		this.locationNumber = locationNumber;
 		this.complement = complement;
 	}
 	public Long getId() {
@@ -85,8 +89,16 @@ public class Provider {
 	public void setComplement(String complement) {
 		this.complement = complement;
 	}
+	
+	public Integer getLocationNumber() {
+		return locationNumber;
+	}
+
+	public void setLocationNumber(Integer locationNumber) {
+		this.locationNumber = locationNumber;
+	}
 
 	public Provider returnProvider() {
-		return new Provider(name, cnpj, cep, complement);
+		return new Provider(name, cnpj, cep, address, locationNumber, complement);
 	}
 }
