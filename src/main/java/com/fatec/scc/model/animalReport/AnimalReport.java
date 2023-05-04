@@ -12,6 +12,8 @@ public class AnimalReport {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	@NotBlank(message = "O nome do animal é requerido")
+	private String animalName;
 	private String medicine;
 	@NotBlank(message = "Categoria é requerido")
 	private String animalCategory;
@@ -30,8 +32,8 @@ public class AnimalReport {
 		
 	}
 	
-	public AnimalReport(String medicine, String animalCategory, String arrivalDate, String local, String description) {
-		
+	public AnimalReport(String animalName, String medicine, String animalCategory, String arrivalDate, String local, String description) {
+		this.animalName = animalName;
 		this.medicine = medicine;
 		this.animalCategory= animalCategory;
 		this.arrivalDate = arrivalDate;
@@ -87,8 +89,16 @@ public class AnimalReport {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public String getAnimalName() {
+		return animalName;
+	}
+
+	public void setAnimalName(String animalName) {
+		this.animalName = animalName;
+	}
 
 	public AnimalReport retornoumRelatorioAnimal () {
-		return new AnimalReport(medicine,animalCategory,arrivalDate,local,description);
+		return new AnimalReport(animalName,medicine,animalCategory,arrivalDate,local,description);
 	}
 }

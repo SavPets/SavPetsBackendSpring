@@ -3,6 +3,8 @@ package com.fatec.scc.model.animalReport;
 import javax.validation.constraints.NotBlank;
 
 public class AnimalReportDTO {
+	@NotBlank(message = "Nome do animal é requerido")
+	private String animalName;
 	private String medicine;
 	@NotBlank(message = "Categoria é requerido")
 	private String animalCategory;
@@ -20,8 +22,8 @@ public class AnimalReportDTO {
 		
 	}
 	
-	public AnimalReportDTO(String medicine, String animalCategory, String arrivalDate , String local, String description) {
-		
+	public AnimalReportDTO(String animalName, String medicine, String animalCategory, String arrivalDate , String local, String description) {
+		this.animalName = animalName;
 		this.medicine = medicine;
 		this.animalCategory= animalCategory;
 		this.arrivalDate = arrivalDate;
@@ -69,8 +71,16 @@ public class AnimalReportDTO {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public String getAnimalName() {
+		return animalName;
+	}
+
+	public void setAnimalName(String animalName) {
+		this.animalName = animalName;
+	}
 
 	public AnimalReport returnAnimalReport () {
-		return new AnimalReport(medicine,animalCategory,arrivalDate,local,description);
+		return new AnimalReport(animalName,medicine,animalCategory,arrivalDate,local,description);
 	}
 }

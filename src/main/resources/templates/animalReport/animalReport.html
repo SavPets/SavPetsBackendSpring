@@ -38,8 +38,9 @@
                                         <thead>
                                             <tr>
                                                 <th>Código</th>
-                                                <th>Id Medicamento</th>
-                                                <th>Id Animal</th>
+                                                <th>Nome</th>
+                                                <th>Medicamento</th>
+                                                <th>Raça</th>
                                                 <th>Data Chegada</th>
                                                 <th>Local Encontrado</th>
                                                 <th>Descrição</th>
@@ -50,6 +51,7 @@
                                         <tbody>
                                             <tr th:each="RelatorioAnimal : ${relatorios}">
                                                 <td th:text="${RelatorioAnimal.id}"></td>
+                                                <td th:text="${RelatorioAnimal.animalName}"></td>
                                                 <td th:text="${RelatorioAnimal.medicine}"></td>
                                                 <td th:text="${RelatorioAnimal.animalCategory}"></td>
                                                 <td th:text="${RelatorioAnimal.arrivalDate}"></td>

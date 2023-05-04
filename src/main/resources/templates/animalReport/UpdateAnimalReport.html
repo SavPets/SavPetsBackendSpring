@@ -33,16 +33,15 @@
                                 <p>Preenchimento obrigatório</p><span>*</span>
                             </div>
                             <div class="form-dision">
-                                <div class="form-dision_half">
-                                    <select th:field="*{medicine}" class="form-dision_inputfull">
-                                        <option selected hidden value="">Medicamento *</option>
-                                        <option th:each="Medicamento : ${medicamentos}" th:value="${Medicamento.id}" th:text="${Medicamento.medicineName}"></option>
-                                    </select>
-									<select th:field="*{animalCategory}" class="form-dision_inputfull">
-										<option selected hidden value="">Categoria animal *</option>
-								    	<option th:each="CategoriaAnimal : ${categoriasAnimais}" th:value="${CategoriaAnimal.id}" th:text="${CategoriaAnimal.name}"></option>
-									</select>
-                                </div>
+								<input class="form-dision_inputfull" type="text" placeholder="Nome do animal *" id="name" th:field="*{animalName}">
+                                <select th:field="*{medicine}" class="form-dision_inputfull">
+                                    <option hidden value="">Medicamento *</option>
+                                    <option th:each="Medicamento : ${medicamentos}" th:value="${Medicamento.medicineName}" th:text="${Medicamento.medicineName}"></option>
+                                </select>
+								<select th:field="*{animalCategory}" class="form-dision_inputfull">
+									<option hidden value="">Categoria animal *</option>
+									<option th:each="CategoriaAnimal : ${categoriasAnimais}" th:value="${CategoriaAnimal.race}" th:text="${CategoriaAnimal.race}"></option>
+								</select>
 								<input class="form-dision_inputfull" type="date" placeholder="Data de chegada *" name="dataChegada" id="arrivalDate" th:field="*{arrivalDate}" max="9999-12-31">
                             	<input class="form-dision_inputfull" type="text" placeholder="Local encontrado *" id="local" th:field="*{local}">
                                 <input class="form-dision_inputfull" type="text" placeholder="Descrição *" id="description" th:field="*{description}">
