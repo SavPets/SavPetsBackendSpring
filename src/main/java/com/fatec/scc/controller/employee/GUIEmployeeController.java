@@ -33,7 +33,7 @@ public class GUIEmployeeController {
 
 		@GetMapping("/criar-funcionario")
 	    public ModelAndView showCreateEmployee(Employee employee) {
-			ModelAndView modelAndView = new ModelAndView("employee/CreateEmployee");
+			ModelAndView modelAndView = new ModelAndView("employee/createEmployee");
 			modelAndView.addObject("funcionario", employee);
 			modelAndView.addObject("departamentos", service.searchAllDepartaments());
 			modelAndView.addObject("cargos", service.searchAllOccupations());
@@ -55,7 +55,7 @@ public class GUIEmployeeController {
 				return new RedirectView("/criar-funcionario");
 			}
 			if (!service.save(employee).isPresent()) {
-				ModelAndView modelAndView = new ModelAndView("employee/CreateEmployee");
+				ModelAndView modelAndView = new ModelAndView("employee/createEmployee");
 				modelAndView.addObject("message", "Dados invalidos");
 			}
 			return new RedirectView("/funcionarios"); 
@@ -63,7 +63,7 @@ public class GUIEmployeeController {
 		
 		@GetMapping("/atualizar-funcionario/{id}")
 	    public ModelAndView showUpdateEmployee(@PathVariable("id") Long id) {
-			ModelAndView modelAndView = new ModelAndView("employee/UpdateEmployee");
+			ModelAndView modelAndView = new ModelAndView("employee/updateEmployee");
 			modelAndView.addObject("funcionario", service.searchById(id).get());
 			modelAndView.addObject("departamentos", service.searchAllDepartaments());
 			modelAndView.addObject("cargos", service.searchAllOccupations());
