@@ -15,7 +15,6 @@
         <!--=============== IDENTIFY ===============-->
         <section class="identify content">
             <div class="identify-container wrapper container-main_content">
-
                 <div class="identify-container_information container-information">
                     <h5>CADASTRAR</h5>
                     <h3>Insira os dados para criar uma conta</h3>
@@ -26,28 +25,21 @@
                         <a href="/cadastrar" class="container-option_active">Cadastrar-se</a>
                     </div>
                 </div>
-
                 <div class="identify-container_form container-form">
                     <form class="form" th:action="@{/criar-cadastro}" th:object="${cadastro}" method="post">
                         <div class="form-instruction">
                             <p>Preenchimento obrigatório</p><span>*</span>
                         </div>
-
                         <div class="form-dision">
-                            <div class="form-dision_half">
-                                <input class="form-dision_inputfull" type="text" placeholder="Primeiro nome *" name="firstName" th:field="*{nome}" required>
-                                <input class="form-dision_inputfull" type="text" placeholder="Último nome *" name="lastName"th:field="*{sobrenome}" required>
-                            </div>
-
-                            <input class="form-dision_inputfull" type="email" placeholder="Email *" name="email" th:field="*{email}" required>
-                            <input class="form-dision_inputfull" type="password" placeholder="Senha *" name="password" th:field="*{senha}" required>
-                            <input class="form-dision_inputfull" type="password" placeholder="Confirmar senha *" name="confirmedPassword" th:field="*{repetirSenha}" required>
+                            <input class="form-dision_inputfull" type="text" placeholder="Primeiro nome *" name="firstName" th:field="*{name}" id="name">
+                            <input class="form-dision_inputfull" type="text" placeholder="Último nome *" name="lastName"th:field="*{surname}" id="lastName">
+                            <input class="form-dision_inputfull" type="email" placeholder="Email *" name="email" th:field="*{email}" id="email">
+                            <input class="form-dision_inputfull" type="password" placeholder="Senha *" name="password" th:field="*{password}" id="password">
+                            <input class="form-dision_inputfull" type="password" placeholder="Confirmar senha *" name="confirmedPassword" th:field="*{repeatPassword}" id="repeatPassword">
                         </div>
-    
     					<input type="submit" value="Cadastrar" class="btn">
                     </form>
                 </div>
-
                 <div class="identify-container_alternative container-alternative">
                     <p>Já possui uma conta?</p>
                     <a href="/">Entre em sua conta</a>
@@ -55,8 +47,16 @@
             </div>
         </section>
     </main>
-
+    
+    <!--=============== SWEET ALERT 2 ===============-->
+	<script src="js/sweetAlert2/sweetalert2@11.js"></script>
+	
+	<!--=============== JUST VALIDATE ===============-->
+	<script src="js/justValidate/just-validate.production.min.js"></script>
+    
     <!--=============== SCRIPTS ===============-->
     <script src="js/main.js"></script>
+    <script src="js/alertsNoMenu.js"></script>
+    <script src="/js/validations.js"></script>
 </body>
 </html>

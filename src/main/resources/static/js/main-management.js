@@ -8,7 +8,7 @@ function setCurrentPage() {
 
 (function activeMenuOnCurrentPage() {
     const headerListOption = setCurrentPage()
-    
+
     headerListOption.classList.add('menu-management-active')
 })()
 
@@ -28,7 +28,7 @@ function openMobileMenu(burger) {
     const currentPage = setCurrentPage().textContent.trim()
     let newPath
 
-    switch(currentPage) {
+    switch (currentPage) {
         case 'Cargos':
             newPath = '<a class="top-bar_path" href="/cargos">Cargos</a>'
             topBarPath.insertAdjacentHTML('afterend', newPath)
@@ -72,9 +72,12 @@ function openMobileMenu(burger) {
         case 'Fornecedores':
             newPath = '<a class="top-bar_path" href="/fornecedores">Fornecedores</a>'
             topBarPath.insertAdjacentHTML('afterend', newPath)
-            break   
+            break
     }
 })()
+
+// =============== SHOW USER SETTINGS =============== 
+username.innerText = localStorage.getItem("username")
 
 // =============== QUIT OPTIONS SETTINGS ===============
 const quitOption = document.querySelectorAll('.option-quit')
@@ -115,48 +118,38 @@ quitOption.forEach(option => {
     })
 })
 
-// =============== DATATABLES SETTINGS ===============
-$(document).ready(function () {
-    $('#example').DataTable({
-        responsive: true,
-        language: {
-            "url": "//cdn.datatables.net/plug-ins/1.10.22/i18n/Portuguese-Brasil.json"
-        }
-    });
-});
-
-// =============== ACTIONS TABLE SETTINGS ===============
-function executeDeleteMethod() {
-    const deleteBtn = document.querySelectorAll('.column-action_delete a')
-
-    let url = deleteBtn[0].href.split('/')
-    url = url.filter(Boolean)[2]  // 0º(http)://1º(host)/2º(objective)/3º(id)
-    url = '/' + url
-
-    const id = deleteBtn[0].href.charAt(deleteBtn[0].href.length - 1)
-
-    window.location.href = `${url}/${id}`
-}
-
-function showDeleteConfirmationModal() {
+// =============== STATUS PAGE SETTINGS ===============
+function showPageStatusModal(icon, title, text) {
     Swal.fire({
-        title: 'Tem certeza?',
-        text: "Você não poderá reverter isso!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#a4cbe0',
-        cancelButtonColor: '#ff7575',
-        cancelButtonText: 'Cancelar',
-        confirmButtonText: 'Sim, deletar!'
-    }).then((result) => {
-        if (result.isConfirmed) {      
-            Swal.fire(
-                'Deletado!',
-                'Registro apagado com sucesso.',
-                'success'
-            )
-
-            executeDeleteMethod()
-        }
+        title,
+        text,
+        icon,
+        confirmButtonColor: '#a4cbe0'
     })
 }
+
+(function identifyPageStatus() {
+    const urlParams = new URLSearchParams(window.location.search)
+    const pageStatus = urlParams.get('status')
+    let textStatus
+
+    // Texto opcional passado pelo controller
+    if (urlParams.has('text'))
+        textStatus = urlParams.get('text').replace(/_/g, ' ')
+
+    switch (pageStatus) {
+        case 'Cadastrado':
+            showPageStatusModal('success', pageStatus, 'Registro cadastrado com sucesso!')
+            break
+        case 'Atualizado':
+            showPageStatusModal('success', pageStatus, 'Registro atualizado com sucesso!')
+            break
+        case 'Erro':
+            showPageStatusModal('error', pageStatus, textStatus)
+            break
+    }  
+
+    urlParams.delete('status')
+    const newUrl = window.location.pathname
+    history.replaceState(null, null, newUrl)
+})()

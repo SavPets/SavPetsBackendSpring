@@ -16,59 +16,45 @@
 	<!--=============== TOP BAR ===============-->
 	<section th:insert="~{fragments/management/topBar}"></section>
 
-	<!--=============== CONTENT ===============-->
-	<main class="main">
-		<section class="main-content main-register">
-			<div class="main-content_box">
-				<a class="btn btn-cancel" href="/clientes">
-					<svg width="20" height="18" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M18.6429 0.326172H1.92857C0.863839 0.326172 0 1.19001 0 2.25474V16.3976C0 17.4623 0.863839 18.3262 1.92857 18.3262H18.6429C19.7076 18.3262 20.5714 17.4623 20.5714 16.3976V2.25474C20.5714 1.19001 19.7076 0.326172 18.6429 0.326172ZM15.2839 11.998C15.4768 12.1909 15.4768 12.5043 15.2839 12.6972L13.6567 14.3244C13.4638 14.5172 13.1504 14.5172 12.9576 14.3244L10.2857 11.6284L7.61384 14.3244C7.42098 14.5172 7.10759 14.5172 6.91473 14.3244L5.2875 12.6972C5.09464 12.5043 5.09464 12.1909 5.2875 11.998L7.98348 9.32617L5.2875 6.6543C5.09464 6.46144 5.09464 6.14805 5.2875 5.95519L6.91473 4.32796C7.10759 4.1351 7.42098 4.1351 7.61384 4.32796L10.2857 7.02394L12.9576 4.32796C13.1504 4.1351 13.4638 4.1351 13.6567 4.32796L15.2839 5.95519C15.4768 6.14805 15.4768 6.46144 15.2839 6.6543L12.5879 9.32617L15.2839 11.998Z" fill="#ffffff"/>
-					</svg>
+		<!--=============== CONTENT ===============-->
+		<main class="main">
+			<section class="main-content main-register">
+				<div class="main-content_box">
+					<a class="btn btn-cancel" href="/clientes">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="#fff" width="24" height="24" viewBox="0 0 256 256">
+							<path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM181.66,170.34a8,8,0,0,1-11.32,11.32L128,139.31,85.66,181.66a8,8,0,0,1-11.32-11.32L116.69,128,74.34,85.66A8,8,0,0,1,85.66,74.34L128,116.69l42.34-42.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path>
+						</svg>
+						Cancelar
+					</a>
 
-					Cancelar
-				</a>
-
-				<div class="main-container_form">
-					<form class="form" th:action="@{/criar-cliente}" th:object="${cliente}" method="post">
-						<div class="form-instruction">
-							<p>Preenchimento obrigatório</p><span>*</span>
-						</div>
-
-						<div class="form-dision">
-							<!-- <input class="form-dision_inputfull" type="number" placeholder="Código *" name="code" required> -->
-							<div class="form-dision_half">
-								<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Primeiro Nome *" th:field="*{primeiroNome}" required>
-								<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Último Nome *" th:field="*{ultimoNome}" required>
+					<div class="main-container_form">
+						<form class="form" th:action="@{/criar-cliente}" th:object="${cliente}" method="post">
+							<div class="form-instruction">
+								<p>Preenchimento obrigatório</p><span>*</span>
 							</div>
 
-							<div class="form-dision_half">
-								<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Telefone *" th:field="*{telefone}" id="telefone" minlength="14" maxlength="14" required>
-								<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="CPF *" th:field="*{cpf}" id="cpf" minlength="14" maxlength="14" required>
+							<div class="form-dision">
+									<input id="firstName" class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Primeiro Nome *" th:field="*{firstName}">
+									<input id="lastName" class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Último Nome *" th:field="*{lastName}">
+									<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Telefone *" th:field="*{telephone}" id="telefone" maxlength="14">
+									<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="CPF *" th:field="*{cpf}" id="cpf" maxlength="14">
+									<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="CEP *" th:field="*{cep}" id="cep" onblur="pesquisacep(this.value);" maxlength="9">
+									<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Endereço *" th:field="*{address}" id="rua">
+									<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Número da Residência *" id="locationNumber" th:field="*{locationNumber}">
+									<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Complemento" th:field="*{complement}">
 							</div>
 
-							<div class="form-dision_half">
-								<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="CEP *" th:field="*{cep}" id="cep" minlength="9" maxlength="9" required>
-								<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Endereço *" th:field="*{endereco}" required>
-							</div>
-
-							<div class="form-dision_half">
-								<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Número da Residência *" th:field="*{numeroLocal}" required>
-								<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Complemento" th:field="*{complemento}">
-							</div>
-						</div>
-
-						<input type="submit" value="Cadastrar" class="btn">
-					</form>
+							<input type="submit" value="Cadastrar" class="btn">
+						</form>
+					</div>
 				</div>
-			</div>
-		</section>
-	</main>
-</section>
+			</section>
+		</main>
+	</section>
 
-<!--=============== SCRIPTS ===============-->
-<div th:insert="~{fragments/management/scriptsNoTable}"></div>
-
-<!-- Regex Script -->
-<script th:src="@{js/regex.js}"></script>
-
+	<!--=============== SCRIPTS ===============-->
+	<div th:insert="~{fragments/management/scriptsNoTable}"></div>
+	<script th:src="@{/js/regex.js}"></script>
+	<script th:src="@{/js/viacep.js}"></script>
+</body>
 </html>

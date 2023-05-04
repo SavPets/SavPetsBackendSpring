@@ -48,14 +48,14 @@
 										<tbody>
 										<tr th:each="Cliente : ${clientes}">
 											<td th:text="${Cliente.id}"></td>
-											<td th:text="${Cliente.primeiroNome}"></td>
-											<td th:text="${Cliente.ultimoNome}"></td>
-											<td th:text="${Cliente.telefone}"></td>
+											<td th:text="${Cliente.firstName}"></td>
+											<td th:text="${Cliente.lastName}"></td>
+											<td th:text="${Cliente.telephone}"></td>
 											<td th:text="${Cliente.cpf}"></td>
 											<td th:text="${Cliente.cep}"></td>
-											<td th:text="${Cliente.endereco}"></td>
-											<td th:text="${Cliente.numeroLocal}"></td>
-											<td th:text="${Cliente.complemento}"></td>
+											<td th:text="${Cliente.address}"></td>
+											<td th:text="${Cliente.locationNumber}"></td>
+											<td th:text="${Cliente.complement}"></td>
 											<td class="column-action column-action_edit">
 												<a th:href="@{/atualizar-cliente/{id} (id=${Cliente.id})}">
 													<svg width="21" height="18" viewBox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -64,7 +64,7 @@
 												</a>
 											</td>
 											<td class="column-action column-action_delete">
-												<a onclick="event.preventDefault(), showDeleteConfirmationModal()" th:href="@{/deletar-cliente/{id} (id=${Cliente.id})}">
+												<a onclick="event.preventDefault(), showDeleteConfirmationModal(event)" th:href="@{/deletar-cliente/{id} (id=${Cliente.id})}">
 													<svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 														<path d="M16.5554 0H2.41258C1.34785 0 0.484009 0.863839 0.484009 1.92857V16.0714C0.484009 17.1362 1.34785 18 2.41258 18H16.5554C17.6202 18 18.484 17.1362 18.484 16.0714V1.92857C18.484 0.863839 17.6202 0 16.5554 0ZM4.18044 10.6071C3.91526 10.6071 3.69829 10.3902 3.69829 10.125V7.875C3.69829 7.60982 3.91526 7.39286 4.18044 7.39286H14.7876C15.0528 7.39286 15.2697 7.60982 15.2697 7.875V10.125C15.2697 10.3902 15.0528 10.6071 14.7876 10.6071H4.18044Z" fill="#FF7575"/>
 													</svg>

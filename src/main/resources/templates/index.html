@@ -33,9 +33,8 @@
 						</div>
 
 						<div class="form-dision">
-							<input class="form-dision_inputfull" type="email" placeholder="Email *" name="email" th:field="*{email}" required>
-							<input class="form-dision_inputfull form-dision_top_right" type="password"
-								placeholder="Senha *" name="password" th:field="*{senha}" required>
+							<input class="form-dision_inputfull" type="email" placeholder="Email *" th:field="*{email}" id="email">
+							<input class="form-dision_inputfull form-dision_top_right" type="password" placeholder="Senha *" th:field="*{password}" id="password">
 						</div>
 						
 						<input type="submit" value="Entrar" class="btn">
@@ -50,8 +49,16 @@
 		</section>
 	</main>
 
+	<!--=============== SWEET ALERT 2 ===============-->
+	<script src="js/sweetAlert2/sweetalert2@11.js"></script>
+	
+	<!--=============== JUST VALIDATE ===============-->
+	<script src="js/justValidate/just-validate.production.min.js"></script>
+	
 	<!--=============== SCRIPTS ===============-->
-	<script src="js/main.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/alertsNoMenu.js"></script>
+    <script src="/js/validations.js"></script>
 </body>
 
 </html>

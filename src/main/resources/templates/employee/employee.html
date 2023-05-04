@@ -31,15 +31,18 @@
                                     <table id="example" class="table table-striped display nowrap" cellspacing="0" style="width:100%">
                                         <thead>
                                             <tr>
-												<th>#</th>
+												<th>Código</th>
                                                 <th>Nome</th>
                                                 <th>Sobrenome</th>
                                                 <th>Email</th>
                                                 <th>CPF</th>
                                                 <th>CEP</th>
                                                 <th>Endereco</th>
+                                                <th>Número</th>
                                                 <th>Complemento</th>
                                                 <th>Número da conta</th>
+                                                <th>Departamento</th>
+                                                <th>Cargo</th>
                                                 <th>Editar</th>
                                                 <th>Excluir</th>
                                             </tr>
@@ -47,14 +50,17 @@
                                         <tbody>
                                             <tr th:each="Funcionario : ${funcionarios}">
                                                 <td th:text="${Funcionario.id}"></td >
-                                                <td th:text="${Funcionario.nome}"></td>
-                                                <td th:text="${Funcionario.sobrenome}"></td>
+                                                <td th:text="${Funcionario.name}"></td>
+                                                <td th:text="${Funcionario.surname}"></td>
                                                 <td th:text="${Funcionario.email}"></td>
                                                 <td th:text="${Funcionario.cpf}" id="cpf"></td>
                                                 <td th:text="${Funcionario.cep}"></td>
-                                                <td th:text="${Funcionario.endereco}"></td>
-                                                <td th:text="${Funcionario.complemento}"></td>
-                                                <td th:text="${Funcionario.numeroConta}"></td>
+                                                <td th:text="${Funcionario.address}"></td>
+                                                <td th:text="${Funcionario.locationNumber}"></td>
+                                                <td th:text="${Funcionario.complement}"></td>
+                                                <td th:text="${Funcionario.accountNumber}"></td>
+                                                <td th:text="${Funcionario.departament}"></td>
+                                                <td th:text="${Funcionario.occupation}"></td>
                                                 <td class="column-action column-action_edit">
                                                     <a th:href="@{/atualizar-funcionario/{id} (id=${Funcionario.id})}">
                                                         <svg width="21" height="18" viewBox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -63,7 +69,7 @@
                                                     </a>
                                                 </td>
                                                 <td class="column-action column-action_delete">
-                                                    <a onclick="event.preventDefault(), showDeleteConfirmationModal()" th:href="@{/deletar-funcionario/{id} (id=${Funcionario.id})}">
+                                                    <a onclick="event.preventDefault(), showDeleteConfirmationModal(event)" th:href="@{/deletar-funcionario/{id} (id=${Funcionario.id})}">
                                                         <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M16.5554 0H2.41258C1.34785 0 0.484009 0.863839 0.484009 1.92857V16.0714C0.484009 17.1362 1.34785 18 2.41258 18H16.5554C17.6202 18 18.484 17.1362 18.484 16.0714V1.92857C18.484 0.863839 17.6202 0 16.5554 0ZM4.18044 10.6071C3.91526 10.6071 3.69829 10.3902 3.69829 10.125V7.875C3.69829 7.60982 3.91526 7.39286 4.18044 7.39286H14.7876C15.0528 7.39286 15.2697 7.60982 15.2697 7.875V10.125C15.2697 10.3902 15.0528 10.6071 14.7876 10.6071H4.18044Z" fill="#FF7575"/>
                                                         </svg>
