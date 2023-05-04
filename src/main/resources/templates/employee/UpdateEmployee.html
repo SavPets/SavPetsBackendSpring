@@ -37,6 +37,7 @@
                             	<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="CPF *" th:field="*{cpf}" id="cpf" disabled>
                                 <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="CEP *" th:field="*{cep}" onblur="pesquisacep(this.value);" id="cep" maxlength="9" minlength="9">
                                 <input id="rua" class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Endereço *" th:field="*{address}" th:value="*{address}">
+                                <input id="locationNumber" class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Número da Residência *" th:field="*{locationNumber}">
                             	<input class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Complemento *" th:field="*{complement}">
                             	<input id="accountNumber" class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Número da conta *" th:field="*{accountNumber}" th:value="*{accountNumber}">
                             	<select th:field="*{departament}" class="form-dision_inputfull">

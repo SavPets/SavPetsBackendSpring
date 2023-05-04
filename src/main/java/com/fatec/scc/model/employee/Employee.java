@@ -16,32 +16,38 @@ public class Employee extends Register {
 	private String cpf;
 	@NotBlank(message = "O CEP é obrigatório.")
 	private String cep;
+	@NotBlank
 	private String address;
-	@NotBlank(message = "O complemento deve ser informado")
+	@NotBlank(message = "O número do endereço é obrigatório")
+	private Integer locationNumber;
 	private String complement;
 	@NotBlank(message = "O número da conta deve ser informado")
 	private String accountNumber;
+	@NotBlank
 	private String departament;
+	@NotBlank
 	private String occupation;
 
 	//Construtores
 	public Employee() {	}
 	
-	public Employee(String cpf, String cep, String address, String complement, String accountNumber, String departament, String occupation) {
+	public Employee(String cpf, String cep, String address, Integer locationNumber, String complement, String accountNumber, String departament, String occupation) {
 		this.cpf = cpf;
 		this.cep = cep;
 		this.address = address;
+		this.locationNumber = locationNumber;
 		this.complement = complement;
 		this.accountNumber = accountNumber;
 		this.departament = departament;
 		this.occupation = occupation;
 	}
 
-	public Employee(String name, String surname, String email, String password, String repeatPassword, String cpf, String cep, String address, String complement, String accountNumber, String departament, String occupation) {
+	public Employee(String name, String surname, String email, String password, String repeatPassword, String cpf, String cep, String address, Integer locationNumber, String complement, String accountNumber, String departament, String occupation) {
 		super(name, surname, email, password, repeatPassword);
 		this.cpf = cpf;
 		this.cep = cep;
 		this.address = address;
+		this.locationNumber = locationNumber;
 		this.complement = complement;
 		this.accountNumber = accountNumber;
 		this.departament = departament;
@@ -68,6 +74,13 @@ public class Employee extends Register {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public Integer getLocationNumber() {
+		return locationNumber;
+	}
+	public void setLocationNumber(Integer locationNumber) {
+		this.locationNumber = locationNumber;
 	}
 
 	public String getComplement() {
@@ -99,6 +112,6 @@ public class Employee extends Register {
 	}
 
 	public Employee returnEmployee() {
-		return new Employee(cpf, cep, address, complement, accountNumber, departament, occupation);
+		return new Employee(cpf, cep, address, locationNumber, complement, accountNumber, departament, occupation);
 	}
 }

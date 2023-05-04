@@ -21,7 +21,6 @@ const inputsRules = {
     { rule: 'required', errorMessage: 'O campo CPF é obrigatório' },
     { rule: 'minLength', value: 14, errorMessage: 'O Campo CPF deve possuir todos os caracteres' },
     { rule: 'maxLength', value: 14, errorMessage: 'O Campo CPF deve possuir todos os caracteres' },
-    { rule: 'minNumber', value: 1, errorMessage: 'Digite apenas os números do CPF' }
   ],
   firstName: [
     { rule: 'required', errorMessage: 'O campo de primeiro nome é obrigatório' },
@@ -35,7 +34,6 @@ const inputsRules = {
     { rule: 'required', errorMessage: 'O campo CEP é obrigatório' },
     { rule: 'minLength', value: 9, errorMessage: 'O campo CEP deve possuir todos os caracteres' },
     { rule: 'maxLength', value: 9, errorMessage: 'O campo CEP deve possuir todos os caracteres' },
-    { rule: 'minNumber', value: 1, errorMessage: 'Digite apenas os números do CEP' }
   ],
   rua: [
     { rule: 'required', errorMessage: 'O campo endereço é obrigatório' },
@@ -127,7 +125,6 @@ const inputsRules = {
     { rule: 'required', errorMessage: 'O campo telefone é obrigatório' },
     { rule: 'minLength', value: 14, errorMessage: 'O campo telefone deve possuir todos caracteres'},
     { rule: 'maxLength', value: 14, errorMessage: 'O campo telefone deve possuir todos caracteres'},
-    { rule: 'minNumber', value: 1, errorMessage: 'Digite apenas os números do telefone' }
   ],
   surname: [
     { rule: 'required', errorMessage: 'O campo sobrenome é obrigatório' },
@@ -152,7 +149,6 @@ const inputsRules = {
     { rule: 'required', errorMessage: 'O campo CNPJ é obrigatório' },
     { rule: 'minLength', value: 18, errorMessage: 'O campo CNPJ deve possuir todos os caracteres' },
     { rule: 'maxLength', value: 18, errorMessage: 'O campo CNPJ deve possuir todos os caracteres' },
-    { rule: 'minNumber', value: 1, errorMessage: 'Digite apenas os números do CNPJ' }
   ]
 }
 

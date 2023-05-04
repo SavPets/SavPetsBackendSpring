@@ -58,27 +58,28 @@ public class MaintainEmployeeI implements MaintainEmployee {
 	@Override
 	public Optional<Employee> updates(Long id, Employee employee) {
 		logger.info(">>>>>> 1.servico atualiza informações de funcionario chamado");
-		Employee modifiedEmployee = new Employee(employee.getName(), employee.getSurname(), employee.getEmail(), employee.getPassword(), employee.getRepeatPassword(), employee.getCpf(), employee.getCep(), employee.getAddress(), employee.getComplement(), employee.getAccountNumber(), employee.getDepartament(), employee.getOccupation());
+		Employee modifiedEmployee = new Employee(employee.getName(), employee.getSurname(), employee.getEmail(),
+				employee.getPassword(), employee.getRepeatPassword(), employee.getCpf(), employee.getCep(),
+				employee.getAddress(), employee.getLocationNumber(), employee.getComplement(),
+				employee.getAccountNumber(), employee.getDepartament(), employee.getOccupation());
 		Employee modifiedEmployee2 = this.repository.findById(id).get();
 
 		modifiedEmployee.setId(id);
-		
-		
+
 		if (employee.getCpf() == null) {
 			employee.setCpf(modifiedEmployee2.getCpf());
 		}
 
-
 		modifiedEmployee.setCpf(employee.getCpf());
 		return Optional.ofNullable(repository.save(modifiedEmployee));
 	}
-	
+
 	@Override
 	public List<Departament> searchAllDepartaments() {
 		logger.info(">>>>>> servico consultaTodos chamado");
 		return repositoryD.findAll();
 	}
-	
+
 	@Override
 	public List<Occupation> searchAllOccupations() {
 		logger.info(">>>>>> servico consultaTodos chamado");
