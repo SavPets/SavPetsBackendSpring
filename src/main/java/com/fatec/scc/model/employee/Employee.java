@@ -2,9 +2,10 @@ package com.fatec.scc.model.employee;
 
 import javax.validation.constraints.NotBlank;
 
-import com.fatec.scc.model.Register;
-
 import org.hibernate.validator.constraints.br.CPF;
+
+import com.fatec.scc.model.register.Register;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
@@ -110,8 +111,5 @@ public class Employee extends Register {
 	public void setOccupation(String occupation) {
 		this.occupation = occupation;
 	}
-
-	public Employee returnEmployee() {
-		return new Employee(cpf, cep, address, locationNumber, complement, accountNumber, departament, occupation);
-	}
+	
 }

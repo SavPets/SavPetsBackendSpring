@@ -2,7 +2,6 @@ package com.fatec.scc.controller;
 
 import javax.validation.Valid;
 
-import com.fatec.scc.model.Register;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.fatec.scc.model.register.Register;
 import com.fatec.scc.services.MaintainRegister;
 
 @Controller
@@ -40,7 +40,7 @@ public class GUIHomeController {
 		}
 		
 		if (service.verify(register.getEmail(), register.getPassword())) {
-			username = service.searchByEmail(register.getEmail()).getName();
+			username = service.searchByEmail(register.getEmail()).get().getName();
 			return new RedirectView("/painel");
 		}
 

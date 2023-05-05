@@ -5,12 +5,12 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
-import com.fatec.scc.model.Register;
+import com.fatec.scc.model.register.Register;
 
 public interface MaintainRegister {
 	List<Register> searchAll();
 
-	@Valid Register searchByEmail(String email);
+	@Valid Optional<Register> searchByEmail(String email);
 
 	@Valid Optional<Register> searchById(Long id);
 
