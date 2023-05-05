@@ -33,10 +33,10 @@ public class Medicine {
 		
 	}
 
-	public Medicine(String provider, String nomeMecicamento, String leaflet,
+	public Medicine(String provider, String name, String leaflet,
 					String utility, String expirationDate, String observation, String arrivalDate, Integer amount, String manufacturingDate) {
 		this.provider = provider;
-		this.name = nomeMecicamento;
+		this.name = name;
 		this.leaflet = leaflet;
 		this.utility = utility;
 		this.expirationDate = expirationDate;
@@ -105,8 +105,5 @@ public class Medicine {
 	}
 	public void setManufacturingDate(String manufacturingDate) {
 		this.manufacturingDate = manufacturingDate;
-	}
-	public Medicine returnMedicine() {
-		return new Medicine(provider, name, leaflet, utility, expirationDate, observation, arrivalDate, amount, manufacturingDate);
 	}
 }

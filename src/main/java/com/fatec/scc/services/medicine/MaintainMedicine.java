@@ -14,6 +14,8 @@ public interface MaintainMedicine {
 	
 	Optional<Medicine> searchById(Long id);
 
+	Optional<Medicine> searchByName(String name);
+
 	Optional<Medicine> save(Medicine medicine);
 
 	void delete(Long id);
