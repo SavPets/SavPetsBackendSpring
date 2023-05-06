@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.fatec.scc.model.adoption.Adoption;
 import com.fatec.scc.model.adoption.MaintainAdoptionRepository;
@@ -14,11 +15,8 @@ import com.fatec.scc.model.animalCategory.MaintainAnimalCategoryRepository;
 import com.fatec.scc.model.animalReport.MaintainAnimalReportRepository;
 import com.fatec.scc.model.medicine.MaintainMedicineRepository;
 import com.fatec.scc.model.medicine.Medicine;
-
+@Service
 public class MaintainAdoptionI implements MaintainAdoption {
-	@Autowired
-	MaintainAdoptionI maintainAdoption;
-	Adoption adoption;
 	
 	Logger logger = LogManager.getLogger(this.getClass());
 	@Autowired

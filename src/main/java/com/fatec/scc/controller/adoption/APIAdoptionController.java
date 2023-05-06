@@ -16,15 +16,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.fatec.scc.model.adoption.Adoption;
 import com.fatec.scc.model.adoption.AdoptionDTO;
 import com.fatec.scc.model.adoption.MaintainAdoptionRepository;
+import com.fatec.scc.services.Adoption.MaintainAdoptionI;
 
-
+@RestController
+@RequestMapping("/api/v1/adoacao")
 public class APIAdoptionController {
 	@Autowired
-	MaintainAdoptionRepository maintainAdoption;
+	MaintainAdoptionI maintainAdoption;
 	Adoption adoption;
 	Logger logger = LogManager.getLogger(this.getClass());
 
