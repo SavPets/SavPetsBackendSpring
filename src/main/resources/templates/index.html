@@ -33,8 +33,12 @@
 						</div>
 
 						<div class="form-dision">
-							<input class="form-dision_inputfull" type="email" placeholder="Email *" th:field="*{email}" id="email">
-							<input class="form-dision_inputfull form-dision_top_right" type="password" placeholder="Senha *" th:field="*{password}" id="password">
+							<div>
+								<input class="form-dision_inputfull" type="email" placeholder="Email *" th:field="*{email}" id="email">
+							</div>
+							<div>
+								<input class="form-dision_inputfull form-dision_top_right" type="password" placeholder="Senha *" th:field="*{password}" id="password">
+							</div>
 						</div>
 						
 						<input type="submit" value="Entrar" class="btn">

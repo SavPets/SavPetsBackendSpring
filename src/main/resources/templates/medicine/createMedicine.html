@@ -34,23 +34,36 @@
                             </div>
 
                             <div class="form-dision">
-                                <select id="necessaryToSelect" class="form-dision_inputfull" th:field="*{provider}">
-                                    <option value="">Fornecedor *</option>
-                                    <option th:each="Fornecedor : ${fornecedores}" th:value="${Fornecedor.name}" th:text="${Fornecedor.name}"></option>
-                                </select>
-                                    
-                                <input class="form-dision_inputfull" id="name" type="text" placeholder="Nome do Medicamento *" th:field="*{name}">
-
-                                <input class="form-dision_inputfull" type="text" id="leaflet" placeholder="Bula *" th:field="*{leaflet}">
-                                <input id="utility" class="form-dision_inputfull" type="text" placeholder="Utilidade *" th:field="*{utility}">
-
-                                <input id="expirationDate" class="form-dision_inputfull" type="date" placeholder="Data de Validade *:" th:field="*{expirationDate}" max="9999-12-31">
-                                <input id="observation" class="form-dision_inputfull" type="text" placeholder="Observação" th:field="*{observation}">
-                            
-                                <input id="arrivalDate" class="form-dision_inputfull" type="date" placeholder="Data de Chegada *:" th:field="*{arrivalDate}" max="9999-12-31">
-                                <input id="amount" class="form-dision_inputfull" type="number" placeholder="Quantidade *" th:field="*{amount}">
-                                
-                                <input id="manufacturingDate" class="form-dision_inputfull" type="date" style="align-items: center;" placeholder="Data de Fabricação *:" th:field="*{manufacturingDate}" max="9999-12-31">
+                                <div>
+                                    <select id="necessaryToSelect" class="form-dision_inputfull" th:field="*{provider}">
+                                        <option value="">Fornecedor *</option>
+                                        <option th:each="Fornecedor : ${fornecedores}" th:value="${Fornecedor.name}" th:text="${Fornecedor.name}"></option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <input class="form-dision_inputfull" id="medicineName" type="text" placeholder="Nome do Medicamento *" th:field="*{name}">
+                                </div>
+                                <div>
+                                    <input class="form-dision_inputfull" type="text" id="leaflet" placeholder="Bula *" th:field="*{leaflet}">
+                                </div>
+                                <div>
+                                    <input id="utility" class="form-dision_inputfull" type="text" placeholder="Utilidade *" th:field="*{utility}">
+                                </div>
+                                <div>
+                                    <input id="expirationDate" class="form-dision_inputfull" type="date" placeholder="Data de Validade *:" th:field="*{expirationDate}" max="9999-12-31">
+                                </div>
+                                <div>
+                                    <input id="observation" class="form-dision_inputfull" type="text" placeholder="Observação" th:field="*{observation}">
+                                </div>
+                                <div>
+                                    <input id="arrivalDate" class="form-dision_inputfull" type="date" placeholder="Data de Chegada *:" th:field="*{arrivalDate}" max="9999-12-31">
+                                </div>
+                                <div>
+                                    <input id="amount" class="form-dision_inputfull" type="number" placeholder="Quantidade *" th:field="*{amount}">
+                                </div>
+                                <div>
+                                    <input id="manufacturingDate" class="form-dision_inputfull" type="date" style="align-items: center;" placeholder="Data de Fabricação *:" th:field="*{manufacturingDate}" max="9999-12-31">
+                                </div>
                             </div>
                             
                             <input type="submit" value="Cadastrar" class="btn">

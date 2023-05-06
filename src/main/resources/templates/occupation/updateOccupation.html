@@ -34,10 +34,13 @@
                             </div>
     
                             <div class="form-dision">
-                                <input id = "name" class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Nome *" th:field="*{name}" th:value="${occupation.name}">
-                                <input id = "description" class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Descrição *" th:field="*{description}" th:value="${occupation.description}">
+                                <div>
+                                    <input id = "name" class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Nome *" th:field="*{name}" th:value="${occupation.name}">
+                                </div>
+                                <div>
+                                    <input id = "description" class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Descrição *" th:field="*{description}" th:value="${occupation.description}">
+                                </div>
                             </div>
-        
                             <input type="submit" value="Atualizar" class="btn">
                         </form>
                     </div>

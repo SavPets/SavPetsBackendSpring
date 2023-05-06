@@ -32,23 +32,36 @@
                         </div>
 
                         <div class="form-dision">
-                            <select id="necessaryToSelect" class="form-dision_inputfull" th:field="*{provider}">
-                                <option value="">Fornecedor *</option>
-                                <option th:each="Fornecedor : ${fornecedores}" th:value="${Fornecedor.name}" th:text="${Fornecedor.name}"></option>
-                            </select>
-
-                            <input class="form-dision_inputfull" id="name" type="text" placeholder="Nome do Medicamento *" th:field="*{name}">
-
-                            <input class="form-dision_inputfull form-dision_top_right" type="text" id="leaflet" placeholder="Bula *" th:field="*{leaflet}">
-                            <input class="form-dision_inputfull" id="utility" type="text" placeholder="Utilidade *" th:field="*{utility}">
-
-                            <input class="form-dision_inputfull" type="date" id="expirationDate"  placeholder="Validade *" th:field="*{expirationDate}" max="9999-12-31">
-                            <input class="form-dision_inputfull" type="text" id="observation" placeholder="Observação" th:field="*{observation}">
-
-                            <input class="form-dision_inputfull" type="date" id="arrivalDate" placeholder="Chegada *" th:field="*{arrivalDate}" max="9999-12-31">
-                            <input class="form-dision_inputfull" type="number" id="amount" placeholder="Quantidade *" th:field="*{amount}">
-                        
-                            <input class="form-dision_inputfull" type="date" id="manufacturingDate" style="align-items: center;" placeholder="Fabricação *" th:field="*{manufacturingDate}" max="9999-12-31">
+                            <div>
+                                <select id="necessaryToSelect" class="form-dision_inputfull" th:field="*{provider}">
+                                    <option value="">Fornecedor *</option>
+                                    <option th:each="Fornecedor : ${fornecedores}" th:value="${Fornecedor.name}" th:text="${Fornecedor.name}"></option>
+                                </select>
+                            </div>
+                            <div>
+                                <input class="form-dision_inputfull" id="medicineName" type="text" placeholder="Nome do Medicamento *" th:field="*{name}">
+                            </div>
+                            <div>
+                                <input class="form-dision_inputfull form-dision_top_right" type="text" id="leaflet" placeholder="Bula *" th:field="*{leaflet}">
+                            </div>
+                            <div>
+                                <input class="form-dision_inputfull" id="utility" type="text" placeholder="Utilidade *" th:field="*{utility}">
+                            </div>
+                            <div>
+                                <input class="form-dision_inputfull" type="date" id="expirationDate"  placeholder="Validade *" th:field="*{expirationDate}" max="9999-12-31">
+                            </div>
+                            <div>
+                                <input class="form-dision_inputfull" type="text" id="observation" placeholder="Observação" th:field="*{observation}">
+                            </div>
+                            <div>
+                                <input class="form-dision_inputfull" type="date" id="arrivalDate" placeholder="Chegada *" th:field="*{arrivalDate}" max="9999-12-31">
+                            </div>
+                            <div>
+                                <input class="form-dision_inputfull" type="number" id="amount" placeholder="Quantidade *" th:field="*{amount}">
+                            </div>
+                            <div>
+                                <input class="form-dision_inputfull" type="date" id="manufacturingDate" style="align-items: center;" placeholder="Fabricação *" th:field="*{manufacturingDate}" max="9999-12-31">
+                            </div>
                         </div>
                         
                         <input type="submit" value="Atualizar" class="btn">

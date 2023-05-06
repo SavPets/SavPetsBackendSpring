@@ -31,12 +31,23 @@
                             <p>Preenchimento obrigatório</p><span>*</span>
                         </div>
                         <div class="form-dision">
-                            <input class="form-dision_inputfull" type="text" placeholder="Primeiro nome *" name="firstName" th:field="*{name}" id="name">
-                            <input class="form-dision_inputfull" type="text" placeholder="Último nome *" name="lastName"th:field="*{surname}" id="lastName">
-                            <input class="form-dision_inputfull" type="email" placeholder="Email *" name="email" th:field="*{email}" id="email">
-                            <input class="form-dision_inputfull" type="password" placeholder="Senha *" name="password" th:field="*{password}" id="password">
-                            <input class="form-dision_inputfull" type="password" placeholder="Confirmar senha *" name="confirmedPassword" th:field="*{repeatPassword}" id="repeatPassword">
+                            <div>
+                                <input class="form-dision_inputfull" type="text" placeholder="Primeiro nome *" name="firstName" th:field="*{name}" id="name">
+                            </div>
+                            <div>
+                                <input class="form-dision_inputfull" type="text" placeholder="Último nome *" name="lastName"th:field="*{surname}" id="lastName">
+                            </div>
+                            <div>
+                                <input class="form-dision_inputfull" type="email" placeholder="Email *" name="email" th:field="*{email}" id="email">
+                            </div>
+                            <div>
+                                <input class="form-dision_inputfull" type="password" placeholder="Senha *" name="password" th:field="*{password}" id="password">
+                            </div>
+                            <div>
+                                <input class="form-dision_inputfull" type="password" placeholder="Confirmar senha *" name="confirmedPassword" th:field="*{repeatPassword}" id="repeatPassword">
+                            </div>
                         </div>
+
     					<input type="submit" value="Cadastrar" class="btn">
                     </form>
                 </div>
