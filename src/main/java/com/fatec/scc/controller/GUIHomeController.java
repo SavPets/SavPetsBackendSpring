@@ -16,12 +16,17 @@ import com.fatec.scc.services.MaintainRegister;
 @Controller
 public class GUIHomeController {
 	// Rotas de acesso
-	
 	String username;
 	
 	@Autowired
 	MaintainRegister service;
-	
+
+	@GetMapping("/home")
+	public ModelAndView showHome() {
+		ModelAndView mv = new ModelAndView("home");
+		return mv;
+	}
+
 	@GetMapping("/")
 	public ModelAndView showIndex(Register register) {
 		ModelAndView mv = new ModelAndView("index");
