@@ -39,7 +39,7 @@ public class GUIAnimalCategoryController {
 
 	@GetMapping("/criar-categoria-animal")
     public ModelAndView showCreateAnimalCategory(AnimalCategory animalCategory) {
-		ModelAndView modelAndView = new ModelAndView("animalCategory/CreateAnimalCategory");
+		ModelAndView modelAndView = new ModelAndView("animalCategory/createAnimalCategory");
 		modelAndView.addObject("categoriaAnimal", animalCategory);
 
 		return modelAndView;
@@ -52,7 +52,7 @@ public class GUIAnimalCategoryController {
 		}
 
 		if (!service.save(animalCategory).isPresent()) {
-			ModelAndView modelAndView = new ModelAndView("animalCategory/CreateAnimalCategory");
+			ModelAndView modelAndView = new ModelAndView("animalCategory/createAnimalCategory");
 			modelAndView.addObject("message", "Dados invalidos");
 		}
 
@@ -61,7 +61,7 @@ public class GUIAnimalCategoryController {
 
 	@GetMapping("/atualizar-categoria-animal/{id}")
     public ModelAndView showUpdateAnimalCategory(@PathVariable("id") Long id) {
-		ModelAndView modelAndView = new ModelAndView("animalCategory/UpdateAnimalCategory");
+		ModelAndView modelAndView = new ModelAndView("animalCategory/updateAnimalCategory");
 		modelAndView.addObject("categoriaAnimal", service.searchById(id).get());
 
 		return modelAndView;

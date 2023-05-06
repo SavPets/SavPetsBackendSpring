@@ -47,7 +47,11 @@
     font-size: 1.4rem;
 }
 
-.form-dision select {
+.form-dision select:focus{
+	outline: none;	
+}
+
+.form-dision select:first-child {
     color: var(--placeholder-color);
     font-weight: 600;
     opacity: 0.6;
@@ -72,10 +76,6 @@
     border-top: 0;
     border-left: 0;
     padding: 2rem;
-}
-
-select:focus{
-	outline: none;	
 }
 
 .form-dision_inputfull::placeholder{

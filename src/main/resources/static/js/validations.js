@@ -10,7 +10,15 @@ const validator = new JustValidate('.form',
 )
 
 // adicione mais regras para cada campo que for necessário
-const inputsRules = {
+const fieldsRules = {
+
+  // REGRA PARA CAMPOS
+  necessaryToSelect: [
+    { rule: 'required', errorMessage: 'Selecione alguma opção' },
+  ],
+  necessaryToSelect2: [ // Para quando tiver mais de 1 select obrigatório na mesma página (provisório)
+    { rule: 'required', errorMessage: 'Selecione alguma opção' },
+  ],
 	
   // REGRAS DE FORMULARIOS GERAIS
   name: [
@@ -150,24 +158,24 @@ const inputsRules = {
 }
 
 function addFieldWithRules(fieldToAdd) {
-  fieldToAdd.forEach(({ inputId, rules }) => {
+  fieldToAdd.forEach(({ fieldId, rules }) => {
     const fieldRules = rules.map(({ rule, value, errorMessage }) => ({
       rule,
       value,
       errorMessage
     }))
 
-    validator.addField(`#${inputId}`, fieldRules)
+    validator.addField(`#${fieldId}`, fieldRules)
   })
 }
 
-const existingInputsOnTheCurrentPage = document.querySelectorAll('input[id]')
-existingInputsOnTheCurrentPage.forEach(input => {
-  const inputId = input.getAttribute('id')
-  const rulesForThisInput = inputsRules[inputId]
+const existingFieldsOnTheCurrentPage = document.querySelectorAll('input[id], select[id]')
+existingFieldsOnTheCurrentPage.forEach(field => {
+  const fieldId = field.getAttribute('id')
+  const rulesForThisField = fieldsRules[fieldId]
 
-  if (rulesForThisInput)
-    addFieldWithRules([{ inputId, rules: rulesForThisInput }])
+  if (rulesForThisField)
+    addFieldWithRules([{ fieldId, rules: rulesForThisField }])
 })
 
 validator.onSuccess((event) => {

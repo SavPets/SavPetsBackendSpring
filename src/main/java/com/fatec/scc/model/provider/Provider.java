@@ -97,8 +97,4 @@ public class Provider {
 	public void setLocationNumber(Integer locationNumber) {
 		this.locationNumber = locationNumber;
 	}
-
-	public Provider returnProvider() {
-		return new Provider(name, cnpj, cep, address, locationNumber, complement);
-	}
 }

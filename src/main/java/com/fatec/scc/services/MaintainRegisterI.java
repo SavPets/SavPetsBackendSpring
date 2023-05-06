@@ -5,13 +5,13 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
-import com.fatec.scc.model.Register;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fatec.scc.model.MaintainRegisterRepository;
+import com.fatec.scc.model.register.MaintainRegisterRepository;
+import com.fatec.scc.model.register.Register;
 
 @Service
 public class MaintainRegisterI implements MaintainRegister {
@@ -26,7 +26,7 @@ public class MaintainRegisterI implements MaintainRegister {
 	}
 	
 	@Override
-	public @Valid Register searchByEmail(String email) {
+	public @Valid Optional<Register> searchByEmail(String email) {
 		logger.info(">>>>>> servico consultaPorEmail chamado");
 		return repository.findByEmail(email);
 	}
@@ -60,9 +60,9 @@ public class MaintainRegisterI implements MaintainRegister {
 	@Override
 	public Optional<Register> updates(String email, String senha) {
 		logger.info(">>>>>> servico atualiza senha de cadastro chamado");
-		Register auxiliaryRegister = repository.findByEmail(email);
-		Register modifiedRegister = new Register(auxiliaryRegister.getName(), auxiliaryRegister.getSurname(), auxiliaryRegister.getEmail(), auxiliaryRegister.getPassword(), auxiliaryRegister.getRepeatPassword());
-		modifiedRegister.setId(auxiliaryRegister.getId());
+		Optional<Register> auxiliaryRegister = repository.findByEmail(email);
+		Register modifiedRegister = new Register(auxiliaryRegister.get().getName(), auxiliaryRegister.get().getSurname(), auxiliaryRegister.get().getEmail(), auxiliaryRegister.get().getPassword(), auxiliaryRegister.get().getRepeatPassword());
+		modifiedRegister.setId(auxiliaryRegister.get().getId());
 		modifiedRegister.setPassword(senha);
 		modifiedRegister.setRepeatPassword(senha);
 		return Optional.ofNullable(repository.save(modifiedRegister));
@@ -80,8 +80,8 @@ public class MaintainRegisterI implements MaintainRegister {
 	@Override
 	public Boolean verify(String email, String senha) {
 		logger.info(">>>>>> servico verifica se cadastro chamado e valido");
-		Register auxiliaryRegister = repository.findByEmail(email);
-		if (email.equals(auxiliaryRegister.getEmail()) && senha.equals(auxiliaryRegister.getPassword())) {
+		Optional<Register> auxiliaryRegister = repository.findByEmail(email);
+		if (email.equals(auxiliaryRegister.get().getEmail()) && senha.equals(auxiliaryRegister.get().getPassword())) {
 			return true;
 		}
 		return false;

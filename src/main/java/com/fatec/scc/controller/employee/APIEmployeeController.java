@@ -5,6 +5,8 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import com.fatec.scc.model.employee.Employee;
+import com.fatec.scc.model.employee.EmployeeDTO;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +34,7 @@ public class APIEmployeeController {
 
 	@CrossOrigin // desabilita o cors do spring security
 	@PostMapping
-	public ResponseEntity<Object> saveEmployee(@RequestBody @Valid Employee employee, BindingResult result) {
+	public ResponseEntity<Object> saveEmployee(@RequestBody @Valid EmployeeDTO employeeDTO, BindingResult result) {
 		employee = new Employee();
 		if (result.hasErrors()) {
 			logger.info(">>>>>> apicontroller validacao da entrada dados invalidos" + result.getFieldError());
@@ -43,7 +45,7 @@ public class APIEmployeeController {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("CPF já cadastrado");
 		}
 		try {
-			return ResponseEntity.status(HttpStatus.CREATED).body(mantemFuncionario.save(employee.returnEmployee()));
+			return ResponseEntity.status(HttpStatus.CREATED).body(mantemFuncionario.save(employeeDTO.returnEmployee()));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro não esperado ");
 		}
@@ -68,7 +70,7 @@ public class APIEmployeeController {
 
 	@CrossOrigin // desabilita o cors do spring security
 	@PutMapping("/{id}")
-	public ResponseEntity<Object> updates(@PathVariable long id, @RequestBody @Valid Employee employee,
+	public ResponseEntity<Object> updates(@PathVariable long id, @RequestBody @Valid EmployeeDTO employeeDTO,
 			BindingResult result) {
 		logger.info(">>>>>> api atualiza informações de funcionario chamado");
 		if (result.hasErrors()) {
@@ -79,7 +81,7 @@ public class APIEmployeeController {
 		if (f.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 		}
-		Optional<Employee> func = mantemFuncionario.updates(id, employee.returnEmployee());
+		Optional<Employee> func = mantemFuncionario.updates(id, employeeDTO.returnEmployee());
 		return ResponseEntity.status(HttpStatus.OK).body(func.get());
 	}
 

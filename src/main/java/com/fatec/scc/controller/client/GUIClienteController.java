@@ -35,7 +35,7 @@ public class GUIClienteController {
 	// Requisição GET que irá mostrar a página de criação de cliente
 	@GetMapping("/criar-cliente")
 	public ModelAndView showCreateClient(Client client) {
-		ModelAndView mv = new ModelAndView("client/CreateClient");
+		ModelAndView mv = new ModelAndView("client/createClient");
 		mv.addObject("cliente", client);
 		return mv;
 	}
@@ -52,7 +52,7 @@ public class GUIClienteController {
 		}
 
 		if (!service.save(client).isPresent()) {
-			ModelAndView modelAndView = new ModelAndView("client/CreateClient");
+			ModelAndView modelAndView = new ModelAndView("client/createClient");
 			modelAndView.addObject("message", "Dados inválidos");
 		}
 
@@ -62,7 +62,7 @@ public class GUIClienteController {
 	// Requisição GET que irá renderizar a página de Atualização de Cliente
 	@GetMapping("/atualizar-cliente/{id}")
 	public ModelAndView showUpdateClient(@PathVariable("id") Long id) {
-		ModelAndView modelAndView = new ModelAndView("client/UpdateClient");
+		ModelAndView modelAndView = new ModelAndView("client/updateClient");
 		modelAndView.addObject("cliente", service.searchById(id).get());
 
 		return modelAndView;

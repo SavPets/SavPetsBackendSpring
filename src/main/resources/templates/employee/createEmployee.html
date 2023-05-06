@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!--=============== HEAD ===============-->
+<head th:insert="~{fragments/management/headNoTable}"></head>
+
+<body class="funcionarios">
+   <!--=============== HEADER ===============-->
+    <header th:insert="~{fragments/management/header}"></header>
+
+    <!--=============== PANEL ===============-->
+    <section class="wrapper">
+
+         <!--=============== TOP BAR ===============-->
+        <section th:insert="~{fragments/management/topBar}"></section>
+    
+        <!--=============== CONTENT ===============-->
+        <main class="main">
+            <section class="main-content main-register">
+                <div class="main-content_box">
+                    <a class="btn btn-cancel" href="/funcionarios">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" width="24" height="24" viewBox="0 0 256 256">
+                            <path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM181.66,170.34a8,8,0,0,1-11.32,11.32L128,139.31,85.66,181.66a8,8,0,0,1-11.32-11.32L116.69,128,74.34,85.66A8,8,0,0,1,85.66,74.34L128,116.69l42.34-42.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path>
+                        </svg>
+                        Cancelar    
+                    </a>
+
+                    <div class="main-container_form">
+                        <form class="form" th:action="@{/criar-funcionario}" th:object="${funcionario}" method="post">
+                            <div class="form-instruction">
+                                <p>Preenchimento obrigatório</p><span>*</span>
+                            </div>
+                            <div class="form-dision">
+                                <input id="name" class="form-dision_inputfull" type="text" placeholder="Nome *" th:field="*{name}">
+                                
+                                <input id="surname" class="form-dision_inputfull" type="text" placeholder="Sobrenome *" th:field="*{surname}">
+
+                                <input id="email" class="form-dision_inputfull" type="email" placeholder="Email *" name="email" th:field="*{email}">
+
+                                <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="CPF *" th:field="*{cpf}" id="cpf" maxlength="14" minlength="14">
+
+                                <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="CEP *" th:field="*{cep}" onblur="pesquisacep(this.value);" id="cep" minlength="9" maxlength="9">
+
+                                <input id="rua" class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Endereço *" th:field="*{address}" th:value="*{address}" minlength="10" size="60">
+
+                                <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Número da Residência *" id="locationNumber" th:field="*{locationNumber}">
+
+                                <input class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Complemento" th:field="*{complement}">
+
+                                <input id="accountNumber" class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Número da conta *" th:field="*{accountNumber}" th:value="*{accountNumber}">
+
+                                <select id="necessaryToSelect" class="form-dision_inputfull" th:field="*{departament}">
+                                    <option value="">Departamento *</option>
+                                    <option th:each="Departamento : ${departamentos}" th:value="${Departamento.name}" th:text="${Departamento.name}"></option>
+                                </select>
+
+                                <select id="necessaryToSelect2" class="form-dision_inputfull" th:field="*{occupation}">
+                                    <option value="">Cargo *</option>
+                                    <option th:each="Cargo : ${cargos}" th:value="${Cargo.name}" th:text="${Cargo.name}"></option>
+                                </select>
+                            </div>
+
+                            <input type="submit" value="Cadastrar" class="btn">
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </section>
+
+    <!--=============== SCRIPTS ===============-->
+    <div th:insert="~{fragments/management/scriptsNoTable}"></div>
+   <script th:src="@{/js/regex.js}"></script>
+   <script th:src="@{/js/viacep.js}"></script>
+</body>
+</html>

@@ -54,9 +54,7 @@ import com.fatec.scc.services.occupation.MaintainOccupationI;
 public class APIOccupationController {
 
 	@Autowired
-
 	MaintainOccupationI maintainOccupation;
-
 	Occupation occupation;
 
 	Logger logger = LogManager.getLogger(this.getClass());
