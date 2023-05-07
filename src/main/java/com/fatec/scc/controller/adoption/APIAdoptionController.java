@@ -2,7 +2,6 @@ package com.fatec.scc.controller.adoption;
 
 import java.util.Optional;
 import javax.validation.Valid;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +17,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.fatec.scc.model.adoption.Adoption;
 import com.fatec.scc.model.adoption.AdoptionDTO;
-import com.fatec.scc.model.adoption.MaintainAdoptionRepository;
 import com.fatec.scc.services.Adoption.MaintainAdoptionI;
 
 @RestController
