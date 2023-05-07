@@ -47,7 +47,12 @@ public class GUIAnimalCategoryController {
 
     @PostMapping("/criar-categoria-animal")
 	public RedirectView createAnimalCategory(@Valid AnimalCategory animalCategory, BindingResult result) {
-		if (result.hasErrors()) {
+		if (service.existsByNameAndRaceAndGenderAndSizeAndCoatColor(animalCategory.getName(), animalCategory.getRace(), animalCategory.getGender(), animalCategory.getSize(),
+				animalCategory.getCoatColor())) {
+			return new RedirectView("/criar-categoria-animal?status=Erro&text=Animal_existente!");
+		}
+    	
+    	if (result.hasErrors()) {
 			return new RedirectView("/criar-categoria-animal?status=Erro&text=Revise_os_campos_do_registro!");
 		}
 

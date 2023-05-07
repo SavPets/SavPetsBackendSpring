@@ -90,5 +90,13 @@ public class MaintainAnimalCategoryI implements MaintainAnimalCategory {
 				+ animalCategoryModificado.getId());
 		return Optional.ofNullable(repository.save(animalCategoryModificado));
 	}
-	
+
+	@Override
+	public boolean existsByNameAndRaceAndGenderAndSizeAndCoatColor(String name, String race, String gender, String size,
+			String coatColor) {
+		if (repository.existsByNameAndRaceAndGenderAndSizeAndCoatColor(name, race, gender, size, coatColor)) {
+			return true;
+		}
+		return false;
+	}
 }

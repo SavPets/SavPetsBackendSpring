@@ -26,4 +26,7 @@ public interface MaintainAnimalCategoryRepository extends JpaRepository<AnimalCa
 	Optional<AnimalCategory> findByCoatColor(String coatColor);
 	
 	List<AnimalCategory> findAllByNameIgnoreCaseContaining(String name);
+
+	boolean existsByNameAndRaceAndGenderAndSizeAndCoatColor(String name, String race, String gender, String size,
+			String coatColor);
 }
