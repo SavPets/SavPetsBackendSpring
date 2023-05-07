@@ -12,9 +12,9 @@ import com.fatec.scc.model.adoption.Adoption;
 import com.fatec.scc.model.adoption.MaintainAdoptionRepository;
 import com.fatec.scc.model.animalCategory.AnimalCategory;
 import com.fatec.scc.model.animalCategory.MaintainAnimalCategoryRepository;
-import com.fatec.scc.model.animalReport.MaintainAnimalReportRepository;
 import com.fatec.scc.model.medicine.MaintainMedicineRepository;
 import com.fatec.scc.model.medicine.Medicine;
+
 @Service
 public class MaintainAdoptionI implements MaintainAdoption {
 	

@@ -113,6 +113,11 @@ const fieldsRules = {
   	{ rule: 'required', errorMessage: 'O campo data de fabricação é obrigatório' }
   ],
   
+  // REGRAS DO FORMULARIO CAMPANHAS ADOCAO
+  campaignDate:[
+	  { rule: 'required', errorMessage: 'O campo data é obrigatório' }
+  ],
+  
   // REGRAS DO FORMULARIO FUNCIONARIO
   accountNumber: [
 	  { rule: 'required', errorMessage: 'O campo número da conta é obrigatório' },

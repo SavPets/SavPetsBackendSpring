@@ -41,6 +41,11 @@ public class AnimalReport {
 		this.description = description;
 	}
 
+	public AnimalReport(String animalName, String animalCategory, String arrivalDate) {
+		this.animalName = animalName;
+		this.animalCategory= animalCategory;
+		this.arrivalDate = arrivalDate;
+	}
 	
 	public Long getId() {
 		return id;
