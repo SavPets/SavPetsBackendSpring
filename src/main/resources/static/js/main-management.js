@@ -49,6 +49,10 @@ function openMobileMenu(burger) {
             newPath = '<a class="top-bar_path" href="/adocoes">Adoções</a>'
             topBarPath.insertAdjacentHTML('afterend', newPath)
             break
+        case 'Campanhas de adoção':
+            newPath = '<a class="top-bar_path" href="/campanhas-adocao">Campanhas de adoção</a>'
+            topBarPath.insertAdjacentHTML('afterend', newPath)
+            break
         case 'Relatórios de animais':
             newPath = '<a class="top-bar_path" href="/relatorios-animais">Relatórios de animais</a>'
             topBarPath.insertAdjacentHTML('afterend', newPath)
