@@ -101,9 +101,6 @@ quitOption.forEach(option => {
             confirmButtonText: 'Sim, sair!'
         }).then((result) => {
             if (result.isConfirmed) {
-				localStorage.removeItem("username")
-				localStorage.removeItem("occupation")
-				
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -120,7 +117,9 @@ quitOption.forEach(option => {
                     title: 'Saindo da sessão'
                 })
 				
-                setTimeout(() => window.location.href = "/", 3100)
+                setTimeout(() => window.location.href = "/login", 3100)
+                localStorage.removeItem("username")
+				localStorage.removeItem("occupation")
             }
         })
     })

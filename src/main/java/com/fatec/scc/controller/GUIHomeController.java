@@ -110,7 +110,7 @@ public class GUIHomeController {
 		}
 		serviceE.updates(employee.getEmail(), employee.getPassword());
 
-		return new RedirectView("/?status=Atualizado");
+		return new RedirectView("/login?status=Atualizado");
 	}
 
 	@GetMapping("/painel")
