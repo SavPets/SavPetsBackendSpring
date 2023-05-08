@@ -159,4 +159,11 @@ function showPageStatusModal(icon, title, text) {
     urlParams.delete('status')
     const newUrl = window.location.pathname
     history.replaceState(null, null, newUrl)
+})();
+
+// =============== ROUTE ACCESS CONTROLLER ===============
+(function routeAccessControl() {
+	if (localStorage.getItem("username") == null) {
+		window.location.href = "/login?status=Erro&text=Realize_o_login!"
+	}
 })()
