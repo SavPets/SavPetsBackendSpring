@@ -12,17 +12,21 @@ import com.fatec.scc.model.adoption.Adoption;
 import com.fatec.scc.model.adoption.MaintainAdoptionRepository;
 import com.fatec.scc.model.animalCategory.AnimalCategory;
 import com.fatec.scc.model.animalCategory.MaintainAnimalCategoryRepository;
-import com.fatec.scc.model.medicine.MaintainMedicineRepository;
-import com.fatec.scc.model.medicine.Medicine;
+import com.fatec.scc.model.client.Client;
+import com.fatec.scc.model.client.MaintainClientRepository;
+import com.fatec.scc.model.employee.Employee;
+import com.fatec.scc.model.employee.MaintainEmployeeRepository;
 
 @Service
 public class MaintainAdoptionI implements MaintainAdoption {
 	
 	Logger logger = LogManager.getLogger(this.getClass());
 	@Autowired
-	MaintainMedicineRepository repositoryM;
+	MaintainEmployeeRepository repositoryE;
 	@Autowired
-	MaintainAnimalCategoryRepository repositoryC;
+	MaintainClientRepository repositoryC;
+	@Autowired
+	MaintainAnimalCategoryRepository repositoryA;
 	@Autowired
 	MaintainAdoptionRepository repository;
 	
@@ -32,14 +36,19 @@ public class MaintainAdoptionI implements MaintainAdoption {
 		logger.info(">>>>>> servico consultaTodos chamado");
 		return repository.findAll();
 	}
-	public List<Medicine> searchAllMedicines() {
+	public List<Employee> searchAllEmployee() {
 		logger.info(">>>>>> servico consultaTodos chamado");
-		return repositoryM.findAll();
+		return repositoryE.findAll();
 	}
-	public List<AnimalCategory> searchAllCategories() {
+	public List<Client> searchAllClient() {
 		logger.info(">>>>>> servico consultaTodos chamado");
 		return repositoryC.findAll();
 	}
+	public List<AnimalCategory> searchAllAnimalCategory() {
+		logger.info(">>>>>> servico consultaTodos chamado");
+		return repositoryA.findAll();
+	}
+	
 	@Override
 	public Optional<Adoption> searchById(Long id) {
 		logger.info(">>>>>> servico consultaPorId chamado");

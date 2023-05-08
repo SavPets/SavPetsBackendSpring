@@ -46,6 +46,9 @@
 
     <!--=============== SHOW USERNAME SETTINGS ===============-->
     <script>
+		if (localStorage.getItem("username") == null)
+			window.location.href = "/login?status=Erro&text=Realize_o_login!"
+		
 		const username = document.getElementById("username")
 		if(!localStorage.getItem("username"))
 			localStorage.setItem("username", username.textContent)
