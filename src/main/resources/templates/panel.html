@@ -53,6 +53,14 @@
 			localStorage.setItem("username", username.textContent)
 		
 		username.innerText = localStorage.getItem("username")
+		
+		const occupation = document.getElementById("occupation")
+		if(!localStorage.getItem("occupation"))
+			localStorage.setItem("occupation", occupation.textContent)
+		else if(occupation.textContent != localStorage.getItem("occupation"))
+			localStorage.setItem("occupation", occupation.textContent)
+		
+		occupation.innerText = ""
     </script>
     
     <!--=============== SCRIPTS ===============-->

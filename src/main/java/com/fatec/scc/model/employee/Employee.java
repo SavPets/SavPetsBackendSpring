@@ -32,17 +32,6 @@ public class Employee extends Register {
 	//Construtores
 	public Employee() {	}
 	
-	public Employee(String cpf, String cep, String address, Integer locationNumber, String complement, String accountNumber, String departament, String occupation) {
-		this.cpf = cpf;
-		this.cep = cep;
-		this.address = address;
-		this.locationNumber = locationNumber;
-		this.complement = complement;
-		this.accountNumber = accountNumber;
-		this.departament = departament;
-		this.occupation = occupation;
-	}
-
 	public Employee(String name, String surname, String email, String password, String repeatPassword, String cpf, String cep, String address, Integer locationNumber, String complement, String accountNumber, String departament, String occupation) {
 		super(name, surname, email, password, repeatPassword);
 		this.cpf = cpf;
@@ -53,6 +42,21 @@ public class Employee extends Register {
 		this.accountNumber = accountNumber;
 		this.departament = departament;
 		this.occupation = occupation;
+	}
+	
+	public Employee(String cpf, String cep, String address, Integer locationNumber, String complement, String accountNumber, String departament, String occupation) {
+		this.cpf = cpf;
+		this.cep = cep;
+		this.address = address;
+		this.locationNumber = locationNumber;
+		this.complement = complement;
+		this.accountNumber = accountNumber;
+		this.departament = departament;
+		this.occupation = occupation;
+	}
+	
+	public Employee(String name, String surname, String email, String password, String repeatPassword) {
+		super(name, surname, email, password, repeatPassword);
 	}
 	
 	//Getters e Setters
