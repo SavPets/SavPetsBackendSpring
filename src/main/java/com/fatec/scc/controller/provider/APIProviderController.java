@@ -45,12 +45,7 @@ public class APIProviderController {
 			logger.info(">>>>>> apicontroller consultaporcpf cpf ja cadastrado");
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("CPF já cadastrado");
 		}
-		
-		//Optional<Endereco> endereco = Optional.ofNullable(mantemFornecedor.obtemEndereco(fornecedor.getCep()));
-		//logger.info(">>>>>> apicontroller obtem endereco => " + fornecedor.getCep());
-		//if (endereco.isEmpty()) {
-		//	return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("CEP invalido");
-		//}
+
 		try {
 			return ResponseEntity.status(HttpStatus.CREATED).body(mantemFornecedor.save(providerDTO.returnProvider()));
 		} catch (Exception e) {
@@ -88,10 +83,7 @@ public class APIProviderController {
 		if (c.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 		}
-		//Optional<Endereco> e = Optional.ofNullable(mantemFornecedor.obtemEndereco(fornecedor.getCep()));
-		//if (e.isEmpty()) {
-			//return ResponseEntity.status(HttpStatus.NOT_FOUND).body("CEP não localizado.");
-		//}
+
 		Optional<Provider> cliente = mantemFornecedor.updates(id, providerDTO.returnProvider());
 		return ResponseEntity.status(HttpStatus.OK).body(cliente.get());
 	}
