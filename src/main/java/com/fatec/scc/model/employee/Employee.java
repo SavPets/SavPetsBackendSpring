@@ -17,16 +17,16 @@ public class Employee extends Register {
 	private String cpf;
 	@NotBlank(message = "O CEP é obrigatório.")
 	private String cep;
-	@NotBlank
+	@NotBlank(message = "O endereço é obrigatório")
 	private String address;
 	@NotBlank(message = "O número do endereço é obrigatório")
 	private Integer locationNumber;
 	private String complement;
 	@NotBlank(message = "O número da conta deve ser informado")
 	private String accountNumber;
-	@NotBlank
+	@NotBlank(message = "O departamento é obrigatório")
 	private String departament;
-	@NotBlank
+	@NotBlank(message = "O cargo é obrigatório")
 	private String occupation;
 
 	//Construtores
