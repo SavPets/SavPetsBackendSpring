@@ -41,11 +41,6 @@ public class APIAdoptionController {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		}
 		
-		//try {
-			//adoption.setMedicine(adoptionDTO.getMedicine());
-		//} catch (Exception e) {
-			//return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-		//}
 		try {
 			return ResponseEntity.status(HttpStatus.CREATED)
 					.body(maintainAdoption.save(adoptionDTO.retornoUmaAdocao()));
