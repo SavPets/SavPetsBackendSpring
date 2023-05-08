@@ -24,23 +24,23 @@ public class GUIHomeController {
 	@Autowired
 	MaintainEmployee serviceE;
 
-	@GetMapping("/home")
-	public ModelAndView showHome() {
-		ModelAndView mv = new ModelAndView("home");
+	@GetMapping("/")
+	public ModelAndView showIndex() {
+		ModelAndView mv = new ModelAndView("index");
 		return mv;
 	}
-
-	@GetMapping("/")
-	public ModelAndView showIndex(Employee employee) {
-		ModelAndView mv = new ModelAndView("index");
+	
+	@GetMapping("/login")
+	public ModelAndView showLogin(Employee employee) {
+		ModelAndView mv = new ModelAndView("login");
 		mv.addObject("cadastro", employee);
 		return mv;
 	}
 	
-	@PostMapping("/")
+	@PostMapping("/login")
 	public RedirectView verifyCadastro(@Valid Employee employee, BindingResult result) {
 		if (result.hasErrors()) {
-			return new RedirectView("/?status=Erro&text=Revise_os_campos_de_login!");
+			return new RedirectView("/login?status=Erro&text=Revise_os_campos_de_login!");
 		}
 		
 		if (!service.existsByEmail(employee.getEmail())) {
@@ -53,7 +53,7 @@ public class GUIHomeController {
 			return new RedirectView("/painel");
 		}
 
-		return new RedirectView("/?status=Erro&text=Senha_incorreta!");
+		return new RedirectView("/login?status=Erro&text=Senha_incorreta!");
 	}
 	
 	@GetMapping("/cadastrar")

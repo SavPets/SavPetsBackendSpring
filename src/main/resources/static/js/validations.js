@@ -5,7 +5,8 @@ const validator = new JustValidate('.form',
       border: 'initials',
       color: 'var(--btn-red-color)',
       fontWeight: '600'
-    }
+    },
+    validateBeforeSubmitting: true,
   }
 )
 
