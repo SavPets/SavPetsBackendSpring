@@ -174,6 +174,34 @@ const fieldsRules = {
   ]
 }
 
+const existingFieldsOnTheCurrentPage = document.querySelectorAll('input[id], select[id]')
+existingFieldsOnTheCurrentPage.forEach(field => {
+
+  field.addEventListener('input', (event) => {
+    setTimeout(() => showValidationStatusIcon(event), 100) // delay para rodar depois de digitar
+  })
+
+  const fieldId = field.getAttribute('id')
+  const rulesForThisField = fieldsRules[fieldId]
+
+  if (rulesForThisField)
+    addFieldWithRules([{ fieldId, rules: rulesForThisField }])
+})
+
+function showValidationStatusIcon(event) {
+  const field = event.target
+  const fieldParent = field.parentNode
+  const errorLabel = field.nextElementSibling
+  
+  if (errorLabel && errorLabel.classList.contains('just-validate-error-label')) {
+    fieldParent.classList.add('exclamation') 
+    fieldParent.classList.remove('check') 
+  } else {
+    fieldParent.classList.add('check') 
+    fieldParent.classList.remove('exclamation') 
+  }
+}
+
 function addFieldWithRules(fieldToAdd) {
   fieldToAdd.forEach(({ fieldId, rules }) => {
     const fieldRules = rules.map(({ rule, value, errorMessage }) => ({
@@ -185,15 +213,6 @@ function addFieldWithRules(fieldToAdd) {
     validator.addField(`#${fieldId}`, fieldRules)
   })
 }
-
-const existingFieldsOnTheCurrentPage = document.querySelectorAll('input[id], select[id]')
-existingFieldsOnTheCurrentPage.forEach(field => {
-  const fieldId = field.getAttribute('id')
-  const rulesForThisField = fieldsRules[fieldId]
-
-  if (rulesForThisField)
-    addFieldWithRules([{ fieldId, rules: rulesForThisField }])
-})
 
 validator.onSuccess((event) => {
   const inputSubmit = document.querySelector('input.btn')

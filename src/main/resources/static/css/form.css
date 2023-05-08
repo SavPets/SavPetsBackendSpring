@@ -58,6 +58,24 @@
     opacity: 0.6;
 }
 
+.form-division_wrapper {
+    position: relative;
+}
+
+.form-division_wrapper::after {
+    position: absolute;
+    top: 4rem;
+    right: -2rem;
+}
+
+.form-division_wrapper.check::after {
+    content: url(../img/icon-check.svg);
+}
+
+.form-division_wrapper.exclamation::after {
+    content: url(../img/icon-exclamation.svg);
+}
+
 .form-division_wrapper>label {
     opacity: .6;
     font: 1.4rem;
