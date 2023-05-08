@@ -1,54 +1,55 @@
 /* =============== GENERAL SETTINGS =============== */
-.form{
+.form {
     width: min(36rem, 90%);
 }
 
-.main-container_form > .form{
+.main-container_form>.form {
     width: min(80rem, 90%);
     margin-inline: auto;
-} 
+}
 
-.form-instruction{
+.form-instruction {
     text-align: right;
     margin-bottom: 1.2rem;
 }
 
-.form-instruction > p,
-.form-instruction > span{
+.form-instruction>p,
+.form-instruction>span {
     font-size: 1.2rem;
     font-weight: 600;
     display: inline-block;
 }
 
-.form-instruction > span{
+.form-instruction>span {
     color: #ff0202;
 }
 
-.form-dision{
+.form-dision {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+
     width: 100%;
     margin-bottom: 1.2rem;
 
-    background-color: #fff;
-    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
     border-radius: 1rem;
 }
 
-.form-dision:last-child{
+.form-dision:last-child {
     margin-bottom: 0;
 }
 
 .form-dision input,
-.form-dision select{
-    border-left: none;
-    border-top: none;
-    border-right: none;
-    padding: 2rem;
+.form-dision select {
+    border: 1px solid rgba(82, 87, 96, 0.2);
+    border-radius: .4rem;
+    padding: 1.5rem;
 
     font-size: 1.4rem;
 }
 
-.form-dision select:focus{
-	outline: none;	
+.form-dision select:focus {
+    outline: none;
 }
 
 .form-dision select:first-child {
@@ -57,32 +58,15 @@
     opacity: 0.6;
 }
 
-.form-dision input:first-child{
-    border-radius: 1rem 1rem 0 0;
-}
-
-.form-dision input:last-child,
-.form-dision_textarea{
-    border-radius: 0 0 1rem 1rem;
-}
-
-.form-dision_inputfull{
-    display: block;
-    width: 100%;
-}
-
-.form-dision_select{
-    border-radius: 1rem 0 0 0;
-    border-top: 0;
-    border-left: 0;
-    padding: 2rem;
-}
-
-.form-dision_inputfull::placeholder{
-    color: var(--placeholder-color);
+.form-division_wrapper>label {
     opacity: .6;
     font: 1.4rem;
     font-weight: 600;
+}
+
+.form-dision_inputfull {
+    display: block;
+    width: 100%;
 }
 
 input[type="number"]::-webkit-outer-spin-button,
@@ -93,26 +77,25 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type="date"]::before {
     font: 1.4rem;
     font-weight: 600;
-	color: hsl(219, 8%, 35%);
-    content: attr(placeholder);
+    color: var(--placeholder-color);
     font-family: 'Poppins', sans-serif;
     margin-right: 0.5rem;
     opacity: 0.6;
 }
 
 input[type="date"] {
-	color: #fff;
+    color: #fff;
 }
 
 input[type="date"]:focus,
 input[type="date"]:valid {
-	opacity: 1;
+    opacity: 1;
     font-weight: 400;
-	color: hsl(219, 8%, 35%);
+    color: var(--placeholder-color);
     font-family: 'Poppins', sans-serif;
 }
 
-.form-dision_textarea{
+.form-dision_textarea {
     font-size: 1.4rem;
 
     padding: 2rem;
@@ -120,7 +103,7 @@ input[type="date"]:valid {
     resize: none;
 }
 
-.form > .btn{
+.form>.btn {
     margin: 3.5rem auto 0 auto;
     padding: 1.2rem 2.8rem;
 
@@ -129,18 +112,18 @@ input[type="date"]:valid {
     cursor: pointer;
 }
 
-.main-container_form > .form > .btn{
+.main-container_form>.form>.btn {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
 }
 
 /* =============== PUBLIC PAGES SETTINGS =============== */
-.container-form{
+.container-form {
     display: flex;
     place-content: center;
 }
 
-.container-form textarea{
+.container-form textarea {
     border: solid 1px rgba(0, 0, 0, 0.1);
     border-radius: 0;
     border-left: none;
@@ -150,12 +133,12 @@ input[type="date"]:valid {
 
 /* =============== RESPONSIVE SETTINGS =============== */
 @media (max-width: 500px) {
-    .form > .btn{
+    .form>.btn {
         display: flex;
         justify-content: center;
         align-items: center;
         gap: .5rem;
-        
+
         max-width: 100%;
         padding: .8rem 1.2rem;
         font-size: 1.2rem;
