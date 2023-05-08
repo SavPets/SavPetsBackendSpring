@@ -292,6 +292,15 @@
     opacity: .6;
 }
 
+.btn.btn-text{
+    background: transparent;
+    border: none;
+}
+
+.btn.btn-text.no-padding{
+    padding: 0;
+}
+
 .footer-container_bottom::before{
     content: '';
     display: block;
