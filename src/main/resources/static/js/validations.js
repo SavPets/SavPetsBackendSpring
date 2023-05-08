@@ -19,6 +19,12 @@ const fieldsRules = {
   necessaryToSelect2: [ // Para quando tiver mais de 1 select obrigatório na mesma página (provisório)
     { rule: 'required', errorMessage: 'Selecione alguma opção' },
   ],
+  necessaryToSelect3: [ 
+    { rule: 'required', errorMessage: 'Selecione alguma opção' },
+  ],
+  necessaryToSelect4: [ 
+    { rule: 'required', errorMessage: 'Selecione alguma opção' },
+  ],
 
   // REGRAS DE FORMULARIOS GERAIS
   name: [
