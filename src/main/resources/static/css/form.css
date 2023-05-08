@@ -27,7 +27,7 @@
 .form-dision {
     display: flex;
     flex-direction: column;
-    gap: 1.8rem;
+    gap: 2rem;
 
     width: 100%;
     margin-bottom: 1.2rem;
@@ -86,14 +86,14 @@ input[type="time"]::before {
 
 input[type="date"],
 input[type="time"] {
-	color: #fff;
+    color: #fff;
 }
 
 input[type="date"]:focus,
 input[type="date"]:valid,
 input[type="time"]:focus,
 input[type="time"]:valid {
-	opacity: 1;
+    opacity: 1;
     font-weight: 400;
     color: var(--placeholder-color);
     font-family: 'Poppins', sans-serif;
