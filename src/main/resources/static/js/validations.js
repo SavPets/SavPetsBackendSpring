@@ -117,6 +117,12 @@ const fieldsRules = {
   campaignDate:[
 	  { rule: 'required', errorMessage: 'O campo data é obrigatório' }
   ],
+  time: [
+	  { rule: 'required', errorMessage: 'O campo horário é obrigatório' }
+  ],
+  duration: [
+	  { rule: 'required', errorMessage: 'O campo duração é obrigatório' }
+  ],
   
   // REGRAS DO FORMULARIO FUNCIONARIO
   accountNumber: [

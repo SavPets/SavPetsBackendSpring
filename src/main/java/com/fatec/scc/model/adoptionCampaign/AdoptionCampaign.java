@@ -12,32 +12,38 @@ public class AdoptionCampaign {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@NotBlank(message = "A data de da campanha é obrigatória")
-	private String date;
-	@NotBlank(message = "O local da campanha é obrigatório")
-	private String location;
+	@NotBlank(message = "O nome da campanha é obrigatório")
+	private String name;
 	@NotBlank(message = "A descrição da campanha é obrigatória")
 	private String description;
-	@NotBlank(message = "O id do animal é obrigatório")
-	private Long animalId;
-	@NotBlank(message = "O nome do animal é obrigatório")
-	private String animalName;
-	@NotBlank(message = "A raça do animal é obrigatória")
-	private String animalRace;
-	@NotBlank(message = "A data de chegada do animal é obrigatória")
-	private String arrivalDate;
+	@NotBlank(message = "A data da campanha é obrigatória")
+	private String date;
+	@NotBlank(message = "O horário da campanha é obrigatório")
+	private String time;
+	@NotBlank(message = "A duração da campanha é obrigatória")
+	private String duration;
+	@NotBlank(message = "O local da campanha é obrigatório")
+	private String location;
+	
+	//@NotBlank(message = "O id do animal é obrigatório")
+	//private Long animalId;
+	//@NotBlank(message = "O nome do animal é obrigatório")
+	//private String animalName;
+	//@NotBlank(message = "A raça do animal é obrigatória")
+	//private String animalRace;
+	//@NotBlank(message = "A data de chegada do animal é obrigatória")
+	//private String arrivalDate;
 	
 	public AdoptionCampaign() {	}
 
 
-	public AdoptionCampaign(String date, String location, String description, Long animalId, String animalName, String animalRace, String arrivalDate) {
-		this.date = date;
-		this.location = location;
+	public AdoptionCampaign(String name, String description, String date, String time, String duration, String location) {
+		this.name = name;
 		this.description = description;
-		this.animalId = animalId;
-		this.animalName = animalName;
-		this.animalRace = animalRace;
-		this.arrivalDate = arrivalDate;
+		this.date = date;
+		this.time = time;
+		this.duration = duration;
+		this.location = location;
 	}
 
 	public Long getId() {
@@ -47,18 +53,11 @@ public class AdoptionCampaign {
 		this.id = id;
 	}
 
-	public String getDate() {
-		return date;
+	public String getName() {
+		return name;
 	}
-	public void setDate(String date) {
-		this.date = date;
-	}
-
-	public String getLocation() {
-		return location;
-	}
-	public void setLocation(String location) {
-		this.location = location;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	public String getDescription() {
@@ -68,31 +67,31 @@ public class AdoptionCampaign {
 		this.description = description;
 	}
 	
-	public Long getAnimalId() {
-		return animalId;
+	public String getDate() {
+		return date;
 	}
-	public void setAnimalId(Long id) {
-		this.animalId = id;
+	public void setDate(String date) {
+		this.date = date;
+	}
+	
+	public String getTime() {
+		return time;
+	}
+	public void setTime(String time) {
+		this.time = time;
+	}
+	
+	public String getDuration() {
+		return duration;
+	}
+	public void setDuration(String duration) {
+		this.duration = duration;
 	}
 
-	public String getAnimalName() {
-		return animalName;
+	public String getLocation() {
+		return location;
 	}
-	public void setAnimalName(String animalName) {
-		this.animalName = animalName;
-	}
-
-	public String getAnimalRace() {
-		return animalRace;
-	}
-	public void setAnimalRace(String animalRace) {
-		this.animalRace = animalRace;
-	}
-
-	public String getArrivalDate() {
-		return arrivalDate;
-	}
-	public void setArrivalDate(String arrivalDate) {
-		this.arrivalDate = arrivalDate;
+	public void setLocation(String location) {
+		this.location = location;
 	}
 }

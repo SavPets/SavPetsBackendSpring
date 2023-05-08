@@ -1,7 +1,5 @@
 package com.fatec.scc.controller.adoptionCampaign;
 
-import java.util.Optional;
-
 import javax.validation.Valid;
 
 import org.apache.logging.log4j.LogManager;
@@ -18,9 +16,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.fatec.scc.model.adoptionCampaign.AdoptionCampaign;
 import com.fatec.scc.model.adoptionCampaign.AdoptionCampaignDTO;
-import com.fatec.scc.model.animalReport.AnimalReport;
 import com.fatec.scc.services.adoptionCampaign.MaintainAdoptionCampaign;
-import com.fatec.scc.services.animalReport.MaintainAnimalReportI;
 
 @Controller
 @RequestMapping
@@ -28,8 +24,6 @@ public class GUIAdoptionCampaignController {
 	Logger logger = LogManager.getLogger(GUIAdoptionCampaignController.class);
 	@Autowired
 	MaintainAdoptionCampaign service;
-	@Autowired
-	MaintainAnimalReportI mantemAnimalReport;
 
 	@GetMapping("/campanhas-adocao")
 	public ModelAndView showAdoptionCampaign(AdoptionCampaign campaign) {
@@ -43,18 +37,12 @@ public class GUIAdoptionCampaignController {
     public ModelAndView showCreateAdoptionCampaign(AdoptionCampaign campaign) {
 		ModelAndView modelAndView = new ModelAndView("adoptionCampaign/createAdoptionCampaign");
 		modelAndView.addObject("campanha", campaign);
-		modelAndView.addObject("relatoriosAnimais", service.searchAllAnimals());
 		
 		return modelAndView;
     }
 
     @PostMapping("/criar-campanha-adocao")
 	public RedirectView createAdoptionCampaign(@Valid AdoptionCampaignDTO adoptionCampaignDTO, BindingResult result) {
-    	Optional<AnimalReport> animalReport = mantemAnimalReport.searchById(adoptionCampaignDTO.getAnimalId());
-		adoptionCampaignDTO.setAnimalName(animalReport.get().getAnimalName());
-		adoptionCampaignDTO.setAnimalRace(animalReport.get().getAnimalCategory());
-		adoptionCampaignDTO.setArrivalDate(animalReport.get().getArrivalDate());
-    	
     	if (result.hasErrors()) {
 			return new RedirectView("/criar-campanha-adocaol?status=Erro&text=Revise_os_campos_do_registro!");
 		}
@@ -71,18 +59,12 @@ public class GUIAdoptionCampaignController {
     public ModelAndView showUpdateAdoptionCampaign(@PathVariable("id") Long id) {
 		ModelAndView modelAndView = new ModelAndView("adoptionCampaign/updateAdoptionCampaign");
 		modelAndView.addObject("campanha", service.searchById(id).get());
-		modelAndView.addObject("relatoriosAnimais", service.searchAllAnimals());
 
 		return modelAndView;
     }
 
 	@PostMapping("/atualizar-campanha-adocao/{id}")
 	public RedirectView updateAdoptionCampaign(@PathVariable("id") Long id, @Valid AdoptionCampaign adoptionCampaign, BindingResult result) {
-		Optional<AnimalReport> animalReport = mantemAnimalReport.searchById(adoptionCampaign.getAnimalId());
-		adoptionCampaign.setAnimalName(animalReport.get().getAnimalName());
-		adoptionCampaign.setAnimalRace(animalReport.get().getAnimalCategory());
-		adoptionCampaign.setArrivalDate(animalReport.get().getArrivalDate());
-		
 		if (result.hasErrors()) {
 			adoptionCampaign.setId(id);
 			
