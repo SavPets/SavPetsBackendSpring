@@ -77,10 +77,4 @@ public class GUIAnimalReportController {
 				
 		return new RedirectView("/relatorios-animais?status=Atualizado");
 	}
-
-	@GetMapping("/deletar-relatorio-animal/{id}")
-	public RedirectView deleteAnimalReport(@PathVariable("id") Long id) {
-		service.delete(id);
-		return new RedirectView("/relatorios-animais");
-}
 }

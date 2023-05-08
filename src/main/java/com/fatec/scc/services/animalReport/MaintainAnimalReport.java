@@ -12,18 +12,12 @@ public interface MaintainAnimalReport {
 	List<AnimalReport> searchAll();
 	
 	List<Medicine> searchAllMedicines();
+	
 	List<AnimalCategory> searchAllCategories();
-
 	
 	Optional<AnimalReport> searchById(Long id);
 
 	Optional<AnimalReport> save(AnimalReport animalReport);
 
-	void delete(Long id);
-
 	Optional<AnimalReport> updates(Long id, AnimalReport animalReport);
-
-	
-	
-	
 }
