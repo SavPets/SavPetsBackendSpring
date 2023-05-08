@@ -89,7 +89,6 @@ const fieldsRules = {
     { rule: 'required', errorMessage: 'O campo cor é obrigatório' },
     { rule: 'minLength', value: 4, errorMessage: 'O campo cor deve conter no mínimo 3 caracteres' }
   ],
-
   // REGRAS DO FORMULARIO MEDICAMENTO
   description: [
     { rule: 'required', errorMessage: 'O campo descrição é obrigatório' },
