@@ -17,15 +17,15 @@ function onScroll() {
 }
 
 // =============== MENU ===============
-// (function activeMenuOnCurrentPage(){
-//     const page = `./${bodyElement.classList}.html`
-//
-//     const headerListOption = document.querySelector(`.header-list_option[href="${page}"]`)
-//     if(headerListOption.textContent == 'Cadastre-se') {
-//         headerListOption.classList.add('menu-active-btn')
-//     }
-//     headerListOption.classList.add('menu-active')
-// })()
+(function activeMenuOnCurrentPage(){
+    const page = `/${bodyElement.classList}`
+
+    const headerListOption = document.querySelector(`.header-list_option[href="${page}"]`)
+    if(headerListOption.textContent == 'Cadastre-se') {
+        headerListOption.classList.add('menu-active-btn')
+    }
+    headerListOption.classList.add('menu-active')
+})()
 
 function changeColorMenuOnScroll(menu) {
     menu.classList.add('fixed-menu')
