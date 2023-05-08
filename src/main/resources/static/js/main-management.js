@@ -82,6 +82,7 @@ function openMobileMenu(burger) {
 
 // =============== SHOW USER SETTINGS =============== 
 username.innerText = localStorage.getItem("username")
+occupation.innerText = ""
 
 // =============== QUIT OPTIONS SETTINGS ===============
 const quitOption = document.querySelectorAll('.option-quit')
@@ -100,6 +101,9 @@ quitOption.forEach(option => {
             confirmButtonText: 'Sim, sair!'
         }).then((result) => {
             if (result.isConfirmed) {
+				localStorage.removeItem("username")
+				localStorage.removeItem("occupation")
+				
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
@@ -115,7 +119,7 @@ quitOption.forEach(option => {
                     icon: 'warning',
                     title: 'Saindo da sessão'
                 })
-
+				
                 setTimeout(() => window.location.href = "/", 3100)
             }
         })

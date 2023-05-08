@@ -23,17 +23,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fatec.scc.model.adoptionCampaign.AdoptionCampaign;
 import com.fatec.scc.model.adoptionCampaign.AdoptionCampaignDTO;
-import com.fatec.scc.model.animalReport.AnimalReport;
 import com.fatec.scc.services.adoptionCampaign.MaintainAdoptionCampaignI;
-import com.fatec.scc.services.animalReport.MaintainAnimalReportI;
 
 @RestController
 @RequestMapping("/api/v1/campanhas-adocao")
 public class APIAdoptionCampaignController {
 	@Autowired
 	MaintainAdoptionCampaignI mantemAdoptionCampaign;
-	@Autowired
-	MaintainAnimalReportI mantemAnimalReport;
 	AdoptionCampaign campaign;
 	Logger logger = LogManager.getLogger(this.getClass());
 
@@ -47,11 +43,6 @@ public class APIAdoptionCampaignController {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		}
 		try {
-			Optional<AnimalReport> animalReport = mantemAnimalReport.searchById(adoptionCampaignDTO.getAnimalId());
-			adoptionCampaignDTO.setAnimalName(animalReport.get().getAnimalName());
-			adoptionCampaignDTO.setAnimalRace(animalReport.get().getAnimalCategory());
-			adoptionCampaignDTO.setArrivalDate(animalReport.get().getArrivalDate());
-			
 			return ResponseEntity.status(HttpStatus.CREATED).body(mantemAdoptionCampaign.save(adoptionCampaignDTO.returnAdoptionCampaign()));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro não esperado ");

@@ -36,12 +36,12 @@
                                         <thead>
                                             <tr>
                                                 <th>Código</th>
-                                                <th>Data</th>
-                                                <th>Local</th>
+                                                <th>Nome do evento</th>
                                                 <th>Descrição</th>
-                                                <th>Nome do animal</th>
-                                                <th>Raça do animal</th>
-                                                <th>Chegada do animal</th>
+                                                <th>Data</th>
+                                                <th>Horário do evento</th>
+                                                <th>Duração</th>
+                                                <th>Local</th>
                                                 <th>Editar</th>
                                                 <th>Excluir</th>
                                             </tr>
@@ -49,12 +49,12 @@
                                         <tbody>
                                             <tr th:each="CampanhaAdocao : ${campanhasAdocao}">
                                                 <td th:text="${CampanhaAdocao.id}"></td>
-                                                <td th:text="${CampanhaAdocao.date}"></td>
-                                                <td th:text="${CampanhaAdocao.location}"></td>
+                                                <td th:text="${CampanhaAdocao.name}"></td>
                                                 <td th:text="${CampanhaAdocao.description}"></td>
-                                                <td th:text="${CampanhaAdocao.animalName}"></td>
-                                                <td th:text="${CampanhaAdocao.animalRace}"></td>
-                                                <td th:text="${CampanhaAdocao.arrivalDate}"></td>
+                                                <td th:text="${CampanhaAdocao.date}"></td>
+                                                <td th:text="${CampanhaAdocao.time}"></td>
+                                                <td th:text="${CampanhaAdocao.duration}"></td>
+                                                <td th:text="${CampanhaAdocao.location}"></td>
                                                 <td class="column-action column-action_edit">
                                                     <a th:href="@{/atualizar-campanha-adocao/{id} (id=${CampanhaAdocao.id})}">
                                                         <svg width="21" height="18" viewBox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg">

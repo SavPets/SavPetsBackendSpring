@@ -10,62 +10,66 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.fatec.scc.model.register.Register;
+import com.fatec.scc.model.employee.Employee;
 import com.fatec.scc.services.MaintainRegister;
+import com.fatec.scc.services.employee.MaintainEmployee;
 
 @Controller
 public class GUIHomeController {
-	// Rotas de acesso
 	String username;
+	String occupation;
 	
 	@Autowired
 	MaintainRegister service;
-
-	@GetMapping("/home")
-	public ModelAndView showHome() {
-		ModelAndView mv = new ModelAndView("home");
-		return mv;
-	}
+	@Autowired
+	MaintainEmployee serviceE;
 
 	@GetMapping("/")
-	public ModelAndView showIndex(Register register) {
+	public ModelAndView showIndex() {
 		ModelAndView mv = new ModelAndView("index");
-		mv.addObject("cadastro", register);
 		return mv;
 	}
 	
-	@PostMapping("/")
-	public RedirectView verifyCadastro(@Valid Register register, BindingResult result) {
+	@GetMapping("/login")
+	public ModelAndView showLogin(Employee employee) {
+		ModelAndView mv = new ModelAndView("login");
+		mv.addObject("cadastro", employee);
+		return mv;
+	}
+	
+	@PostMapping("/login")
+	public RedirectView verifyCadastro(@Valid Employee employee, BindingResult result) {
 		if (result.hasErrors()) {
-			return new RedirectView("/?status=Erro&text=Revise_os_campos_de_login!");
+			return new RedirectView("/login?status=Erro&text=Revise_os_campos_de_login!");
 		}
 		
-		if (!service.existsByEmail(register.getEmail())) {
+		if (!service.existsByEmail(employee.getEmail())) {
 			return new RedirectView("/cadastrar?status=Erro&text=Cadastre-se_para_acessar_o_sistema!");
 		}
 		
-		if (service.verify(register.getEmail(), register.getPassword())) {
-			username = service.searchByEmail(register.getEmail()).get().getName();
+		if (service.verify(employee.getEmail(), employee.getPassword())) {
+			username = service.searchByEmail(employee.getEmail()).get().getName();
+			occupation = serviceE.searchByEmail(employee.getEmail()).get().getOccupation();
 			return new RedirectView("/painel");
 		}
 
-		return new RedirectView("/?status=Erro&text=Senha_incorreta!");
+		return new RedirectView("/login?status=Erro&text=Senha_incorreta!");
 	}
 	
 	@GetMapping("/cadastrar")
-	public ModelAndView showISignUp(Register register) {
+	public ModelAndView showISignUp(Employee employee) {
 		ModelAndView mv = new ModelAndView("signup");
-		mv.addObject("cadastro", register);
+		mv.addObject("cadastro", employee);
 		return mv;
 	}
 	
 	@PostMapping("/criar-cadastro")
-	public RedirectView createCadastro(@Valid Register register, BindingResult result) {
-		if (service.existsByEmail(register.getEmail())) {
+	public RedirectView createCadastro(@Valid Employee employee, BindingResult result) {
+		if (service.existsByEmail(employee.getEmail())) {
 			return new RedirectView("/cadastrar?status=Erro&text=Email_em_uso!");
 		}
 		
-		if (!register.getPassword().equals(register.getRepeatPassword())) {
+		if (!employee.getPassword().equals(employee.getRepeatPassword())) {
 			return new RedirectView("/cadastrar?status=Erro&text=Senhas_diferentes!");
 		}
 		
@@ -73,45 +77,47 @@ public class GUIHomeController {
 			return new RedirectView("/cadastrar?status=Erro&text=Revise_os_campos!");
 		}
 
-		if (!service.save(register).isPresent()) {
+		if (!service.save(employee).isPresent()) {
 			ModelAndView modelAndView = new ModelAndView("signup");
 			modelAndView.addObject("message", "Dados inválidos");
 		}
 		
-		username = register.getName();
+		username = employee.getName();
+		occupation = "";
 		
 		return new RedirectView("/painel?status=Cadastrado");
 	}
 	
 	@GetMapping("/alterar-senha")
-	public ModelAndView showUpdateCadastro(Register register) {
+	public ModelAndView showUpdateCadastro(Employee employee) {
 		ModelAndView mv = new ModelAndView("changePassword");
-		mv.addObject("cadastro", register);
+		mv.addObject("cadastro", employee);
 		return mv;
 	}
 	
 	@PostMapping("/alterar-senha")
-	public RedirectView updateCadastro(@Valid Register register, BindingResult result) {
-		if (!service.existsByEmail(register.getEmail())) {
+	public RedirectView updateCadastro(@Valid Employee employee, BindingResult result) {
+		if (!service.existsByEmail(employee.getEmail())) {
 			return new RedirectView("/cadastrar?status=Erro&text=Credenciais_sem_cadastro!");
 		}
 		
-		if (!register.getPassword().equals(register.getRepeatPassword())) {
+		if (!employee.getPassword().equals(employee.getRepeatPassword())) {
 			return new RedirectView("/alterar-senha?status=Erro&text=Senhas_diferentes!");
 		}
 		
 		if (result.hasErrors()) {
 			return new RedirectView("/alterar-senha?status=Erro&text=Revise_os_campos!");
 		}
-		service.updates(register.getEmail(), register.getPassword());
+		serviceE.updates(employee.getEmail(), employee.getPassword());
 
 		return new RedirectView("/?status=Atualizado");
 	}
 
 	@GetMapping("/painel")
-	public ModelAndView showPanel(@Valid Register register, BindingResult result) {
+	public ModelAndView showPanel() {
 		ModelAndView mv = new ModelAndView("panel");
 		mv.addObject("username", username);
+		mv.addObject("userOccupation", occupation);
 		return mv;
 	}
 	

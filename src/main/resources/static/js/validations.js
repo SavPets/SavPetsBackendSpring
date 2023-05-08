@@ -4,7 +4,8 @@ const validator = new JustValidate('.form',
       border: 'initials',
       color: 'var(--btn-red-color)',
       fontWeight: '500'
-    }
+    },
+    validateBeforeSubmitting: true,
   }
 )
 
@@ -116,7 +117,13 @@ const fieldsRules = {
   campaignDate: [
     { rule: 'required', errorMessage: 'O campo data é obrigatório' }
   ],
-
+  time: [
+	  { rule: 'required', errorMessage: 'O campo horário é obrigatório' }
+  ],
+  duration: [
+	  { rule: 'required', errorMessage: 'O campo duração é obrigatório' }
+  ],
+  
   // REGRAS DO FORMULARIO FUNCIONARIO
   accountNumber: [
     { rule: 'required', errorMessage: 'O campo número da conta é obrigatório' },

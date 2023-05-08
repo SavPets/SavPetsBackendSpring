@@ -34,14 +34,12 @@
                             </div>
 
                             <div class="form-dision">
+								<input class="form-dision_inputfull" type="text" placeholder="Nome do evento *" id="name" th:field="*{name}">
+								<input class="form-dision_inputfull" type="text" placeholder="Descrição *" id="description" th:field="*{description}">
 								<input class="form-dision_inputfull" type="date" placeholder="Data da campanha *: " name="dataCampanha" id="campaignDate" th:field="*{date}" max="9999-12-31">
+								<input class="form-dision_inputfull" type="time" placeholder="Horário do evento *" id="time" th:field="*{time}">
+								<input class="form-dision_inputfull" type="time" placeholder="Duração *" id="duration" th:field="*{duration}">
 								<input class="form-dision_inputfull" type="text" placeholder="Local *" id="local" th:field="*{location}">
-                                <input class="form-dision_inputfull" type="text" placeholder="Descrição *" id="description" th:field="*{description}">
-                                
-                                <select id="necessaryToSelect" class="form-dision_inputfull" th:field="*{animalId}">
-									<option selected hidden value="">Animal *</option>
-								    <option th:each="RelatorioAnimal : ${relatoriosAnimais}" th:value="${RelatorioAnimal.id}" th:text="${RelatorioAnimal.animalName}"></option>
-								</select>
                             </div>
 
                             <input type="submit" value="Cadastrar" class="btn">

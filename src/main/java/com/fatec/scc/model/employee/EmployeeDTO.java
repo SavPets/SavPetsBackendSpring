@@ -9,32 +9,21 @@ public class EmployeeDTO extends Register {
 	private String cpf;
 	@NotBlank(message = "O CEP é obrigatório.")
 	private String cep;
-	@NotBlank
+	@NotBlank(message = "O endereço é obrigatório")
 	private String address;
 	@NotBlank(message = "O número do endereço é obrigatório")
 	private Integer locationNumber;
 	private String complement;
 	@NotBlank(message = "O número da conta deve ser informado")
 	private String accountNumber;
-	@NotBlank
+	@NotBlank(message = "O departamento é obrigatório")
 	private String departament;
-	@NotBlank
+	@NotBlank(message = "O cargo é obrigatório")
 	private String occupation;
 
 	//Construtores
 	public EmployeeDTO() {	}
 	
-	public EmployeeDTO(String cpf, String cep, String address, Integer locationNumber, String complement, String accountNumber, String departament, String occupation) {
-		this.cpf = cpf;
-		this.cep = cep;
-		this.address = address;
-		this.locationNumber = locationNumber;
-		this.complement = complement;
-		this.accountNumber = accountNumber;
-		this.departament = departament;
-		this.occupation = occupation;
-	}
-
 	public EmployeeDTO(String name, String surname, String email, String password, String repeatPassword, String cpf, String cep, String address, Integer locationNumber, String complement, String accountNumber, String departament, String occupation) {
 		super(name, surname, email, password, repeatPassword);
 		this.cpf = cpf;
@@ -46,6 +35,22 @@ public class EmployeeDTO extends Register {
 		this.departament = departament;
 		this.occupation = occupation;
 	}
+	
+	public EmployeeDTO(String cpf, String cep, String address, Integer locationNumber, String complement, String accountNumber, String departament, String occupation) {
+		this.cpf = cpf;
+		this.cep = cep;
+		this.address = address;
+		this.locationNumber = locationNumber;
+		this.complement = complement;
+		this.accountNumber = accountNumber;
+		this.departament = departament;
+		this.occupation = occupation;
+	}
+	
+	public EmployeeDTO(String name, String surname, String email, String password, String repeatPassword) {
+		super(name, surname, email, password, repeatPassword);
+	}
+	
 	
 	//Getters e Setters
 	public String getCpf() {
