@@ -27,7 +27,7 @@
 				</div>
 
 				<div class="identify-container_form container-form">
-					<form class="form" th:action="@{/login}" th:object="${cadastro}" method="post">
+					<form class="form" th:action="@{/login}" th:object="${cadastro}" method="post" onSubmit="login()">
 						<div class="form-instruction">
 							<p>Preenchimento obrigatório</p><span>*</span>
 						</div>
@@ -67,6 +67,13 @@
     <script src="js/main.js"></script>
     <script src="js/alertsNoMenu.js"></script>
     <script src="/js/validations.js"></script>
+    
+    <!--=============== FUNÇÃO PARA EXECUTAR O LOGIN AO CADASTRAR ===============-->
+    <script>
+    	function login() {
+			localStorage.setItem("username", "")
+		}
+    </script>
 </body>
 
 </html>
