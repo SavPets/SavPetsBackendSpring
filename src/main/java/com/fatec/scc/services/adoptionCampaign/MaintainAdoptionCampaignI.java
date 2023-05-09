@@ -38,8 +38,8 @@ public class MaintainAdoptionCampaignI implements MaintainAdoptionCampaign {
 	@Override
 	public Optional<AdoptionCampaign> updates(Long id, AdoptionCampaign adoptionCampaign) {
 		logger.info(">>>>>> 1.servico atualiza informações de campanha chamado");
-		AdoptionCampaign modifiedCampaign = new AdoptionCampaign(adoptionCampaign.getName(), adoptionCampaign.getDescription(), adoptionCampaign.getDate(), adoptionCampaign.getTime(),
-				adoptionCampaign.getDuration(), adoptionCampaign.getLocation());
+		AdoptionCampaign modifiedCampaign = new AdoptionCampaign(adoptionCampaign.getName(), adoptionCampaign.getDescription(), adoptionCampaign.getDate(), adoptionCampaign.getStartTime(),
+				adoptionCampaign.getEndTime(), adoptionCampaign.getLocation());
 
 		modifiedCampaign.setId(id);
 		

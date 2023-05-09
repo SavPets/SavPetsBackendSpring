@@ -125,11 +125,11 @@ const fieldsRules = {
     { rule: 'required', errorMessage: 'O campo data é obrigatório' }
   ],
 
-  time: [
-	  { rule: 'required', errorMessage: 'O campo horário é obrigatório' }
+  startTime: [
+	  { rule: 'required', errorMessage: 'O campo início do evento é obrigatório' }
   ],
-  duration: [
-	  { rule: 'required', errorMessage: 'O campo duração é obrigatório' }
+  endTime: [
+	  { rule: 'required', errorMessage: 'O campo fim do evento é obrigatório' }
   ],
   
   // REGRAS DO FORMULARIO FUNCIONARIO

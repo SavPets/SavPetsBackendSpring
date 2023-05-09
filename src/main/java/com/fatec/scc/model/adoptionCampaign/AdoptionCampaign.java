@@ -18,31 +18,22 @@ public class AdoptionCampaign {
 	private String description;
 	@NotBlank(message = "A data da campanha é obrigatória")
 	private String date;
-	@NotBlank(message = "O horário da campanha é obrigatório")
-	private String time;
-	@NotBlank(message = "A duração da campanha é obrigatória")
-	private String duration;
+	@NotBlank(message = "O horário de início da campanha é obrigatório")
+	private String startTime;
+	@NotBlank(message = "O horário de fim da campanha é obrigatório")
+	private String endTime;
 	@NotBlank(message = "O local da campanha é obrigatório")
 	private String location;
-	
-	//@NotBlank(message = "O id do animal é obrigatório")
-	//private Long animalId;
-	//@NotBlank(message = "O nome do animal é obrigatório")
-	//private String animalName;
-	//@NotBlank(message = "A raça do animal é obrigatória")
-	//private String animalRace;
-	//@NotBlank(message = "A data de chegada do animal é obrigatória")
-	//private String arrivalDate;
 	
 	public AdoptionCampaign() {	}
 
 
-	public AdoptionCampaign(String name, String description, String date, String time, String duration, String location) {
+	public AdoptionCampaign(String name, String description, String date, String startTime, String endTime, String location) {
 		this.name = name;
 		this.description = description;
 		this.date = date;
-		this.time = time;
-		this.duration = duration;
+		this.startTime = startTime;
+		this.endTime = endTime;
 		this.location = location;
 	}
 
@@ -74,18 +65,18 @@ public class AdoptionCampaign {
 		this.date = date;
 	}
 	
-	public String getTime() {
-		return time;
+	public String getStartTime() {
+		return startTime;
 	}
-	public void setTime(String time) {
-		this.time = time;
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
 	}
 	
-	public String getDuration() {
-		return duration;
+	public String getEndTime() {
+		return endTime;
 	}
-	public void setDuration(String duration) {
-		this.duration = duration;
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
 	}
 
 	public String getLocation() {

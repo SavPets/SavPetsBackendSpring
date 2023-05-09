@@ -39,8 +39,8 @@
                                                 <th>Nome do evento</th>
                                                 <th>Descrição</th>
                                                 <th>Data</th>
-                                                <th>Horário do evento</th>
-                                                <th>Duração</th>
+                                                <th>Início do evento</th>
+                                                <th>Fim do evento</th>
                                                 <th>Local</th>
                                                 <th>Editar</th>
                                                 <th>Excluir</th>
@@ -52,8 +52,8 @@
                                                 <td th:text="${CampanhaAdocao.name}"></td>
                                                 <td th:text="${CampanhaAdocao.description}"></td>
                                                 <td th:text="${CampanhaAdocao.date}"></td>
-                                                <td th:text="${CampanhaAdocao.time}"></td>
-                                                <td th:text="${CampanhaAdocao.duration}"></td>
+                                                <td th:text="${CampanhaAdocao.startTime}"></td>
+                                                <td th:text="${CampanhaAdocao.endTime}"></td>
                                                 <td th:text="${CampanhaAdocao.location}"></td>
                                                 <td class="column-action column-action_edit">
                                                     <a th:href="@{/atualizar-campanha-adocao/{id} (id=${CampanhaAdocao.id})}">
