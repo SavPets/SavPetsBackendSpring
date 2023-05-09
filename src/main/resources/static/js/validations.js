@@ -161,10 +161,8 @@ const fieldsRules = {
     { rule: 'required', errorMessage: 'O campo senha é obrigatório' },
     { rule: 'strongPassword', errorMessage: 'A senha deve conter pelo menos 8 dígitos, uma letra maiúscula, uma minúscula, um caractere especial e um número' }
   ],
-  repeatPassword: [
-    { rule: 'required', errorMessage: 'O campo repetir senha é obrigatório' },
-    { rule: 'strongPassword', errorMessage: 'A senha deve conter pelo menos 8 dígitos, uma letra maiúscula, uma minúscula, um caractere especial e um número' }
-  ],
+  
+  
 
   // REGRAS DO FORMULARIO FORNECEDOR
   provider: [
@@ -177,6 +175,25 @@ const fieldsRules = {
     { rule: 'customRegexp', value: /(^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$)/, errorMessage: 'O campo' }
   ]
 }
+
+// REGRA PARA O CAMPO REPETIR SENHA
+if (document.getElementById("repeatPassword") != null) {
+	validator.addField(repeatPassword, [
+    	{ rule: 'required', errorMessage: 'O campo repetir senha é obrigatório' },
+    	{ rule: 'strongPassword', errorMessage: 'A senha deve conter pelo menos 8 dígitos, uma letra maiúscula, uma minúscula, um caractere especial e um número' },
+    	{ validator: (value, fields) => {
+        	if (
+          	fields['#password'] &&
+          	fields['#password'].elem
+        	) {
+          	const repeatPasswordValue =
+            	fields['#password'].elem.value;
+          	return value === repeatPasswordValue;
+        	}
+        	return true;
+      	},
+      	errorMessage: 'Repita a mesma senha',
+    }])}
 
 const existingFieldsOnTheCurrentPage = document.querySelectorAll('input[id], select[id]')
 existingFieldsOnTheCurrentPage.forEach(field => {
