@@ -58,7 +58,7 @@ public class GUIEmployeeController {
 				ModelAndView modelAndView = new ModelAndView("employee/createEmployee");
 				modelAndView.addObject("message", "Dados invalidos");
 			}
-			return new RedirectView("/funcionarios"); 
+			return new RedirectView("/funcionarios?status=Cadastrado");
 		}
 		
 		@GetMapping("/atualizar-funcionario/{id}")
@@ -84,7 +84,7 @@ public class GUIEmployeeController {
 			}
 			service.updates(id, employee);
 					
-			return new RedirectView("/funcionarios");
+			return new RedirectView("/funcionarios?status=Atualizado");
 		}
 		@GetMapping("/deletar-funcionario/{id}")
 		public RedirectView deleteEmployee(@PathVariable("id") Long id) {

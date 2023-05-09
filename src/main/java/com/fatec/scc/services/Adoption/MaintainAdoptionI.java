@@ -61,11 +61,7 @@ public class MaintainAdoptionI implements MaintainAdoption {
 		return Optional.ofNullable(repository.save(adoption));
 	}
 
-	@Override
-	public void delete(Long id) {
-		logger.info(">>>>>> servico delete por id chamado");
-		repository.deleteById(id);
-	}
+
 
 	@Override
 	public Optional<Adoption> updates(Long id, Adoption adoption) {

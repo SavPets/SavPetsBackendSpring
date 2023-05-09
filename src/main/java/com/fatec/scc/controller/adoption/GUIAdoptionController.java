@@ -79,9 +79,4 @@ public class GUIAdoptionController {
 		return new RedirectView("/adocoes?status=Atualizado");
 	}
 
-	@GetMapping("/deletar-adocao/{id}")
-	public RedirectView deleteAdoption(@PathVariable("id") Long id) {
-		service.delete(id);
-		return new RedirectView("/adocoes");
-}
 }

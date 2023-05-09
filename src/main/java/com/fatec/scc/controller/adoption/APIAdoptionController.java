@@ -56,17 +56,6 @@ public class APIAdoptionController {
 	}
 
 	@CrossOrigin // desabilita o cors do spring security
-	@DeleteMapping("/{id}")
-	public ResponseEntity<Object> deleteById(@PathVariable(value = "id") Long id) {
-		Optional<Adoption> adoption = maintainAdoption.searchById(id);
-		if (adoption.isEmpty()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
-		}
-		maintainAdoption.delete(adoption.get().getId());
-		return ResponseEntity.status(HttpStatus.OK).body("Categoria excluida");
-	}
-
-	@CrossOrigin // desabilita o cors do spring security
 	@PutMapping("/{id}")
 	public ResponseEntity<Object> updates(@PathVariable long id,
 										  @RequestBody @Valid AdoptionDTO adoptionDTO, BindingResult result) {
