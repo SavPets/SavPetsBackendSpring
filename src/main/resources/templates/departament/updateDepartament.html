@@ -34,11 +34,14 @@
                             </div>
     
                             <div class="form-dision">
-                                <div>
-                                    <input id="name" class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Nome *" th:field="*{name}" th:value="${departament.name}">
+                                <div class="form-division_wrapper">
+                                    <label for="name">Nome do Departamento *</label>
+
+                                    <input id="name" class="form-dision_inputfull form-dision_top_right" type="text"  th:field="*{name}">
                                 </div>
-                                <div>
-                                    <input id="initials" class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Iniciais *" th:field="*{initials}" th:value="${departament.initials}">
+                                <div class="form-division_wrapper">
+                                    <label for="initials">Iniciais *</label>
+                                    <input id="initials" class="form-dision_inputfull form-dision_top_right" type="text"  th:field="*{initials}">
                                 </div>
                             </div>
         

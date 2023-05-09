@@ -34,30 +34,45 @@
 							</div>
 
 							<div class="form-dision">
-								<div>
-									<input id="firstName" class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Primeiro Nome *" th:field="*{firstName}">
+								<div class="form-division_wrapper">
+									<label for="firstName">Primeiro Nome *</label>
+									<input id="firstName" class="form-dision_inputfull form-dision_top_right" type="text" th:field="*{firstName}">
 								</div>
-								<div>
-									<input id="lastName" class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Último Nome *" th:field="*{lastName}">
+
+								<div class="form-division_wrapper">
+									<label for="lastName">Último Nome *</label>
+									<input id="lastName" class="form-dision_inputfull form-dision_top_right" type="text"  th:field="*{lastName}" >
 								</div>
-								<div>
-									<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Telefone *" th:field="*{telephone}" id="telefone" maxlength="14">
+
+								<div class="form-division_wrapper">
+									<label for="telefone">Telefone *</label>
+									<input class="form-dision_inputfull form-dision_top_right" type="text"  th:field="*{telephone}" id="telefone" maxlength="14">
 								</div>
-								<div>
-									<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="CPF *" th:field="*{cpf}" id="cpf" maxlength="14">
+
+								<div class="form-division_wrapper">
+									<label for="cpf">CPF *</label>
+									<input class="form-dision_inputfull form-dision_top_right" type="text"  th:field="*{cpf}" id="cpf" maxlength="14">
 								</div>
-								<div>
-									<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="CEP *" th:field="*{cep}" id="cep" onblur="pesquisacep(this.value);" maxlength="9">
+
+								<div class="form-division_wrapper">
+									<label for="cep">CEP *</label>
+									<input class="form-dision_inputfull form-dision_top_right" type="text"  th:field="*{cep}" id="cep" onblur="pesquisacep(this.value);" maxlength="9">
 								</div>
-								<div>
-									<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Endereço *" th:field="*{address}" id="rua">
+
+								<div class="form-division_wrapper">
+									<label for="rua">Endereço *</label>
+									<input class="form-dision_inputfull form-dision_top_right" type="text"  th:field="*{address}" id="rua">
 								</div>
-								<div>
-									<input class="form-dision_inputfull form-dision_top_right" type="number" placeholder="Número da Residência *" id="locationNumber" th:field="*{locationNumber}">
+
+								<div class="form-division_wrapper">
+									<label for="locationNumber">Número da Residência *</label>
+									<input class="form-dision_inputfull form-dision_top_right" type="text"  id="locationNumber" th:field="*{locationNumber}">
 								</div>
-								<div>
-									<input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Complemento" th:field="*{complement}">
-								</div>
+
+								<div class="form-division_wrapper">
+									<label>Complemento </label>
+									<input class="form-dision_inputfull form-dision_top_right" type="text"  th:field="*{complement}">
+								</div>]
 							</div>
 
 							<input type="submit" value="Cadastrar" class="btn">

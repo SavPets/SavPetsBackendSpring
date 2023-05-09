@@ -34,23 +34,34 @@
                             </div>
     
                             <div class="form-dision">
-                                <div>
-                                    <input class="form-dision_inputfull" type="text" placeholder="Fornecedor *" th:field="*{name}">
+                                <div class="form-division_wrapper">
+                                    <label for="name">Nome do Fornecedor *</label>
+                                    <input class="form-dision_inputfull" type="text" id="name" th:field="*{name}">
                                 </div>
-                                <div>
-                                    <input class="form-dision_inputfull" type="text" placeholder="CNPJ *" th:field="*{cnpj}" id="cnpj" maxlength="18">
+
+                                <div class="form-division_wrapper">
+                                    <label for="cnpj">CNPJ *</label>
+                                    <input class="form-dision_inputfull" type="text"  th:field="*{cnpj}" id="cnpj" maxlength="18">
                                 </div>
-                                <div>
-                                    <input class="form-dision_inputfull form-dision_top_right" type="text" id="cep" placeholder="CEP *" th:field="*{cep}" onblur="pesquisacep(this.value);" maxlength="9">
+
+                                <div class="form-division_wrapper">
+                                    <label for="cep">CEP *</label>
+                                    <input class="form-dision_inputfull form-dision_top_right" type="text" id="cep"  th:field="*{cep}" onblur="pesquisacep(this.value);" maxlength="9">
                                 </div>
-                                <div>
-                                    <input class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Endereço *" th:field="*{address}" id="rua" size="60">
+
+                                <div class="form-division_wrapper">
+                                    <label for="rua">Endereço *</label>
+                                    <input class="form-dision_inputfull form-dision_top_left" type="text" th:field="*{address}" id="rua" size="60">
                                 </div>
-                                <div>
-                                    <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Número da Residência *" id="locationNumber" th:field="*{locationNumber}">
+
+                                <div class="form-division_wrapper">
+                                    <label for="locationNumber">Número da Residência *</label>
+                                    <input class="form-dision_inputfull form-dision_top_right" type="text"  id="locationNumber" th:field="*{locationNumber}">
                                 </div>
-                                <div>
-                                    <input class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Complemento" th:field="*{complement}">
+
+                                <div class="form-division_wrapper">
+                                    <label>Complemento </label>
+                                    <input class="form-dision_inputfull form-dision_top_left" type="text" th:field="*{complement}">
                                 </div>
                             </div>
                               <input type="submit" value="Cadastrar" class="btn">

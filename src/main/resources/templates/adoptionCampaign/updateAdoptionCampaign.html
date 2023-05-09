@@ -34,12 +34,35 @@
                             </div>
 
                             <div class="form-dision">
-								<input class="form-dision_inputfull" type="text" placeholder="Nome do evento *" id="name" th:field="*{name}">
-								<input class="form-dision_inputfull" type="text" placeholder="Descrição *" id="description" th:field="*{description}">
-								<input class="form-dision_inputfull" type="date" placeholder="Data da campanha *: " name="dataCampanha" id="campaignDate" th:field="*{date}" max="9999-12-31">
-								<input class="form-dision_inputfull" type="time" placeholder="Horário do evento *" id="time" th:field="*{time}">
-								<input class="form-dision_inputfull" type="time" placeholder="Duração *" id="duration" th:field="*{duration}">
-								<input class="form-dision_inputfull" type="text" placeholder="Local *" id="local" th:field="*{location}">
+                                <div class="form-division_wrapper">
+                                    <label for="name">Nome do Evento *</label>
+                                    <input class="form-dision_inputfull" type="text"  id="name" th:field="*{name}">
+                                </div>
+
+                                <div class="form-division_wrapper">
+                                    <label for="description">Descrição *</label>
+                                    <input class="form-dision_inputfull" type="text" id="description" th:field="*{description}">
+                                </div>
+
+                                <div class="form-division_wrapper">
+                                    <label for="campaignDate">Data da Campanha *</label>
+                                    <input class="form-dision_inputfull" type="date"  name="dataCampanha" id="campaignDate" th:field="*{date}" max="9999-12-31">
+                                </div>
+
+                                <div class="form-division_wrapper">
+                                    <label for="time">Horário do Evento *</label>
+                                    <input class="form-dision_inputfull" type="time"  id="time" th:field="*{time}">
+                                </div>
+
+                                <div class="form-division_wrapper">
+                                    <label for="duration">Duração *</label>
+                                    <input class="form-dision_inputfull" type="time"  id="duration" th:field="*{duration}">
+                                </div>
+
+                                <div class="form-division_wrapper">
+                                    <label for="local">Local *</label>
+                                    <input class="form-dision_inputfull" type="text"  id="local" th:field="*{location}">
+                                </div>
                             </div>
 
                             <input type="submit" value="Atualizar" class="btn">

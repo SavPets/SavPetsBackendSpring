@@ -26,6 +26,6 @@ public interface MaintainAdoption {
 	
 	Optional<Adoption> updates(Long id,Adoption adoption);
 	
-	void delete(Long id);
+
 
 }

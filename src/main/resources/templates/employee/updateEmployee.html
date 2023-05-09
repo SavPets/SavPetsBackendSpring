@@ -26,48 +26,65 @@
                     </a>
 
                     <div class="main-container_form">
-                        <form class="form"th:action="@{/atualizar-funcionario/{id} (id=${funcionario.id})}" th:object="${funcionario}" method="post">
+                        <form class="form" th:action="@{/atualizar-funcionario/{id} (id=${funcionario.id})}" th:object="${funcionario}" method="post">
                             <div class="form-instruction">
                                 <p>Preenchimento obrigatório</p><span>*</span>
                             </div>
 
                             <div class="form-dision">
-                                <div>
-								    <input id="name" class="form-dision_inputfull" type="text" placeholder="Nome *" th:field="*{name}">
+
+                                <div class="form-division_wrapper">
+                                    <label for="name">Nome do Funcionário *</label>
+                                    <input id="name" class="form-dision_inputfull" type="text"  th:field="*{name}">
                                 </div>
-                                <div>
-                                    <input id="surname" class="form-dision_inputfull" type="text" placeholder="Sobrenome *" th:field="*{surname}">
+
+                                <div class="form-division_wrapper">
+                                    <label for="surname">Número da Residência *</label>
+                                    <input id="surname" class="form-dision_inputfull" type="text"  th:field="*{surname}">
                                 </div>
-                                <div>
-                                    <input class="form-dision_inputfull" type="email" placeholder="Email *" name="email" th:field="*{email}">
+
+                                <div class="form-division_wrapper">
+                                    <label for="email">Email *</label>
+                                    <input id="email" class="form-dision_inputfull" type="email" name="email" th:field="*{email}">
                                 </div>
-                                <div>
-                            	    <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="CPF *" th:field="*{cpf}" id="cpf" maxlength="14" minlength="14" th:disabled="${funcionario.cpf != null}">
+
+                                <div class="form-division_wrapper">
+                                    <label for="cpf">CPF *</label>
+                                    <input class="form-dision_inputfull form-dision_top_right" type="text"  th:field="*{cpf}" id="cpf" maxlength="14" minlength="14">
                                 </div>
-                                <div>
-                                    <input class="form-dision_inputfull form-dision_top_right" type="text" placeholder="CEP *" th:field="*{cep}" onblur="pesquisacep(this.value);" id="cep" maxlength="9" minlength="9">
+
+                                <div class="form-division_wrapper">
+                                    <label for="cep">CEP *</label>
+                                    <input class="form-dision_inputfull form-dision_top_right" type="text"  th:field="*{cep}" onblur="pesquisacep(this.value);" id="cep" minlength="9" maxlength="9">
                                 </div>
-                                <div>
-                                    <input id="rua" class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Endereço *" th:field="*{address}" th:value="*{address}">
+
+                                <div class="form-division_wrapper">
+                                    <label for="rua"> Endereço *</label>
+                                    <input id="rua" class="form-dision_inputfull form-dision_top_left" type="text"  th:field="*{address}" th:value="*{address}" minlength="10" size="60">
                                 </div>
-                                <div>
-                                    <input id="locationNumber" class="form-dision_inputfull form-dision_top_right" type="number" placeholder="Número da Residência *" th:field="*{locationNumber}">
+
+                                <div class="form-division_wrapper">
+                                    <label for="locationNumber">Número da Residência *</label>
+                                    <input class="form-dision_inputfull form-dision_top_right" type="number"  id="locationNumber" th:field="*{locationNumber}">
                                 </div>
-                                <div>
-                            	    <input class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Complemento *" th:field="*{complement}">
+
+                                <div class="form-division_wrapper">
+                                    <label > Complemento </label>
+                                    <input class="form-dision_inputfull form-dision_top_left" type="text" th:field="*{complement}">
                                 </div>
-<!--                                <div>-->
-<!--                            	    <input id="accountNumber" class="form-dision_inputfull form-dision_top_left" type="text" placeholder="Número da conta *" th:field="*{accountNumber}" th:value="*{accountNumber}">-->
-<!--                                </div>-->
-                                <div>
+
+                                <div class="form-division_wrapper">
+                                    <label for="necessaryToSelect">Departamento *</label>
                                     <select id="necessaryToSelect" class="form-dision_inputfull" th:field="*{departament}">
-                                        <option value="">Departamento *</option>
+                                        <option value=""></option>
                                         <option th:each="Departamento : ${departamentos}" th:value="${Departamento.name}" th:text="${Departamento.name}"></option>
                                     </select>
                                 </div>
-                                <div>
+
+                                <div class="form-division_wrapper">
+                                    <label for="necessaryToSelect2">Cargo *</label>
                                     <select id="necessaryToSelect2" class="form-dision_inputfull" th:field="*{occupation}">
-                                        <option value="">Cargo *</option>
+                                        <option value=""></option>
                                         <option th:each="Cargo : ${cargos}" th:value="${Cargo.name}" th:text="${Cargo.name}"></option>
                                     </select>
                                 </div>

@@ -34,20 +34,29 @@
                             </div>
     
                             <div class="form-dision">
-                                <div>
-                                    <input id="name" class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Nome *" th:field="*{name}" th:value="${categoriaAnimal.name}">
+                                <div class="form-division_wrapper">
+                                    <label for="name">Nome da Categoria*</label>
+                                    <input id="name" class="form-dision_inputfull form-dision_top_right" type="text" th:field="*{name}">
                                 </div>
-                                <div>
-                                    <input id="race" class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Raça *" th:field="*{race}" th:value="${categoriaAnimal.race}">
+
+                                <div class="form-division_wrapper">
+                                    <label for="race">Raça *</label>
+                                    <input id="race" class="form-dision_inputfull form-dision_top_right" type="text"  th:field="*{race}">
                                 </div>
-                                <div>
-                                    <input id="gender" class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Gênero *" th:field="*{gender}" th:value="${categoriaAnimal.gender}">
+
+                                <div class="form-division_wrapper">
+                                    <label for="gender">Gênero *</label>
+                                    <input id="gender" class="form-dision_inputfull form-dision_top_right" type="text"  th:field="*{gender}">
                                 </div>
-                                <div>
-                                    <input id ="size" class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Porte *" th:field="*{size}" th:value="${categoriaAnimal.size}">
+
+                                <div class="form-division_wrapper">
+                                    <label for="size">Porte *</label>
+                                    <input id ="size" class="form-dision_inputfull form-dision_top_right" type="text"  th:field="*{size}">
                                 </div>
-                                <div>
-                                    <input id="peltColor" class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Cor *" th:field="*{coatColor}" th:value="${categoriaAnimal.coatColor}">
+
+                                <div class="form-division_wrapper">
+                                    <label for="peltColor">Cor *</label>
+                                    <input id="peltColor" class="form-dision_inputfull form-dision_top_right" type="text"  th:field="*{coatColor}">
                                 </div>
                             </div>
 

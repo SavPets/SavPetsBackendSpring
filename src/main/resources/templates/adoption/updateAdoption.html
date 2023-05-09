@@ -34,29 +34,38 @@
                             </div>
 
                             <div class="form-dision">
-                                 <div>
+                                <div class="form-division_wrapper">
+                                    <label for="necessaryToSelect">Funcionário *</label>
                                     <select id="necessaryToSelect" class="form-dision_inputfull" th:field="*{employee}">
-                                        <option selected hidden value="">Funcionario *</option>
+                                        <option selected hidden value=""></option>
                                         <option th:each="Funcionario : ${funcionarios}" th:value="${Funcionario.name}" th:text="${Funcionario.name}"></option>
                                     </select>
                                 </div>
-                                <div>
-								    <select id="necessaryToSelect2"  class="form-dision_inputfull" th:field="*{client}">
-									    <option selected hidden value="">Cliente *</option>
-								        <option th:each="Cliente : ${clientes}" th:value="${Cliente.firstName}" th:text="${Cliente.firstName}"></option>
-								    </select>
+
+                                <div class="form-division_wrapper">
+                                    <label for="necessaryToSelect2">Cliente *</label>
+                                    <select id="necessaryToSelect2"  class="form-dision_inputfull" th:field="*{client}">
+                                        <option selected hidden value=""> </option>
+                                        <option th:each="Cliente : ${clientes}" th:value="${Cliente.firstName}" th:text="${Cliente.firstName}"></option>
+                                    </select>
                                 </div>
-                                <div>
-                                    <select class="form-dision_inputfull" th:field="*{animalCategory}">
-                                        <option selected hidden value="">Categoria animal *</option>
+
+                                <div class="form-division_wrapper">
+                                    <label for="necessaryToSelect3">Categoria Animal *</label>
+                                    <select id="necessaryToSelect3" class="form-dision_inputfull" th:field="*{animalCategory}">
+                                        <option selected hidden value=""></option>
                                         <option th:each="CategoriaAnimal : ${categoriaAnimais}" th:value="${CategoriaAnimal.name}" th:text="${CategoriaAnimal.name}"></option>
                                     </select>
                                 </div>
-                                <div>
-                                    <input id="description" class="form-dision_inputfull form-dision_top_right" type="text" placeholder="Descrição da adoção *" th:field="*{report}">
+
+                                <div class="form-division_wrapper">
+                                    <label for="description">Descrição da Adoção *</label>
+                                    <input id="description" class="form-dision_inputfull form-dision_top_right" type="text"  th:field="*{report}">
                                 </div>
-                                <div>
-								    <input class="form-dision_inputfull" type="date" placeholder="Data de adoção *: " id="adpDate" th:field="*{adoptionDate}" max="9999-12-31">
+
+                                <div class="form-division_wrapper">
+                                    <label for="campaignDate">Data da Adoção *</label>
+                                    <input class="form-dision_inputfull" type="date"  id="campaignDate" th:field="*{adoptionDate}" max="9999-12-31">
                                 </div>
                             </div>
 
