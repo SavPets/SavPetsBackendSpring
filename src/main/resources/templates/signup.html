@@ -31,20 +31,30 @@
                             <p>Preenchimento obrigatório</p><span>*</span>
                         </div>
                         <div class="form-dision">
-                            <div>
-                                <input class="form-dision_inputfull" type="text" placeholder="Primeiro nome *" name="firstName" th:field="*{name}" id="name">
+                        
+                               <div class="form-division_wrapper">
+                               <label for="name">Nome *</label >
+                                <input class="form-dision_inputfull" type="text"  name="firstName" th:field="*{name}" id="name">
                             </div>
-                            <div>
-                                <input class="form-dision_inputfull" type="text" placeholder="Último nome *" name="lastName"th:field="*{surname}" id="lastName">
+                            
+                              <div class="form-division_wrapper">
+                              <label for="lastName">Último Nome *</label >
+                                <input class="form-dision_inputfull" type="text" name="lastName"th:field="*{surname}" id="lastName">
                             </div>
-                            <div>
-                                <input class="form-dision_inputfull" type="email" placeholder="Email *" name="email" th:field="*{email}" id="email">
+                            
+                              <div class="form-division_wrapper">
+                         		<label for="email">Email *</label >
+                                <input class="form-dision_inputfull" type="email"  name="email" th:field="*{email}" id="email">
                             </div>
-                            <div>
-                                <input class="form-dision_inputfull" type="password" placeholder="Senha *" name="password" th:field="*{password}" id="password">
+                            
+                               <div class="form-division_wrapper">
+                               <label for="password">Senha *</label >
+                                <input class="form-dision_inputfull" type="password" name="password" th:field="*{password}" id="password">
                             </div>
-                            <div>
-                                <input class="form-dision_inputfull" type="password" placeholder="Confirmar senha *" name="confirmedPassword" th:field="*{repeatPassword}" id="repeatPassword">
+                            
+                               <div class="form-division_wrapper">
+                               <label for="repeatPassword">Confirmar Senha *</label >
+                                <input class="form-dision_inputfull" type="password" name="confirmedPassword" th:field="*{repeatPassword}" id="repeatPassword">
                             </div>
                         </div>
 

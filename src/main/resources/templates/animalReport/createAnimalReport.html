@@ -40,11 +40,11 @@
                                 </div>
 
                                 <div class="form-division_wrapper">
-                                    <label>Medicamento *</label>
-                                    <select class="form-dision_inputfull" th:field="*{medicine}">
+                                    <label for="medicine">Medicamento </label >
+                                    <select id="medicine" class="form-dision_inputfull" th:field="*{medicine}">
                                         <option value=""></option>
                                         <option th:each="Medicamento : ${medicamentos}" th:value="${Medicamento.name}" th:text="${Medicamento.name}"></option>
-                                    </select>
+                                    </select >
                                 </div>
 
                                 <div class="form-division_wrapper">
@@ -62,12 +62,12 @@
 
                                 <div class="form-division_wrapper">
                                     <label for="local">Local encontrado *</label>
-                            	    <input class="form-dision_inputfull" type="text" placeholder="Local encontrado *" id="local" th:field="*{local}">
+                            	    <input class="form-dision_inputfull" type="text"  id="local" th:field="*{local}">
                                 </div>
 
                                 <div class="form-division_wrapper">
                                     <label for="description">Descrição *</label>
-                                    <input class="form-dision_inputfull" type="text" placeholder="Descrição *" id="description" th:field="*{description}">
+                                    <input class="form-dision_inputfull" type="text"  id="description" th:field="*{description}">
                                 </div>
                             </div>
 

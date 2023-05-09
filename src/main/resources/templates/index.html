@@ -183,14 +183,29 @@
                         <p>Preenchimento obrigatório</p><span>*</span>
                     </div>
                     <div class="form-dision">
-                        <input class="form-dision_inputfull" type="text" placeholder="Nome *" name="name" required>
-                        <input class="form-dision_inputfull" type="email" placeholder="Email *" name="email" required>
-                        <input class="form-dision_inputfull" type="text" placeholder="Assunto *" name="subject"
+                    
+                       <div class="form-division_wrapper">
+                        <label for="name">Nome *</label >
+                        <input class="form-dision_inputfull" type="text" name="name" id="name" required>
+                       </div>
+                       
+                       <div class="form-division_wrapper">
+                        <label for="email">Email *</label >
+                        <input class="form-dision_inputfull" type="email" name="email" id="email" required>
+                       </div>
+                       
+                        <div class="form-division_wrapper">
+                         <label for="topic">Assunto *</label >
+                        <input id = "topic" class="form-dision_inputfull" type="text" name="subject"
                             required>
+                        </div>
+                        
+                         <div class="form-division_wrapper">
+                         <label for="message">Mensagem *</label >
                         <textarea class="form-dision_inputfull form-dision_textarea" cols="30" rows="10"
-                            placeholder="Mensagem *" name="message" required></textarea>
+                            id="message" name="message" required></textarea>
                     </div>
-
+                    </div>
                     <button class="btn">Enviar</button>
                 </form>
             </div>
