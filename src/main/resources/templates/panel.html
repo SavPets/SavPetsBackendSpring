@@ -64,6 +64,9 @@
 			localStorage.setItem("occupation", occupation.textContent)
 		
 		occupation.innerText = ""
+
+		if (localStorage.getItem("username") == "")
+			localStorage.clear()
     </script>
     
     <!--=============== SCRIPTS ===============-->
