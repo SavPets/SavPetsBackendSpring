@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.fatec.scc.model.adoption.Adoption;
-import com.fatec.scc.model.animalCategory.AnimalCategory;
+import com.fatec.scc.model.animalReport.AnimalReport;
 import com.fatec.scc.model.client.Client;
 import com.fatec.scc.model.employee.Employee;
 
@@ -18,7 +18,7 @@ public interface MaintainAdoption {
 	
 	List<Client> searchAllClient();
 
-	List<AnimalCategory> searchAllAnimalCategory();
+	List<AnimalReport> searchAllAnimalReport();
 	
 	Optional<Adoption> searchById(Long id);
 	

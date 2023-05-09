@@ -32,11 +32,11 @@ public class GUIAdoptionController {
 	}
 
 	@GetMapping("/criar-adocao")
-    public ModelAndView showCreateAdoption(Adoption adoption) {
+	public ModelAndView showCreateAdoption(Adoption adoption) {
 		ModelAndView modelAndView = new ModelAndView("adoption/createAdoption");
 		modelAndView.addObject("funcionarios", service.searchAllEmployee());
 		modelAndView.addObject("clientes", service.searchAllClient());
-		modelAndView.addObject("categoriaAnimais", service.searchAllAnimalCategory());
+		modelAndView.addObject("relatorioAnimal", service.searchAllAnimalReport());
 		modelAndView.addObject("adocao", adoption);
 		//relatorioAnimal.ge
 		return modelAndView;
@@ -62,7 +62,7 @@ public class GUIAdoptionController {
 		modelAndView.addObject("adocao", service.searchById(id).get());
 		modelAndView.addObject("funcionarios", service.searchAllEmployee());
 		modelAndView.addObject("clientes", service.searchAllClient());
-		modelAndView.addObject("categoriaAnimais", service.searchAllAnimalCategory());
+		modelAndView.addObject("relatorioAnimal", service.searchAllAnimalReport());
 		
 		return modelAndView;
     }

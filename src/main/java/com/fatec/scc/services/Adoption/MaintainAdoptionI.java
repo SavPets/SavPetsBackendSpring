@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.fatec.scc.model.adoption.Adoption;
 import com.fatec.scc.model.adoption.MaintainAdoptionRepository;
-import com.fatec.scc.model.animalCategory.AnimalCategory;
-import com.fatec.scc.model.animalCategory.MaintainAnimalCategoryRepository;
+import com.fatec.scc.model.animalReport.AnimalReport;
+import com.fatec.scc.model.animalReport.MaintainAnimalReportRepository;
 import com.fatec.scc.model.client.Client;
 import com.fatec.scc.model.client.MaintainClientRepository;
 import com.fatec.scc.model.employee.Employee;
@@ -26,7 +26,7 @@ public class MaintainAdoptionI implements MaintainAdoption {
 	@Autowired
 	MaintainClientRepository repositoryC;
 	@Autowired
-	MaintainAnimalCategoryRepository repositoryA;
+	MaintainAnimalReportRepository repositoryA;
 	@Autowired
 	MaintainAdoptionRepository repository;
 	
@@ -44,7 +44,7 @@ public class MaintainAdoptionI implements MaintainAdoption {
 		logger.info(">>>>>> servico consultaTodos chamado");
 		return repositoryC.findAll();
 	}
-	public List<AnimalCategory> searchAllAnimalCategory() {
+	public List<AnimalReport> searchAllAnimalReport() {
 		logger.info(">>>>>> servico consultaTodos chamado");
 		return repositoryA.findAll();
 	}
