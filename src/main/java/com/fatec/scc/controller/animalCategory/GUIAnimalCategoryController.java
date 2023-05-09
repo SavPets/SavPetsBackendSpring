@@ -74,6 +74,11 @@ public class GUIAnimalCategoryController {
 
 	@PostMapping("/atualizar-categoria-animal/{id}")
 	public RedirectView updateAnimalCategory(@PathVariable("id") Long id, @Valid AnimalCategory animalCategory, BindingResult result) {
+		if (service.existsByNameAndRaceAndGenderAndSizeAndCoatColor(animalCategory.getName(), animalCategory.getRace(), animalCategory.getGender(), animalCategory.getSize(),
+				animalCategory.getCoatColor())) {
+			return new RedirectView("/atualizar-categoria-animal/{id}?status=Erro&text=Animal_existente!");
+		}
+		
 		if (result.hasErrors()) {
 			animalCategory.setId(id);
 			
