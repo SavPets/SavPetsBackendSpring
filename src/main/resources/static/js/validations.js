@@ -35,6 +35,7 @@ const fieldsRules = {
     { rule: 'required', errorMessage: 'O campo CPF é obrigatório' },
     { rule: 'minLength', value: 14, errorMessage: 'O Campo CPF deve possuir todos os caracteres' },
     { rule: 'maxLength', value: 14, errorMessage: 'O Campo CPF deve possuir todos os caracteres' },
+    { rule: 'customRegexp', value: /(^\d{3}\.\d{3}\.\d{3}\-\d{2}$)/, errorMessage: 'O campo CPF está no formato errado' }
   ],
   firstName: [
     { rule: 'required', errorMessage: 'O campo de primeiro nome é obrigatório' },
@@ -48,6 +49,7 @@ const fieldsRules = {
     { rule: 'required', errorMessage: 'O campo CEP é obrigatório' },
     { rule: 'minLength', value: 9, errorMessage: 'O campo CEP deve possuir todos os caracteres' },
     { rule: 'maxLength', value: 9, errorMessage: 'O campo CEP deve possuir todos os caracteres' },
+    { rule: 'customRegexp', value: /(^[0-9]{5})-?([0-9]{3}$)/, errorMessage: 'O campo CEP está no formato incorreto' }
   ],
   rua: [
     { rule: 'required', errorMessage: 'O campo endereço é obrigatório' },
@@ -122,6 +124,7 @@ const fieldsRules = {
   campaignDate: [
     { rule: 'required', errorMessage: 'O campo data é obrigatório' }
   ],
+
   time: [
 	  { rule: 'required', errorMessage: 'O campo horário é obrigatório' }
   ],
@@ -146,6 +149,7 @@ const fieldsRules = {
     { rule: 'required', errorMessage: 'O campo telefone é obrigatório' },
     { rule: 'minLength', value: 14, errorMessage: 'O campo telefone deve possuir todos caracteres' },
     { rule: 'maxLength', value: 14, errorMessage: 'O campo telefone deve possuir todos caracteres' },
+    { rule: 'customRegexp', value: /(\([0-9]{2}\)\s?[0-9]{4,5}-?[0-9]{3,4})|([0-9]{10,11})|([0-9]{2}\s?[0-9]{8,9})/, errorMessage: 'O campo telefone está no formato errado'}
   ],
   surname: [
     { rule: 'required', errorMessage: 'O campo sobrenome é obrigatório' },
@@ -170,6 +174,7 @@ const fieldsRules = {
     { rule: 'required', errorMessage: 'O campo CNPJ é obrigatório' },
     { rule: 'minLength', value: 18, errorMessage: 'O campo CNPJ deve possuir todos os caracteres' },
     { rule: 'maxLength', value: 18, errorMessage: 'O campo CNPJ deve possuir todos os caracteres' },
+    { rule: 'customRegexp', value: /(^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$)/, errorMessage: 'O campo' }
   ]
 }
 
