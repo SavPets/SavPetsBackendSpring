@@ -73,7 +73,7 @@
 }
 
 .form-division_wrapper.exclamation::after {
-    content: url(../img/icon-exclamation.svg);
+    content: url(../img/icon-exclamantion.svg);
 }
 
 .form-division_wrapper>label {
