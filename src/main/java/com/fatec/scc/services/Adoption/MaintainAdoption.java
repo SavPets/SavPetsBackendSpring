@@ -15,6 +15,7 @@ public interface MaintainAdoption {
 	List<Adoption> searchAll();
 	
 	List<Employee> searchAllEmployee();
+	
 	List<Client> searchAllClient();
 
 	List<AnimalCategory> searchAllAnimalCategory();
@@ -23,12 +24,8 @@ public interface MaintainAdoption {
 	
 	Optional <Adoption> save (Adoption adoption);
 	
-	
 	Optional<Adoption> updates(Long id,Adoption adoption);
 	
 	void delete(Long id);
 
-	
-
-	
 }
