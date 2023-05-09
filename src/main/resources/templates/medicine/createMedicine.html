@@ -38,7 +38,7 @@
                                     <label for="necessaryToSelect">Fornecedor *</label>
 
                                     <select id="necessaryToSelect" class="form-dision_inputfull" th:field="*{provider}">
-                                        <option value=""></option>
+                                        <option selected hidden value="">Selecione uma opção</option>
                                         <option th:each="Fornecedor : ${fornecedores}" th:value="${Fornecedor.name}" th:text="${Fornecedor.name}"></option>
                                     </select>
                                 </div>

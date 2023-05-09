@@ -76,7 +76,7 @@
                                 <div class="form-division_wrapper">
                                     <label for="necessaryToSelect">Departamento *</label>
                                     <select id="necessaryToSelect" class="form-dision_inputfull" th:field="*{departament}">
-                                        <option value=""></option>
+                                        <option selected hidden value="">Selecione uma opção</option>
                                         <option th:each="Departamento : ${departamentos}" th:value="${Departamento.name}" th:text="${Departamento.name}"></option>
                                     </select>
                                 </div>
@@ -84,7 +84,7 @@
                                 <div class="form-division_wrapper">
                                     <label for="necessaryToSelect2">Cargo *</label>
                                 <select id="necessaryToSelect2" class="form-dision_inputfull" th:field="*{occupation}">
-                                        <option value=""></option>
+                                        <option selected hidden value="">Selecione uma opção</option>
                                         <option th:each="Cargo : ${cargos}" th:value="${Cargo.name}" th:text="${Cargo.name}"></option>
                                     </select>
                                 </div>

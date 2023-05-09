@@ -37,7 +37,7 @@
                                 <div class="form-division_wrapper">
                                     <label for="necessaryToSelect">Funcionário *</label>
                                     <select id="necessaryToSelect" class="form-dision_inputfull" th:field="*{employee}">
-                                        <option selected hidden value=""></option>
+                                        <option selected hidden value="">Selecione uma opção</option>
                                         <option th:each="Funcionario : ${funcionarios}" th:value="${Funcionario.name}" th:text="${Funcionario.name}"></option>
                                     </select>
                                 </div>
@@ -45,7 +45,7 @@
                                 <div class="form-division_wrapper">
                                     <label for="necessaryToSelect2">Cliente *</label>
                                     <select id="necessaryToSelect2"  class="form-dision_inputfull" th:field="*{client}">
-                                        <option selected hidden value=""> </option>
+                                        <option selected hidden value="">Selecione uma opção</option>
                                         <option th:each="Cliente : ${clientes}" th:value="${Cliente.firstName}" th:text="${Cliente.firstName}"></option>
                                     </select>
                                 </div>
@@ -53,7 +53,7 @@
                                 <div class="form-division_wrapper">
                                     <label for="necessaryToSelect3">Categoria Animal *</label>
                                     <select id="necessaryToSelect3" class="form-dision_inputfull" th:field="*{animalCategory}">
-                                        <option selected hidden value=""></option>
+                                        <option selected hidden value="">Selecione uma opção</option>
                                         <option th:each="CategoriaAnimal : ${categoriaAnimais}" th:value="${CategoriaAnimal.name}" th:text="${CategoriaAnimal.name}"></option>
                                     </select>
                                 </div>
