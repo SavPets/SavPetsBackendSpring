@@ -51,7 +51,7 @@
                                             <tr th:each="RelatorioAnimal : ${relatorios}">
                                                 <td th:text="${RelatorioAnimal.id}"></td>
                                                 <td th:text="${RelatorioAnimal.animalName}"></td>
-                                                <td th:text="${RelatorioAnimal.medicine}"></td>
+                                                <td th:text="${RelatorioAnimal.medicine == '' ? 'Não medicado' : RelatorioAnimal.medicine}"></td>
                                                 <td th:text="${RelatorioAnimal.animalCategory}"></td>
                                                 <td th:text="${RelatorioAnimal.arrivalDate}"></td>
                                                 <td th:text="${RelatorioAnimal.local}"></td>

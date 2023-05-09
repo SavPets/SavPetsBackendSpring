@@ -43,6 +43,7 @@
                                     <label for="medicine">Medicamento </label >
                                     <select id="medicine" class="form-dision_inputfull" th:field="*{medicine}">
                                         <option selected hidden value="">Selecione uma opção</option>
+                                        <option value="">Não medicado</option>
                                         <option th:each="Medicamento : ${medicamentos}" th:value="${Medicamento.name}" th:text="${Medicamento.name}"></option>
                                     </select >
                                 </div>
