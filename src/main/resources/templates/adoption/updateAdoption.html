@@ -54,7 +54,7 @@
                                     <label for="necessaryToSelect3">Animal *</label>
                                     <select id="necessaryToSelect3" class="form-dision_inputfull" th:field="*{animalReport}">
                                         <option selected hidden value="">Selecione uma opção</option>
-                                        <option th:each="AnimalReport : ${relatorioAnimal}" th:value="${AnimalReport.animalName}" th:text="${AnimalReport.animalName}"></option>
+                                        <option th:each="AnimalReport : ${relatorioAnimal}" th:value="${AnimalReport.id}" th:text="${AnimalReport.animalName}"></option>
                                     </select>
                                 </div>
 

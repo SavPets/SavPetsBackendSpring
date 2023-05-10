@@ -79,11 +79,15 @@ public class MaintainAdoptionI implements MaintainAdoption {
 	}
 
 	@Override
-	public 	boolean existsByAnimalReport(String animalReport) {
+	public 	boolean existsByAnimalReport(Long animalReport) {
 		if (repository.existsByAnimalReport(animalReport)) {
 			return true;
 		}
 		return false;
+	}
+	@Override
+	public Optional<AnimalReport> findAnimal(Long animalReport) {
+		return repositoryA.findById(animalReport);
 	}
  
 	

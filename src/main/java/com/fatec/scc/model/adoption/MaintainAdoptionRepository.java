@@ -19,5 +19,5 @@ public interface MaintainAdoptionRepository extends JpaRepository<Adoption,Long>
 	
 	Optional<Adoption> findByReport(String report);
 	
-	boolean existsByAnimalReport(String animalReport);
+	Boolean existsByAnimalReport(Long animalReport);
 }

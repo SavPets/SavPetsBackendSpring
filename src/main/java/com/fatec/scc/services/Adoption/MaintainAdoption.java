@@ -24,6 +24,8 @@ public interface MaintainAdoption {
 	
 	Optional<Adoption> updates(Long id,Adoption adoption);
 
-	boolean existsByAnimalReport(String animalReport);
+	boolean existsByAnimalReport(Long animalReport);
+
+	Optional<AnimalReport> findAnimal(Long animalReport);
 
 }

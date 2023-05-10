@@ -6,7 +6,7 @@ public class AdoptionDTO {
 	private String employee;
 	private String client;
 	@NotBlank(message = "Relatorio Animal é requerido")
-	private String animalReport;
+	private Long animalReport;
 	@NotBlank(message = "A data da Adoção é obrigatoria")
 	private String adoptionDate;
 	@NotBlank(message = "O relatorio da Adoção é necessaria.")
@@ -18,7 +18,7 @@ public class AdoptionDTO {
 		
 	}
 	
-	public AdoptionDTO(String employee,String client, String animalReport,
+	public AdoptionDTO(String employee,String client, Long animalReport,
 			String adoptionDate,String report) {
 		
 		this.employee = employee;
@@ -45,11 +45,11 @@ public class AdoptionDTO {
 		this.client = client;
 	}
 
-	public String getAnimalCategory() {
+	public Long getAnimalCategory() {
 		return animalReport;
 	}
 
-	public void setAnimalCategory(String animalCategory) {
+	public void setAnimalCategory(Long animalCategory) {
 		this.animalReport = animalCategory;
 	}
 

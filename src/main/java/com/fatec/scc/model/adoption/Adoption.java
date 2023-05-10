@@ -16,7 +16,8 @@ public class Adoption {
 	private String employee;
 	private String client;
 	@NotBlank(message = "Relatorio é requerido")
-	private String animalReport;
+	private Long animalReport;
+	private String animalName;
 	@NotBlank(message = "A data da Adoção é obrigatoria")
 	private String adoptionDate;
 	@NotBlank(message = "O relatorio da Adoção é necessaria.")
@@ -28,7 +29,7 @@ public class Adoption {
 		
 	}
 	
-	public Adoption(String employee,String client, String animalReport,
+	public Adoption(String employee,String client, Long animalReport,
 			String adoptionDate,String report) {
 		this.employee = employee;
 		this.client= client;
@@ -66,11 +67,19 @@ public class Adoption {
 		return adoptionDate;
 	}
 
-	public String getAnimalReport() {
+	public Long getAnimalReport() {
 		return animalReport;
 	}
 
-	public void setAnimalReport(String animalReport) {
+	public String getAnimalName() {
+		return animalName;
+	}
+
+	public void setAnimalName(String animalName) {
+		this.animalName = animalName;
+	}
+
+	public void setAnimalReport(Long animalReport) {
 		this.animalReport = animalReport;
 	}
 
