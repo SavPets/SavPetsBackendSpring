@@ -40,7 +40,8 @@
 }
 
 .form-dision input,
-.form-dision select {
+.form-dision select,
+.form-dision textarea {
     border: 1px solid rgba(82, 87, 96, 0.2);
     border-radius: .4rem;
     padding: 1.5rem;
@@ -118,9 +119,6 @@ input[type="time"]:valid {
 }
 
 .form-dision_textarea {
-    font-size: 1.4rem;
-
-    padding: 2rem;
     height: 9.8rem;
     resize: none;
 }

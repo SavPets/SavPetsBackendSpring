@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -15,6 +16,7 @@ import com.fatec.scc.services.MaintainRegister;
 import com.fatec.scc.services.employee.MaintainEmployee;
 
 @Controller
+@RequestMapping
 public class GUIHomeController {
 	String username;
 	String occupation;

@@ -3,15 +3,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <!--=============== HEAD ===============-->
-
 <head th:insert="~{fragments/headHomeClient}"></head>
 
 <body>
+    <!--=============== ACCESSIBILITY BAR ===============-->
+    <div th:insert="~{fragments/accessibilityBar}"></div>
+
     <!--=============== HEADER ===============-->
-    <header th:insert="~{fragments/headerHomeClient}"></header>
+    <div th:insert="~{fragments/headerHomeClient}"></div>
 
     <!--=============== MAIN ===============-->
-    <main>
+    <main id="main">
 
         <!--=============== PRESENTATION ===============-->
         <section class="presentation content">
@@ -182,30 +184,29 @@
                     <div class="form-instruction">
                         <p>Preenchimento obrigatório</p><span>*</span>
                     </div>
+
                     <div class="form-dision">
-                    
-                       <div class="form-division_wrapper">
-                        <label for="name">Nome *</label >
-                        <input class="form-dision_inputfull" type="text" name="name" id="name" required>
-                       </div>
-                       
-                       <div class="form-division_wrapper">
-                        <label for="email">Email *</label >
-                        <input class="form-dision_inputfull" type="email" name="email" id="email" required>
-                       </div>
+                        <div class="form-division_wrapper">
+                            <label for="name">Nome *</label >
+                            <input class="form-dision_inputfull" type="text" name="name" id="name" required>
+                        </div>
                        
                         <div class="form-division_wrapper">
-                         <label for="topic">Assunto *</label >
-                        <input id = "topic" class="form-dision_inputfull" type="text" name="subject"
-                            required>
+                            <label for="email">Email *</label >
+                            <input class="form-dision_inputfull" type="email" name="email" id="email" required>
+                        </div>
+                       
+                        <div class="form-division_wrapper">
+                            <label for="topic">Assunto *</label >
+                            <input id="topic" class="form-dision_inputfull" type="text" name="subject" required>
                         </div>
                         
-                         <div class="form-division_wrapper">
-                         <label for="message">Mensagem *</label >
-                        <textarea class="form-dision_inputfull form-dision_textarea" cols="30" rows="10"
-                            id="message" name="message" required></textarea>
+                        <div class="form-division_wrapper">
+                            <label for="message">Mensagem *</label >
+                            <textarea class="form-dision_inputfull form-dision_textarea" cols="30" rows="10" id="message" name="message" required></textarea>
+                        </div>
                     </div>
-                    </div>
+
                     <button class="btn">Enviar</button>
                 </form>
             </div>
@@ -213,7 +214,7 @@
     </main>
 
     <!--=============== FOOTER ===============-->
-    <header th:insert="~{fragments/footerHomeClient.html}"></header>
+    <div th:insert="~{fragments/footerHomeClient.html}"></div>
 
     <!--=============== SCRIPTS ===============-->
     <div th:insert="~{fragments/management/scriptsHomeClient}"></div>
