@@ -72,29 +72,21 @@ public class MaintainAdoptionI implements MaintainAdoption {
 		Adoption relatorioModificado = this.repository.findById(id).get();
 		adoption.setId(id);
 		
-		//if (fornecedor.getCep() == null) {
-		//	fornecedor.setCep(fornecedorModificado2.getCep());
-		//}
-		
-		//if (fornecedor.getCnpj() == null) {
-			//fornecedor.setCnpj(fornecedorModificado2.getCnpj());
-		//}
-		
-		//if (fornecedor.getComplemento() == null) {
-			//fornecedor.setComplemento(fornecedorModificado2.getComplemento());
-	//	}
-		//if (fornecedor.getEndereco() == null) {
-			//fornecedor.setEndereco(fornecedorModificado2.getEndereco());
-	//	}
-	//	if(fornecedor.getNome() == null) {
-	//	fornecedor.setNome(fornecedorModificado2.getNome());
-		//}
-		
-		
 		
 		logger.info(">>>>>> 2. servico atualiza informacoes de medicamento valido para o id => "
 				+ relatorioModificado.getId());
 		return Optional.ofNullable(repository.save(adoption));
 	}
 
+	@Override
+	public 	boolean existsByAdoptionDateAndAnimalReportAndClientAndEmployeeAndReport(String adoptionDate, String animalReport,
+			String client, String employee, String report) {
+	if (repository.existsByAdoptionDateAndAnimalReportAndClientAndEmployeeAndReport( adoptionDate,  animalReport,
+			 client,  employee, report)) {
+		return true;
+	}
+	return false;
+	}
+ 
+	
 }

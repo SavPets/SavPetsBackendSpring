@@ -25,6 +25,9 @@ public interface MaintainAdoption {
 	Optional <Adoption> save (Adoption adoption);
 	
 	Optional<Adoption> updates(Long id,Adoption adoption);
+
+	boolean existsByAdoptionDateAndAnimalReportAndClientAndEmployeeAndReport(String adoptionDate, String animalReport,
+			String client, String employee, String report);
 	
 
 

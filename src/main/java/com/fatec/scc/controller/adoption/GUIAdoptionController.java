@@ -44,6 +44,12 @@ public class GUIAdoptionController {
 
     @PostMapping("/criar-adocao")
 	public RedirectView createAdoption(@Valid Adoption adoption, BindingResult result) {
+    	
+    	if (service.existsByAdoptionDateAndAnimalReportAndClientAndEmployeeAndReport(adoption.getAdoptionDate(),adoption.getAnimalReport(),adoption.getClient(),
+				adoption.getEmployee(),adoption.getReport())) {
+			return new RedirectView("/criar-adocao?status=Error&text=Relatorio_existente");
+		}
+    	
 		if (result.hasErrors()) {
 			return new RedirectView("/criar-adocao?status=Erro&text=Revise_os_campos_do_registro!");
 		}
@@ -69,6 +75,11 @@ public class GUIAdoptionController {
 
 	@PostMapping("/atualizar-adocao/{id}")
 	public RedirectView updateAdoption(@PathVariable("id") Long id, @Valid Adoption adoption, BindingResult result) {
+		if (service.existsByAdoptionDateAndAnimalReportAndClientAndEmployeeAndReport(adoption.getAdoptionDate(),adoption.getAnimalReport(),adoption.getClient(),
+				adoption.getEmployee(),adoption.getReport())) {
+			return new RedirectView("/atualizar-adocao/{id}?status=Error&text=Relatorio_existente");
+		}
+		
 		if (result.hasErrors()) {
 			adoption.setId(id);
 			

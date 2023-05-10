@@ -5,8 +5,8 @@ import javax.validation.constraints.NotBlank;
 public class AdoptionDTO {
 	private String employee;
 	private String client;
-	@NotBlank(message = "Categoria é requerido")
-	private String animalCategory;
+	@NotBlank(message = "Relatorio Animal é requerido")
+	private String animalReport;
 	@NotBlank(message = "A data da Adoção é obrigatoria")
 	private String adoptionDate;
 	@NotBlank(message = "O relatorio da Adoção é necessaria.")
@@ -18,12 +18,12 @@ public class AdoptionDTO {
 		
 	}
 	
-	public AdoptionDTO(String employee,String client, String animalCategory,
+	public AdoptionDTO(String employee,String client, String animalReport,
 			String adoptionDate,String report) {
 		
 		this.employee = employee;
 		this.client= client;
-		this.animalCategory= animalCategory;
+		this.animalReport= animalReport;
 		this.adoptionDate= adoptionDate;
 		this.report= report;
 	}
@@ -46,11 +46,11 @@ public class AdoptionDTO {
 	}
 
 	public String getAnimalCategory() {
-		return animalCategory;
+		return animalReport;
 	}
 
 	public void setAnimalCategory(String animalCategory) {
-		this.animalCategory = animalCategory;
+		this.animalReport = animalCategory;
 	}
 
 	public String getAdoptionDate() {
@@ -70,6 +70,6 @@ public class AdoptionDTO {
 	}
 	
 	public Adoption retornoUmaAdocao() {
-		return new Adoption(employee,client,animalCategory,adoptionDate,report);
+		return new Adoption(employee,client,animalReport,adoptionDate,report);
 	}
 }

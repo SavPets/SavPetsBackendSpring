@@ -51,10 +51,10 @@
                                 </div>
 
                                 <div class="form-division_wrapper">
-                                    <label for="necessaryToSelect3">Categoria Animal *</label>
-                                    <select id="necessaryToSelect3" class="form-dision_inputfull" th:field="*{animalCategory}">
+                                    <label for="necessaryToSelect3">Relatorio Animal *</label>
+                                    <select id="necessaryToSelect3" class="form-dision_inputfull" th:field="*{animalReport}">
                                         <option selected hidden value="">Selecione uma opção</option>
-                                        <option th:each="CategoriaAnimal : ${categoriaAnimais}" th:value="${CategoriaAnimal.name}" th:text="${CategoriaAnimal.name}"></option>
+                                        <option th:each="AnimalReport : ${relatorioAnimal}" th:value="${AnimalReport.animalName}" th:text="${AnimalReport.animalName}"></option>
                                     </select>
                                 </div>
 

@@ -15,8 +15,8 @@ public class Adoption {
 	@NotBlank(message = "O nome do animal é requerido")
 	private String employee;
 	private String client;
-	@NotBlank(message = "Categoria é requerido")
-	private String animalCategory;
+	@NotBlank(message = "Relatorio é requerido")
+	private String animalReport;
 	@NotBlank(message = "A data da Adoção é obrigatoria")
 	private String adoptionDate;
 	@NotBlank(message = "O relatorio da Adoção é necessaria.")
@@ -28,11 +28,11 @@ public class Adoption {
 		
 	}
 	
-	public Adoption(String employee,String client, String animalCategory,
+	public Adoption(String employee,String client, String animalReport,
 			String adoptionDate,String report) {
 		this.employee = employee;
 		this.client= client;
-		this.animalCategory= animalCategory;
+		this.animalReport= animalReport;
 		this.adoptionDate= adoptionDate;
 		this.report= report;
 	}
@@ -60,17 +60,18 @@ public class Adoption {
 	public void setClient(String client) {
 		this.client = client;
 	}
-
-	public String getAnimalCategory() {
-		return animalCategory;
-	}
-
-	public void setAnimalCategory(String animalCategory) {
-		this.animalCategory = animalCategory;
-	}
+	
 
 	public String getAdoptionDate() {
 		return adoptionDate;
+	}
+
+	public String getAnimalReport() {
+		return animalReport;
+	}
+
+	public void setAnimalReport(String animalReport) {
+		this.animalReport = animalReport;
 	}
 
 	public void setAdoptionDate(String adoptionDate) {

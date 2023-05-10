@@ -11,7 +11,7 @@ public interface MaintainAdoptionRepository extends JpaRepository<Adoption,Long>
 	
 	Optional <Adoption> findByAdoptionDate(String adoptionDate);
 	
-	List<Adoption> findByAnimalCategory(String animalCategory);
+	List<Adoption> findByAnimalReport(String animalReport);
 	
 	List<Adoption> findByClient(String client);
 	
@@ -19,5 +19,5 @@ public interface MaintainAdoptionRepository extends JpaRepository<Adoption,Long>
 	
 	Optional<Adoption> findByReport(String report);
 	
-	boolean existsByAdoptionDateAndAnimalCategoryAndClientAndEmployeeAndReport(String adoptionDate,String animalCategory,String client,String employee,String report);
+	boolean existsByAdoptionDateAndAnimalReportAndClientAndEmployeeAndReport(String adoptionDate,String animalReport,String client,String employee,String report);
 }
