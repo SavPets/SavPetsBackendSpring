@@ -51,7 +51,7 @@
                                 </div>
 
                                 <div class="form-division_wrapper">
-                                    <label for="necessaryToSelect3">Relatorio Animal *</label>
+                                    <label for="necessaryToSelect3">Animal *</label>
                                     <select id="necessaryToSelect3" class="form-dision_inputfull" th:field="*{animalReport}">
                                         <option selected hidden value="">Selecione uma opção</option>
                                         <option th:each="AnimalReport : ${relatorioAnimal}" th:value="${AnimalReport.animalName}" th:text="${AnimalReport.animalName}"></option>
@@ -79,7 +79,5 @@
 
     <!--=============== SCRIPTS ===============-->
     <div th:insert="~{fragments/management/scriptsNoTable}"></div>
-    <!-- Regex Script -->
-	<script th:src="@{js/regex.js}"></script>
 </body>
 </html>

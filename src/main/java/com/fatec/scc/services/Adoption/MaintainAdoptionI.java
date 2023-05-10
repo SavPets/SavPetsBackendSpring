@@ -79,13 +79,11 @@ public class MaintainAdoptionI implements MaintainAdoption {
 	}
 
 	@Override
-	public 	boolean existsByAdoptionDateAndAnimalReportAndClientAndEmployeeAndReport(String adoptionDate, String animalReport,
-			String client, String employee, String report) {
-	if (repository.existsByAdoptionDateAndAnimalReportAndClientAndEmployeeAndReport( adoptionDate,  animalReport,
-			 client,  employee, report)) {
-		return true;
-	}
-	return false;
+	public 	boolean existsByAnimalReport(String animalReport) {
+		if (repository.existsByAnimalReport(animalReport)) {
+			return true;
+		}
+		return false;
 	}
  
 	

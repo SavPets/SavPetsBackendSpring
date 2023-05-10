@@ -1,5 +1,3 @@
- 
-
 package com.fatec.scc.services.Adoption;
 
 import java.util.List;
@@ -26,9 +24,6 @@ public interface MaintainAdoption {
 	
 	Optional<Adoption> updates(Long id,Adoption adoption);
 
-	boolean existsByAdoptionDateAndAnimalReportAndClientAndEmployeeAndReport(String adoptionDate, String animalReport,
-			String client, String employee, String report);
-	
-
+	boolean existsByAnimalReport(String animalReport);
 
 }
