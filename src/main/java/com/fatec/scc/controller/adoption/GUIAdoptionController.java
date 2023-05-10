@@ -77,7 +77,7 @@ public class GUIAdoptionController {
 	public RedirectView updateAdoption(@PathVariable("id") Long id, @Valid Adoption adoption, BindingResult result) {
 		adoption.setAnimalName(service.findAnimal(adoption.getAnimalReport()).get().getAnimalName());
 		
-		if (service.existsByAnimalReport(adoption.getAnimalReport())) {
+		if (service.existsByAnimalReport(adoption.getAnimalReport()) && !adoption.getAnimalReport().equals(service.searchById(id).get().getAnimalReport())) {
 			return new RedirectView("/atualizar-adocao/{id}?status=Erro&text=Animal_adotado!");
 		}
 		
