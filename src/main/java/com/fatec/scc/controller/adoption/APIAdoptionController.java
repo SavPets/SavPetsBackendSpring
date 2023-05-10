@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.fatec.scc.model.adoption.Adoption;
 import com.fatec.scc.model.adoption.AdoptionDTO;
-import com.fatec.scc.services.Adoption.MaintainAdoptionI;
+import com.fatec.scc.services.adoption.MaintainAdoptionI;
 
 @RestController
 @RequestMapping("/api/v1/adoacao")

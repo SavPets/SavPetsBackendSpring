@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.fatec.scc.model.adoption.Adoption;
-import com.fatec.scc.services.Adoption.MaintainAdoption;
+import com.fatec.scc.services.adoption.MaintainAdoption;
 @Controller
 @RequestMapping
 public class GUIAdoptionController {

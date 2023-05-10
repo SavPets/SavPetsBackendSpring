@@ -1,4 +1,4 @@
-package com.fatec.scc.services.Adoption;
+package com.fatec.scc.services.adoption;
 
 import java.util.List;
 import java.util.Optional;
