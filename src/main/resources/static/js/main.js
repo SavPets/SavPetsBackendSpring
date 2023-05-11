@@ -21,7 +21,7 @@ function onScroll() {
     const page = `/${bodyElement.classList}`
 
     const headerListOption = document.querySelector(`.header-list_option[href="${page}"]`)
-    if(headerListOption.textContent == 'Cadastre-se') {
+    if(headerListOption.textContent === 'Cadastre-se') {
         headerListOption.classList.add('menu-active-btn')
     }
     headerListOption.classList.add('menu-active')
@@ -30,35 +30,3 @@ function onScroll() {
 function changeColorMenuOnScroll(menu) {
     menu.classList.add('fixed-menu')
 }
-
-// =============== SCROLL REVEAL SETTINGS ===============
-const scrollReveal = ScrollReveal({
-    origin: 'left',
-    distance: '40px',
-    duration: '800',
-    delay: 150
-})
-
-scrollReveal.reveal(`
-    .presentation-container_welcome,
-    .optionshelp-container_title,
-    .optionshelp-group_card,
-    .about-container,
-    .difference-container_description,
-    .difference-highlights_item,
-    .start-container,
-    .contact-container
-`)
-
-scrollReveal.reveal(`
-    .container-main_content,
-    .footer-container
-`, {origin: 'top'})
-
-const menuBurger = document.querySelector("div.burger.burger-slide")
-const menuMobile = document.querySelector("div.menu-mobile")
-
-menuBurger.addEventListener("click", () => {
-   menuBurger.classList.toggle("open")
-    menuMobile.classList.toggle("active-menu-mobile")
-});
