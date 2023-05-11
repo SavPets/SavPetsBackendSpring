@@ -214,6 +214,45 @@ img{
     background-color: #71757e;
 }
 
+/* =============== ACCESSIBILITY BAR SETTINGS =============== */
+.accessibility.content {
+    padding-block: .5rem;
+}
+
+.accessibility-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;   
+}
+
+.accessibility-container_group {
+    display: flex;
+    gap: 2.8rem;
+}
+
+.accessibility-group_item {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+
+    font-size: 1.4rem;
+    font-weight: 500;
+
+    cursor: pointer;
+    transition: 300ms;
+}
+
+.accessibility-group_item:nth-child(2) p{
+    cursor: default;
+}
+
+div.accessibility-group_item:first-child:hover svg,
+.accessibility-group_item:first-child:hover  p,
+.accessibility-group_item:nth-child(2) svg:hover,
+a.accessibility-group_item:hover {
+    filter: brightness(2);
+}
+
 /* =============== HEADER SETTINGS =============== */
 .menu-mobile,
 .burger{
@@ -231,7 +270,9 @@ img{
 
 #header.fixed-menu{
     position: fixed;
+    top: 0;
     z-index: 1000;
+
     background-color: var(--secondary-color);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
@@ -363,6 +404,11 @@ img{
 }
 
 @media (max-width: 320px){
+    .accessibility-group_item:first-child p,
+    a.accessibility-group_item {
+        font-size: 0;
+    }
+
     .identify-choose_item > h4{
         top: 32%;
         

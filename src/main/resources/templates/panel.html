@@ -46,13 +46,29 @@
 
     <!--=============== SHOW USERNAME SETTINGS ===============-->
     <script>
-		const username = document.getElementById("username")
-		if(!localStorage.getItem("username"))
-			localStorage.setItem("username", username.textContent)
-		else if(username.textContent != localStorage.getItem("username"))
-			localStorage.setItem("username", username.textContent)
+		if (localStorage.getItem("username") == null)
+			window.location.href = "/login?status=Erro&text=Realize_o_login!"
+		else {
+			const username = document.getElementById("username")
+			if(!localStorage.getItem("username")) {
+				localStorage.setItem("username", username.textContent)
+				username.innerText = localStorage.getItem("username")
+			}
+			else if(username.textContent != localStorage.getItem("username")) {
+				localStorage.setItem("username", username.textContent)
+				username.innerText = localStorage.getItem("username")
+			}
 		
-		username.innerText = localStorage.getItem("username")
+			const occupation = document.getElementById("occupation")
+			if(!localStorage.getItem("occupation")) {
+				localStorage.setItem("occupation", occupation.textContent)
+				occupation.innerText = ""
+			}
+			else if(occupation.textContent != localStorage.getItem("occupation")) {
+				localStorage.setItem("occupation", occupation.textContent)
+				occupation.innerText = ""
+			}
+		}
     </script>
     
     <!--=============== SCRIPTS ===============-->

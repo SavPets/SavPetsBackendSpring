@@ -36,6 +36,11 @@ public class MaintainMedicineI implements MaintainMedicine {
 		return repository.findById(id);
 	}
 
+	public Optional<Medicine> searchByName(String name) {
+		logger.info(">>>>>> servico consultaPorId chamado");
+		return repository.findByName(name);
+	}
+
 	@Override
 	public Optional<Medicine> save(Medicine medicine) {
 		logger.info(">>>>>> servico save chamado ");

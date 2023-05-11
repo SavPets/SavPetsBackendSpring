@@ -24,8 +24,6 @@ public class MaintainAnimalReportI implements MaintainAnimalReport {
 	@Autowired
 	MaintainAnimalReportRepository repository;
 	
-	
-	
 	public List<AnimalReport> searchAll() {
 		logger.info(">>>>>> servico consultaTodos chamado");
 		return repository.findAll();
@@ -51,12 +49,6 @@ public class MaintainAnimalReportI implements MaintainAnimalReport {
 	}
 
 	@Override
-	public void delete(Long id) {
-		logger.info(">>>>>> servico delete por id chamado");
-		repository.deleteById(id);
-	}
-
-	@Override
 	public Optional<AnimalReport> updates(Long id, AnimalReport animalReport) {
 		logger.info(">>>>>> 1.servico atualiza informações de cliente chamado");
 		//Endereco endereco = obtemEndereco(fornecedor.getCep());;
@@ -64,30 +56,9 @@ public class MaintainAnimalReportI implements MaintainAnimalReport {
 		
 		AnimalReport relatorioModificado = this.repository.findById(id).get();
 		animalReport.setId(id);
-		
-		//if (fornecedor.getCep() == null) {
-		//	fornecedor.setCep(fornecedorModificado2.getCep());
-		//}
-		
-		//if (fornecedor.getCnpj() == null) {
-			//fornecedor.setCnpj(fornecedorModificado2.getCnpj());
-		//}
-		
-		//if (fornecedor.getComplemento() == null) {
-			//fornecedor.setComplemento(fornecedorModificado2.getComplemento());
-	//	}
-		//if (fornecedor.getEndereco() == null) {
-			//fornecedor.setEndereco(fornecedorModificado2.getEndereco());
-	//	}
-	//	if(fornecedor.getNome() == null) {
-	//	fornecedor.setNome(fornecedorModificado2.getNome());
-		//}
-		
-		
-		
+
 		logger.info(">>>>>> 2. servico atualiza informacoes de medicamento valido para o id => "
 				+ relatorioModificado.getId());
 		return Optional.ofNullable(repository.save(animalReport));
 	}
-
 }

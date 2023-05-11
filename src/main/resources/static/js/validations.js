@@ -1,174 +1,239 @@
 const validator = new JustValidate('.form',
   {
     errorLabelStyle: {
-      padding: '1rem 2rem',
       border: 'initials',
       color: 'var(--btn-red-color)',
-      fontWeight: '600'
-    }
+      fontWeight: '500'
+    },
+    validateBeforeSubmitting: true,
   }
 )
 
 // adicione mais regras para cada campo que for necessário
-const inputsRules = {
-	
+const fieldsRules = {
+
+  // REGRA PARA CAMPOS
+  necessaryToSelect: [
+    { rule: 'required', errorMessage: 'Selecione alguma opção' },
+  ],
+  necessaryToSelect2: [ // Para quando tiver mais de 1 select obrigatório na mesma página (provisório)
+    { rule: 'required', errorMessage: 'Selecione alguma opção' },
+  ],
+  necessaryToSelect3: [ 
+    { rule: 'required', errorMessage: 'Selecione alguma opção' },
+  ],
+  necessaryToSelect4: [ 
+    { rule: 'required', errorMessage: 'Selecione alguma opção' },
+  ],
+
   // REGRAS DE FORMULARIOS GERAIS
   name: [
-    { rule: 'required', errorMessage: 'O campo nome é obrigatório' },
-    { rule: 'minLength', value: 4, errorMessage: 'O campo nome deve conter no mínimo 4 caracteres' }
+    { rule: 'required', errorMessage: ' nome é obrigatório' },
+    { rule: 'minLength', value: 4, errorMessage: ' nome deve conter no mínimo 4 caracteres' }
   ],
   cpf: [
-    { rule: 'required', errorMessage: 'O campo CPF é obrigatório' },
-    { rule: 'minLength', value: 14, errorMessage: 'O Campo CPF deve possuir todos os caracteres' },
-    { rule: 'maxLength', value: 14, errorMessage: 'O Campo CPF deve possuir todos os caracteres' },
+    { rule: 'required', errorMessage: ' CPF é obrigatório' },
+    { rule: 'minLength', value: 14, errorMessage: ' CPF deve possuir todos os caracteres' },
+    { rule: 'maxLength', value: 14, errorMessage: ' CPF deve possuir todos os caracteres' },
+    { rule: 'customRegexp', value: /(^\d{3}\.\d{3}\.\d{3}\-\d{2}$)/, errorMessage: ' CPF está no formato errado' }
   ],
   firstName: [
-    { rule: 'required', errorMessage: 'O campo de primeiro nome é obrigatório' },
-    { rule: 'minLength', value: 2, errorMessage:  'O campo primeiro nome deve possuir no mínimo 2 caracteres' }
+    { rule: 'required', errorMessage: ' de primeiro nome é obrigatório' },
+    { rule: 'minLength', value: 2, errorMessage: ' primeiro nome deve possuir no mínimo 2 caracteres' }
   ],
   lastName: [
-    { rule: 'required', errorMessage: 'O campo de último nome é obrigatório' },
-    { rule: 'minLength', value: 2, errorMessage:  'O campo último nome deve possuir no mínimo 2 caracteres' }
+    { rule: 'required', errorMessage: ' de último nome é obrigatório' },
+    { rule: 'minLength', value: 2, errorMessage: ' último nome deve possuir no mínimo 2 caracteres' }
   ],
   cep: [
-    { rule: 'required', errorMessage: 'O campo CEP é obrigatório' },
-    { rule: 'minLength', value: 9, errorMessage: 'O campo CEP deve possuir todos os caracteres' },
-    { rule: 'maxLength', value: 9, errorMessage: 'O campo CEP deve possuir todos os caracteres' },
+    { rule: 'required', errorMessage: ' CEP é obrigatório' },
+    { rule: 'minLength', value: 9, errorMessage: ' CEP deve possuir todos os caracteres' },
+    { rule: 'maxLength', value: 9, errorMessage: ' CEP deve possuir todos os caracteres' },
+    { rule: 'customRegexp', value: /(^[0-9]{5})-?([0-9]{3}$)/, errorMessage: ' CEP está no formato incorreto' }
   ],
   rua: [
-    { rule: 'required', errorMessage: 'O campo endereço é obrigatório' },
-    { rule: 'minLength', value: 5, errorMessage: 'O campo endereço deve possuir ao menos 5 caracteres'}
+    { rule: 'required', errorMessage: ' endereço é obrigatório' },
+    { rule: 'minLength', value: 5, errorMessage: ' endereço deve possuir ao menos 5 caracteres' }
   ],
   locationNumber: [
-    { rule: 'required', errorMessage: 'O campo número da residência é obrigatório' },
+    { rule: 'required', errorMessage: ' número da residência é obrigatório' },
     { rule: 'minNumber', value: 1, errorMessage: 'Digite apenas o(s) número(s) da residência' }
   ],
   email: [
-    { rule: 'required', errorMessage: 'O campo e-mail é obrigatório' },
-    { rule: 'email', errorMessage: 'O campo e-mail deve possuir um e-mail válido' }
+    { rule: 'required', errorMessage: ' e-mail é obrigatório' },
+    { rule: 'email', errorMessage: ' e-mail deve possuir um e-mail válido' }
   ],
-  	
+
   // REGRAS DO FORMULARIO DEPARTAMENTO
- 
+
   initials: [
-    { rule: 'required', errorMessage: 'O campo iniciais é obrigatório' },
-    { rule: 'minLength', value: 2, errorMessage: 'O campo iniciais deve conter no mínimo 2 caracteres' },
-    { rule: 'maxLength', value: 3, errorMessage: 'O campo iniciais deve conter no máximo 3 caracteres' }
+    { rule: 'required', errorMessage: ' iniciais é obrigatório' },
+    { rule: 'minLength', value: 2, errorMessage: ' iniciais deve conter no mínimo 2 caracteres' },
+    { rule: 'maxLength', value: 3, errorMessage: ' iniciais deve conter no máximo 3 caracteres' }
   ],
-  
+
   // REGRAS DO FORMULARIO CATEGORIA ANIMAL
   race: [
-    { rule: 'required', errorMessage: 'O campo raça é obrigatório' },
-    { rule: 'minLength', value: 3, errorMessage: 'O campo raça deve conter no mínimo 3 caracteres' }
+    { rule: 'required', errorMessage: ' raça é obrigatório' },
+    { rule: 'minLength', value: 3, errorMessage: ' raça deve conter no mínimo 3 caracteres' }
   ],
   gender: [
-    { rule: 'required', errorMessage: 'O campo gênero é obrigatório' },
-    { rule: 'minLength', value: 3, errorMessage: 'O campo gênero deve conter no mínimo 3 caracteres' },
-    { rule: 'maxLength', value: 9, errorMessage: 'O campo gênero deve conter no máximo 9 caracteres' }
+    { rule: 'required', errorMessage: ' gênero é obrigatório' },
+    { rule: 'minLength', value: 3, errorMessage: ' gênero deve conter no mínimo 3 caracteres' },
+    { rule: 'maxLength', value: 9, errorMessage: ' gênero deve conter no máximo 9 caracteres' }
 
   ],
-   size: [
-    { rule: 'required', errorMessage: 'O campo porte é obrigatório' },
-    { rule: 'minLength', value: 1, errorMessage: 'O campo porte deve conter no mínimo 1 caracteres' }
+  size: [
+    { rule: 'required', errorMessage: ' porte é obrigatório' },
+    { rule: 'minLength', value: 1, errorMessage: ' porte deve conter no mínimo 1 caracteres' }
   ],
-   peltColor: [
-    { rule: 'required', errorMessage: 'O campo cor é obrigatório' },
-    { rule: 'minLength', value: 4, errorMessage: 'O campo cor deve conter no mínimo 3 caracteres' }
+  peltColor: [
+    { rule: 'required', errorMessage: ' cor é obrigatório' },
+    { rule: 'minLength', value: 4, errorMessage: ' cor deve conter no mínimo 3 caracteres' }
   ],
-  
   // REGRAS DO FORMULARIO MEDICAMENTO
   description: [
- 	{ rule: 'required', errorMessage: 'O campo descrição é obrigatório' },
- 	{ rule: 'minLength', value: 10, errorMessage: 'O campo descrição deve conter no mínimo 10 caracteres' }
+    { rule: 'required', errorMessage: ' descrição é obrigatório' },
+    { rule: 'minLength', value: 10, errorMessage: ' descrição deve conter no mínimo 10 caracteres' }
   ],
   utility: [
-  	{ rule: 'required', errorMessage: 'O campo utilidade é obrigatório' }
+    { rule: 'required', errorMessage: ' utilidade é obrigatório' }
   ],
-  medicineName:[
-  	{ rule: 'required', errorMessage: 'O campo nome do medicamento é obrigatório' }
+  medicineName: [
+    { rule: 'required', errorMessage: ' nome do medicamento é obrigatório' }
   ],
-  leaflet:[
-  	{ rule: 'required', errorMessage: 'O campo bula é obrigatório' },
-    { rule: 'minLength', value: 10, errorMessage: 'O campo bula deve conter no mínimo 10 caracteres' }
+  leaflet: [
+    { rule: 'required', errorMessage: ' bula é obrigatório' },
+    { rule: 'minLength', value: 10, errorMessage: ' bula deve conter no mínimo 10 caracteres' }
   ],
-  expirationDate:[
-  	{ rule: 'required', errorMessage: 'O campo data de validade é obrigatório' }
+  expirationDate: [
+    { rule: 'required', errorMessage: ' data de validade é obrigatório' }
   ],
-  arrivalDate:[
-  	{ rule: 'required', errorMessage: 'O campo data de chegada é obrigatório' }
+  arrivalDate: [
+    { rule: 'required', errorMessage: ' data de chegada é obrigatório' }
   ],
-  amount:[
-  	{ rule: 'required', errorMessage: 'O campo quantidade é obrigatório' },
-  	{ rule: 'minNumber', value: 1, errorMessage: 'Digite apenas números para a quantidade' }
+  amount: [
+    { rule: 'required', errorMessage: ' quantidade é obrigatório' },
+    { rule: 'minNumber', value: 1, errorMessage: 'Digite apenas números para a quantidade' }
   ],
-  manufacturingDate:[
-  	{ rule: 'required', errorMessage: 'O campo data de fabricação é obrigatório' }
+  manufacturingDate: [
+    { rule: 'required', errorMessage: ' data de fabricação é obrigatório' }
+  ],
+
+  // REGRAS DO FORMULARIO CAMPANHAS ADOCAO
+  campaignDate: [
+    { rule: 'required', errorMessage: ' data é obrigatório' }
+  ],
+
+  startTime: [
+	  { rule: 'required', errorMessage: ' início do evento é obrigatório' }
+  ],
+  endTime: [
+	  { rule: 'required', errorMessage: ' fim do evento é obrigatório' }
   ],
   
   // REGRAS DO FORMULARIO FUNCIONARIO
   accountNumber: [
-	  { rule: 'required', errorMessage: 'O campo número da conta é obrigatório' },
-	  { rule: 'minNumber', value: 1, errorMessage: 'Digite apenas os números da conta' }
+    { rule: 'required', errorMessage: ' número da conta é obrigatório' },
+    { rule: 'minNumber', value: 1, errorMessage: 'Digite apenas os números da conta' }
   ],
-  
+
   // REGRAS DO FORMULARIO RELATORIO ANIMAL
   local: [
-    { rule: 'required', errorMessage: 'O campo local é obrigatório' },
-    { rule: 'minLength', value: 5, errorMessage: 'O campo local deve possuir no mínimo 5 caracteres'}
+    { rule: 'required', errorMessage: ' local é obrigatório' },
+    { rule: 'minLength', value: 5, errorMessage: ' local deve possuir no mínimo 5 caracteres' }
   ],
-  
+
   // REGRAS DO FORMULARIO CLIENTE
   telefone: [
-    { rule: 'required', errorMessage: 'O campo telefone é obrigatório' },
-    { rule: 'minLength', value: 14, errorMessage: 'O campo telefone deve possuir todos caracteres'},
-    { rule: 'maxLength', value: 14, errorMessage: 'O campo telefone deve possuir todos caracteres'},
+    { rule: 'required', errorMessage: ' telefone é obrigatório' },
+    { rule: 'minLength', value: 14, errorMessage: ' telefone deve possuir todos caracteres' },
+    { rule: 'maxLength', value: 14, errorMessage: ' telefone deve possuir todos caracteres' },
+    { rule: 'customRegexp', value: /(\([0-9]{2}\)\s?[0-9]{4,5}-?[0-9]{3,4})|([0-9]{10,11})|([0-9]{2}\s?[0-9]{8,9})/, errorMessage: ' telefone está no formato errado'}
   ],
   surname: [
-    { rule: 'required', errorMessage: 'O campo sobrenome é obrigatório' },
-    { rule: 'minLength', value: 3, errorMessage: 'O campo sobrenome deve possuir no mínimo 3 caracteres' }
+    { rule: 'required', errorMessage: ' sobrenome é obrigatório' },
+    { rule: 'minLength', value: 3, errorMessage: ' sobrenome deve possuir no mínimo 3 caracteres' }
   ],
-  
+
   // REGRAS DO FORMULARIO CADASTRO
   password: [
-	{ rule: 'required', errorMessage: 'O campo senha é obrigatório' },
-	{ rule: 'strongPassword', errorMessage: 'A senha deve conter pelo menos 8 dígitos, uma letra maiúscula, uma minúscula, um caractere especial e um número' }
-  ],
-  repeatPassword: [
-	{ rule: 'required', errorMessage: 'O campo repetir senha é obrigatório' },
-	{ rule: 'strongPassword', errorMessage: 'A senha deve conter pelo menos 8 dígitos, uma letra maiúscula, uma minúscula, um caractere especial e um número' }
+    { rule: 'required', errorMessage: ' senha é obrigatório' },
+    { rule: 'strongPassword', errorMessage: 'A senha deve conter pelo menos 8 dígitos, uma letra maiúscula, uma minúscula, um caractere especial e um número' }
   ],
   
+  
+
   // REGRAS DO FORMULARIO FORNECEDOR
   provider: [
-    { rule: 'required', errorMessage: 'O campo fornecedor é obrigatório' }
+    { rule: 'required', errorMessage: ' fornecedor é obrigatório' }
   ],
   cnpj: [
-    { rule: 'required', errorMessage: 'O campo CNPJ é obrigatório' },
-    { rule: 'minLength', value: 18, errorMessage: 'O campo CNPJ deve possuir todos os caracteres' },
-    { rule: 'maxLength', value: 18, errorMessage: 'O campo CNPJ deve possuir todos os caracteres' },
+    { rule: 'required', errorMessage: ' CNPJ é obrigatório' },
+    { rule: 'minLength', value: 18, errorMessage: ' CNPJ deve possuir todos os caracteres' },
+    { rule: 'maxLength', value: 18, errorMessage: ' CNPJ deve possuir todos os caracteres' },
+    { rule: 'customRegexp', value: /(^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$)/, errorMessage: 'CNPJ está no formato incorreto' }
   ]
 }
 
+// REGRA PARA  REPETIR SENHA
+if (document.getElementById("repeatPassword") != null) {
+	validator.addField(repeatPassword, [
+    	{ rule: 'required', errorMessage: ' repetir senha é obrigatório' },
+    	{ rule: 'strongPassword', errorMessage: 'A senha deve conter pelo menos 8 dígitos, uma letra maiúscula, uma minúscula, um caractere especial e um número' },
+    	{ validator: (value, fields) => {
+        	if (
+          	fields['#password'] &&
+          	fields['#password'].elem
+        	) {
+          	const repeatPasswordValue =
+            	fields['#password'].elem.value;
+          	return value === repeatPasswordValue;
+        	}
+        	return true;
+      	},
+      	errorMessage: 'Repita a mesma senha',
+    }])}
+
+const existingFieldsOnTheCurrentPage = document.querySelectorAll('input[id], select[id]')
+existingFieldsOnTheCurrentPage.forEach(field => {
+
+  field.addEventListener('input', (event) => {
+    setTimeout(() => showValidationStatusIcon(event), 100) // delay para rodar depois de digitar
+  })
+
+  const fieldId = field.getAttribute('id')
+  const rulesForThisField = fieldsRules[fieldId]
+
+  if (rulesForThisField)
+    addFieldWithRules([{ fieldId, rules: rulesForThisField }])
+})
+
+function showValidationStatusIcon(event) {
+  const field = event.target
+  const fieldParent = field.parentNode
+  const errorLabel = field.nextElementSibling
+  
+  if (errorLabel && errorLabel.classList.contains('just-validate-error-label')) {
+    fieldParent.classList.add('exclamation') 
+    fieldParent.classList.remove('check') 
+  } else {
+    fieldParent.classList.add('check') 
+    fieldParent.classList.remove('exclamation') 
+  }
+}
+
 function addFieldWithRules(fieldToAdd) {
-  fieldToAdd.forEach(({ inputId, rules }) => {
+  fieldToAdd.forEach(({ fieldId, rules }) => {
     const fieldRules = rules.map(({ rule, value, errorMessage }) => ({
       rule,
       value,
       errorMessage
     }))
 
-    validator.addField(`#${inputId}`, fieldRules)
+    validator.addField(`#${fieldId}`, fieldRules)
   })
 }
-
-const existingInputsOnTheCurrentPage = document.querySelectorAll('input[id]')
-existingInputsOnTheCurrentPage.forEach(input => {
-  const inputId = input.getAttribute('id')
-  const rulesForThisInput = inputsRules[inputId]
-
-  if (rulesForThisInput)
-    addFieldWithRules([{ inputId, rules: rulesForThisInput }])
-})
 
 validator.onSuccess((event) => {
   const inputSubmit = document.querySelector('input.btn')

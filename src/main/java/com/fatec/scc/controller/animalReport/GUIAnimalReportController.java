@@ -34,7 +34,7 @@ public class GUIAnimalReportController {
 
 	@GetMapping("/criar-relatorio-animal")
     public ModelAndView showCreateAnimalReport(AnimalReport animalReport) {
-		ModelAndView modelAndView = new ModelAndView("animalReport/CreateAnimalReport");
+		ModelAndView modelAndView = new ModelAndView("animalReport/createAnimalReport");
 		modelAndView.addObject("medicamentos", service.searchAllMedicines());
 		modelAndView.addObject("categoriasAnimais", service.searchAllCategories());
 		modelAndView.addObject("relatorioAnimal", animalReport);
@@ -49,7 +49,7 @@ public class GUIAnimalReportController {
 		}
 
 		if (!service.save(animalReport).isPresent()) {
-			ModelAndView modelAndView = new ModelAndView("animalCategory/CreateAnimalCategory");
+			ModelAndView modelAndView = new ModelAndView("animalCategory/createAnimalCategory");
 			modelAndView.addObject("message", "Dados invalidos");
 		}
 
@@ -58,7 +58,7 @@ public class GUIAnimalReportController {
 
 	@GetMapping("/atualizar-relatorio-animal/{id}")
     public ModelAndView showUpdateAnimalReport(@PathVariable("id") Long id) {
-		ModelAndView modelAndView = new ModelAndView("animalReport/UpdateAnimalReport");
+		ModelAndView modelAndView = new ModelAndView("animalReport/updateAnimalReport");
 		modelAndView.addObject("relatorioAnimal", service.searchById(id).get());
 		modelAndView.addObject("medicamentos", service.searchAllMedicines());
 		modelAndView.addObject("categoriasAnimais", service.searchAllCategories());
@@ -77,10 +77,4 @@ public class GUIAnimalReportController {
 				
 		return new RedirectView("/relatorios-animais?status=Atualizado");
 	}
-
-	@GetMapping("/deletar-relatorio-animal/{id}")
-	public RedirectView deleteAnimalReport(@PathVariable("id") Long id) {
-		service.delete(id);
-		return new RedirectView("/relatorios-animais");
-}
 }

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!--=============== HEAD ===============-->
+<head th:insert="~{fragments/management/headNoTable}"></head>
+
+<body class="relatorios-animais">
+   <!--=============== HEADER ===============-->
+    <header th:insert="~{fragments/management/header}"></header>
+
+    <!--=============== PANEL ===============-->
+    <section class="wrapper">
+		
+         <!--=============== TOP BAR ===============-->
+        <section th:insert="~{fragments/management/topBar}"></section>
+    
+        <!--=============== CONTENT ===============-->
+        <main class="main">
+            <section class="main-content main-register">
+                <div class="main-content_box">
+                    <a class="btn btn-cancel" href="/relatorios-animais">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" width="24" height="24" viewBox="0 0 256 256">
+                            <path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM181.66,170.34a8,8,0,0,1-11.32,11.32L128,139.31,85.66,181.66a8,8,0,0,1-11.32-11.32L116.69,128,74.34,85.66A8,8,0,0,1,85.66,74.34L128,116.69l42.34-42.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path>
+                        </svg>
+                        Cancelar
+                    </a>
+
+                    <div class="main-container_form">
+                        <form class="form" th:action="@{/criar-relatorio-animal}" th:object="${relatorioAnimal}" method="post">
+                            <div class="form-instruction">
+                                <p>Preenchimento obrigatório</p><span>*</span>
+                            </div>
+
+                            <div class="form-dision">
+                                <div class="form-division_wrapper">
+                                    <label for="name">Nome do Animal *</label>
+                                    <input class="form-dision_inputfull" type="text"  id="name" th:field="*{animalName}">
+                                </div>
+
+                                <div class="form-division_wrapper">
+                                    <label for="medicine">Medicamento </label >
+                                    <select id="medicine" class="form-dision_inputfull" th:field="*{medicine}">
+                                        <option selected hidden value="">Selecione uma opção</option>
+                                        <option value="">Não medicado</option>
+                                        <option th:each="Medicamento : ${medicamentos}" th:value="${Medicamento.name}" th:text="${Medicamento.name}"></option>
+                                    </select >
+                                </div>
+
+                                <div class="form-division_wrapper">
+                                    <label for="necessaryToSelect">Categoria Animal *</label>
+                                    <select id="necessaryToSelect" class="form-dision_inputfull" th:field="*{animalCategory}">
+									    <option selected hidden value="">Selecione uma opção</option>
+								        <option th:each="CategoriaAnimal : ${categoriasAnimais}" th:value="${CategoriaAnimal.race}" th:text="${CategoriaAnimal.race}"></option>
+								    </select>
+                                </div>
+
+                                <div class="form-division_wrapper">
+                                    <label for="arrivalDate">Data de Chegada *</label>
+								    <input class="form-dision_inputfull" type="date"  name="dataChegada" id="arrivalDate" th:field="*{arrivalDate}" max="9999-12-31">
+                                </div>
+
+                                <div class="form-division_wrapper">
+                                    <label for="local">Local encontrado *</label>
+                            	    <input class="form-dision_inputfull" type="text"  id="local" th:field="*{local}">
+                                </div>
+
+                                <div class="form-division_wrapper">
+                                    <label for="description">Descrição *</label>
+                                    <input class="form-dision_inputfull" type="text"  id="description" th:field="*{description}">
+                                </div>
+                            </div>
+
+                            <input type="submit" value="Cadastrar" class="btn">
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </section>
+
+  <!--=============== SCRIPTS ===============-->
+    <div th:insert="~{fragments/management/scriptsNoTable}"></div>
+    <!-- Regex Script -->
+	<script th:src="@{js/regex.js}"></script>
+</body>
+</html>

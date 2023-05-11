@@ -3,62 +3,221 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <!--=============== HEAD ===============-->
-<head th:insert="~{fragments/headMain}"></head>
+<head th:insert="~{fragments/headHomeClient}"></head>
 
-<body> <!-- alterar para saber a página -->
-	<!--=============== HEADER ===============-->
-	<header th:insert="~{fragments/headerMain}"></header>
+<body>
+    <!--=============== ACCESSIBILITY BAR ===============-->
+    <div th:insert="~{fragments/accessibilityBar}"></div>
 
-	<!--=============== MAIN ===============-->
-	<main>
-		<!--=============== IDENTIFY ===============-->
-		<section class="identify content">
-			<div class="identify-container wrapper container-main_content">
+    <!--=============== HEADER ===============-->
+    <div th:insert="~{fragments/headerHomeClient}"></div>
 
-				<div class="identify-container_information container-information">
-					<h5>ENTRAR</h5>
-					<h3>Insira os dados da sua conta</h3>
-					<p>Entre em sua conta para que possa gerenciar as opções desejadas.</p>
+    <!--=============== MAIN ===============-->
+    <main id="main">
 
-					<div class="identify-information_options container-information_options">
-						<a href="/" class="container-option_active">Entrar</a>
-						<a href="/cadastrar">Cadastrar-se</a>
-					</div>
-				</div>
+        <!--=============== PRESENTATION ===============-->
+        <section class="presentation content">
+            <div class="presentation-container">
+                <div class="presentation-container_welcome wrapper">
+                    <h4>SavPets</h4>
+                    <h1>Ajude os animais <br /> que precisam de você</h1>
+                    <h4 class="presentation-welcome_description">A SavPets é mais que uma plataforma, ela é a esperança
+                        de unir um animal a quem irá oferecer todo o cuidado e carinho que ele merece.</h4>
 
-				<div class="identify-container_form container-form">
-					<form class="form" th:action="@{/}" th:object="${cadastro}" method="post">
-						<div class="form-instruction">
-							<p>Preenchimento obrigatório</p><span>*</span>
-						</div>
+                    <div class="presentation-welcome-btns">
+                        <a class="btn" href="javascript:void(0)">Saiba mais</a>
+                        <a class="btn btn-ghost" href="javascript:void(0)">Adote um animal</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-						<div class="form-dision">
-							<input class="form-dision_inputfull" type="email" placeholder="Email *" th:field="*{email}" id="email">
-							<input class="form-dision_inputfull form-dision_top_right" type="password" placeholder="Senha *" th:field="*{password}" id="password">
-						</div>
-						
-						<input type="submit" value="Entrar" class="btn">
-					</form>
-				</div>
+        <!--=============== OPTIONS HELP ===============-->
+        <section class="optionshelp content">
+            <div class="optionshelp-paws">
+                <img src="/img/paw.svg" alt="Simbolo de pata de animal">
+            </div>
 
-				<div class="identify-container_alternative container-alternative">
-					<p>Esqueceu a senha?</p>
-					<a href="/alterar-senha">Altere sua senha</a>
-				</div>
-			</div>
-		</section>
-	</main>
+            <div class="optionshelp-container wrapper">
+                <h3 class="optionshelp-container_title">Escolha uma maneira de ajudar os animais que você gosta</h3>
 
-	<!--=============== SWEET ALERT 2 ===============-->
-	<script src="js/sweetAlert2/sweetalert2@11.js"></script>
-	
-	<!--=============== JUST VALIDATE ===============-->
-	<script src="js/justValidate/just-validate.production.min.js"></script>
-	
-	<!--=============== SCRIPTS ===============-->
-    <script src="js/main.js"></script>
-    <script src="js/alertsNoMenu.js"></script>
-    <script src="/js/validations.js"></script>
+                <div class="optionshelp-container_group">
+                    <div class="optionshelp-group_card">
+                        <div class="optionshelp-card_information">
+                            <p class="btn">Adoção</p>
+                            <h4>Uma nova companhia para um pet</h4>
+                            <p>Todo dia milhares de animais são encontrados na rua sem dono, ajude a mudar isto.</p>
+                        </div>
+                    </div>
+
+                    <div class="optionshelp-group_card">
+                        <div class="optionshelp-card_information">
+                            <p class="btn">Voluntariado</p>
+                            <h4>Junte-se a nossa equipe apoiando esta causa</h4>
+                            <p>Cadastre sua organização para oferecer apoio a quem estiver precisando.</p>
+                        </div>
+                    </div>
+
+                    <div class="optionshelp-group_card">
+                        <div class="optionshelp-card_information">
+                            <p class="btn">Colaboração</p>
+                            <h4>Apoio durante a procura de animais perdidos</h4>
+                            <p>Abrindo novos chamados, você notificará a todos sobre o desaparecimento.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--=============== ABOUT ===============-->
+        <section class="about content">
+            <div class="about-container wrapper">
+                <img src="/img/about-woman-dog.png" alt="Imagem de uma mulher segurando um cachorro">
+
+                <div class="about-container_description">
+                    <h2>Junte-se a uma plataforma dedicada a auxiliar os animais</h2>
+                    <p>A SavPets é uma comunidade pronta a ajudar os animais que precisam de algum cuidado ou atenção.
+                        Nela você poderá encontrar diversas opções de animais que podem estar disponíveis para adoção,
+                        além de ajudar na procura dos que estão perdidos, para que juntos possamos garantir que o pet
+                        esteja em ótimas mãos.</p>
+                </div>
+            </div>
+        </section>
+
+        <!--=============== DIFFERENCE ===============-->
+        <section class="difference content">
+            <div class="difference-container wrapper">
+                <div class="difference-container_description">
+                    <h2>O que nos torna diferentes dos outros</h2>
+                    <p>Aqui o importante é a proteção e fecilidade dos animais. Na SavPets é possível realizar de forma
+                        rápida e fácil a criação de novos alertas de animais perdidos, além de ser possível encontrar
+                        organizações que podem ajudar as pessoas no que precisarem.</p>
+                    <a class="btn" href="javascript:void(0)">Veja mais</a>
+                </div>
+
+                <div class="difference-container_highlights">
+                    <div class="difference-highlights_item">
+                        <svg width="32" height="30" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M13.9905 1.04358L10.1648 8.80044L1.6053 10.0483C0.0703317 10.271 -0.544827 12.1633 0.568317 13.2472L6.76091 19.2816L5.29625 27.8059C5.03261 29.3467 6.65546 30.5009 8.01466 29.7803L15.6719 25.7554L23.3292 29.7803C24.6884 30.495 26.3112 29.3467 26.0476 27.8059L24.5829 19.2816L30.7755 13.2472C31.8887 12.1633 31.2735 10.271 29.7385 10.0483L21.1791 8.80044L17.3534 1.04358C16.6679 -0.339059 14.6818 -0.356635 13.9905 1.04358Z"
+                                fill="#A5CBE0" />
+                        </svg>
+                        <h4>Suporte Ativo</h4>
+                        <p>Contate-nos pelo email savpets@gmail.com.</p>
+                    </div>
+
+                    <div class="difference-highlights_item">
+                        <svg width="32" height="30" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M13.9905 1.04358L10.1648 8.80044L1.6053 10.0483C0.0703317 10.271 -0.544827 12.1633 0.568317 13.2472L6.76091 19.2816L5.29625 27.8059C5.03261 29.3467 6.65546 30.5009 8.01466 29.7803L15.6719 25.7554L23.3292 29.7803C24.6884 30.495 26.3112 29.3467 26.0476 27.8059L24.5829 19.2816L30.7755 13.2472C31.8887 12.1633 31.2735 10.271 29.7385 10.0483L21.1791 8.80044L17.3534 1.04358C16.6679 -0.339059 14.6818 -0.356635 13.9905 1.04358Z"
+                                fill="#A5CBE0" />
+                        </svg>
+                        <h4>Funções grátis</h4>
+                        <p>Utilize toda a plataforma de maneira gratuita.</p>
+                    </div>
+
+                    <div class="difference-highlights_item">
+                        <svg width="32" height="30" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M13.9905 1.04358L10.1648 8.80044L1.6053 10.0483C0.0703317 10.271 -0.544827 12.1633 0.568317 13.2472L6.76091 19.2816L5.29625 27.8059C5.03261 29.3467 6.65546 30.5009 8.01466 29.7803L15.6719 25.7554L23.3292 29.7803C24.6884 30.495 26.3112 29.3467 26.0476 27.8059L24.5829 19.2816L30.7755 13.2472C31.8887 12.1633 31.2735 10.271 29.7385 10.0483L21.1791 8.80044L17.3534 1.04358C16.6679 -0.339059 14.6818 -0.356635 13.9905 1.04358Z"
+                                fill="#A5CBE0" />
+                        </svg>
+                        <h4>Controle rápido</h4>
+                        <p>Gerencie seus alertas de forma prática.</p>
+                    </div>
+
+                    <div class="difference-highlights_item">
+                        <svg width="32" height="30" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M13.9905 1.04358L10.1648 8.80044L1.6053 10.0483C0.0703317 10.271 -0.544827 12.1633 0.568317 13.2472L6.76091 19.2816L5.29625 27.8059C5.03261 29.3467 6.65546 30.5009 8.01466 29.7803L15.6719 25.7554L23.3292 29.7803C24.6884 30.495 26.3112 29.3467 26.0476 27.8059L24.5829 19.2816L30.7755 13.2472C31.8887 12.1633 31.2735 10.271 29.7385 10.0483L21.1791 8.80044L17.3534 1.04358C16.6679 -0.339059 14.6818 -0.356635 13.9905 1.04358Z"
+                                fill="#A5CBE0" />
+                        </svg>
+                        <h4>Interface simples</h4>
+                        <p>Padrão de navegação entre as páginas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--=============== START ===============-->
+        <section class="start content">
+            <div class="start-container wrapper">
+                <div class="start-container_description">
+                    <h2>Pronto para começar na SavPets?</h2>
+                    <p>Ajudando os animais que precisam de cuidados a ficarem protegidos, bem cuidados e felizes,
+                        oferecendo todo o suporte necessário para que isso possa se tornar cada vez mais realidade.</p>
+                </div>
+
+                <a class="btn" href="javascript:void(0)">Começar</a>
+            </div>
+        </section>
+
+        <!--=============== CONTACT ===============-->
+        <section class="contact content">
+            <div class="contact-container wrapper">
+                <div class="contact-container_informations">
+                    <h2>Como podemos ajudá-lo?</h2>
+                    <p>Sinta-se a vontade para nos contatar quando quiser.</p>
+
+                    <ul class="contact-informations_options">
+                        <li class="contact-options_item">
+                            <a href="javascript:void(0)"><img src="/img/icon-instagram.svg"
+                                    alt="Ícone do instagram com link da savpets"></a>
+                            <p>@savpets</p>
+                        </li>
+
+                        <li class="contact-options_item">
+                            <a href="javascript:void(0)"><img src="/img/icon-whatsapp.svg"
+                                    alt="Ícone do whatsapp com link da savpets"></a>
+                            <p>(11) 91234-5678</p>
+                        </li>
+
+                        <li class="contact-options_item">
+                            <a href="javascript:void(0)"><img src="/img/icon-email.svg"
+                                    alt="Ícone do email com link da savpets"></a>
+                            <p>savpets@gmail.com</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <form class="form" action="" method="post">
+                    <div class="form-instruction">
+                        <p>Preenchimento obrigatório</p><span>*</span>
+                    </div>
+
+                    <div class="form-dision">
+                        <div class="form-division_wrapper">
+                            <label for="name">Nome *</label >
+                            <input class="form-dision_inputfull" type="text" name="name" id="name" required>
+                        </div>
+                       
+                        <div class="form-division_wrapper">
+                            <label for="email">Email *</label >
+                            <input class="form-dision_inputfull" type="email" name="email" id="email" required>
+                        </div>
+                       
+                        <div class="form-division_wrapper">
+                            <label for="topic">Assunto *</label >
+                            <input id="topic" class="form-dision_inputfull" type="text" name="subject" required>
+                        </div>
+                        
+                        <div class="form-division_wrapper">
+                            <label for="message">Mensagem *</label >
+                            <textarea class="form-dision_inputfull form-dision_textarea" cols="30" rows="10" id="message" name="message" required></textarea>
+                        </div>
+                    </div>
+
+                    <button class="btn">Enviar</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!--=============== FOOTER ===============-->
+    <div th:insert="~{fragments/footerHomeClient.html}"></div>
+
+    <!--=============== SCRIPTS ===============-->
+    <div th:insert="~{fragments/management/scriptsHomeClient}"></div>
 </body>
 
 </html>

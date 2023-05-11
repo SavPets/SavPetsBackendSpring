@@ -49,6 +49,10 @@ function openMobileMenu(burger) {
             newPath = '<a class="top-bar_path" href="/adocoes">Adoções</a>'
             topBarPath.insertAdjacentHTML('afterend', newPath)
             break
+        case 'Campanhas de adoção':
+            newPath = '<a class="top-bar_path" href="/campanhas-adocao">Campanhas de adoção</a>'
+            topBarPath.insertAdjacentHTML('afterend', newPath)
+            break
         case 'Relatórios de animais':
             newPath = '<a class="top-bar_path" href="/relatorios-animais">Relatórios de animais</a>'
             topBarPath.insertAdjacentHTML('afterend', newPath)
@@ -78,6 +82,7 @@ function openMobileMenu(burger) {
 
 // =============== SHOW USER SETTINGS =============== 
 username.innerText = localStorage.getItem("username")
+occupation.innerText = ""
 
 // =============== QUIT OPTIONS SETTINGS ===============
 const quitOption = document.querySelectorAll('.option-quit')
@@ -111,8 +116,10 @@ quitOption.forEach(option => {
                     icon: 'warning',
                     title: 'Saindo da sessão'
                 })
-
-                setTimeout(() => window.location.href = "/", 3100)
+				
+                setTimeout(() => window.location.href = "/login", 3100)
+                localStorage.removeItem("username")
+				localStorage.removeItem("occupation")
             }
         })
     })
@@ -152,4 +159,11 @@ function showPageStatusModal(icon, title, text) {
     urlParams.delete('status')
     const newUrl = window.location.pathname
     history.replaceState(null, null, newUrl)
+})();
+
+// =============== ROUTE ACCESS CONTROLLER ===============
+(function routeAccessControl() {
+	if (localStorage.getItem("username") == null) {
+		window.location.href = "/login?status=Erro&text=Realize_o_login!"
+	}
 })()

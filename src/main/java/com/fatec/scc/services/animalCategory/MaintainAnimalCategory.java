@@ -28,5 +28,6 @@ public interface MaintainAnimalCategory {
 
 	Optional<AnimalCategory> updates(Long id, AnimalCategory animalCategory);
 
-
+	boolean existsByNameAndRaceAndGenderAndSizeAndCoatColor(String name, String race, String gender, String size,
+			String coatColor);
 }

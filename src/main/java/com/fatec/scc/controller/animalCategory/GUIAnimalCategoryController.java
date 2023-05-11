@@ -39,7 +39,7 @@ public class GUIAnimalCategoryController {
 
 	@GetMapping("/criar-categoria-animal")
     public ModelAndView showCreateAnimalCategory(AnimalCategory animalCategory) {
-		ModelAndView modelAndView = new ModelAndView("animalCategory/CreateAnimalCategory");
+		ModelAndView modelAndView = new ModelAndView("animalCategory/createAnimalCategory");
 		modelAndView.addObject("categoriaAnimal", animalCategory);
 
 		return modelAndView;
@@ -47,12 +47,17 @@ public class GUIAnimalCategoryController {
 
     @PostMapping("/criar-categoria-animal")
 	public RedirectView createAnimalCategory(@Valid AnimalCategory animalCategory, BindingResult result) {
-		if (result.hasErrors()) {
+		if (service.existsByNameAndRaceAndGenderAndSizeAndCoatColor(animalCategory.getName(), animalCategory.getRace(), animalCategory.getGender(), animalCategory.getSize(),
+				animalCategory.getCoatColor())) {
+			return new RedirectView("/criar-categoria-animal?status=Erro&text=Animal_existente!");
+		}
+    	
+    	if (result.hasErrors()) {
 			return new RedirectView("/criar-categoria-animal?status=Erro&text=Revise_os_campos_do_registro!");
 		}
 
 		if (!service.save(animalCategory).isPresent()) {
-			ModelAndView modelAndView = new ModelAndView("animalCategory/CreateAnimalCategory");
+			ModelAndView modelAndView = new ModelAndView("animalCategory/createAnimalCategory");
 			modelAndView.addObject("message", "Dados invalidos");
 		}
 
@@ -61,7 +66,7 @@ public class GUIAnimalCategoryController {
 
 	@GetMapping("/atualizar-categoria-animal/{id}")
     public ModelAndView showUpdateAnimalCategory(@PathVariable("id") Long id) {
-		ModelAndView modelAndView = new ModelAndView("animalCategory/UpdateAnimalCategory");
+		ModelAndView modelAndView = new ModelAndView("animalCategory/updateAnimalCategory");
 		modelAndView.addObject("categoriaAnimal", service.searchById(id).get());
 
 		return modelAndView;
@@ -69,6 +74,11 @@ public class GUIAnimalCategoryController {
 
 	@PostMapping("/atualizar-categoria-animal/{id}")
 	public RedirectView updateAnimalCategory(@PathVariable("id") Long id, @Valid AnimalCategory animalCategory, BindingResult result) {
+		if (service.existsByNameAndRaceAndGenderAndSizeAndCoatColor(animalCategory.getName(), animalCategory.getRace(), animalCategory.getGender(), animalCategory.getSize(),
+				animalCategory.getCoatColor())) {
+			return new RedirectView("/atualizar-categoria-animal/{id}?status=Erro&text=Animal_existente!");
+		}
+		
 		if (result.hasErrors()) {
 			animalCategory.setId(id);
 			

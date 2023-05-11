@@ -21,28 +21,49 @@
                     <p>Preencha todos os campos para que seja criada uma conta para você.</p>
 
                     <div class="identify-information_options container-information_options">
-                        <a href="/">Entrar</a>
+                        <a href="/login">Entrar</a>
                         <a href="/cadastrar" class="container-option_active">Cadastrar-se</a>
                     </div>
                 </div>
                 <div class="identify-container_form container-form">
-                    <form class="form" th:action="@{/criar-cadastro}" th:object="${cadastro}" method="post">
+                    <form class="form" th:action="@{/criar-cadastro}" th:object="${cadastro}" method="post" onSubmit="login()">
                         <div class="form-instruction">
                             <p>Preenchimento obrigatório</p><span>*</span>
                         </div>
                         <div class="form-dision">
-                            <input class="form-dision_inputfull" type="text" placeholder="Primeiro nome *" name="firstName" th:field="*{name}" id="name">
-                            <input class="form-dision_inputfull" type="text" placeholder="Último nome *" name="lastName"th:field="*{surname}" id="lastName">
-                            <input class="form-dision_inputfull" type="email" placeholder="Email *" name="email" th:field="*{email}" id="email">
-                            <input class="form-dision_inputfull" type="password" placeholder="Senha *" name="password" th:field="*{password}" id="password">
-                            <input class="form-dision_inputfull" type="password" placeholder="Confirmar senha *" name="confirmedPassword" th:field="*{repeatPassword}" id="repeatPassword">
+                        
+                               <div class="form-division_wrapper">
+                               <label for="name">Nome *</label >
+                                <input class="form-dision_inputfull" type="text"  name="firstName" th:field="*{name}" id="name">
+                            </div>
+                            
+                              <div class="form-division_wrapper">
+                              <label for="lastName">Último Nome *</label >
+                                <input class="form-dision_inputfull" type="text" name="lastName"th:field="*{surname}" id="lastName">
+                            </div>
+                            
+                              <div class="form-division_wrapper">
+                         		<label for="email">Email *</label >
+                                <input class="form-dision_inputfull" type="email"  name="email" th:field="*{email}" id="email">
+                            </div>
+                            
+                               <div class="form-division_wrapper">
+                               <label for="password">Senha *</label >
+                                <input class="form-dision_inputfull" type="password" name="password" th:field="*{password}" id="password">
+                            </div>
+                            
+                               <div class="form-division_wrapper">
+                               <label for="repeatPassword">Confirmar Senha *</label >
+                                <input class="form-dision_inputfull" type="password" name="confirmedPassword" th:field="*{repeatPassword}" id="repeatPassword">
+                            </div>
                         </div>
+
     					<input type="submit" value="Cadastrar" class="btn">
                     </form>
                 </div>
                 <div class="identify-container_alternative container-alternative">
                     <p>Já possui uma conta?</p>
-                    <a href="/">Entre em sua conta</a>
+                    <a href="/login">Entre em sua conta</a>
                 </div>
             </div>
         </section>
@@ -58,5 +79,12 @@
     <script src="js/main.js"></script>
     <script src="js/alertsNoMenu.js"></script>
     <script src="/js/validations.js"></script>
+    
+    <!--=============== FUNÇÃO PARA EXECUTAR O LOGIN AO CADASTRAR ===============-->
+    <script>
+    	function login() {
+			localStorage.setItem("username", "")
+		}
+    </script>
 </body>
 </html>

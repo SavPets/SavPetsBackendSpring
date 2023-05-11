@@ -15,4 +15,6 @@ public interface MaintainEmployeeRepository extends JpaRepository<Employee, Long
 
 	boolean existsByCpf(String cpf);
 
+	Optional<Employee> findByEmail(String email);
+
 }

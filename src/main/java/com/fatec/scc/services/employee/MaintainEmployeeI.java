@@ -2,6 +2,7 @@ package com.fatec.scc.services.employee;
 
 import java.util.List;
 import java.util.Optional;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,12 +41,10 @@ public class MaintainEmployeeI implements MaintainEmployee {
 		logger.info(">>>>>> servico consultaPorId chamado");
 		return repository.findById(id);
 	}
-
+	
 	@Override
 	public Optional<Employee> save(Employee employee) {
 		logger.info(">>>>>> servico save chamado ");
-		employee.setPassword("123");
-		employee.setRepeatPassword("123");
 		return Optional.ofNullable(repository.save(employee));
 	}
 
@@ -102,5 +101,25 @@ public class MaintainEmployeeI implements MaintainEmployee {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public Optional<Employee> searchByEmail(String email) {
+		logger.info(">>>>>> servico consultaPorEmail chamado");
+		return repository.findByEmail(email);
+	}
+	
+	@Override
+	public Optional<Employee> updates(String email, String senha) {
+		logger.info(">>>>>> servico atualiza senha de cadastro chamado");
+		Optional<Employee> auxiliaryRegister = repository.findByEmail(email);
+		Employee modifiedRegister = new Employee(auxiliaryRegister.get().getName(), auxiliaryRegister.get().getSurname(), auxiliaryRegister.get().getEmail(),
+				auxiliaryRegister.get().getPassword(), auxiliaryRegister.get().getRepeatPassword(), auxiliaryRegister.get().getCpf(), auxiliaryRegister.get().getCep(),
+				auxiliaryRegister.get().getAddress(), auxiliaryRegister.get().getLocationNumber(), auxiliaryRegister.get().getComplement(),
+				auxiliaryRegister.get().getAccountNumber(), auxiliaryRegister.get().getDepartament(), auxiliaryRegister.get().getOccupation());
+		modifiedRegister.setId(auxiliaryRegister.get().getId());
+		modifiedRegister.setPassword(senha);
+		modifiedRegister.setRepeatPassword(senha);
+		return Optional.ofNullable(repository.save(modifiedRegister));
 	}
 }

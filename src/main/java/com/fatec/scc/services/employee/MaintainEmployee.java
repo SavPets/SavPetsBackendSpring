@@ -29,4 +29,8 @@ public interface MaintainEmployee {
 
 	boolean existsByCpf(String email);
 
+	Optional<Employee> searchByEmail(String email);
+
+	Optional<Employee> updates(String email, String password);
+
 }

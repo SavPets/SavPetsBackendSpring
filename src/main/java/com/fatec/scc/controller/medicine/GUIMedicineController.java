@@ -39,7 +39,7 @@ public class GUIMedicineController {
 
 		@GetMapping("/criar-medicamento")
 	    public ModelAndView showCreateMedicine(Medicine medicine) {
-			ModelAndView modelAndView = new ModelAndView("medicine/CreateMedicine");
+			ModelAndView modelAndView = new ModelAndView("medicine/createMedicine");
 			modelAndView.addObject("fornecedores", service.searchAllF());
 			modelAndView.addObject("medicamento", medicine);
 
@@ -53,7 +53,7 @@ public class GUIMedicineController {
 				return new RedirectView("/criar-medicamento?status=Erro&text=Revise_os_campos_do_registro!");
 			}
 			if (!service.save(medicine).isPresent()) {
-				ModelAndView modelAndView = new ModelAndView("medicine/CreateMedicine");
+				ModelAndView modelAndView = new ModelAndView("medicine/createMedicine");
 				modelAndView.addObject("message", "Dados invalidos");
 			}
 			return new RedirectView("/medicamentos?status=Cadastrado"); 
@@ -63,7 +63,7 @@ public class GUIMedicineController {
 		
 		@GetMapping("/atualizar-medicamento/{id}")
 	    public ModelAndView showUpdateMedicine(@PathVariable("id") Long id) {
-			ModelAndView modelAndView = new ModelAndView("medicine/UpdateMedicine");
+			ModelAndView modelAndView = new ModelAndView("medicine/updateMedicine");
 			modelAndView.addObject("medicamento", service.searchById(id).get());
 			modelAndView.addObject("fornecedores", service.searchAllF());
 

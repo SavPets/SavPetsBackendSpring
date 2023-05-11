@@ -37,7 +37,7 @@ public class GUIFornecedorController {
 
 		@GetMapping("/criar-fornecedor")
 	    public ModelAndView showCreateProvider(Provider provider) {
-			ModelAndView modelAndView = new ModelAndView("provider/CreateProvider");
+			ModelAndView modelAndView = new ModelAndView("provider/createProvider");
 			modelAndView.addObject("fornecedor", provider);
 			
 			return modelAndView;
@@ -53,7 +53,7 @@ public class GUIFornecedorController {
 				return new RedirectView("/criar-fornecedor?status=Erro&text=Revise_os_campos_do_registro!");
 			}
 			if (!service.save(provider).isPresent()) {
-				ModelAndView modelAndView = new ModelAndView("provider/CreateProvider");
+				ModelAndView modelAndView = new ModelAndView("provider/createProvider");
 				modelAndView.addObject("message", "Dados invalidos");
 			}
 			return new RedirectView("/fornecedores?status=Cadastrado"); 
@@ -61,7 +61,7 @@ public class GUIFornecedorController {
 		
 		@GetMapping("/atualizar-fornecedor/{id}")
 	    public ModelAndView showUpdateProvider(@PathVariable("id") Long id) {
-			ModelAndView modelAndView = new ModelAndView("provider/UpdateProvider");
+			ModelAndView modelAndView = new ModelAndView("provider/updateProvider");
 			modelAndView.addObject("fornecedor", service.searchById(id).get());
 
 			return modelAndView;
