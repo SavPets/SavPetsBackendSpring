@@ -15,6 +15,32 @@
     padding-block: 0;
 }
 
+.presentation.content .scroll-down{
+	width: 3rem;
+	margin-bottom: 1rem;
+	margin-left: auto;
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translate(0, -50%) rotate(180deg);
+	animation: MoveUpDown 3s linear infinite;
+}
+
+@keyframes MoveUpDown {
+  0%, 100% {
+    bottom: 0;
+  }
+  50% {
+    bottom: 25px;
+  }
+}
+
+.presentation.content .scroll-down svg{
+	width: 100%;
+	fill: var(--menu-links-color);
+}
+
+
 .presentation-container{
     background: url(../img/background-image.png) no-repeat 62%;
     background-size: cover;

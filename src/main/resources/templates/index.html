@@ -13,7 +13,7 @@
     <div th:insert="~{fragments/headerHomeClient}"></div>
 
     <!--=============== MAIN ===============-->
-    <main id="main">
+    <main>
 
         <!--=============== PRESENTATION ===============-->
         <section class="presentation content">
@@ -30,10 +30,17 @@
                     </div>
                 </div>
             </div>
+            <a class="scroll-down" href="#main">
+            	<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+	                <circle cx="20" cy="20" r="20" fill="#313f8c"></circle>
+	                <path d="M20 27V13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+	                <path d="M13 20L20 13L27 20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            	</svg>
+            </a>
         </section>
 
         <!--=============== OPTIONS HELP ===============-->
-        <section class="optionshelp content">
+        <section class="optionshelp content" id="main">
             <div class="optionshelp-paws">
                 <img src="/img/paw.svg" alt="Simbolo de pata de animal">
             </div>
