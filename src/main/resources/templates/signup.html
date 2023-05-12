@@ -4,14 +4,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <!--=============== HEAD ===============-->
-<head th:insert="~{fragments/headMain}"></head>
+<head th:insert="~{fragments/headHomeClient}"></head>
 
 <body>
-    <!--=============== ACCESSIBILITY BAR ===============-->
+	<!--=============== ACCESSIBILITY BAR ===============-->
 	<div th:insert="~{fragments/accessibilityBar}"></div>
 
-    <!--=============== HEADER ===============-->
-    <div th:insert="~{fragments/headerMain}"></div>
+	<!--=============== HEADER ===============-->
+	<div th:insert="~{fragments/headerHomeClient}"></div>
 
     <!--=============== MAIN ===============-->
     <main>
@@ -71,6 +71,9 @@
             </div>
         </section>
     </main>
+
+    <!--=============== FOOTER ===============-->
+    <div th:insert="~{fragments/footerHomeClient.html}"></div>
     
     <!--=============== SWEET ALERT 2 ===============-->
 	<script src="js/sweetAlert2/sweetalert2@11.js"></script>
@@ -78,11 +81,11 @@
 	<!--=============== JUST VALIDATE ===============-->
 	<script src="js/justValidate/just-validate.production.min.js"></script>
     
-    <!--=============== SCRIPTS ===============-->
+	<!--=============== SCRIPTS ===============-->
+	<div th:insert="~{fragments/management/scriptsHomeClient}"></div>
     <script src="js/main.js"></script>
     <script src="js/alertsNoMenu.js"></script>
     <script src="/js/validations.js"></script>
-    <script src="/js/accessibilityOptions.js"></script>
     
     <!--=============== FUNÇÃO PARA EXECUTAR O LOGIN AO CADASTRAR ===============-->
     <script>
