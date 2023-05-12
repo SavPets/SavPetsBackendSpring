@@ -1,5 +1,5 @@
 /* =============== PRESENTATION SETTINGS =============== */
-#header.content{
+header #header.content{
     background-color: transparent;
     z-index: 1000;
 }
@@ -8,7 +8,7 @@
     justify-content: space-between;
 }
 
-#header.fixed-menu{
+header #header.fixed-menu {
     background-color: var(--secondary-color);
 }
 
