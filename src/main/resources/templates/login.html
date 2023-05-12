@@ -5,9 +5,12 @@
 <!--=============== HEAD ===============-->
 <head th:insert="~{fragments/headMain}"></head>
 
-<body> <!-- alterar para saber a página -->
+<body class="empty">
+	<!--=============== ACCESSIBILITY BAR ===============-->
+	<div th:insert="~{fragments/accessibilityBar}"></div>
+
 	<!--=============== HEADER ===============-->
-	<header th:insert="~{fragments/headerMain}"></header>
+	<div th:insert="~{fragments/headerMain}"></div>
 
 	<!--=============== MAIN ===============-->
 	<main>
@@ -67,6 +70,7 @@
     <script src="js/main.js"></script>
     <script src="js/alertsNoMenu.js"></script>
     <script src="/js/validations.js"></script>
+	<script src="/js/accessibilityOptions.js"></script>
     
     <!--=============== FUNÇÃO PARA EXECUTAR O LOGIN AO CADASTRAR ===============-->
     <script>
