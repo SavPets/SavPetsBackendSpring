@@ -1,0 +1,59 @@
+body.contrast {
+    --body-color: hsl(0, 0%, 0%);
+    --paragraph-color: hsl(0, 0%, 100%);
+    --primary-color: hsl(0, 0%, 0%);
+    --secondary-color: hsl(0, 0%, 0%);
+
+    --height-nav: 7.2rem;
+    --menu-links-color: hsl(60, 100%, 50%);
+    --placeholder-color: hsl(0, 0%, 100%);
+    --btn-red-color: hsl(60, 100%, 50%);
+
+    --footer-color: hsl(0, 0%, 0%);
+    --footer-text-color: hsl(0, 0%, 100%);
+}
+
+.contrast a.accessibility-group_item,
+.contrast a {
+    color: var(--menu-links-color);
+}
+
+.contrast a.accessibility-group_item svg path ,
+.contrast .fixed-menu .logo path,
+.contrast .logo path {
+    fill: var(--menu-links-color);
+}
+
+.contrast a.btn,
+.contrast button.btn,
+.contrast input.btn {
+    border-color: var(--paragraph-color);
+    background-color: var(--body-color);
+    color: var(--menu-links-color);
+}
+
+.contrast .header-list_option,
+.contrast .form-division_wrapper label,
+.contrast .footer-item_list .btn-ghost,
+.contrast h5 {
+    opacity: 1;
+}
+
+.contrast svg path {
+    fill: var(--paragraph-color);
+}
+
+.contrast svg circle {
+    fill: var(--secondary-color);
+}
+
+.contrast h4,
+.contrast h5,
+.contrast span,
+.contrast .just-validate-error-label {
+    color: var(--paragraph-color) !important;
+}
+
+.contrast input {
+    color: var(--primary-color);
+}
