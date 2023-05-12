@@ -1,6 +1,7 @@
 /* =============== PRESENTATION SETTINGS =============== */
 #header.content{
     background-color: transparent;
+    z-index: 1000;
 }
 
 .header-container.home{
@@ -13,33 +14,53 @@
 
 .presentation.content{
     padding-block: 0;
+    position: relative;
 }
 
-.presentation.content .scroll-down{
-	width: 3rem;
-	margin-bottom: 1rem;
-	margin-left: auto;
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-	transform: translate(0, -50%) rotate(180deg);
-	animation: MoveUpDown 3s linear infinite;
-}
-
-@keyframes MoveUpDown {
-  0%, 100% {
+/* =============== SCROLL DOWN =============== */
+.scroll-down{
+    width: 10%;
+    margin-left: auto;
+    position: absolute;
     bottom: 0;
-  }
-  50% {
-    bottom: 25px;
-  }
+    margin-bottom: 4rem;
+    left: 45%;
+    animation: MoveUpDown 3s linear infinite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.25rem;
+    opacity: 1;
+    visibility: visible;
+    transition: 0.3s;
 }
 
-.presentation.content .scroll-down svg{
-	width: 100%;
-	fill: var(--menu-links-color);
+.scroll-down.hide_scroll-down{
+    visibility: hidden;
+    opacity: 0;
 }
 
+/* Keyframe (animação) para o 'scroll-down' */
+@keyframes MoveUpDown {
+    0%, 100% {
+        bottom: 0;
+    }
+    50% {
+        bottom: 25px;
+    }
+}
+
+.scroll-down svg{
+    width: 100%;
+    transform: rotate(180deg);
+}
+
+.scroll-down svg circle{
+    fill: var(--secondary-color);
+}
+
+/*======================================*/
 
 .presentation-container{
     background: url(../img/background-image.png) no-repeat 62%;
@@ -70,6 +91,28 @@
 
 .presentation-welcome-btns .btn{
     padding: 1.2rem 2.8rem;
+}
+
+/* =============== BACK TO TOP =============== */
+.back-to-top{
+    position: fixed;
+    right: 4rem;
+    bottom: 4rem;
+    transform: rotate(180deg) translateY(-50%);
+    transition: 0.3s;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 50;
+}
+
+.back-to-top svg circle{
+    fill: var(--secondary-color);
+}
+
+.back-to-top.activate_scroll-top{
+    transform: rotate(0deg) translateY(0);
+    opacity: 1;
+    visibility: visible;
 }
 
 /* =============== OPTIONS HELP SETTINGS =============== */

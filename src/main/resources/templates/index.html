@@ -12,8 +12,11 @@
     <!--=============== HEADER ===============-->
     <div th:insert="~{fragments/headerHomeClient}"></div>
 
+    <!--=============== BACK TO TOP ===============-->
+    <a th:replace="~{fragments/backToTop}"></a>
+
     <!--=============== MAIN ===============-->
-    <main>
+    <main id="main">
 
         <!--=============== PRESENTATION ===============-->
         <section class="presentation content">
@@ -30,7 +33,7 @@
                     </div>
                 </div>
             </div>
-            <a class="scroll-down" href="#main">
+            <a class="scroll-down" href="#content">
             	<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
 	                <circle cx="20" cy="20" r="20" fill="#313f8c"></circle>
 	                <path d="M20 27V13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -40,7 +43,7 @@
         </section>
 
         <!--=============== OPTIONS HELP ===============-->
-        <section class="optionshelp content" id="main">
+        <section class="optionshelp content" id="content">
             <div class="optionshelp-paws">
                 <img src="/img/paw.svg" alt="Simbolo de pata de animal">
             </div>
@@ -197,17 +200,17 @@
                             <label for="name">Nome *</label >
                             <input class="form-dision_inputfull" type="text" name="name" id="name" required>
                         </div>
-                       
+
                         <div class="form-division_wrapper">
                             <label for="email">Email *</label >
                             <input class="form-dision_inputfull" type="email" name="email" id="email" required>
                         </div>
-                       
+
                         <div class="form-division_wrapper">
                             <label for="topic">Assunto *</label >
                             <input id="topic" class="form-dision_inputfull" type="text" name="subject" required>
                         </div>
-                        
+
                         <div class="form-division_wrapper">
                             <label for="message">Mensagem *</label >
                             <textarea class="form-dision_inputfull form-dision_textarea" cols="30" rows="10" id="message" name="message" required></textarea>

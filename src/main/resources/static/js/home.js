@@ -71,6 +71,20 @@ function openMobileMenu(burger){
     bodyElement.classList.toggle('active-menu-mobile')
 }
 
+// =============== BACK TO TOP ===============
+const backToTop = document.querySelector('.back-to-top')
+const scrollDown = document.querySelector('.scroll-down')
+
+window.addEventListener('scroll', () => {
+    if(scrollY > 600) {
+        backToTop.classList.add('activate_scroll-top')
+        scrollDown.classList.add('hide_scroll-down')
+    } else {
+        backToTop.classList.remove('activate_scroll-top')
+        scrollDown.classList.remove('hide_scroll-down')
+    }
+})
+
 // =============== SCROLL REVEAL SETTINGS ===============
 const scrollReveal = ScrollReveal({
     origin: 'left',
