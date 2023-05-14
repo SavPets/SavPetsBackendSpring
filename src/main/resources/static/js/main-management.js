@@ -1,6 +1,8 @@
+const bodyElement = document.body
+
 // =============== MENU ===============
 function setCurrentPage() {
-    const page = `/${document.body.classList}`
+    const page = `/${bodyElement.classList}`
     const currentPage = document.querySelector(`.header-content_menu a[href="${page}"]`)
 
     return currentPage
