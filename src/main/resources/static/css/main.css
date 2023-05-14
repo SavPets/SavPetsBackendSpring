@@ -39,6 +39,7 @@ body {
     /*Documento volta ao normal de 16px*/
 
     overflow: overlay;
+    scroll-behavior: smooth;
     background-color: var(--body-color);
 }
 
@@ -202,6 +203,10 @@ img {
     color: var(--secondary-color);
 }
 
+.guide-container_content a {
+    color: var(--secondary-color);
+}
+
 /*=============== SCROLL BAR ===============*/
 ::-webkit-scrollbar {
     width: 1rem;
@@ -220,6 +225,13 @@ img {
 /* =============== ACCESSIBILITY BAR SETTINGS =============== */
 .accessibility.content {
     padding-block: .5rem;
+
+    transition: 300ms;
+}
+
+.accessibility.content.to-hide {
+    padding: 0;
+    height: 0;
 }
 
 .accessibility-container {
@@ -275,6 +287,17 @@ a.accessibility-group_item:hover {
     opacity: .3;
 }
 
+.vlibras-widget {
+    margin-right: 1.5rem;
+
+    transition: 300ms;
+}
+
+.vlibras-widget.to-hide {
+    visibility: hidden;
+    opacity: 0;
+}
+
 /* =============== HEADER SETTINGS =============== */
 .menu-mobile,
 .burger {
@@ -291,8 +314,6 @@ a.accessibility-group_item:hover {
 }
 
 #header.fixed-menu {
-    position: fixed;
-    top: 0;
     z-index: 1000;
 
     background-color: var(--secondary-color);
