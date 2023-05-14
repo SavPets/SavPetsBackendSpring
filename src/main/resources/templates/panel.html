@@ -21,6 +21,7 @@
     <!--=============== CSS ===============-->
     <link rel="stylesheet" th:href="@{/css/hamburguer.css}">
     <link rel="stylesheet" th:href="@{/css/main-management.css}">
+    <link rel="stylesheet" th:href="@{/css/contrast.css}">
 </head>
 
 <body class="painel">
@@ -29,6 +30,9 @@
 
     <!--=============== PANEL ===============-->
     <section class="wrapper">
+
+        <!--=============== ACCESSIBILITY BAR ===============-->
+        <div th:insert="~{fragments/accessibilityBar}"></div>
 
         <!--=============== TOP BAR ===============-->
         <section th:insert="~{fragments/management/topBar}"></section>
@@ -71,9 +75,12 @@
 		}
     </script>
     
+    <!--=============== SWEET ALERT 2 ===============-->
+    <script src="/js/sweetAlert2/sweetalert2@11.js"></script>
     <!--=============== SCRIPTS ===============-->
-    <div th:insert="~{fragments/management/scriptsNoTable}"></div>
-    
+    <script src="/js/hamburguer-min.js" type="module"></script>
+    <script src="/js/main-management.js"></script>
+    <script src="/js/accessibilityOptions.js"></script>
 </body>
 
 </html>
