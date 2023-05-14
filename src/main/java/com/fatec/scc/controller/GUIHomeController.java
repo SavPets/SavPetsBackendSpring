@@ -32,6 +32,12 @@ public class GUIHomeController {
 		return mv;
 	}
 	
+	@GetMapping("/guia")
+	public ModelAndView showGuide() {
+		ModelAndView mv = new ModelAndView("accessibility");
+		return mv;
+	}
+
 	@GetMapping("/login")
 	public ModelAndView showLogin(Employee employee) {
 		ModelAndView mv = new ModelAndView("login");
