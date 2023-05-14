@@ -7,18 +7,22 @@ function onScroll() {
     const menu = document.querySelector('#header')
     const AlreadyHaveClass = menu.classList.contains('fixed-menu')
 
+    const accessibilityBar = document.querySelector('.accessibility.content')
+
     if((scrollY >= 0) && (!AlreadyHaveClass)) {
-        changeColorMenuOnScroll(menu)
+        changeColorMenuOnScroll(menu, accessibilityBar)
     }
 
     if((scrollY <= 0) && (AlreadyHaveClass)){
         menu.classList.remove('fixed-menu')
+        accessibilityBar.classList.remove('to-hide')
     }
 }
 
 // =============== MENU ===============
 (function activeMenuOnCurrentPage(){
-    const page = `/${bodyElement.classList}`
+    let page = `/${bodyElement.classList}`
+    page = page.replace('contrast', '')
 
     const headerListOption = document.querySelector(`.header-list_option[href="${page}"]`)
     if(headerListOption.textContent === 'Cadastre-se') {
@@ -27,6 +31,7 @@ function onScroll() {
     headerListOption.classList.add('menu-active')
 })()
 
-function changeColorMenuOnScroll(menu) {
+function changeColorMenuOnScroll(menu, accessibilityBar) {
     menu.classList.add('fixed-menu')
+    accessibilityBar.classList.add('to-hide')
 }
