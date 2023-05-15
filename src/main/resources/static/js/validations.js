@@ -1,3 +1,15 @@
+// Data para a validação posterior
+const date = new Date()
+
+function verifyMonth(month){
+  if(month < 9)
+    return `0${month+1}`
+  else
+    return month+1
+}
+
+const todayDate = `${date.getFullYear()}-${verifyMonth(date.getMonth())}-${date.getDate()}`
+
 const validator = new JustValidate('.form',
   {
     errorLabelStyle: {
@@ -122,7 +134,17 @@ const fieldsRules = {
 
   // REGRAS DO FORMULARIO CAMPANHAS ADOCAO
   campaignDate: [
-    { rule: 'required', errorMessage: ' data é obrigatório' }
+    {
+      rule: 'required',
+      errorMessage: 'Data da campanha é obrigatória'
+    },
+    {
+      plugin: JustValidatePluginDate(() => ({
+        format: 'yyyy-MM-dd',
+        isAfterOrEqual: `${todayDate}`,
+      })),
+      errorMessage: `Data deve ser superior ou igual a data de hoje`,
+    },
   ],
 
   startTime: [
@@ -225,10 +247,11 @@ function showValidationStatusIcon(event) {
 
 function addFieldWithRules(fieldToAdd) {
   fieldToAdd.forEach(({ fieldId, rules }) => {
-    const fieldRules = rules.map(({ rule, value, errorMessage }) => ({
+    const fieldRules = rules.map(({ rule, value, errorMessage, plugin }) => ({
       rule,
       value,
-      errorMessage
+      errorMessage,
+      plugin
     }))
 
     validator.addField(`#${fieldId}`, fieldRules)

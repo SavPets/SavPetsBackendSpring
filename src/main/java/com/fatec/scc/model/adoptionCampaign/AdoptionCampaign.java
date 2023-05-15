@@ -6,6 +6,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 @Entity
 public class AdoptionCampaign {
@@ -16,7 +19,7 @@ public class AdoptionCampaign {
 	private String name;
 	@NotBlank(message = "A descrição da campanha é obrigatória")
 	private String description;
-	@NotBlank(message = "A data da campanha é obrigatória")
+
 	private String date;
 	@NotBlank(message = "O horário de início da campanha é obrigatório")
 	private String startTime;
@@ -61,6 +64,7 @@ public class AdoptionCampaign {
 	public String getDate() {
 		return date;
 	}
+
 	public void setDate(String date) {
 		this.date = date;
 	}

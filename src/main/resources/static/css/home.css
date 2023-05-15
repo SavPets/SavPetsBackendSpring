@@ -1,7 +1,11 @@
-/* =============== PRESENTATION SETTINGS =============== */
+    /* =============== PRESENTATION SETTINGS =============== */
 header #header.content{
     background-color: transparent;
     z-index: 1000;
+}
+
+header#header_nom-index #header.content{
+    background-color: var(--primary-color);
 }
 
 .header-container.home{
@@ -9,12 +13,28 @@ header #header.content{
 }
 
 header #header.fixed-menu {
-    background-color: var(--secondary-color);
+    background-color: var(--secondary-color) !important;
 }
 
 .presentation.content{
     padding-block: 0;
     position: relative;
+}
+
+/* Titles */
+.main-title{
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--title-page-color);
+    margin-bottom: 0.75rem;
+}
+
+.main-subtitle{
+    font-size: 2rem;
+    color: var(--placeholder-color);
+    text-align: center;
+    margin-bottom: 4rem;
 }
 
 /* =============== SCROLL DOWN =============== */
@@ -299,6 +319,65 @@ header #header.fixed-menu {
 
 .contact-options_item:last-child{
     margin-bottom: 0;
+}
+
+/* =============== CAMPAIGNS =============== */
+#main {
+    background: var(--body-color);
+}
+
+.section-campaign{
+    margin-top: 5rem;
+}
+
+.section-campaign .title_amount-campaign{
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--secondary-color);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.campaign-container{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.campaign-container .campaign-content{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 0.625rem;
+    min-height: 18.75rem;
+}
+
+.campaign-container .campaign-content img{
+    width: 25.5rem;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.625rem 0 0 0.625rem;
+}
+
+.campaign-container .campaign-content .campaign-info{
+    padding: 1.5625rem 1.875rem 1.5625rem 0;
+}
+
+.campaign-container .campaign-content .campaign-info .campaing-date{
+    color: var(--secondary-color);
+    margin-bottom: 0.75rem;
+}
+
+.campaign-container .campaign-content .campaign-info svg{
+    width: 1.125rem;
+}
+
+.campaign-container .campaign-content .campaign-info .campaign-name{
+    margin-bottom: 0.875rem;
+    font-size: 1.625rem;
+    color: var(--placeholder-color);
 }
 
 /* =============== FOOTER SETTINGS =============== */

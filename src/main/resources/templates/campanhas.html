@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<!--=============== HEAD ===============-->
+<head th:insert="~{fragments/headHomeClient}"></head>
+
+<body>
+    <!--=============== ACCESSIBILITY BAR ===============-->
+    <div th:insert="~{fragments/accessibilityBar}"></div>
+
+    <!--=============== HEADER ===============-->
+    <header id="header_nom-index" th:insert="~{fragments/headerHomeClient}"></header>
+
+    <!--=============== BACK TO TOP ===============-->
+    <a th:replace="~{fragments/backToTop}"></a>
+
+    <!--=============== MAIN ===============-->
+    <main id="main">
+        <!--=============== CAMPAIGNS ===============-->
+        <section class="content wrapper section-campaign">
+            <h1 class="main-title">Campanhas de Adoção</h1>
+            <h2 class="main-subtitle">Ajude algum animal nos nossos <br/> eventos de adoção</h2>
+
+            <p class="title_amount-campaign" th:text="${#lists.size(campanhas) == 0 ? 'Sem Campanhas de Adoção no momento' : #lists.size(campanhas)+' Campanha(s) até o momento'}"></p>
+
+            <div class="campaign-container">
+                <div class="campaign-content" th:each="Campanha : ${campanhas}">
+                    <img src="https://darciorabelo.com.br/uploads/notice/Ado%C3%A7%C3%A3o_de_c%C3%A3o_em_Belo_Jardim.jpg" />
+                    <div class="campaign-info">
+                        <p class="campaing-date" th:text="${#dates.dayOfWeekName(Campanha.date)}">
+                        </p>
+                        <div>
+                            <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 19.2492C0 20.3485 0.863839 21.2405 1.92857 21.2405H16.0714C17.1362 21.2405 18 20.3485 18 19.2492V7.96518H0V19.2492ZM12.8571 11.1181C12.8571 10.8443 13.0741 10.6202 13.3393 10.6202H14.9464C15.2116 10.6202 15.4286 10.8443 15.4286 11.1181V12.7775C15.4286 13.0513 15.2116 13.2753 14.9464 13.2753H13.3393C13.0741 13.2753 12.8571 13.0513 12.8571 12.7775V11.1181ZM12.8571 16.4282C12.8571 16.1544 13.0741 15.9304 13.3393 15.9304H14.9464C15.2116 15.9304 15.4286 16.1544 15.4286 16.4282V18.0876C15.4286 18.3614 15.2116 18.5854 14.9464 18.5854H13.3393C13.0741 18.5854 12.8571 18.3614 12.8571 18.0876V16.4282ZM7.71429 11.1181C7.71429 10.8443 7.93125 10.6202 8.19643 10.6202H9.80357C10.0687 10.6202 10.2857 10.8443 10.2857 11.1181V12.7775C10.2857 13.0513 10.0687 13.2753 9.80357 13.2753H8.19643C7.93125 13.2753 7.71429 13.0513 7.71429 12.7775V11.1181ZM7.71429 16.4282C7.71429 16.1544 7.93125 15.9304 8.19643 15.9304H9.80357C10.0687 15.9304 10.2857 16.1544 10.2857 16.4282V18.0876C10.2857 18.3614 10.0687 18.5854 9.80357 18.5854H8.19643C7.93125 18.5854 7.71429 18.3614 7.71429 18.0876V16.4282ZM2.57143 11.1181C2.57143 10.8443 2.78839 10.6202 3.05357 10.6202H4.66071C4.92589 10.6202 5.14286 10.8443 5.14286 11.1181V12.7775C5.14286 13.0513 4.92589 13.2753 4.66071 13.2753H3.05357C2.78839 13.2753 2.57143 13.0513 2.57143 12.7775V11.1181ZM2.57143 16.4282C2.57143 16.1544 2.78839 15.9304 3.05357 15.9304H4.66071C4.92589 15.9304 5.14286 16.1544 5.14286 16.4282V18.0876C5.14286 18.3614 4.92589 18.5854 4.66071 18.5854H3.05357C2.78839 18.5854 2.57143 18.3614 2.57143 18.0876V16.4282ZM16.0714 2.65506H14.1429V0.663765C14.1429 0.298694 13.8536 0 13.5 0H12.2143C11.8607 0 11.5714 0.298694 11.5714 0.663765V2.65506H6.42857V0.663765C6.42857 0.298694 6.13929 0 5.78571 0H4.5C4.14643 0 3.85714 0.298694 3.85714 0.663765V2.65506H1.92857C0.863839 2.65506 0 3.54699 0 4.64635V6.63765H18V4.64635C18 3.54699 17.1362 2.65506 16.0714 2.65506Z" fill="#A5CBE0"/>
+                            </svg>
+                            <span class="campaign-name" th:text="${Campanha.name}"></span>
+                        </div>
+                        <div>
+                            <span th:text="${Campanha.startTime}+' - '+${Campanha.endTime}"></span>
+                            |
+                            <span th:text="${Campanha.location}"></span>
+                        </div>
+                        <p class="campaign-description" th:text="${Campanha.description}"></p>
+                        <a class="btn" href="#">
+                            Saiba Mais
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--=============== FOOTER ===============-->
+    <div th:insert="~{fragments/footerHomeClient.html}"></div>
+
+    <!--=============== SCRIPTS ===============-->
+    <div th:insert="~{fragments/management/scriptsHomeClient}"></div>
+    <script src="/js/home.js"></script>
+</body>
+</html>

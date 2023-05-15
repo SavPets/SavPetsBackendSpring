@@ -2,6 +2,7 @@ package com.fatec.scc.controller;
 
 import javax.validation.Valid;
 
+import com.fatec.scc.services.adoptionCampaign.MaintainAdoptionCampaign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -25,10 +26,20 @@ public class GUIHomeController {
 	MaintainRegister service;
 	@Autowired
 	MaintainEmployee serviceE;
+	@Autowired
+	MaintainAdoptionCampaign serviceCampaign;
 
 	@GetMapping("/")
 	public ModelAndView showIndex() {
 		ModelAndView mv = new ModelAndView("index");
+		return mv;
+	}
+
+	@GetMapping("/campanhas")
+	public ModelAndView showCampaigns() {
+		ModelAndView mv = new ModelAndView("campanhas");
+		mv.addObject("campanhas", serviceCampaign.searchAll());
+
 		return mv;
 	}
 	

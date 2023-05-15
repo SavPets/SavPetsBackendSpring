@@ -1,13 +1,16 @@
 package com.fatec.scc.model.adoptionCampaign;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.validation.constraints.NotBlank;
+import java.util.Date;
 
 public class AdoptionCampaignDTO {
 	@NotBlank(message = "O nome da campanha é obrigatório")
 	private String name;
 	@NotBlank(message = "A descrição da campanha é obrigatória")
 	private String description;
-	@NotBlank(message = "A data da campanha é obrigatória")
+
 	private String date;
 	@NotBlank(message = "O horário de início da campanha é obrigatório")
 	private String startTime;

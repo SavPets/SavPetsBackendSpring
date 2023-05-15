@@ -7,6 +7,7 @@
     --paragraph-color: hsl(219, 8%, 35%);
     --primary-color: hsl(201, 49%, 76%);
     --secondary-color: hsl(231, 48%, 37%);
+    --title-page-color: hsla(231, 48%, 37%, 0.7);
 
     --height-nav: 7.2rem;
     --menu-links-color: hsl(180, 14%, 97%);
