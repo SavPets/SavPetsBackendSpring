@@ -137,14 +137,14 @@ const fieldsRules = {
     {
       rule: 'required',
       errorMessage: 'Data da campanha é obrigatória'
-    },
-    {
+    }
+    /*{
       plugin: JustValidatePluginDate(() => ({
         format: 'yyyy-MM-dd',
         isAfterOrEqual: `${todayDate}`,
       })),
       errorMessage: `Data deve ser superior ou igual a data de hoje`,
-    },
+    },*/
   ],
 
   startTime: [
@@ -184,8 +184,6 @@ const fieldsRules = {
     { rule: 'strongPassword', errorMessage: 'A senha deve conter pelo menos 8 dígitos, uma letra maiúscula, uma minúscula, um caractere especial e um número' }
   ],
   
-  
-
   // REGRAS DO FORMULARIO FORNECEDOR
   provider: [
     { rule: 'required', errorMessage: ' fornecedor é obrigatório' }
@@ -247,11 +245,10 @@ function showValidationStatusIcon(event) {
 
 function addFieldWithRules(fieldToAdd) {
   fieldToAdd.forEach(({ fieldId, rules }) => {
-    const fieldRules = rules.map(({ rule, value, errorMessage, plugin }) => ({
+    const fieldRules = rules.map(({ rule, value, errorMessage}) => ({
       rule,
       value,
       errorMessage,
-      plugin
     }))
 
     validator.addField(`#${fieldId}`, fieldRules)

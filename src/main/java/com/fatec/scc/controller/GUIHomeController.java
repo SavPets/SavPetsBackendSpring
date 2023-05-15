@@ -21,6 +21,7 @@ import com.fatec.scc.services.employee.MaintainEmployee;
 public class GUIHomeController {
 	String username;
 	String occupation;
+	Long userId;
 	
 	@Autowired
 	MaintainRegister service;
@@ -69,6 +70,7 @@ public class GUIHomeController {
 		if (service.verify(employee.getEmail(), employee.getPassword())) {
 			username = service.searchByEmail(employee.getEmail()).get().getName();
 			occupation = serviceE.searchByEmail(employee.getEmail()).get().getOccupation();
+			userId = serviceE.searchByEmail(employee.getEmail()).get().getId();
 			return new RedirectView("/painel");
 		}
 
@@ -103,6 +105,7 @@ public class GUIHomeController {
 		
 		username = employee.getName();
 		occupation = "";
+		userId = serviceE.searchByEmail(employee.getEmail()).get().getId();
 		
 		return new RedirectView("/painel?status=Cadastrado");
 	}
@@ -137,6 +140,7 @@ public class GUIHomeController {
 		ModelAndView mv = new ModelAndView("panel");
 		mv.addObject("username", username);
 		mv.addObject("userOccupation", occupation);
+		mv.addObject("userId", userId);
 		return mv;
 	}
 	

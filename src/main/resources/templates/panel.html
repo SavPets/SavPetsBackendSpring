@@ -59,8 +59,8 @@
 				username.innerText = localStorage.getItem("username")
 			}
 			else if(username.textContent != localStorage.getItem("username")) {
-				localStorage.setItem("username", username.textContent)
 				username.innerText = localStorage.getItem("username")
+				localStorage.setItem("username", username.textContent)
 			}
 		
 			const occupation = document.getElementById("occupation")
@@ -71,6 +71,16 @@
 			else if(occupation.textContent != localStorage.getItem("occupation")) {
 				localStorage.setItem("occupation", occupation.textContent)
 				occupation.innerText = ""
+			}
+			
+			const userId = document.getElementById("userId")
+			if(!localStorage.getItem("userId")) {
+				localStorage.setItem("userId", userId.textContent)
+				userId.innerText = ""
+			}
+			else if(userId.textContent != localStorage.getItem("userId")) {
+				localStorage.setItem("userId", userId.textContent)
+				userId.innerText = ""
 			}
 		}
     </script>

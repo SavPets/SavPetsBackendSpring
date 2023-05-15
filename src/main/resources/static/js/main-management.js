@@ -85,6 +85,7 @@ function openMobileMenu(burger) {
 // =============== SHOW USER SETTINGS =============== 
 username.innerText = localStorage.getItem("username")
 occupation.innerText = ""
+userId.innerText = ""
 
 // =============== QUIT OPTIONS SETTINGS ===============
 const quitOption = document.querySelectorAll('.option-quit')
@@ -122,6 +123,7 @@ quitOption.forEach(option => {
                 setTimeout(() => window.location.href = "/login", 3100)
                 localStorage.removeItem("username")
 				localStorage.removeItem("occupation")
+				localStorage.removeItem("userId")
             }
         })
     })
@@ -169,3 +171,10 @@ function showPageStatusModal(icon, title, text) {
 		window.location.href = "/login?status=Erro&text=Realize_o_login!"
 	}
 })()
+
+// =============== ATUALIZAR O CADASTRO DO FUNCIONARIO LOGADO ===============
+function updateRegister() {
+	const userId = localStorage.getItem("userId")
+	
+	window.location.href="/atualizar-cadastro/" + userId
+}
