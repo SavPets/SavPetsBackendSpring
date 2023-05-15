@@ -13,23 +13,25 @@ body.contrast {
     --footer-text-color: hsl(0, 0%, 100%);
 }
 
-.contrast a.accessibility-group_item,
-.contrast a {
-    color: var(--menu-links-color);
-}
-
-.contrast a.accessibility-group_item svg path ,
-.contrast .fixed-menu .logo path,
-.contrast .logo path {
-    fill: var(--menu-links-color);
+.contrast .top-bar,
+.contrast .main-content_box,
+.contrast .page-link,
+.contrast .form-select option {
+    background-color: var(--body-color);
 }
 
 .contrast a.btn,
 .contrast button.btn,
-.contrast input.btn {
-    border-color: var(--paragraph-color);
+.contrast input.btn,
+.contrast .main-container_form>.form>.btn {
+    border: initial;
+    border: 1px solid var(--paragraph-color);
     background-color: var(--body-color);
     color: var(--menu-links-color);
+}
+
+.contrast .btn.no-padding {
+    border: none;
 }
 
 .contrast .header-list_option,
@@ -50,10 +52,32 @@ body.contrast {
 .contrast h4,
 .contrast h5,
 .contrast span,
-.contrast .just-validate-error-label {
+.contrast .just-validate-error-label,
+.contrast .form-select option,
+.contrast .odd >.dataTables_empty,
+.contrast .odd > td {
     color: var(--paragraph-color) !important;
 }
 
-.contrast input {
+.contrast a.accessibility-group_item,
+.contrast a,
+.contrast a span,
+.contrast .option-quit span {
+    color: var(--menu-links-color) !important;
+}
+
+.contrast a.accessibility-group_item svg path,
+.contrast .fixed-menu .logo path,
+.contrast .logo path,
+.contrast .option-quit svg path,
+.contrast a svg path,
+.contrast .header-content_menu .menu-management-active svg path {
+    fill: var(--menu-links-color) !important;
+}
+
+.contrast .form-dision_inputfull,
+.contrast .form-dision_inputfull option,
+.contrast input[type="date"],
+.contrast input[type="time"] {
     color: var(--primary-color);
 }

@@ -446,7 +446,7 @@ header #header.fixed-menu {
 }
 
 .btn.btn-text.no-padding{
-    padding: 0;
+    padding-right: 0;
 }
 
 .footer-container_bottom::before{
