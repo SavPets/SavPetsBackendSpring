@@ -21,7 +21,7 @@ class LoadDatabase {
 	CommandLineRunner initDatabase(MaintainAdoptionCampaignRepository maintainAdoptionCampaignRepository) {
 		return args -> {
 			maintainAdoptionCampaignRepository.deleteAll();
-			AdoptionCampaign adoptionCampaign = new AdoptionCampaign("Patas em Busca de Lar", "Em nosso evento, você terá a oportunidade de conhecer cães e gatos resgatados, prontos para encontrar um lar amoroso e oferecer carinho, lealdade e momentos de felicidade.", new Date("2023/05/15").toString(), "07:00", "21:00", "Parque Ibirapuera");
+			AdoptionCampaign adoptionCampaign = new AdoptionCampaign("Patas em Busca de Lar", "Em nosso evento, você terá a oportunidade de conhecer cães e gatos resgatados, prontos para encontrar um lar amoroso e oferecer carinho, lealdade e momentos de felicidade.", "2023-05-15", "07:00", "21:00", "Parque Ibirapuera");
 			maintainAdoptionCampaignRepository.save(adoptionCampaign);
 		};
 	}

@@ -38,7 +38,7 @@ public class GUIHomeController {
 
 	@GetMapping("/campanhas")
 	public ModelAndView showCampaigns() {
-		ModelAndView mv = new ModelAndView("campanhas");
+		ModelAndView mv = new ModelAndView("campaigns");
 		mv.addObject("campanhas", serviceCampaign.searchAll());
 
 		return mv;

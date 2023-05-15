@@ -10,7 +10,7 @@ public class AdoptionCampaignDTO {
 	private String name;
 	@NotBlank(message = "A descrição da campanha é obrigatória")
 	private String description;
-
+	@NotBlank(message = "A data da campanha é obrigatória")
 	private String date;
 	@NotBlank(message = "O horário de início da campanha é obrigatório")
 	private String startTime;
