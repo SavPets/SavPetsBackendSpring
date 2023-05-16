@@ -42,8 +42,6 @@ public class GUIMedicineController {
 			ModelAndView modelAndView = new ModelAndView("medicine/createMedicine");
 			modelAndView.addObject("fornecedores", service.searchAllF());
 			modelAndView.addObject("medicamento", medicine);
-
-			//service.obtemEndereco(fornecedor.getCep());
 			
 			return modelAndView;
 	    }
