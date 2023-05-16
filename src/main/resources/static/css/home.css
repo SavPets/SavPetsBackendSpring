@@ -333,11 +333,12 @@ header #header.fixed-menu {
 }
 
 .section-campaign .title_amount-campaign{
-    margin-bottom: 2rem;
+    margin-bottom: 2.4rem;
     text-align: center;
     color: var(--secondary-color);
     font-weight: bold;
     text-transform: uppercase;
+    font-size: 1.4rem;
 }
 
 .campaign-container{
@@ -355,7 +356,7 @@ header #header.fixed-menu {
 }
 
 .campaign-container .campaign-content .campaign-image{
-	width: 35rem;
+	width: 40rem;
 	height: 100%;
 	position: absolute;
 }
@@ -368,15 +369,15 @@ header #header.fixed-menu {
 }
 
 .campaign-container .campaign-content .campaign-info{
-    padding: 1.5625rem 1.875rem;
-    position: absolute;
+    padding: 2.5rem 3rem;
+    position: relative;
     top: 0;
-    left: 35rem;
+    margin-left: 40rem;
     height: 100%;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    gap: 1rem;
+    gap: 2rem;
 }
 
 .campaign-container .campaign-content .campaign-info .campaign-date{
@@ -402,7 +403,7 @@ header #header.fixed-menu {
 .campaign-container .campaign-content .campaign-info .campaign-description{
     font-size: 1.6rem;
     line-height: 2.4rem;
-    text-align: justify;
+    text-align: left;
 }
 
 /* =============== FOOTER SETTINGS =============== */
@@ -507,12 +508,6 @@ header #header.fixed-menu {
     }
 }
 
-@media screen and (max-width: 932px) {
-	.campaign-container .campaign-content{
-		min-height: 32.5rem;
-	}
-}
-
 @media (max-width: 825px) {
     .header-container_list,
     .header-container .btn-desktop{
@@ -579,14 +574,7 @@ header #header.fixed-menu {
 
 }
 
-@media screen and (max-width: 810px) {
-	.campaign-container .campaign-content{
-		min-height: 35rem;
-	}
-}
-
-
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
 	.campaign-container .campaign-content{
 		display: flex;
 		flex-direction: column;
@@ -605,7 +593,7 @@ header #header.fixed-menu {
 	
 	.campaign-container .campaign-content .campaign-info{
 		position: relative;
-		left: 0;
+		margin-left: 0;
 	}
 }
 
@@ -673,6 +661,22 @@ header #header.fixed-menu {
     }
 }
 
+@media screen and (max-width: 425px){
+    .campaign-container .campaign-content .campaign-info .campaign-name-container{
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 375px){
+    .campaign-container .campaign-content .campaign-image{
+        display: none;
+    }
+
+    .campaign-container .campaign-content .campaign-info a.btn{
+        align-self: center;
+    }
+}
+
 @media (max-width: 320px){
     .menu-mobile{
         width: 90vw;
@@ -734,6 +738,7 @@ header #header.fixed-menu {
 }
 
 @media (max-width: 375px) {
+
     .presentation-container_welcome{
         text-align: center;
     }

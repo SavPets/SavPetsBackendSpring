@@ -5,10 +5,14 @@ const scrollDown = document.querySelector('.scroll-down')
 window.addEventListener('scroll', () => {
     if (scrollY > 600) {
         backToTop.classList.add('activate_scroll-top')
-        scrollDown.classList.add('hide_scroll-down')
+
+        if(scrollDown)
+            scrollDown.classList.add('hide_scroll-down')
     } else {
         backToTop.classList.remove('activate_scroll-top')
-        scrollDown.classList.remove('hide_scroll-down')
+
+        if(scrollDown)
+            scrollDown.classList.remove('hide_scroll-down')
     }
 })
 
