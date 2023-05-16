@@ -26,7 +26,9 @@
 
             <div class="campaign-container">
                 <div class="campaign-content" th:each="Campanha : ${campanhas}">
-                    <img src="/img/campaign-image.jpg" />
+                	<div class="campaign-image">
+          				<img src="/img/campaign-image.jpg" />
+                	</div>
                     <div class="campaign-info">
                         <p class="campaign-date" th:text="${Campanha.date}">
                         </p>
@@ -46,7 +48,7 @@
                             Saiba Mais
                         </a>
                     </div>
-                </div>
+                </div  >
             </div>
         </section>
     </main>

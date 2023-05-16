@@ -1,4 +1,4 @@
-    /* =============== PRESENTATION SETTINGS =============== */
+/* =============== PRESENTATION SETTINGS =============== */
 header #header.content{
     background-color: transparent;
     z-index: 1000;
@@ -345,35 +345,45 @@ header #header.fixed-menu {
 }
 
 .campaign-container .campaign-content{
-    display: flex;
-    align-items: center;
     background: #fff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     border-radius: 0.625rem;
-    height: 35rem;
+    min-height: 30rem;
+    position: relative;
 }
 
-.campaign-container .campaign-content img{
-    border-radius: 0.625rem 0 0 0.625rem;
-    height: 100%;
-    width: 35rem;
-    object-fit: cover;
+.campaign-container .campaign-content .campaign-image{
+	width: 35rem;
+	height: 100%;
+	position: absolute;
+}
+
+.campaign-container .campaign-content .campaign-image img{
+	height: 100%;
+	object-fit: cover;
+	border-radius: 0.625rem 0 0 0.625rem;
+	width: 100%;
 }
 
 .campaign-container .campaign-content .campaign-info{
     padding: 1.5625rem 1.875rem;
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 35rem;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .campaign-container .campaign-content .campaign-info .campaign-date{
     color: var(--secondary-color);
-    margin-bottom: 0.75rem;
     font-weight: 600;
     font-size: 1.6rem;
 }
 
 .campaign-container .campaign-content .campaign-info .campaign-name-container{
-    margin-bottom: 0.875rem;
     font-size: 2.5rem;
     font-weight: 600;
     color: var(--placeholder-color);
@@ -382,19 +392,13 @@ header #header.fixed-menu {
     gap: 1rem;
 }
 
-.campaign-container .campaign-content .campaign-info .campaign-name-container svg{
-    width: 1.8rem;
-}
-
 .campaign-container .campaign-content .campaign-info .campaign-localtime-container{
     font-size: 1.6rem;
-    margin-bottom: 1.25rem;
     font-weight: 600;
 }
 
 .campaign-container .campaign-content .campaign-info .campaign-description{
     font-size: 1.6rem;
-    margin-bottom: 1rem;
     line-height: 2.4rem;
     text-align: justify;
 }
@@ -504,6 +508,12 @@ header #header.fixed-menu {
     }
 }
 
+@media screen and (max-width: 932px) {
+	.campaign-container .campaign-content{
+		min-height: 32.5rem;
+	}
+}
+
 @media (max-width: 825px) {
     .header-container_list,
     .header-container .btn-desktop{
@@ -570,6 +580,37 @@ header #header.fixed-menu {
 
 }
 
+@media screen and (max-width: 810px) {
+	.campaign-container .campaign-content{
+		min-height: 35rem;
+	}
+}
+
+
+@media screen and (max-width: 768px) {
+	.campaign-container .campaign-content{
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.campaign-container .campaign-content .campaign-image{
+		position: relative;
+		width: 100%;
+		height: 25rem;
+	}
+	
+	.campaign-container .campaign-content .campaign-image img{
+		position: relative;
+		border-radius: 0.625rem 0.625rem 0 0;
+	}
+	
+	.campaign-container .campaign-content .campaign-info{
+		position: relative;
+		left: 0;
+	}
+}
+
+
 @media (max-width: 600px) {
     .identify-choose_item > h4{
         top: 30%;
@@ -633,19 +674,6 @@ header #header.fixed-menu {
     .footer-bottom_end{
         flex-direction: column;
         gap: 2rem;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .campaign-container .campaign-content{
-        flex-direction: column;
-        height: max-content;
-    }
-
-    .campaign-container .campaign-content img{
-        width: 100%;
-        border-radius: 0.625rem 0.625rem 0 0;
-        height: 20rem;
     }
 }
 
