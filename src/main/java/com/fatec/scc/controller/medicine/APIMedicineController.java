@@ -31,12 +31,11 @@ public class APIMedicineController {
     @CrossOrigin
     @GetMapping("/{id}")
     public ResponseEntity<Object> searchById(@PathVariable Long id) {
-        Optional<Medicine> medicine = maintainMedicineI.searchById(id);
+        Optional<Medicine> medicineFound = maintainMedicineI.searchById(id);
 
-        if (medicine.isEmpty())
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
+        medicineIsEmpty(medicineFound);
 
-        return ResponseEntity.status(HttpStatus.OK).body(medicine.get());
+        return ResponseEntity.status(HttpStatus.OK).body(medicineFound.get());
     }
 
     @CrossOrigin
@@ -68,29 +67,37 @@ public class APIMedicineController {
         if (result.hasErrors())
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 
-        Optional<Medicine> medicine = maintainMedicineI.searchById(id);
+        Optional<Medicine> medicineUpdate = maintainMedicineI.searchById(id);
 
-        if (medicine.isPresent()) {
-            medicine = maintainMedicineI.updates(id, medicineDTO.returnMedicine());
+        if (medicineUpdate.isPresent()) {
+            medicineUpdate = maintainMedicineI.updates(id, medicineDTO.returnMedicine());
 
-            return ResponseEntity.status(HttpStatus.OK).body(medicine.get());
+            return ResponseEntity.status(HttpStatus.OK).body(medicineUpdate.get());
         }
 
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
+        return medicineIsEmpty(medicineUpdate);
+
     }
 
     @CrossOrigin
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteById(@PathVariable(value = "id") Long id) {
 
-        Optional<Medicine> medicine = maintainMedicineI.searchById(id);
+        Optional<Medicine> medicineDelete = maintainMedicineI.searchById(id);
 
-        if (medicine.isPresent()) {
-            maintainMedicineI.delete(medicine.get().getId());
+        if (medicineDelete.isPresent()) {
+            maintainMedicineI.delete(medicineDelete.get().getId());
 
             return ResponseEntity.status(HttpStatus.OK).body("Medicamento excluido");
         }
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
+    }
+
+    public ResponseEntity<Object> medicineIsEmpty (Optional<Medicine> medicine) {
+        if (medicine.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(medicine.get());
     }
 }
