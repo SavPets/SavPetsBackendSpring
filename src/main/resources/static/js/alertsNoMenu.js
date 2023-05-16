@@ -1,8 +1,8 @@
 function showPageStatusModal(icon, title, text) {
     Swal.fire({
-        title,
-        text,
-        icon,
+        title: title,
+        text: text,
+        icon: icon,
         confirmButtonColor: '#a4cbe0'
     })
 }

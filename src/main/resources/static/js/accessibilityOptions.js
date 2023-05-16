@@ -2,7 +2,7 @@
 (function changeThemeToHighContrastAfterPageLoad() {
     const activeContrast = localStorage.getItem('contrast') // !!activeContrast == true // !activeContrast == false
 
-    if (activeContrast == 'yes') {
+    if (activeContrast === 'yes') {
         bodyElement.classList.toggle('contrast')
     }
 })()
@@ -13,7 +13,7 @@ btnContrast.addEventListener('click', () => changeThemeToHighContrast())
 function changeThemeToHighContrast() {
     const activeContrast = localStorage.getItem('contrast') // !activeContrast == true // !!activeContrast == false
 
-    if (activeContrast == 'yes')
+    if (activeContrast === 'yes')
         localStorage.setItem('contrast', 'no')
     else 
         localStorage.setItem('contrast', 'yes')
@@ -28,7 +28,7 @@ const textElements = Array.from(document.querySelectorAll('body *')).filter(elem
     let elementIsVisible
 
     if (elementStyles.textContent !== '') {
-        elementIsVisible = elementStyles.getPropertyValue('display') != 'none'
+        elementIsVisible = elementStyles.getPropertyValue('display') !== 'none'
 
         return elementIsVisible
     }
@@ -36,14 +36,10 @@ const textElements = Array.from(document.querySelectorAll('body *')).filter(elem
 
 const storeOriginalFontSizes = getCurrentFontSizeOfElements(textElements)
 function getCurrentFontSizeOfElements(textElements) {
-    const currentFontSizeOfTextElements = textElements.map(element => {
+    return textElements.map(element => {
         const elementStyles = getComputedStyle(element)
-        const currentFontSize = parseFloat(elementStyles.fontSize)
-
-        return currentFontSize
+        return parseFloat(elementStyles.fontSize)
     })
-
-    return currentFontSizeOfTextElements
 }
 
 const btnIncreaseFont = document.querySelector('.accessibility-item_increase')
@@ -87,7 +83,7 @@ function decreaseFont(textElements, currentFontSizeOfTextElements, storeOriginal
         if (currentFontSize > originalFontSize)
             element.style.fontSize = `${currentFontSize - 2}px`
 
-        const allFontsReachMinSize = currentFontSizeOfTextElements.every((fontSize, index) => fontSize == storeOriginalFontSizes[index])
+        const allFontsReachMinSize = currentFontSizeOfTextElements.every((fontSize, index) => fontSize === storeOriginalFontSizes[index])
 
         if (allFontsReachMinSize)
             btnDecreaseFont.classList.add('accessibility-disabled')

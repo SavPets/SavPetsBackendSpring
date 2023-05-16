@@ -3,9 +3,7 @@ const bodyElement = document.body
 // =============== MENU ===============
 function setCurrentPage() {
     const page = `/${bodyElement.classList}`
-    const currentPage = document.querySelector(`.header-content_menu a[href="${page}"]`)
-
-    return currentPage
+    return document.querySelector(`.header-content_menu a[href="${page}"]`)
 }
 
 (function activeMenuOnCurrentPage() {
@@ -132,9 +130,9 @@ quitOption.forEach(option => {
 // =============== STATUS PAGE SETTINGS ===============
 function showPageStatusModal(icon, title, text) {
     Swal.fire({
-        title,
-        text,
-        icon,
+        title: title,
+        text: text,
+        icon: icon,
         confirmButtonColor: '#a4cbe0'
     })
 }
@@ -207,44 +205,44 @@ function updateRegister() {
 	}
 
 	// funções administrativas
-	if ((route =="/cargos" || route =="/criar-cargo" || routeUpdate =="atualizar-cargo") && accessLevel > 1) {
+	if ((route ==="/cargos" || route ==="/criar-cargo" || routeUpdate ==="atualizar-cargo") && accessLevel > 1) {
 		window.location.href = "/painel?status=Erro&text=Nivel_de_acesso_insuficiente!"
 	}
 	
-	if ((route =="/departamentos" || route =="/criar-departamento" || routeUpdate =="atualizar-departamento") && accessLevel > 1) {
+	if ((route ==="/departamentos" || route ==="/criar-departamento" || routeUpdate ==="atualizar-departamento") && accessLevel > 1) {
 		window.location.href = "/painel?status=Erro&text=Nivel_de_acesso_insuficiente!"
 	}
 	
-	if ((route =="/funcionarios" || route =="/criar-funcionario" || routeUpdate =="atualizar-funcionario") && accessLevel > 1) {
+	if ((route ==="/funcionarios" || route ==="/criar-funcionario" || routeUpdate ==="atualizar-funcionario") && accessLevel > 1) {
 		window.location.href = "/painel?status=Erro&text=Nivel_de_acesso_insuficiente!"
 	}
 	
 	// demais funções
-	if ((route =="/clientes" || route =="/criar-cliente" || routeUpdate =="atualizar-cliente") && !(accessLevel == 0 || accessLevel == 1 || accessLevel == 3)) {
+	if ((route ==="/clientes" || route ==="/criar-cliente" || routeUpdate ==="atualizar-cliente") && !(accessLevel === 0 || accessLevel === 1 || accessLevel === 3)) {
 		window.location.href = "/painel?status=Erro&text=Nivel_de_acesso_insuficiente!"
 	}
 	
-	if ((route =="/adocoes" || route =="/criar-adocao" || routeUpdate =="atualizar-adocao") && !(accessLevel == 0 || accessLevel == 1 || accessLevel == 3)) {
+	if ((route ==="/adocoes" || route ==="/criar-adocao" || routeUpdate ==="atualizar-adocao") && !(accessLevel === 0 || accessLevel === 1 || accessLevel === 3)) {
 		window.location.href = "/painel?status=Erro&text=Nivel_de_acesso_insuficiente!"
 	}
 	
-	if ((route =="/campanhas-adocao" || route =="/criar-campanha-adocao" || routeUpdate =="atualizar-campanha-adocao") && !(accessLevel == 0 || accessLevel == 1 || accessLevel == 3)) {
+	if ((route ==="/campanhas-adocao" || route ==="/criar-campanha-adocao" || routeUpdate ==="atualizar-campanha-adocao") && !(accessLevel === 0 || accessLevel === 1 || accessLevel === 3)) {
 		window.location.href = "/painel?status=Erro&text=Nivel_de_acesso_insuficiente!"
 	}
 	
-	if ((route =="/relatorios-animais" || route =="/criar-relatorio-animal" || routeUpdate =="atualizar-relatorio-animal") && !(accessLevel == 0 || accessLevel == 1 || accessLevel == 3 || accessLevel == 2)) {
+	if ((route ==="/relatorios-animais" || route ==="/criar-relatorio-animal" || routeUpdate ==="atualizar-relatorio-animal") && !(accessLevel === 0 || accessLevel === 1 || accessLevel === 3 || accessLevel === 2)) {
 		window.location.href = "/painel?status=Erro&text=Nivel_de_acesso_insuficiente!"
 	}
 	
-	if ((route =="/categorias-animais" || route =="/criar-categoria-animal" || routeUpdate =="atualizar-categoria-animal") && !(accessLevel == 0 || accessLevel == 1 || accessLevel == 2)) {
+	if ((route ==="/categorias-animais" || route ==="/criar-categoria-animal" || routeUpdate ==="atualizar-categoria-animal") && !(accessLevel === 0 || accessLevel === 1 || accessLevel === 2)) {
 		window.location.href = "/painel?status=Erro&text=Nivel_de_acesso_insuficiente!"
 	}
 	
-	if ((route =="/medicamentos" || route =="/criar-medicamento" || routeUpdate =="atualizar-medicamento") && !(accessLevel == 0 || accessLevel == 1 || accessLevel == 2 || accessLevel == 4)) {
+	if ((route ==="/medicamentos" || route ==="/criar-medicamento" || routeUpdate ==="atualizar-medicamento") && !(accessLevel === 0 || accessLevel === 1 || accessLevel === 2 || accessLevel === 4)) {
 		window.location.href = "/painel?status=Erro&text=Nivel_de_acesso_insuficiente!"
 	}
 	
-	if ((route =="/fornecedores" || route =="/criar-fornecedor" || routeUpdate =="atualizar-fornecedor") && !(accessLevel == 0 || accessLevel == 1 || accessLevel == 4)) {
+	if ((route ==="/fornecedores" || route ==="/criar-fornecedor" || routeUpdate ==="atualizar-fornecedor") && !(accessLevel === 0 || accessLevel === 1 || accessLevel === 4)) {
 		window.location.href = "/painel?status=Erro&text=Nivel_de_acesso_insuficiente!"
 	}
 })()

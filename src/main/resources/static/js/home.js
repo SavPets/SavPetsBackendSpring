@@ -108,8 +108,6 @@ campaignsDates.forEach((campaignDate) => {
     }
 
     // Variável que representa a informação final
-    const date = `${weekDay}, ${convertedDate.getDate()} de ${month} de ${convertedDate.getFullYear()}`
-
     // Inserindo o conteúdo necessário para a data da campanha
-    campaignDate.innerText = date
+    campaignDate.innerText = `${weekDay}, ${convertedDate.getDate()} de ${month} de ${convertedDate.getFullYear()}`
 })

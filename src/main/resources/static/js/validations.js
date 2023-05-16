@@ -237,7 +237,7 @@ existingFieldsOnTheCurrentPage.forEach(field => {
   const rulesForThisField = fieldsRules[fieldId]
 
   if (rulesForThisField)
-    addFieldWithRules([{ fieldId, rules: rulesForThisField }])
+    addFieldWithRules([{ fieldId: fieldId, rules: rulesForThisField }])
 })
 
 function showValidationStatusIcon(event) {
@@ -257,9 +257,9 @@ function showValidationStatusIcon(event) {
 function addFieldWithRules(fieldToAdd) {
   fieldToAdd.forEach(({ fieldId, rules }) => {
     const fieldRules = rules.map(({ rule, value, errorMessage }) => ({
-      rule,
-      value,
-      errorMessage,
+      rule: rule,
+      value: value,
+      errorMessage: errorMessage,
     }))
 
     validator.addField(`#${fieldId}`, fieldRules)
@@ -272,7 +272,7 @@ validator.onSuccess((event) => {
   let validFields = 0
 
   for (let fieldName in validator.fields) {
-    const fieldsHasContent = validator.fields[fieldName].elem.value != ''
+    const fieldsHasContent = validator.fields[fieldName].elem.value !== ''
     const inputSubmitHasAttribute = inputSubmit.hasAttribute('data-just-validate-fallback-disabled')
 
     if (fieldsHasContent && inputSubmitHasAttribute)
