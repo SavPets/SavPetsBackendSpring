@@ -3,6 +3,7 @@ package com.fatec.scc.controller.provider;
 import java.util.List;
 import java.util.Optional;
 import javax.validation.Valid;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class APIProviderController {
 	public ResponseEntity<Object> saveSupplier(@RequestBody @Valid ProviderDTO providerDTO, BindingResult result) {
 		providerDTO = new ProviderDTO();
 		if (result.hasErrors()) {
-			logger.info(">>>>>> apicontroller validacao da entrada dados invalidos" + result.getFieldError());
+			logger.info(">>>>>> apicontroller validação da entrada: dados inválidos - {}", result.getFieldError());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		}
 		if (mantemFornecedor.searchByCnpj(providerDTO.getCnpj()).isPresent()) {
@@ -80,10 +81,7 @@ public class APIProviderController {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		}
 		Optional<Provider> c = mantemFornecedor.searchById(id);
-		if (c.isEmpty()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
-		}
-
+		providerIsEmpty	(c);
 		Optional<Provider> cliente = mantemFornecedor.updates(id, providerDTO.returnProvider());
 		return ResponseEntity.status(HttpStatus.OK).body(cliente.get());
 	}
@@ -93,9 +91,14 @@ public class APIProviderController {
 	public ResponseEntity<Object> searchById(@PathVariable Long id) {
 		logger.info(">>>>>> apicontroller consulta por id chamado");
 		Optional<Provider> fornecedor = mantemFornecedor.searchById(id);
-		if (fornecedor.isEmpty()) {
+		providerIsEmpty(fornecedor);
+		return ResponseEntity.status(HttpStatus.OK).body(fornecedor.get());
+	}
+
+	public ResponseEntity<Object> providerIsEmpty (Optional<Provider> provider) {
+		if (provider.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 		}
-		return ResponseEntity.status(HttpStatus.OK).body(fornecedor.get());
+		return ResponseEntity.status(HttpStatus.OK).body(provider.get());
 	}
 }
