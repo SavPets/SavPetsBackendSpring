@@ -37,7 +37,7 @@ public class APIEmployeeController {
 	public ResponseEntity<Object> saveEmployee(@RequestBody @Valid EmployeeDTO employeeDTO, BindingResult result) {
 		employee = new Employee();
 		if (result.hasErrors()) {
-			logger.info(">>>>>> apicontroller validacao da entrada dados invalidos" + result.getFieldError());
+			logger.info(">>>>>> apicontroller validação da entrada: dados inválidos - {}", result.getFieldError());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		}
 		if (mantemFuncionario.searchByCpf(employee.getCpf()).isPresent()) {
@@ -61,9 +61,9 @@ public class APIEmployeeController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> deleteById(@PathVariable(value = "id") Long id) {
 		Optional<Employee> funcionario = mantemFuncionario.searchById(id);
-		if (funcionario.isEmpty()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
-		}
+
+		employeeIsEmpty(funcionario);
+
 		mantemFuncionario.delete(funcionario.get().getId());
 		return ResponseEntity.status(HttpStatus.OK).body("Funcionário excluido");
 	}
@@ -78,9 +78,7 @@ public class APIEmployeeController {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		}
 		Optional<Employee> f = mantemFuncionario.searchById(id);
-		if (f.isEmpty()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
-		}
+		employeeIsEmpty(f);
 		Optional<Employee> func = mantemFuncionario.updates(id, employeeDTO.returnEmployee());
 		return ResponseEntity.status(HttpStatus.OK).body(func.get());
 	}
@@ -90,9 +88,14 @@ public class APIEmployeeController {
 	public ResponseEntity<Object> searchById(@PathVariable Long id) {
 		logger.info(">>>>>> apicontroller consulta por id chamado");
 		Optional<Employee> funcionario = mantemFuncionario.searchById(id);
-		if (funcionario.isEmpty()) {
+		employeeIsEmpty(funcionario);
+		return ResponseEntity.status(HttpStatus.OK).body(funcionario.get());
+	}
+
+	public ResponseEntity<Object> employeeIsEmpty (Optional<Employee> employee) {
+		if (employee.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 		}
-		return ResponseEntity.status(HttpStatus.OK).body(funcionario.get());
+		return ResponseEntity.status(HttpStatus.OK).body(employee.get());
 	}
 }
