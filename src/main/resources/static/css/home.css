@@ -46,6 +46,7 @@ header #header.fixed-menu {
     margin-bottom: 4rem;
     left: 45%;
     animation: MoveUpDown 3s linear infinite;
+    transform: translateY(0%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -59,6 +60,7 @@ header #header.fixed-menu {
 .scroll-down.hide_scroll-down{
     visibility: hidden;
     opacity: 0;
+    transform: translateY(100%);
 }
 
 /* Keyframe (animação) para o 'scroll-down' */
@@ -118,7 +120,7 @@ header #header.fixed-menu {
     position: fixed;
     right: 4rem;
     bottom: 4rem;
-    transform: rotate(180deg) translateY(-100%);
+    transform: translateY(100%);
     transition: 0.3s;
     visibility: hidden;
     opacity: 0;
@@ -130,7 +132,7 @@ header #header.fixed-menu {
 }
 
 .back-to-top.activate_scroll-top{
-    transform: rotate(0deg) translateY(0);
+    transform: translateY(0);
     opacity: 1;
     visibility: visible;
 }
