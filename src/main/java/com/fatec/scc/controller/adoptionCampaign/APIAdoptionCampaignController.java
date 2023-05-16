@@ -65,7 +65,7 @@ public class APIAdoptionCampaignController {
 			return ResponseEntity.status(HttpStatus.OK).body("Campanha de adoção excluída");
 		} else {
 
-			return adoptionCampaignEmpty(campaignDelete);
+			return adoptionCampaignIsEmpty(campaignDelete);
 		}
 	}
 
@@ -91,7 +91,7 @@ public class APIAdoptionCampaignController {
 				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao atualizar campanha.");
 			}
 		} else {
-			return adoptionCampaignEmpty(campaignUpdate);
+			return adoptionCampaignIsEmpty(campaignUpdate);
 		}
 
 	}
@@ -107,13 +107,13 @@ public class APIAdoptionCampaignController {
 			return ResponseEntity.status(HttpStatus.OK).body(campaignFound.get());
 		} else {
 
-			return adoptionCampaignEmpty(campaignFound);
+			return adoptionCampaignIsEmpty(campaignFound);
 		}
 	}
 
 
 
-	public ResponseEntity<Object> adoptionCampaignEmpty (Optional<AdoptionCampaign> campaign) {
+	public ResponseEntity<Object> adoptionCampaignIsEmpty (Optional<AdoptionCampaign> campaign) {
 		if (campaign.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 		}

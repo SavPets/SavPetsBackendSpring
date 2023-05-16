@@ -3,6 +3,7 @@ package com.fatec.scc.controller.animalCategory;
 import java.util.List;
 import java.util.Optional;
 import javax.validation.Valid;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,7 @@ public class APIAnimalCategoryController {
 		animalCategory = new AnimalCategory();
 
 		if (result.hasErrors()) {
-			logger.info(">>>>>> apicontroller validacao da entrada dados invalidos" + result.getFieldError());
+			logger.info(">>>>>> apicontroller validação da entrada: dados inválidos - {}", result.getFieldError());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		}
 		if (mantemCategoriaAnimal.searchByName(animalCategoryDTO.getName()).isPresent()) {
@@ -86,12 +87,19 @@ public class APIAnimalCategoryController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> deleteById(@PathVariable(value = "id") Long id) {
 		Optional<AnimalCategory> categoriaAnimal = mantemCategoriaAnimal.searchById(id);
-		if (categoriaAnimal.isEmpty()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
+
+		if (categoriaAnimal.isPresent()) {
+			mantemCategoriaAnimal.delete(categoriaAnimal.get().getId());
+			return ResponseEntity.status(HttpStatus.OK).body("Categoria excluída");
+		} else {
+			return animalCategoryIsEmpty(categoriaAnimal);
+
 		}
-		mantemCategoriaAnimal.delete(categoriaAnimal.get().getId());
-		return ResponseEntity.status(HttpStatus.OK).body("Categoria excluida");
+
 	}
+
+
+
 
 	@CrossOrigin // desabilita o cors do spring security
 	@PutMapping("/{id}")
@@ -103,25 +111,35 @@ public class APIAnimalCategoryController {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		}
 		Optional<AnimalCategory> c = mantemCategoriaAnimal.searchById(id);
-		if (c.isEmpty()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
-		}
+		animalCategoryIsEmpty(c);
 
-		
+
+
 		Optional<AnimalCategory> categoriaAnimal = mantemCategoriaAnimal.updates(id,
 				animalCategoryDTO.retornaUmaCategoriaAnimal());
-		return ResponseEntity.status(HttpStatus.OK).body(categoriaAnimal.get());
+		if (categoriaAnimal.isPresent()) {
+			return ResponseEntity.status(HttpStatus.OK).body(categoriaAnimal.get());
+		} else {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao atualizar categoria do animal.");
+		}
 	}
 
-	
 	@CrossOrigin // desabilita o cors do spring security
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> searchById(@PathVariable Long id) {
 		logger.info(">>>>>> apicontroller consulta por id chamado");
 		Optional<AnimalCategory> categoriaAnimal = mantemCategoriaAnimal.searchById(id);
-		if (categoriaAnimal.isEmpty()) {
+
+		if (categoriaAnimal.isPresent()) {
+			return ResponseEntity.status(HttpStatus.OK).body(categoriaAnimal.get());
+		}
+		return animalCategoryIsEmpty(categoriaAnimal);
+	}
+
+	public ResponseEntity<Object> animalCategoryIsEmpty (Optional<AnimalCategory> animalCategory) {
+		if (animalCategory.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 		}
-		return ResponseEntity.status(HttpStatus.OK).body(categoriaAnimal.get());
+		return ResponseEntity.status(HttpStatus.OK).body(animalCategory.get());
 	}
 }
