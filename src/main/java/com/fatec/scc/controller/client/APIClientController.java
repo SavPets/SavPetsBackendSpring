@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 import javax.validation.Valid;
 
-import com.fatec.scc.model.adoptionCampaign.AdoptionCampaign;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -106,7 +105,7 @@ public class APIClientController {
 				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao atualizar cliente.");
 			}
 		}
-		return null;
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro ao atualizar");
 	}
 
 
