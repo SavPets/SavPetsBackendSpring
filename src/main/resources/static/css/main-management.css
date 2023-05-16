@@ -150,7 +150,7 @@ ul {
 }
 
 #accessibility .accessibility-container .accessibility-group_item > p.accessibility-item_paragraph {
-    margin-bottom: 0rem !important;
+    margin-bottom: 0 !important;
 }
 
 .accessibility-group_item:nth-child(2) {
@@ -317,7 +317,7 @@ a.accessibility-group_item:hover {
     padding: 1.7rem 5rem;
 
     background-color: #fff;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 12px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 12px;
 }
 
 .top-bar_path {

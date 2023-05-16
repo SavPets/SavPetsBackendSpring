@@ -486,9 +486,6 @@ header #header.fixed-menu {
 .footer-bottom_end{
     position: relative;
     top: 4.5rem;
-}
-
-.footer-bottom_end{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -652,9 +649,6 @@ header #header.fixed-menu {
 
     .footer-group_item{
         text-align: center;
-    }
-
-    .footer-group_item{
         margin-bottom: 5rem;
     }
 

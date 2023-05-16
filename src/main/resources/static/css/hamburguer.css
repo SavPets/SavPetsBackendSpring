@@ -116,7 +116,7 @@
   background-color: transparent; }
   .burger.burger-slide.open .burger-lines:before, .burger.burger-slide.open .burger-lines:after {
     left: 0.5em;
-    top: 0px; }
+    top: 0; }
   .burger.burger-slide.open .burger-lines:before {
     -webkit-transform: rotate(-45deg);
         -ms-transform: rotate(-45deg);
