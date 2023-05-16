@@ -36,7 +36,7 @@ public class APIAdoptionController {
 		adoption = new Adoption();
 
 		if (result.hasErrors()) {
-			logger.info(">>>>>> apicontroller validacao da entrada dados invalidos" + result.getFieldError());
+			logger.info(">>>>>> apicontroller validação da entrada: dados inválidos - {}", result.getFieldError());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		}
 		
@@ -68,11 +68,16 @@ public class APIAdoptionController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 		}
 
-
 		Optional<Adoption> relatorioAnimal = maintainAdoption.updates(id,
 				adoptionDTO.retornoUmaAdocao());
-		return ResponseEntity.status(HttpStatus.OK).body(relatorioAnimal.get());
+		if (relatorioAnimal.isPresent()) {
+			return ResponseEntity.status(HttpStatus.OK).body(relatorioAnimal.get());
+		} else {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao atualizar adoção.");
+		}
 	}
+
+
 
 
 	@CrossOrigin // desabilita o cors do spring security
