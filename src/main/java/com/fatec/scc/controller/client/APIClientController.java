@@ -3,6 +3,8 @@ package com.fatec.scc.controller.client;
 import java.util.List;
 import java.util.Optional;
 import javax.validation.Valid;
+
+import com.fatec.scc.model.adoptionCampaign.AdoptionCampaign;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +42,7 @@ public class APIClientController {
 	public ResponseEntity<Object> saveClient(@RequestBody @Valid ClientDTO clientDTO, BindingResult result) {
 		client = new Client();
 		if (result.hasErrors()) {
-			logger.info(">>>>>> apicontroller validacao da entrada dados invalidos" + result.getFieldError());
+			logger.info(">>>>>> apicontroller validação da entrada: dados inválidos - {}", result.getFieldError());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		}
 		if (mantemCliente.searchByCpf(clientDTO.getCpf()).isPresent()) {
@@ -48,7 +50,8 @@ public class APIClientController {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("CPF já cadastrado");
 		}
 		Optional<Endereco> endereco = Optional.ofNullable(mantemCliente.obtainAddress(clientDTO.getCep()));
-		logger.info(">>>>>> apicontroller obtem endereco => " + clientDTO.getCep());
+		logger.info(">>>>>> apicontroller obtem endereco => {}", clientDTO.getCep());
+
 		if (endereco.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("CEP invalido");
 		}
@@ -69,12 +72,18 @@ public class APIClientController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> deleteById(@PathVariable(value = "id") Long id) {
 		Optional<Client> cliente = mantemCliente.searchById(id);
-		if (cliente.isEmpty()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
+		clientIsEmpty(cliente);
+
+		if (cliente.isPresent()) {
+			mantemCliente.delete(cliente.get().getId());
+			return ResponseEntity.status(HttpStatus.OK).body("Cliente excluído");
+		} else {
+			return clientIsEmpty(cliente);
 		}
-		mantemCliente.delete(cliente.get().getId());
-		return ResponseEntity.status(HttpStatus.OK).body("Cliente excluido");
 	}
+
+
+
 
 	@CrossOrigin // desabilita o cors do spring security
 	@PutMapping("/{id}")
@@ -86,25 +95,40 @@ public class APIClientController {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		}
 		Optional<Client> c = mantemCliente.searchById(id);
-		if (c.isEmpty()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
-		}
+		clientIsEmpty(c);
+
 		Optional<Endereco> e = Optional.ofNullable(mantemCliente.obtainAddress(clientDTO.getCep()));
-		if (e.isEmpty()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("CEP não localizado.");
+		if (e.isPresent()) {
+			Optional<Client> cliente = mantemCliente.updates(id, clientDTO.returnClient());
+			if (cliente.isPresent()) {
+				return ResponseEntity.status(HttpStatus.OK).body(cliente.get());
+			} else {
+				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao atualizar cliente.");
+			}
 		}
-		Optional<Client> cliente = mantemCliente.updates(id, clientDTO.returnClient());
-		return ResponseEntity.status(HttpStatus.OK).body(cliente.get());
+		return null;
 	}
+
 
 	@CrossOrigin // desabilita o cors do spring security
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> searchById(@PathVariable Long id) {
 		logger.info(">>>>>> apicontroller consulta por id chamado");
 		Optional<Client> cliente = mantemCliente.searchById(id);
-		if (cliente.isEmpty()) {
+
+		if (cliente.isPresent()) {
+			mantemCliente.delete(cliente.get().getId());
+			return ResponseEntity.status(HttpStatus.OK).body("Cliente excluído");
+		} else {
+			return clientIsEmpty(cliente);
+		}
+	}
+
+
+	public ResponseEntity<Object> clientIsEmpty (Optional<Client> client) {
+		if (client.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 		}
-		return ResponseEntity.status(HttpStatus.OK).body(cliente.get());
+		return ResponseEntity.status(HttpStatus.OK).body(client.get());
 	}
 }
