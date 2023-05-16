@@ -1,7 +1,13 @@
 package com.fatec.scc.services;
 
+import com.fatec.scc.model.adoption.Adoption;
+import com.fatec.scc.model.adoption.MaintainAdoptionRepository;
 import com.fatec.scc.model.adoptionCampaign.AdoptionCampaign;
 import com.fatec.scc.model.adoptionCampaign.MaintainAdoptionCampaignRepository;
+import com.fatec.scc.model.animalCategory.AnimalCategory;
+import com.fatec.scc.model.animalCategory.MaintainAnimalCategoryRepository;
+import com.fatec.scc.model.animalReport.AnimalReport;
+import com.fatec.scc.model.animalReport.MaintainAnimalReportRepository;
 import com.fatec.scc.model.client.Client;
 import com.fatec.scc.model.client.MaintainClientRepository;
 import com.fatec.scc.model.departament.Departament;
@@ -13,6 +19,9 @@ import com.fatec.scc.model.medicine.Medicine;
 import com.fatec.scc.model.occupation.MaintainOccupationRepository;
 import com.fatec.scc.model.occupation.Occupation;
 import com.fatec.scc.model.provider.Provider;
+import com.fatec.scc.services.adoption.MaintainAdoption;
+import com.fatec.scc.services.animalCategory.MaintainAnimalCategory;
+import com.fatec.scc.services.animalReport.MaintainAnimalReport;
 import com.fatec.scc.services.occupation.MaintainOccupation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +39,10 @@ class LoadDatabase {
 //	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
 	@Bean
-	CommandLineRunner initDatabase(MaintainAdoptionCampaignRepository maintainAdoptionCampaignRepository, MaintainEmployeeRepository maintainEmployeeRepository, MaintainOccupationRepository maintainOccupationRepository, MaintainClientRepository maintainClientRepository, MaintainProviderRepository maintainProviderRepository, MaintainMedicineRepository maintainMedicineRepository, MaintainDepartamentRepository maintainDepartamentRepository) {
+	CommandLineRunner initDatabase(MaintainAdoptionCampaignRepository maintainAdoptionCampaignRepository, MaintainEmployeeRepository maintainEmployeeRepository, MaintainOccupationRepository maintainOccupationRepository,
+								   MaintainClientRepository maintainClientRepository, MaintainProviderRepository maintainProviderRepository, MaintainMedicineRepository maintainMedicineRepository, MaintainDepartamentRepository maintainDepartamentRepository,
+								   MaintainAnimalCategoryRepository maintainAnimalCategoryRepository, MaintainAnimalReportRepository maintainAnimalReportRepository, MaintainAdoptionRepository maintainAdoptionRepository) {
+
 		return args -> {
 			maintainAdoptionCampaignRepository.deleteAll();
 			AdoptionCampaign adoptionCampaign = new AdoptionCampaign("Patas em Busca de Lar", "Em nosso evento, você terá a oportunidade de conhecer cães e gatos resgatados, prontos para encontrar um lar amoroso e oferecer carinho, lealdade e momentos de felicidade.", "2023-05-15", "07:00", "21:00", "Parque Ibirapuera");
@@ -60,6 +72,17 @@ class LoadDatabase {
 			Departament departament = new Departament("Informatica", "TI");
 			maintainDepartamentRepository.save(departament);
 
+			maintainAnimalCategoryRepository.deleteAll();
+			AnimalCategory category = new AnimalCategory("Cachorro", "Pitbull", "Macho", "Grande", "Preto");
+			maintainAnimalCategoryRepository.save(category);
+
+			maintainAnimalReportRepository.deleteAll();
+			AnimalReport report = new AnimalReport("Teteu", "Vacina", "Cachorro", "2023-05-15", "Local", "Descrição");
+			maintainAnimalReportRepository.save(report);
+
+			maintainAdoptionRepository.deleteAll();
+			Adoption adoption = new Adoption("João Paulo", "Sued", 1L, "2023-05-15", "Descrição");
+			maintainAdoptionRepository.save(adoption);
 
 			};
 	}
