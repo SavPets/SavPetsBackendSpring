@@ -19,18 +19,16 @@ import com.fatec.scc.model.medicine.Medicine;
 import com.fatec.scc.model.occupation.MaintainOccupationRepository;
 import com.fatec.scc.model.occupation.Occupation;
 import com.fatec.scc.model.provider.Provider;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import com.fatec.scc.model.provider.MaintainProviderRepository;
-import java.util.Date;
 
 @Configuration
 class LoadDatabase {
 //	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
+	final String defaultDate = "2023-05-15";
+	
 	@Bean
 	CommandLineRunner initDatabase(MaintainAdoptionCampaignRepository maintainAdoptionCampaignRepository, MaintainEmployeeRepository maintainEmployeeRepository, MaintainOccupationRepository maintainOccupationRepository,
 								   MaintainClientRepository maintainClientRepository, MaintainProviderRepository maintainProviderRepository, MaintainMedicineRepository maintainMedicineRepository, MaintainDepartamentRepository maintainDepartamentRepository,
@@ -38,7 +36,7 @@ class LoadDatabase {
 
 		return args -> {
 			maintainAdoptionCampaignRepository.deleteAll();
-			AdoptionCampaign adoptionCampaign = new AdoptionCampaign("Patas em Busca de Lar", "Em nosso evento, você terá a oportunidade de conhecer cães e gatos resgatados, prontos para encontrar um lar amoroso e oferecer carinho, lealdade e momentos de felicidade.", "2023-05-15", "07:00", "21:00", "Parque Ibirapuera");
+			AdoptionCampaign adoptionCampaign = new AdoptionCampaign("Patas em Busca de Lar", "Em nosso evento, você terá a oportunidade de conhecer cães e gatos resgatados, prontos para encontrar um lar amoroso e oferecer carinho, lealdade e momentos de felicidade.", defaultDate, "07:00", "21:00", "Parque Ibirapuera");
 			maintainAdoptionCampaignRepository.save(adoptionCampaign);
 
 			maintainClientRepository.deleteAll();
@@ -50,7 +48,7 @@ class LoadDatabase {
 			maintainProviderRepository.save(provider);
 
 			maintainMedicineRepository.deleteAll();
-			Medicine medicine = new Medicine("PetShop", "Vacina", "bula exemplo", "Vacina para raiva", "2023-05-15", "Vacina para raiva", "2023-05-15", 10, "2023-05-15");
+			Medicine medicine = new Medicine("PetShop", "Vacina", "bula exemplo", "Vacina para raiva", defaultDate, "Vacina para raiva", defaultDate, 10, defaultDate);
 			maintainMedicineRepository.save(medicine);
 
 			maintainAnimalCategoryRepository.deleteAll();
@@ -58,11 +56,11 @@ class LoadDatabase {
 			maintainAnimalCategoryRepository.save(category);
 
 			maintainAnimalReportRepository.deleteAll();
-			AnimalReport report = new AnimalReport("Teteu", "Vacina", "Cachorro", "2023-05-15", "Local", "Descrição");
+			AnimalReport report = new AnimalReport("Teteu", "Vacina", "Cachorro", defaultDate, "Local", "Descrição");
 			maintainAnimalReportRepository.save(report);
 
 			maintainAdoptionRepository.deleteAll();
-			Adoption adoption = new Adoption("João Paulo", "Sued", 1L, "2023-05-15", "Descrição");
+			Adoption adoption = new Adoption("João Paulo", "Sued", 1L, defaultDate, "Descrição");
 			maintainAdoptionRepository.save(adoption);
 			
 			maintainOccupationRepository.deleteAll();

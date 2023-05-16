@@ -43,12 +43,11 @@ public class APIDepartamentController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> searchById(@PathVariable Long id) {
 
-		Optional<Departament> departament = maintainDepartament.searchById(id);
+		Optional<Departament> departamentFound = maintainDepartament.searchById(id);
 
-		if (departament.isEmpty()) 
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
+		departamentIsEmpty(departamentFound);
 		
-		return ResponseEntity.status(HttpStatus.OK).body(departament.get());
+		return ResponseEntity.status(HttpStatus.OK).body(departamentFound.get());
 	}
 
 	@CrossOrigin
@@ -84,29 +83,31 @@ public class APIDepartamentController {
 		if (result.hasErrors()) 
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		
-		Optional<Departament> departament = maintainDepartament.searchById(id);
+		Optional<Departament> departamentToUpdate = maintainDepartament.searchById(id);
 
-		if (!departament.isEmpty()) {
-            departament = maintainDepartament.updates(id, departamentDTO.returnDepartament());
-
-            return ResponseEntity.status(HttpStatus.OK).body(departament.get());
-        }
-
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
+		departamentIsEmpty(departamentToUpdate);
+        
+		departamentToUpdate = maintainDepartament.updates(id, departamentDTO.returnDepartament());
+        return ResponseEntity.status(HttpStatus.OK).body(departamentToUpdate.get());
 	}
 
 	@CrossOrigin
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> deleteById(@PathVariable(value = "id") Long id) {
 
-		Optional<Departament> departament = maintainDepartament.searchById(id);
+		Optional<Departament> departamentToDelete = maintainDepartament.searchById(id);
 
-		if (!departament.isEmpty()) {
-			maintainDepartament.delete(departament.get().getId());
-
-		    return ResponseEntity.status(HttpStatus.OK).body("Categoria excluida");
-		}
-
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
+		departamentIsEmpty(departamentToDelete);
+			
+		maintainDepartament.delete(departamentToDelete.get().getId());
+	    
+		return ResponseEntity.status(HttpStatus.OK).body("Categoria excluida");
+	}
+	
+	public ResponseEntity<Object> departamentIsEmpty(Optional<Departament> departament) {
+		if (departament.isEmpty()) 
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
+		
+		return ResponseEntity.status(HttpStatus.OK).body("Departamento encontrado.");
 	}
 }
