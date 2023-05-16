@@ -19,19 +19,12 @@ import com.fatec.scc.model.medicine.Medicine;
 import com.fatec.scc.model.occupation.MaintainOccupationRepository;
 import com.fatec.scc.model.occupation.Occupation;
 import com.fatec.scc.model.provider.Provider;
-import com.fatec.scc.services.adoption.MaintainAdoption;
-import com.fatec.scc.services.animalCategory.MaintainAnimalCategory;
-import com.fatec.scc.services.animalReport.MaintainAnimalReport;
-import com.fatec.scc.services.occupation.MaintainOccupation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import com.fatec.scc.model.client.MaintainClientRepository;
 import com.fatec.scc.model.provider.MaintainProviderRepository;
-
 import java.util.Date;
 
 @Configuration
@@ -48,14 +41,6 @@ class LoadDatabase {
 			AdoptionCampaign adoptionCampaign = new AdoptionCampaign("Patas em Busca de Lar", "Em nosso evento, você terá a oportunidade de conhecer cães e gatos resgatados, prontos para encontrar um lar amoroso e oferecer carinho, lealdade e momentos de felicidade.", "2023-05-15", "07:00", "21:00", "Parque Ibirapuera");
 			maintainAdoptionCampaignRepository.save(adoptionCampaign);
 
-			maintainEmployeeRepository.deleteAll();
-			Employee employee = new Employee("João Paulo", "Texeira", "jpaulo@gmail.com","teteu123","teteu123","94546734010", "03807420", "Rua dos Bobos", 0, "Casa", "123456789", "TI", "Desenvolvedor");
-			maintainEmployeeRepository.save(employee);
-
-			maintainOccupationRepository.deleteAll();
-			Occupation occupation = new Occupation("Desenvolvedor", "Desenvolvedor de sistemas");
-			maintainOccupationRepository.save(occupation);
-
 			maintainClientRepository.deleteAll();
 			Client client = new Client("Sued", "Santos", "54906578910", "11987654321", "03807420", "Rua dos Bobos", 0, "Casa");
 			maintainClientRepository.save(client);
@@ -68,10 +53,6 @@ class LoadDatabase {
 			Medicine medicine = new Medicine("PetShop", "Vacina", "bula exemplo", "Vacina para raiva", "2023-05-15", "Vacina para raiva", "2023-05-15", 10, "2023-05-15");
 			maintainMedicineRepository.save(medicine);
 
-			maintainDepartamentRepository.deleteAll();
-			Departament departament = new Departament("Informatica", "TI");
-			maintainDepartamentRepository.save(departament);
-
 			maintainAnimalCategoryRepository.deleteAll();
 			AnimalCategory category = new AnimalCategory("Cachorro", "Pitbull", "Macho", "Grande", "Preto");
 			maintainAnimalCategoryRepository.save(category);
@@ -83,6 +64,26 @@ class LoadDatabase {
 			maintainAdoptionRepository.deleteAll();
 			Adoption adoption = new Adoption("João Paulo", "Sued", 1L, "2023-05-15", "Descrição");
 			maintainAdoptionRepository.save(adoption);
+			
+			maintainOccupationRepository.deleteAll();
+			Occupation occupation = new Occupation("Administrador", "Administrador do sistema, acesso total");
+			maintainOccupationRepository.save(occupation);
+			occupation = new Occupation("Veterinário", "Veterinário associado ao SavPets");
+			maintainOccupationRepository.save(occupation);
+			occupation = new Occupation("Auxiliar", "Auxiliar geral associado ao SavPets");
+			maintainOccupationRepository.save(occupation);
+			occupation = new Occupation("Gerente", "Gerente do sistema SavPets");
+			maintainOccupationRepository.save(occupation);
+			occupation = new Occupation("Almoxarife", "Responsável pelo estoque do sistema SavPets");
+			maintainOccupationRepository.save(occupation);
+			
+			maintainDepartamentRepository.deleteAll();
+			Departament departament = new Departament("ADM", "ADM");
+			maintainDepartamentRepository.save(departament);
+			
+			maintainEmployeeRepository.deleteAll();
+			Employee employee = new Employee("ADMIN", "ADMIN", "admin.admin@email.com", "123123aA!", "123123aA!", "10101010101", "11111111", "Rua", 1, "Casa do adm", "123", "ADM", "Administrador");
+			maintainEmployeeRepository.save(employee);
 
 			};
 	}

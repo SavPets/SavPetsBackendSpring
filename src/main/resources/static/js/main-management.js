@@ -178,3 +178,73 @@ function updateRegister() {
 	
 	window.location.href="/atualizar-cadastro/" + userId
 }
+
+// =============== PERMISSIONS CONTROLLER ===============
+(function verifyEmployeePermissions() {
+	const route = window.location.pathname
+	const routeUpdate = route.split('/')[1]
+	const userOccupation = localStorage.getItem("occupation")
+	let accessLevel
+	switch(userOccupation) {
+		case "Administrador":
+			accessLevel = 0
+			break
+		case "Gerente":
+			accessLevel = 1
+			break
+		case "Veterinário":
+			accessLevel = 2
+			break
+		case "Auxiliar":
+			accessLevel = 3
+			break
+		case "Almoxarife":
+			accessLevel = 4
+			break
+		default:
+			accessLevel = 100
+			break
+	}
+
+	// funções administrativas
+	if ((route =="/cargos" || route =="/criar-cargo" || routeUpdate =="atualizar-cargo") && accessLevel > 1) {
+		window.location.href = "/painel?status=Erro&text=Nivel_de_acesso_insuficiente!"
+	}
+	
+	if ((route =="/departamentos" || route =="/criar-departamento" || routeUpdate =="atualizar-departamento") && accessLevel > 1) {
+		window.location.href = "/painel?status=Erro&text=Nivel_de_acesso_insuficiente!"
+	}
+	
+	if ((route =="/funcionarios" || route =="/criar-funcionario" || routeUpdate =="atualizar-funcionario") && accessLevel > 1) {
+		window.location.href = "/painel?status=Erro&text=Nivel_de_acesso_insuficiente!"
+	}
+	
+	// demais funções
+	if ((route =="/clientes" || route =="/criar-cliente" || routeUpdate =="atualizar-cliente") && !(accessLevel == 0 || accessLevel == 1 || accessLevel == 3)) {
+		window.location.href = "/painel?status=Erro&text=Nivel_de_acesso_insuficiente!"
+	}
+	
+	if ((route =="/adocoes" || route =="/criar-adocao" || routeUpdate =="atualizar-adocao") && !(accessLevel == 0 || accessLevel == 1 || accessLevel == 3)) {
+		window.location.href = "/painel?status=Erro&text=Nivel_de_acesso_insuficiente!"
+	}
+	
+	if ((route =="/campanhas-adocao" || route =="/criar-campanha-adocao" || routeUpdate =="atualizar-campanha-adocao") && !(accessLevel == 0 || accessLevel == 1 || accessLevel == 3)) {
+		window.location.href = "/painel?status=Erro&text=Nivel_de_acesso_insuficiente!"
+	}
+	
+	if ((route =="/relatorios-animais" || route =="/criar-relatorio-animal" || routeUpdate =="atualizar-relatorio-animal") && !(accessLevel == 0 || accessLevel == 1 || accessLevel == 3 || accessLevel == 2)) {
+		window.location.href = "/painel?status=Erro&text=Nivel_de_acesso_insuficiente!"
+	}
+	
+	if ((route =="/categorias-animais" || route =="/criar-categoria-animal" || routeUpdate =="atualizar-categoria-animal") && !(accessLevel == 0 || accessLevel == 1 || accessLevel == 2)) {
+		window.location.href = "/painel?status=Erro&text=Nivel_de_acesso_insuficiente!"
+	}
+	
+	if ((route =="/medicamentos" || route =="/criar-medicamento" || routeUpdate =="atualizar-medicamento") && !(accessLevel == 0 || accessLevel == 1 || accessLevel == 2 || accessLevel == 4)) {
+		window.location.href = "/painel?status=Erro&text=Nivel_de_acesso_insuficiente!"
+	}
+	
+	if ((route =="/fornecedores" || route =="/criar-fornecedor" || routeUpdate =="atualizar-fornecedor") && !(accessLevel == 0 || accessLevel == 1 || accessLevel == 4)) {
+		window.location.href = "/painel?status=Erro&text=Nivel_de_acesso_insuficiente!"
+	}
+})()
