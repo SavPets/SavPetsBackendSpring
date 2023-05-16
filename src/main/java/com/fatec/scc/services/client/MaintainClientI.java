@@ -27,7 +27,7 @@ import com.fatec.scc.model.client.MaintainClientRepository;
  */
 @Service
 public class MaintainClientI implements MaintainClient {
-	// Todo o código que está comentado será implementado futuramente com a API "ViaCEP"
+	// Código que está comentado será implementado futuramente com a API "ViaCEP"
 	
 	Logger logger = LogManager.getLogger(this.getClass());
 	@Autowired
@@ -69,8 +69,6 @@ public class MaintainClientI implements MaintainClient {
 	@Override
 	public Optional<Client> updates(Long id, Client client) {
 		logger.info(">>>>>> 1.servico atualiza informações de funcionario chamado");
-		//Cliente clienteModificado = new Cliente(cliente.getPrimeiroNome(), cliente.getUltimoNome(), cliente.getCpf(), cliente.getTelefone(), cliente.getCep(), cliente.getEndereco(), cliente.getNumeroLocal(), cliente.getComplemento());
-		//clienteModificado.setId(id);
 		Client clientMod = this.repository.findById(id).get();
 		client.setId(id);
 		
@@ -101,15 +99,14 @@ public class MaintainClientI implements MaintainClient {
 			client.setComplement(clientMod.getComplement());
 		}
 		
-		logger.info(">>>>>> 2. servico atualiza informacoes de cliente cep valido para o id => "
-				+ clientMod.getId());
+		logger.info(">>>>>> 2. servico atualiza informacoes de cliente cep valido para o id => %d", clientMod.getId());
 		return Optional.ofNullable(repository.save(client));
 	}
 
 	public Endereco obtainAddress(String cep) {
 		RestTemplate template = new RestTemplate();
 		String url = "https://viacep.com.br/ws/{cep}/json/";
-		logger.info(">>>>>> servico consultaCep - " + cep);
+		logger.info(">>>>>> servico consultaCep - %d", cep);
 		ResponseEntity<Endereco> resposta = null;
 		try {
 			resposta = template.getForEntity(url, Endereco.class, cep);
@@ -118,7 +115,7 @@ public class MaintainClientI implements MaintainClient {
 			logger.info(">>>>>> consulta CEP erro não esperado ");
 			return null;
 		} catch (HttpClientErrorException e) {
-			logger.info(">>>>>> consulta CEP inválido erro HttpClientErrorException =>" + e.getMessage());
+			logger.info(">>>>>> consulta CEP inválido erro HttpClientErrorException => %message", e.getMessage());
 			return null;
 		}
 	}

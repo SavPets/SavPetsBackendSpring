@@ -114,8 +114,7 @@ public class MaintainOccupationI implements MaintainOccupation {
 		logger.info(">>>>>> 1.servico atualiza informações de cliente chamado");
 		Occupation occupationModified = new Occupation(occupation.getName(), occupation.getDescription());
 		occupationModified.setId(id);
-		logger.info(">>>>>> 2. servico atualiza informacoes => " 
-		+ occupationModified.getId());
+		logger.info(">>>>>> 2. servico atualiza informacoes => %id", occupationModified.getId());
 
 		return Optional.ofNullable(repository.save(occupationModified));
 

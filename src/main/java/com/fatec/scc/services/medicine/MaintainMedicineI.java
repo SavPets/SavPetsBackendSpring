@@ -60,8 +60,7 @@ public class MaintainMedicineI implements MaintainMedicine {
 		Medicine modifiedMedicine = this.repository.findById(id).get();
 		medicine.setId(id);	
 		
-		logger.info(">>>>>> 2. servico atualiza informacoes de medicamento valido para o id => "
-				+ modifiedMedicine.getId());
+		logger.info(">>>>>> 2. servico atualiza informacoes de medicamento valido para o id => %id", modifiedMedicine.getId());
 		return Optional.ofNullable(repository.save(medicine));
 	}
 	
