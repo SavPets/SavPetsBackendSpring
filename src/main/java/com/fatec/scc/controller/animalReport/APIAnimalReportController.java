@@ -45,7 +45,7 @@ public class APIAnimalReportController {
 		animalReport = new AnimalReport();
 
 		if (result.hasErrors()) {
-			logger.info(">>>>>> apicontroller validacao da entrada dados invalidos" + result.getFieldError());
+			logger.info(">>>>>> apicontroller validação da entrada: dados inválidos - {}", result.getFieldError());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		}
 		
@@ -85,8 +85,13 @@ public class APIAnimalReportController {
 
 		Optional<AnimalReport> relatorioAnimal = mantemRelatorioAnimal.updates(id,
 				animalReportDTO.returnAnimalReport());
-		return ResponseEntity.status(HttpStatus.OK).body(relatorioAnimal.get());
+		if (relatorioAnimal.isPresent()) {
+			return ResponseEntity.status(HttpStatus.OK).body(relatorioAnimal.get());
+		} else {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao atualizar relatório do animal.");
+		}
 	}
+
 
 
 	@CrossOrigin // desabilita o cors do spring security
