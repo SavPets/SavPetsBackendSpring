@@ -436,6 +436,19 @@ a.accessibility-group_item:hover {
     height: 2.4rem;
 }
 
+.disabled-link {
+	pointer-events: none;
+  	cursor: default;
+}
+
+.disabled-link span {
+	opacity: 0.40 !important;
+}
+
+.disabled-link svg path {
+	opacity: 0.40 !important;
+}
+
 /* =============== RESPONSIVE SETTINGS =============== */
 @media (max-width: 768px) {
     :root {

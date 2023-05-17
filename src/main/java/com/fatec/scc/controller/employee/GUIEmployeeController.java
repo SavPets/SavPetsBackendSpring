@@ -22,7 +22,6 @@ public class GUIEmployeeController {
 	Logger logger = LogManager.getLogger(GUIEmployeeController.class);
 	@Autowired
 	MaintainEmployee service;
-	final String employeeObj = "funcionário";
 
 	@GetMapping("/funcionarios")
 	public ModelAndView showEmployees(Employee employee) {
@@ -35,7 +34,7 @@ public class GUIEmployeeController {
 	@GetMapping("/criar-funcionario")
 	public ModelAndView showCreateEmployee(Employee employee) {
 		ModelAndView modelAndView = new ModelAndView("employee/createEmployee");
-		modelAndView.addObject(employeeObj, employee);
+		modelAndView.addObject("funcionario", employee);
 		modelAndView.addObject("departamentos", service.searchAllDepartaments());
 		modelAndView.addObject("cargos", service.searchAllOccupations());
 
@@ -65,7 +64,7 @@ public class GUIEmployeeController {
 	@GetMapping("/atualizar-funcionario/{id}")
 	public ModelAndView showUpdateEmployee(@PathVariable("id") Long id) {
 		ModelAndView modelAndView = new ModelAndView("employee/updateEmployee");
-		modelAndView.addObject(employeeObj, service.searchById(id).get());
+		modelAndView.addObject("funcionario", service.searchById(id).get());
 		modelAndView.addObject("departamentos", service.searchAllDepartaments());
 		modelAndView.addObject("cargos", service.searchAllOccupations());
 
@@ -103,7 +102,7 @@ public class GUIEmployeeController {
 	@GetMapping("/atualizar-cadastro/{id}")
 	public ModelAndView showUpdateEmployeeRegister(@PathVariable("id") Long id) {
 		ModelAndView modelAndView = new ModelAndView("employee/updateEmployeeRegister");
-		modelAndView.addObject(employeeObj, service.searchById(id).get());
+		modelAndView.addObject("funcionario", service.searchById(id).get());
 
 		return modelAndView;
 	}

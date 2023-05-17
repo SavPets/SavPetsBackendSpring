@@ -245,4 +245,64 @@ function updateRegister() {
 	if ((route ==="/fornecedores" || route ==="/criar-fornecedor" || routeUpdate ==="atualizar-fornecedor") && !(accessLevel === 0 || accessLevel === 1 || accessLevel === 4)) {
 		window.location.href = "/painel?status=Erro&text=Nivel_de_acesso_insuficiente!"
 	}
+	
+	changeMenuStyles()
 })()
+
+// TROCAR O ESTILO DOS LINKS DO MENU PELO CARGO
+function changeMenuStyles() {
+	const links = document.querySelectorAll(".header-content_menu a")
+	
+	links[1].classList.remove("disabled-link")
+	links[2].classList.remove("disabled-link")
+	links[3].classList.remove("disabled-link")
+	links[4].classList.remove("disabled-link")
+	links[5].classList.remove("disabled-link")
+	links[6].classList.remove("disabled-link")
+	links[7].classList.remove("disabled-link")
+	links[8].classList.remove("disabled-link")
+	links[9].classList.remove("disabled-link")
+
+	if (localStorage.getItem("occupation") == "Veterinário") {
+		links[1].classList.add("disabled-link")
+		links[2].classList.add("disabled-link")
+		links[3].classList.add("disabled-link")
+		links[4].classList.add("disabled-link")
+		links[5].classList.add("disabled-link")
+		links[6].classList.add("disabled-link")
+		links[10].classList.add("disabled-link")
+	}
+	
+	if (localStorage.getItem("occupation") == "Auxiliar") {
+		links[1].classList.add("disabled-link")
+		links[2].classList.add("disabled-link")
+		links[3].classList.add("disabled-link")
+		links[8].classList.add("disabled-link")
+		links[9].classList.add("disabled-link")
+		links[10].classList.add("disabled-link")
+	}
+	
+	if (localStorage.getItem("occupation") == "Almoxarife") {
+		links[1].classList.add("disabled-link")
+		links[2].classList.add("disabled-link")
+		links[3].classList.add("disabled-link")
+		links[4].classList.add("disabled-link")
+		links[5].classList.add("disabled-link")
+		links[6].classList.add("disabled-link")
+		links[7].classList.add("disabled-link")
+		links[8].classList.add("disabled-link")
+	}
+	
+	if (localStorage.getItem("occupation") == "") {
+		links[1].classList.add("disabled-link")
+		links[2].classList.add("disabled-link")
+		links[3].classList.add("disabled-link")
+		links[4].classList.add("disabled-link")
+		links[5].classList.add("disabled-link")
+		links[6].classList.add("disabled-link")
+		links[7].classList.add("disabled-link")
+		links[8].classList.add("disabled-link")
+		links[9].classList.add("disabled-link")
+		links[10].classList.add("disabled-link")
+	}
+}
