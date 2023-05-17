@@ -82,7 +82,8 @@ class LoadDatabase {
 			maintainEmployeeRepository.deleteAll();
 			Employee employee = new Employee("ADMIN", "ADMIN", "admin.admin@email.com", "123123aA!", "123123aA!", "10101010101", "11111111", "Rua", 1, "Casa do adm", "123", "ADM", "Administrador");
 			maintainEmployeeRepository.save(employee);
-
+			employee = new Employee("Pedro", "Pessina", "pedro.pessina@gmail.com", "123123aA!", "123123aA!", "111.111.111-11", "03882-100", "Rua Sebastião da Silva Bueno", 1, "", "111", "ADM", "Veterinário");
+			maintainEmployeeRepository.save(employee);
 			};
 	}
 }
