@@ -81,3 +81,21 @@ body.contrast {
 .contrast input[type="time"] {
     color: var(--primary-color);
 }
+
+.contrast a span {
+	font-weight: 700;
+}
+
+.contrast a svg path {
+	font-weight: 700;
+}
+
+.contrast .disabled-link span {
+	opacity: 1 !important;
+	font-weight: 400 !important;
+}
+
+.contrast .disabled-link svg path {
+	opacity: 1 !important;
+	font-weight: 400 !important;
+}
