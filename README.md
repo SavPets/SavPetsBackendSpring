@@ -21,19 +21,55 @@ Grupo SavPets
 ##### Sprint Backlog
 > Cada requisito tem um identificador único de maneira que seja possível rastrear a necessidade do client com a implementação do software.
 
-| Identificador | Descrição | Prioridade |
-| ------------ | ------------------------------------------------------------------------ | ------|
-| REQ01 – Gerenciar acesso | Como – funcionário, Eu quero – controlar meu acesso ao sistema, De maneira que – seja possível cadastrar-se, alterar a senha e entrar no sistema| Alta |
-| REQ02 – Gerenciar cargos | Como – funcionário administrativo, Eu quero – controlar os dados dos cargos, De maneira que – possa atializar os cargos existentes e adiconar novos, além de atribuir uma opção a cada funcionário | Média |
-| REQ03 – Gerenciar departamentos | Como – funcionário administrativo, Eu quero – controlar os dados dos departamentos, De maneira que – possa atualizar os departamentos existentes e adicionar novos, além de atribuir uma opção a cada funcionário | Média |
-| REQ04 – Gerenciar funcionários | Como – funcionárop administrativo, Eu quero – controlar os dados dos funcionários, De maneira que – possa obter um controle atualizado de cada membro da empresa, podendo inserir novos, atualizar as informações dos existentes ou deletar| Alta |
-| REQ05 – Gerenciar clientes | Como – atendente, Eu quero –controlar os dados dos clientes, De maneira que – possa obter um controle atualizado de cada client que realizou alguma adoção, cadastrando, atualizando ou deletando as informações | Alta 
-| REQ06 – Gerenciar adoções | Como – atendente, Eu quero – administrar os relatórios de adoções, De maneira que – resulte na organização dos relatórios de cada animal adotado, sendo possível gerar novos registros ou editar os existentes | Alta |
-| REQ07 – Gerenciar animais | Como – funcionário da área de controle, Eu quero – administrar os dados dos animais, De maneira que – possa obter um controle atualizado de cada animal que a empresa recebeu, cadastrando, atualizando ou deletando as informações | Alta |
-| REQ08 – Gerenciar relatórios de animais | Como – veterinário, Eu quero – administrar os relatórios de animais, De maneira que – resulte na organização dos relatórios de cada animal examinado, sendo possível gerar novos registros, editar ou excluir os existentes | Média | 
-| REQ09 – Categorizar animais | Como – funcionário da área de controle, Eu quero –documentar as raças e portes de animais, De maneira que – possa ajudar a incluir detalhes nos registros dos animais que a empresa possui, cadastrando, atualizando ou deletando as diferentes categorias | Baixa 
-| REQ010 – Gerenciar medicamentos | Como – funcionário da área de recursos, Eu quero – organizar os dados dos medicamentos, De maneira que – facilite direcionar os registros e controlar o estoque, atraves da inserção, atualização e exclusão dos medicamentos no sistema | Média |
-| REQ11 – Gerenciar fornecedores | Como – funcionário administrativo, Eu quero – organizar os dados dos fornecedores, De maneira que – possa obter um controle atualizado de cada provider que a empresa requisitou, cadastrando, atualizando ou deletando as informações| Média |
+| Identificador | Tema | Nome | Descrição | Prioridade | Sprint | Status|
+| ------------ | --------------|-------|------------------------------------------------------------------------ | ------|---------|------|
+| REQ01 |Autenticação | Cadastro| Permitir que o administrador realize o cadastro de novos usuários no sistema. |Alta| 1| Conluido|
+| REQ02 | Autenticação | Login | Permitir que o usuário acesse o sistema de gestão, informando seu e-mail e senha cadastrados. |Alta|1|Conluido|
+| REQ03 | Autenticação | Sessão de login| Fazer com que o nome do funcionário apareça no painel ao entrar no sistema. |Media|2|Conluido|
+| REQ04 | Autenticação | Recuperar senha| Permitir que o usuário recupere a senha de sua conta do sistema. |Alta|1|Conluido|
+| REQ05 | Autenticação | Exigência de login | Não permitir o acesso ao sistema pelas URLs sem realizar o login.|Alta|3|Conluido|
+| REQ05 | Autenticação | Restrição de acesso | Restringir o acesso do usuário logado de acordo com seu cargo, limitando apenas às opções pertinentes. |Media|4|Conluido|
+| REQ06 | Cargo | Gerir cargos | O funcionário mantém os cargos de departamentos, adicionando, atualizando, excluindo e consultando.|Media|2|Conluido|
+| REQ07 | Departamento | Administrar departamentos | Permitir que o funcionário faça o gerenciamento, criando, excluindo, consultando e atualizando os departamentos. |Alta|2|Conluido|
+| REQ08 |Funcionário | Supervisionar funcionários | O gerente consegue visualizar o histórico de ações dos outros funcionários no sistema. |Alta |1|Conluido|
+| REQ09 |Animal | Organizar animais | O funcionário pode organizar os dados dos animais, adicionando, atualizando e lendo. |Media|1|Conluido|
+| REQ010 |Animal | Manter relatórios de animais | O funcionário mantém os relatórios de animais que a instituição recebe, adicionando, atualizando e consultando. |Alta|2|Conluido|
+| REQ11 |Cliente | Gerenciar clientes| Faz com que o funcionário possa administrar o cliente, atualizando, adicionando, excluindo ou consultando os clientes. |Alta|1|Conluido|
+| REQ12 |Adoção | Controlar adoções| Permitir que o funcionário controle as adoções, adicionando, atualizando e consultando os registros. |Media|3|Conluido|
+| REQ13 |Fornecedor | Administrar fornecedores | O funcionário pode administrar os fornecedores, criando, excluindo, atualizando e consultando os fornecedores. |Baixa|1|Conluido|
+| REQ14 |Medicamento | Controlar medicamentos| Os funcionários conseguem visualizar e manipular os dados de medicamentos. |Baixa|2|Conluido|
+| REQ15 |Campanha de adoção | Controlar campanhas de adoção| Permitir que o funcionário faça o gerenciamento, criando, excluindo, consultando e atualizando as campanhas (eventos) de adoção de animais. |Baixa|3|Conluido|
+| REQ16 |Modelagem de dados | Diagrama de relação e coleção - CRD | Diagrama contendo a relação entre as coleções que serão usadas no banco de dados não relacional. |Media|4|Conluido|
+| REQ17 |Modelagem de dados | Dicionário de dados | Dicionário de dados que estarão no sistema, contendo nome do campo, tipo e descrição. |Media|4|Conluido|
+| REQ18 |Modelo de documentos (JSON) | Modelo de documento de funcionários | Apresentar um modelo de documento relacionado a funcionário que será organizado em uma coleção. |Media|4|Conluido|
+| REQ19 | Modelo de documentos (JSON) | Modelo de documento de cargos | Desenvolver modelo de documento para cargo e organizar em coleção.   | Media|4|Conluido|
+| REQ20 | Modelo de documentos (JSON) | Modelo de documento de departamentos | Criar modelo de documento de departamento que será organizado em uma coleção. |Media|4|Conluido|
+| REQ21 | Modelo de documentos (JSON) | Modelo de documento de categoria de animais | Realizar um modelo de documento sobre a categoria de animal para organizar em uma coleção.   |Media|4|Conluido|
+| REQ22 | Modelo de documentos (JSON) | Modelo de documento de relatório de animais| Apresentar um modelo de documento relacionado a relatório de animal que será organizado em uma coleção. |Media|4|Conluido|
+| REQ23 | Modelo de documentos (JSON) | Modelo de documento de adoções| Realizar um modelo de documento para adoção que será organizado em uma coleção.  |Media|4|Conluido|
+| REQ24 | Modelo de documentos (JSON) | Modelo de documento de clientes | Executar a criação de um modelo de documento sobre cliente e organizar em coleção.  |Media|4|Conluido|
+| REQ25 | Modelo de documentos (JSON) | Modelo de documento de fornecedores | Desenvolver modelo de documento para fornecedor e organizar em coleção. |Media|4|Conluido|
+| REQ26 | Modelo de documentos (JSON) | Modelo de documento de medicamentos| Criar projeto de documento de medicamento e organizar em coleção. |Media|4|Conluido|
+| REQ27 | Modelo de documentos (JSON) | Modelo de documento de campanhas | Fazer modelo de documento para campanha que será organizado em coleção. |Baixa|4|Conluido|
+| REQ28 | Validação de design | Revisão de design | Revisão de elementos visuais do projeto para padronização |Media|2|Conluido|
+| REQ29 | Validação de design | Teste de usabilidade | Teste de funcionabilidade para cliente |Baixa|Aguardando|
+| REQ30 | Validação de design | Acessibilidade | Tornar o projeto acessível para qualquer pessoa, incluindo funções de acessibilidade nas páginas do sistema. | Media|4|Em Andamento|
+| REQ31 | Validação de design | Revisão de comunicabilidade | Identificação de melhorias e adições de novos elementos para facilitar o uso do sistema. |Media|2|Conluido|
+| REQ32 | Validação de design | Revisão de mensagens de erro | Posicionar a mensagem de erro abaixo do campo que não segue a regra inserida. |Baixa|3|Conluido|
+| REQ33 | Refatoração | Refatoração nas classes do backend| Refinamento de código nas classes de serviço, modelo e controle do backend. |Baixa|2|Conluido|
+| REQ34 | Refatoração | Validação de CEP| Implementação da API ViaCEP para validação de entrada de dados. |Baixa|2|Conluido|
+| REQ35 | Refatoração | Adaptação para utilizar DTO | Adicionar novas estruturas para classes de transferências do backend. |Media|3|Conluido|
+| REQ36 | Refatoração | Regras para os campos select | Não permitir que o valor padrão do campo select seja aceito ao enviar o formulário. |Media|3|Conluido|
+| REQ37 | Teste | Teste de unidade| Processo de validação de funções dos projetos, garantindo o funcionamento. |Media|3|Aguardando|
+| REQ38 | Teste | Teste de desempenho| Teste para verificar velocidade de projeto e capacidade de grandes dados. |Media|5|Aguardando|
+| REQ39 | Teste | Teste de segurança | Testar o projeto (site), sobre defesa contra invasões, corrigindo vulnerabilidades.  |Alt|5|Aguardando|
+| REQ40 | Teste | Teste de funcionamento geral | Processo de testagem do site em seus funcionamentos como usabilidade, acessibilidade etc. |Media|5|Aguardando|
+| REQ41 | Hospedagem | Seleção de provedor de hospedagem | Selecionar o provedor onde o projeto será hospedado. |Media |4|Conluido|
+| REQ42 | Hospedagem | Implantação do sistema e banco de dados | Processo de implementação de dados do projeto para o banco de dados e do sistema para a rede |Alta|6|Aguardando|
+| REQ43 | Documentação | Documentação técnica | Processo de Documentação e finalização de projeto para equipe e cliente. |Alta|6|Aguardando|
+| REQ44 | Páginas públicas | Home pública| Adaptação da página home pública do site. |Baixa|3|Conluido|
+| REQ45 | Páginas públicas | Página de campanhas| Criação do protótipo e da página pública de campanhas de adoção. |Baixa|4|Em Andamento |
+
 
 ##### Definição de pronto
 > O sprint será considerado concluido quando:
