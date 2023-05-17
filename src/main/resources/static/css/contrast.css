@@ -56,7 +56,8 @@ body.contrast {
 .contrast .just-validate-error-label,
 .contrast .form-select option,
 .contrast .odd >.dataTables_empty,
-.contrast .odd > td {
+.contrast .odd > td,
+.contrast .title_amount-campaign {
     color: var(--paragraph-color) !important;
 }
 
