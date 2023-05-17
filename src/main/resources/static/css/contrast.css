@@ -3,6 +3,7 @@ body.contrast {
     --paragraph-color: hsl(0, 0%, 100%);
     --primary-color: hsl(0, 0%, 0%);
     --secondary-color: hsl(0, 0%, 0%);
+    --title-page-color: hsl(0, 0%, 100%);
 
     --height-nav: 7.2rem;
     --menu-links-color: hsl(60, 100%, 50%);
@@ -41,8 +42,8 @@ body.contrast {
     opacity: 1;
 }
 
-.contrast svg path {
-    fill: var(--paragraph-color);
+.contrast .scroll-down svg path {
+    fill: var(--paragraph-color) !important;
 }
 
 .contrast svg circle {
@@ -75,9 +76,32 @@ body.contrast {
     fill: var(--menu-links-color) !important;
 }
 
+.contrast a svg path:last-child{
+	fill: none !important;
+}
+
 .contrast .form-dision_inputfull,
 .contrast .form-dision_inputfull option,
 .contrast input[type="date"],
 .contrast input[type="time"] {
     color: var(--primary-color);
+}
+
+.contrast .campaign-container .campaign-content{
+	background: #000;
+	border: 1px solid var(--paragraph-color);
+}
+
+.contrast .campaign-container .campaign-content .campaign-info .campaign-date{
+	color: var(--placeholder-color);
+}
+
+.contrast .optionshelp-card_information{
+	border: 1px solid var(--paragraph-color);
+	border-radius: 1rem;
+}
+
+.contrast .back-to-top svg, .contrast .scroll-down svg {
+	border-radius: 100%;
+	border: 1px solid var(--placeholder-color);
 }

@@ -73,8 +73,7 @@ header #header.fixed-menu {
     }
 }
 
-.scroll-down svg{
-    width: 100%;
+.scroll-down{
     transform: rotate(180deg);
 }
 
