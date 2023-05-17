@@ -87,7 +87,7 @@ header #header.fixed-menu {
     background: url(../img/background-image.png) no-repeat 62%;
     background-size: cover;
 
-    min-height: 100vh;
+    min-height: calc(100vh - 3.1rem);
 
     display: flex;
     align-items: center;
