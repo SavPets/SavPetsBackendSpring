@@ -50,8 +50,13 @@ public class APIHomeController {
 
 		registerIsEmpty(registerFound);
 
-		return ResponseEntity.status(HttpStatus.OK).body(registerFound.get());
+		if (registerFound.isPresent()) {
+			return ResponseEntity.status(HttpStatus.OK).body(registerFound.get());
+		}
+		return registerIsEmpty(registerFound);
 	}
+
+
 
 	@CrossOrigin
 	@PostMapping
@@ -91,11 +96,13 @@ public class APIHomeController {
 		if (!departament.isEmpty()) {
 			departament = maintainRegisterI.updates(id, registerDTO.returnRegister());
 
-			return ResponseEntity.status(HttpStatus.OK).body(departament.get());
+			if (departament.isPresent()) {
+				return ResponseEntity.status(HttpStatus.OK).body(departament.get());
+			}
 		}
-
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 	}
+
 
 	@CrossOrigin
 	@DeleteMapping("/{id}")
