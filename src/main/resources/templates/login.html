@@ -3,14 +3,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <!--=============== HEAD ===============-->
-<head th:insert="~{fragments/headMain}"></head>
+<head th:insert="~{fragments/headHomeClient}"></head>
 
-<body> <!-- alterar para saber a página -->
+<body>
+	<!--=============== ACCESSIBILITY BAR ===============-->
+	<div th:insert="~{fragments/accessibilityBar}"></div>
+
 	<!--=============== HEADER ===============-->
-	<header th:insert="~{fragments/headerMain}"></header>
+	<div th:insert="~{fragments/headerHomeClient}"></div>
 
 	<!--=============== MAIN ===============-->
-	<main>
+	<main id="main">
 		<!--=============== IDENTIFY ===============-->
 		<section class="identify content">
 			<div class="identify-container wrapper container-main_content">
@@ -57,6 +60,9 @@
 		</section>
 	</main>
 
+	<!--=============== FOOTER ===============-->
+    <div th:insert="~{fragments/footerHomeClient.html}"></div>
+
 	<!--=============== SWEET ALERT 2 ===============-->
 	<script src="js/sweetAlert2/sweetalert2@11.js"></script>
 	
@@ -64,7 +70,7 @@
 	<script src="js/justValidate/just-validate.production.min.js"></script>
 	
 	<!--=============== SCRIPTS ===============-->
-    <script src="js/main.js"></script>
+	<div th:insert="~{fragments/management/scriptsHomeClient}"></div>
     <script src="js/alertsNoMenu.js"></script>
     <script src="/js/validations.js"></script>
     

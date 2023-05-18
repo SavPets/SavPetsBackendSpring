@@ -14,6 +14,9 @@
     <!--=============== PANEL ===============-->
     <section class="wrapper">
 
+        <!--=============== ACCESSIBILITY BAR ===============-->
+        <div th:insert="~{fragments/accessibilityBar}"></div>
+
         <!--=============== TOP BAR ===============-->
         <section th:insert="~{fragments/management/topBar}"></section>
     
@@ -37,7 +40,6 @@
                                             <tr>
                                                 <th>Código</th>
                                                 <th>Nome do evento</th>
-                                                <th>Descrição</th>
                                                 <th>Data</th>
                                                 <th>Início do evento</th>
                                                 <th>Fim do evento</th>
@@ -50,7 +52,6 @@
                                             <tr th:each="CampanhaAdocao : ${campanhasAdocao}">
                                                 <td th:text="${CampanhaAdocao.id}"></td>
                                                 <td th:text="${CampanhaAdocao.name}"></td>
-                                                <td th:text="${CampanhaAdocao.description}"></td>
                                                 <td th:text="${CampanhaAdocao.date}"></td>
                                                 <td th:text="${CampanhaAdocao.startTime}"></td>
                                                 <td th:text="${CampanhaAdocao.endTime}"></td>

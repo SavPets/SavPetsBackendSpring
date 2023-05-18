@@ -51,14 +51,11 @@ public class MaintainAnimalReportI implements MaintainAnimalReport {
 	@Override
 	public Optional<AnimalReport> updates(Long id, AnimalReport animalReport) {
 		logger.info(">>>>>> 1.servico atualiza informações de cliente chamado");
-		//Endereco endereco = obtemEndereco(fornecedor.getCep());;
-		//fornecedorModificado.setEndereco(endereco.getLogradouro());
 		
 		AnimalReport relatorioModificado = this.repository.findById(id).get();
 		animalReport.setId(id);
 
-		logger.info(">>>>>> 2. servico atualiza informacoes de medicamento valido para o id => "
-				+ relatorioModificado.getId());
+		logger.info(">>>>>> 2. servico atualiza informacoes de medicamento valido para o id => %id", relatorioModificado.getId());
 		return Optional.ofNullable(repository.save(animalReport));
 	}
 }

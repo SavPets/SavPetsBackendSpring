@@ -21,6 +21,7 @@
     <!--=============== CSS ===============-->
     <link rel="stylesheet" th:href="@{/css/hamburguer.css}">
     <link rel="stylesheet" th:href="@{/css/main-management.css}">
+    <link rel="stylesheet" th:href="@{/css/contrast.css}">
 </head>
 
 <body class="painel">
@@ -29,6 +30,9 @@
 
     <!--=============== PANEL ===============-->
     <section class="wrapper">
+
+        <!--=============== ACCESSIBILITY BAR ===============-->
+        <div th:insert="~{fragments/accessibilityBar}"></div>
 
         <!--=============== TOP BAR ===============-->
         <section th:insert="~{fragments/management/topBar}"></section>
@@ -55,8 +59,8 @@
 				username.innerText = localStorage.getItem("username")
 			}
 			else if(username.textContent != localStorage.getItem("username")) {
-				localStorage.setItem("username", username.textContent)
 				username.innerText = localStorage.getItem("username")
+				localStorage.setItem("username", username.textContent)
 			}
 		
 			const occupation = document.getElementById("occupation")
@@ -64,16 +68,29 @@
 				localStorage.setItem("occupation", occupation.textContent)
 				occupation.innerText = ""
 			}
-			else if(occupation.textContent != localStorage.getItem("occupation")) {
+			else if(occupation.textContent !== localStorage.getItem("occupation")) {
 				localStorage.setItem("occupation", occupation.textContent)
 				occupation.innerText = ""
+			}
+			
+			const userId = document.getElementById("userId")
+			if(!localStorage.getItem("userId")) {
+				localStorage.setItem("userId", userId.textContent)
+				userId.innerText = ""
+			}
+			else if(userId.textContent !== localStorage.getItem("userId")) {
+				localStorage.setItem("userId", userId.textContent)
+				userId.innerText = ""
 			}
 		}
     </script>
     
+    <!--=============== SWEET ALERT 2 ===============-->
+    <script src="/js/sweetAlert2/sweetalert2@11.js"></script>
     <!--=============== SCRIPTS ===============-->
-    <div th:insert="~{fragments/management/scriptsNoTable}"></div>
-    
+    <script src="/js/hamburguer-min.js" type="module"></script>
+    <script src="/js/main-management.js"></script>
+    <script src="/js/accessibilityOptions.js"></script>
 </body>
 
 </html>

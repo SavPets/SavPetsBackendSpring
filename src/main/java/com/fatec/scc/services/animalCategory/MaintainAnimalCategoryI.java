@@ -86,8 +86,7 @@ public class MaintainAnimalCategoryI implements MaintainAnimalCategory {
 				animalCategory.getSize(), animalCategory.getCoatColor());
 		animalCategoryModificado.setId(id);
 		
-		logger.info(">>>>>> 2. servico atualiza informacoes de cliente cep valido para o id => "
-				+ animalCategoryModificado.getId());
+		logger.info(">>>>>> 2. servico atualiza informacoes de cliente cep valido para o id => %id", animalCategoryModificado.getId());
 		return Optional.ofNullable(repository.save(animalCategoryModificado));
 	}
 

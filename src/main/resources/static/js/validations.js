@@ -1,13 +1,26 @@
+// Data para a validação posterior
+const date = new Date()
+
+function verifyMonth(month){
+  if(month < 9)
+    return `0${month+1}`
+  else
+    return month+1
+}
+
+const todayDate = `${date.getDate()}/${verifyMonth(date.getMonth())}/${date.getFullYear()}`
+const todayDateValidation = `${date.getFullYear()}-${verifyMonth(date.getMonth())}-${date.getDate()}`
+
 const validator = new JustValidate('.form',
-  {
-    errorLabelStyle: {
-      border: 'initials',
-      color: 'var(--btn-red-color)',
-      fontWeight: '500'
-    },
-    validateBeforeSubmitting: true,
-  }
-)
+    {
+      errorLabelStyle: {
+        border: 'initials',
+        color: 'var(--btn-red-color)',
+        fontWeight: '500'
+      },
+      validateBeforeSubmitting: true,
+    }
+    )
 
 // adicione mais regras para cada campo que for necessário
 const fieldsRules = {
@@ -19,10 +32,10 @@ const fieldsRules = {
   necessaryToSelect2: [ // Para quando tiver mais de 1 select obrigatório na mesma página (provisório)
     { rule: 'required', errorMessage: 'Selecione alguma opção' },
   ],
-  necessaryToSelect3: [ 
+  necessaryToSelect3: [
     { rule: 'required', errorMessage: 'Selecione alguma opção' },
   ],
-  necessaryToSelect4: [ 
+  necessaryToSelect4: [
     { rule: 'required', errorMessage: 'Selecione alguma opção' },
   ],
 
@@ -121,17 +134,19 @@ const fieldsRules = {
   ],
 
   // REGRAS DO FORMULARIO CAMPANHAS ADOCAO
-  campaignDate: [
-    { rule: 'required', errorMessage: ' data é obrigatório' }
+  descriptionCampaign: [
+    { rule: 'required', errorMessage: 'Descrição é obrigatório' },
+    { rule: 'minLength', value: 10, errorMessage: 'Descrição deve conter no mínimo 10 caracteres' },
+    { rule: 'maxLength', value: 180, errorMessage: 'Descrição deve conter no máximo 180 caracteres' }
   ],
 
   startTime: [
-	  { rule: 'required', errorMessage: ' início do evento é obrigatório' }
+    { rule: 'required', errorMessage: ' início do evento é obrigatório' }
   ],
   endTime: [
-	  { rule: 'required', errorMessage: ' fim do evento é obrigatório' }
+    { rule: 'required', errorMessage: ' fim do evento é obrigatório' }
   ],
-  
+
   // REGRAS DO FORMULARIO FUNCIONARIO
   accountNumber: [
     { rule: 'required', errorMessage: ' número da conta é obrigatório' },
@@ -161,8 +176,8 @@ const fieldsRules = {
     { rule: 'required', errorMessage: ' senha é obrigatório' },
     { rule: 'strongPassword', errorMessage: 'A senha deve conter pelo menos 8 dígitos, uma letra maiúscula, uma minúscula, um caractere especial e um número' }
   ],
-  
-  
+
+
 
   // REGRAS DO FORMULARIO FORNECEDOR
   provider: [
@@ -178,22 +193,38 @@ const fieldsRules = {
 
 // REGRA PARA  REPETIR SENHA
 if (document.getElementById("repeatPassword") != null) {
-	validator.addField(repeatPassword, [
-    	{ rule: 'required', errorMessage: ' repetir senha é obrigatório' },
-    	{ rule: 'strongPassword', errorMessage: 'A senha deve conter pelo menos 8 dígitos, uma letra maiúscula, uma minúscula, um caractere especial e um número' },
-    	{ validator: (value, fields) => {
-        	if (
-          	fields['#password'] &&
-          	fields['#password'].elem
-        	) {
-          	const repeatPasswordValue =
-            	fields['#password'].elem.value;
-          	return value === repeatPasswordValue;
-        	}
-        	return true;
-      	},
-      	errorMessage: 'Repita a mesma senha',
+  validator.addField(repeatPassword, [
+    { rule: 'required', errorMessage: ' repetir senha é obrigatório' },
+    { rule: 'strongPassword', errorMessage: 'A senha deve conter pelo menos 8 dígitos, uma letra maiúscula, uma minúscula, um caractere especial e um número' },
+    { validator: (value, fields) => {
+        if (
+            fields['#password'] &&
+            fields['#password'].elem
+        ) {
+          const repeatPasswordValue =
+              fields['#password'].elem.value;
+          return value === repeatPasswordValue;
+        }
+        return true;
+      },
+      errorMessage: 'Repita a mesma senha',
     }])}
+
+if(document.getElementById("campaignDate") != null){
+  validator.addField("#campaignDate", [
+    {
+      rule: 'required',
+      errorMessage: 'Data da campanha é obrigatória'
+    },
+    {
+      plugin: JustValidatePluginDate(() => ({
+        format: 'yyyy-MM-dd',
+        isAfterOrEqual: `${todayDateValidation}`,
+      })),
+      errorMessage: `Data deve ser superior ou igual a ${todayDate}`,
+    },
+  ],)
+}
 
 const existingFieldsOnTheCurrentPage = document.querySelectorAll('input[id], select[id]')
 existingFieldsOnTheCurrentPage.forEach(field => {
@@ -206,29 +237,29 @@ existingFieldsOnTheCurrentPage.forEach(field => {
   const rulesForThisField = fieldsRules[fieldId]
 
   if (rulesForThisField)
-    addFieldWithRules([{ fieldId, rules: rulesForThisField }])
+    addFieldWithRules([{ fieldId: fieldId, rules: rulesForThisField }])
 })
 
 function showValidationStatusIcon(event) {
   const field = event.target
   const fieldParent = field.parentNode
   const errorLabel = field.nextElementSibling
-  
+
   if (errorLabel && errorLabel.classList.contains('just-validate-error-label')) {
-    fieldParent.classList.add('exclamation') 
-    fieldParent.classList.remove('check') 
+    fieldParent.classList.add('exclamation')
+    fieldParent.classList.remove('check')
   } else {
-    fieldParent.classList.add('check') 
-    fieldParent.classList.remove('exclamation') 
+    fieldParent.classList.add('check')
+    fieldParent.classList.remove('exclamation')
   }
 }
 
 function addFieldWithRules(fieldToAdd) {
   fieldToAdd.forEach(({ fieldId, rules }) => {
     const fieldRules = rules.map(({ rule, value, errorMessage }) => ({
-      rule,
-      value,
-      errorMessage
+      rule: rule,
+      value: value,
+      errorMessage: errorMessage,
     }))
 
     validator.addField(`#${fieldId}`, fieldRules)
@@ -241,7 +272,7 @@ validator.onSuccess((event) => {
   let validFields = 0
 
   for (let fieldName in validator.fields) {
-    const fieldsHasContent = validator.fields[fieldName].elem.value != ''
+    const fieldsHasContent = validator.fields[fieldName].elem.value !== ''
     const inputSubmitHasAttribute = inputSubmit.hasAttribute('data-just-validate-fallback-disabled')
 
     if (fieldsHasContent && inputSubmitHasAttribute)

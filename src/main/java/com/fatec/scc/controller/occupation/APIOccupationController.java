@@ -72,7 +72,7 @@ public class APIOccupationController {
 		occupation = new Occupation();
 
 		if (result.hasErrors()) {
-			logger.info(">>>>>> apicontroller validacao da entrada dados invalidos" + result.getFieldError());
+			logger.info(">>>>>> apicontroller validação da entrada: dados inválidos - {}", result.getFieldError());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		}
 
@@ -121,15 +121,11 @@ public class APIOccupationController {
 
 	public ResponseEntity<Object> deleteById(@PathVariable(value = "id") Long id) {
 
-		Optional<Occupation> occupation = maintainOccupation.searchById(id);
+		Optional<Occupation> occupationDelete = maintainOccupation.searchById(id);
 
-		if (occupation.isEmpty()) {
+		occupationIsEmpty(occupationDelete);
 
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
-
-		}
-
-		maintainOccupation.delete(occupation.get().getId());
+		maintainOccupation.delete(occupationDelete.get().getId());
 
 		return ResponseEntity.status(HttpStatus.OK).body("Cargo excluido");
 
@@ -153,17 +149,13 @@ public class APIOccupationController {
 
 		Optional<Occupation> c = maintainOccupation.searchById(id);
 
-		if (c.isEmpty()) {
+		occupationIsEmpty(c);
 
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
-
-		}
-
-		Optional<Occupation> occupation = maintainOccupation.updates(id,
+		Optional<Occupation> occupationUpdate = maintainOccupation.updates(id,
 
 				occupationDTO.returnOneOccupation());
 
-		return ResponseEntity.status(HttpStatus.OK).body(occupation.get());
+		return ResponseEntity.status(HttpStatus.OK).body(occupationUpdate.get());
 
 	}
 
@@ -175,16 +167,19 @@ public class APIOccupationController {
 
 		logger.info(">>>>>> apicontroller consulta por id chamado");
 
-		Optional<Occupation> occupation = maintainOccupation.searchById(id);
+		Optional<Occupation> occupationFound = maintainOccupation.searchById(id);
 
+		occupationIsEmpty(occupationFound);
+
+		return ResponseEntity.status(HttpStatus.OK).body(occupationFound.get());
+
+	}
+
+	public ResponseEntity<Object> occupationIsEmpty (Optional<Occupation> occupation) {
 		if (occupation.isEmpty()) {
-
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
-
 		}
-
 		return ResponseEntity.status(HttpStatus.OK).body(occupation.get());
-
 	}
 
 }

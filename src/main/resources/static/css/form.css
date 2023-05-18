@@ -79,7 +79,6 @@
 
 .form-division_wrapper>label {
     opacity: .6;
-    font: 1.4rem;
     font-weight: 600;
 }
 
@@ -95,7 +94,6 @@ input[type="number"]::-webkit-inner-spin-button {
 
 input[type="date"]::before,
 input[type="time"]::before {
-    font: 1.4rem;
     font-weight: 600;
     color: var(--placeholder-color);
     font-family: 'Poppins', sans-serif;

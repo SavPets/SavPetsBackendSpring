@@ -39,7 +39,7 @@ public class APIAdoptionCampaignController {
 		campaign = new AdoptionCampaign();
 		logger.info(">>>>>> api cadastra informações de campanha chamado");
 		if (result.hasErrors()) {
-			logger.info(">>>>>> apicontroller validacao da entrada dados invalidos" + result.getFieldError());
+			logger.info(">>>>>> apicontroller validação da entrada: dados inválidos - {}", result.getFieldError());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		}
 		try {
@@ -58,36 +58,62 @@ public class APIAdoptionCampaignController {
 	@CrossOrigin // desabilita o cors do spring security
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> deleteById(@PathVariable(value = "id") Long id) {
-		Optional<AdoptionCampaign> campaign = mantemAdoptionCampaign.searchById(id);
-		if (campaign.isEmpty()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
+		Optional<AdoptionCampaign> campaignDelete = mantemAdoptionCampaign.searchById(id);
+
+		if (campaignDelete.isPresent()) {
+			mantemAdoptionCampaign.delete(campaignDelete.get().getId());
+			return ResponseEntity.status(HttpStatus.OK).body("Campanha de adoção excluída");
+		} else {
+
+			return adoptionCampaignIsEmpty(campaignDelete);
 		}
-		mantemAdoptionCampaign.delete(campaign.get().getId());
-		return ResponseEntity.status(HttpStatus.OK).body("Campanha de adoção excluída");
 	}
+
+
 
 	@CrossOrigin // desabilita o cors do spring security
 	@PutMapping("/{id}")
 	public ResponseEntity<Object> updates(@PathVariable long id, @RequestBody @Valid AdoptionCampaignDTO adoptionCampaignDTO,
-			BindingResult result) {
+										  BindingResult result) {
 		logger.info(">>>>>> api atualiza informações de campanha chamado");
 		if (result.hasErrors()) {
 			logger.info(">>>>>> apicontroller atualiza informações de campanha chamado dados invalidos");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 		}
-		Optional<AdoptionCampaign> campaign = mantemAdoptionCampaign.searchById(id);
-		if (campaign.isEmpty()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
+		Optional<AdoptionCampaign> campaignUpdate = mantemAdoptionCampaign.searchById(id);
+
+		if (campaignUpdate.isPresent()) {
+			Optional<AdoptionCampaign> campaign2 = mantemAdoptionCampaign.updates(id, adoptionCampaignDTO.returnAdoptionCampaign());
+
+			if (campaign2.isPresent()) {
+				return ResponseEntity.status(HttpStatus.OK).body(campaign2.get());
+			} else {
+				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao atualizar campanha.");
+			}
+		} else {
+			return adoptionCampaignIsEmpty(campaignUpdate);
 		}
-		Optional<AdoptionCampaign> campaign2 = mantemAdoptionCampaign.updates(id, adoptionCampaignDTO.returnAdoptionCampaign());
-		return ResponseEntity.status(HttpStatus.OK).body(campaign2.get());
+
 	}
+
 
 	@CrossOrigin // desabilita o cors do spring security
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> searchById(@PathVariable Long id) {
 		logger.info(">>>>>> apicontroller consulta por id chamado");
-		Optional<AdoptionCampaign> campaign = mantemAdoptionCampaign.searchById(id);
+		Optional<AdoptionCampaign> campaignFound = mantemAdoptionCampaign.searchById(id);
+
+		if (campaignFound.isPresent()) {
+			return ResponseEntity.status(HttpStatus.OK).body(campaignFound.get());
+		} else {
+
+			return adoptionCampaignIsEmpty(campaignFound);
+		}
+	}
+
+
+
+	public ResponseEntity<Object> adoptionCampaignIsEmpty (Optional<AdoptionCampaign> campaign) {
 		if (campaign.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 		}

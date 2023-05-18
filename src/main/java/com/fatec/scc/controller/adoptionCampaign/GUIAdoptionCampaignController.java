@@ -44,7 +44,8 @@ public class GUIAdoptionCampaignController {
     @PostMapping("/criar-campanha-adocao")
 	public RedirectView createAdoptionCampaign(@Valid AdoptionCampaignDTO adoptionCampaignDTO, BindingResult result) {
     	if (result.hasErrors()) {
-			return new RedirectView("/criar-campanha-adocaol?status=Erro&text=Revise_os_campos_do_registro!");
+			logger.error(result.getFieldError());
+			return new RedirectView("/criar-campanha-adocao?status=Erro&text=Revise_os_campos_do_registro!");
 		}
 
 		if (!service.save(adoptionCampaignDTO.returnAdoptionCampaign()).isPresent()) {

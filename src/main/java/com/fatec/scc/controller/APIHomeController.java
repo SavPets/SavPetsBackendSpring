@@ -42,12 +42,11 @@ public class APIHomeController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> searchById(@PathVariable Long id) {
 
-		Optional<Register> register = maintainRegisterI.searchById(id);
+		Optional<Register> registerFound = maintainRegisterI.searchById(id);
 
-		if (register.isEmpty()) 
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
+		registerIsEmpty(registerFound);
 		
-		return ResponseEntity.status(HttpStatus.OK).body(register.get());
+		return ResponseEntity.status(HttpStatus.OK).body(registerFound.get());
 	}
 
 	@CrossOrigin
@@ -98,14 +97,23 @@ public class APIHomeController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> deleteById(@PathVariable(value = "id") Long id) {
 
-		Optional<Register> register = maintainRegisterI.searchById(id);
+		Optional<Register> registerDelete = maintainRegisterI.searchById(id);
 
-		if (!register.isEmpty()) {
-			maintainRegisterI.delete(register.get().getId());
+		if (!registerDelete.isEmpty()) {
+			maintainRegisterI.delete(registerDelete.get().getId());
 
 		    return ResponseEntity.status(HttpStatus.OK).body("Categoria excluida");
 		}
 
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
+        return registerIsEmpty(registerDelete);
 	}
+
+	public ResponseEntity<Object> registerIsEmpty (Optional<Register> register) {
+		if (register.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(register.get());
+	}
+
+
 }

@@ -30,7 +30,7 @@ public class MaintainAdoptionI implements MaintainAdoption {
 	@Autowired
 	MaintainAdoptionRepository repository;
 	
-	
+
 	
 	public List<Adoption> searchAll() {
 		logger.info(">>>>>> servico consultaTodos chamado");
@@ -66,15 +66,12 @@ public class MaintainAdoptionI implements MaintainAdoption {
 	@Override
 	public Optional<Adoption> updates(Long id, Adoption adoption) {
 		logger.info(">>>>>> 1.servico atualiza informações de cliente chamado");
-		//Endereco endereco = obtemEndereco(fornecedor.getCep());;
-		//fornecedorModificado.setEndereco(endereco.getLogradouro());
 		
 		Adoption relatorioModificado = this.repository.findById(id).get();
 		adoption.setId(id);
 		
 		
-		logger.info(">>>>>> 2. servico atualiza informacoes de medicamento valido para o id => "
-				+ relatorioModificado.getId());
+		logger.info(">>>>>> 2. servico atualiza informacoes de medicamento valido para o id => %id", relatorioModificado.getId());
 		return Optional.ofNullable(repository.save(adoption));
 	}
 

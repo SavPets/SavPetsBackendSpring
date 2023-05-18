@@ -13,6 +13,9 @@
     <!--=============== PANEL ===============-->
     <section class="wrapper">
 
+        <!--=============== ACCESSIBILITY BAR ===============-->
+        <div th:insert="~{fragments/accessibilityBar}"></div>
+
          <!--=============== TOP BAR ===============-->
         <section th:insert="~{fragments/management/topBar}"></section>
     
@@ -40,8 +43,8 @@
                                 </div>
 
                                 <div class="form-division_wrapper">
-                                    <label for="description">Descrição *</label>
-                                        <input class="form-dision_inputfull" type="text" id="description" th:field="*{description}">
+                                    <label for="descriptionCampaign">Descrição *</label>
+                                        <input class="form-dision_inputfull" type="text" id="descriptionCampaign" th:field="*{description}">
                                 </div>
 
                                 <div class="form-division_wrapper">
@@ -50,12 +53,12 @@
                                 </div>
 
                                 <div class="form-division_wrapper">
-                                    <label for="time">Início do Evento *</label>
+                                    <label for="startTime">Início do Evento *</label>
                                         <input class="form-dision_inputfull" type="time"  id="startTime" th:field="*{startTime}">
                                 </div>
 
                                 <div class="form-division_wrapper">
-                                    <label for="duration">Fim do Evento *</label>
+                                    <label for="endTime">Fim do Evento *</label>
                                         <input class="form-dision_inputfull" type="time"  id="endTime" th:field="*{endTime}">
                                 </div>
 

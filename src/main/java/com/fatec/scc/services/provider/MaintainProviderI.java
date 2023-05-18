@@ -58,8 +58,6 @@ public class MaintainProviderI implements MaintainProvider {
 	@Override
 	public Optional<Provider> updates(Long id, Provider provider) {
 		logger.info(">>>>>> 1.servico atualiza informações de cliente chamado");
-		//Endereco endereco = obtemEndereco(fornecedor.getCep());;
-		//fornecedorModificado.setEndereco(endereco.getLogradouro());
 		
 		Provider providerModificado2 = this.repository.findById(id).get();
 		provider.setId(id);
@@ -84,8 +82,7 @@ public class MaintainProviderI implements MaintainProvider {
 		
 		
 		
-		logger.info(">>>>>> 2. servico atualiza informacoes de cliente cep valido para o id => "
-				+ providerModificado2.getId());
+		logger.info(">>>>>> 2. servico atualiza informacoes de cliente cep valido para o id => %id", providerModificado2.getId());
 		return Optional.ofNullable(repository.save(provider));
 	}
 
