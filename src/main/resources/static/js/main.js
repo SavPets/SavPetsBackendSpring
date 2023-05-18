@@ -1,6 +1,16 @@
 // =============== INITIAL SETTINGS ===============
-window.addEventListener('scroll', onScroll)
+const spinnerLoading = document.querySelector('.spinner_loading')
+const vlibrasWidget = document.querySelector('.vlibras-widget')
 const bodyElement = document.body
+
+bodyElement.classList.add('active-loading')
+
+window.addEventListener('load', () => {
+    bodyElement.classList.remove('active-loading')
+    vlibrasWidget.classList.remove('active-loading')
+    spinnerLoading.classList.remove('active-loading')
+    spinnerLoading.classList.remove('preloading')
+})
 
 function onScroll() {
 
@@ -18,9 +28,10 @@ function onScroll() {
         accessibilityBar.classList.remove('to-hide')
     }
 }
+window.addEventListener('scroll', onScroll)
 
 // =============== MENU ===============
-(function activeMenuOnCurrentPage(){
+function activeMenuOnCurrentPage(){
     let page = `/${bodyElement.classList}`
     page = page.replace('contrast', '')
 
@@ -29,7 +40,8 @@ function onScroll() {
         headerListOption.classList.add('menu-active-btn')
     }
     headerListOption.classList.add('menu-active')
-})()
+}
+activeMenuOnCurrentPage()
 
 function changeColorMenuOnScroll(menu, accessibilityBar) {
     menu.classList.add('fixed-menu')
@@ -42,7 +54,6 @@ const burger = document.querySelector('.burger')
 const menuMobile = document.querySelector('.menu-mobile')
 const containerMain = document.querySelector('.container-main_content')
 const form = document.querySelector('.form')
-const vlibrasWidget = document.querySelector('.vlibras-widget')
 
 // Aparecem na home
 const containerWelcome = document.querySelector('.presentation-container_welcome')

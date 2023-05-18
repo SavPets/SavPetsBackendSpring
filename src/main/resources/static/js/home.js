@@ -6,19 +6,22 @@ window.addEventListener('scroll', () => {
     if (scrollY > 600) {
         backToTop.classList.add('activate_scroll-top')
 
-        if(scrollDown)
+        if (scrollDown)
             scrollDown.classList.add('hide_scroll-down')
     } else {
         backToTop.classList.remove('activate_scroll-top')
 
-        if(scrollDown)
+        if (scrollDown)
             scrollDown.classList.remove('hide_scroll-down')
     }
 })
 
 // =============== SCROLL REVEAL SETTINGS ===============
 scrollReveal.reveal(`
-    .presentation-container_welcome,
+    .presentation-container_welcome
+`, { delay: 500 })
+
+scrollReveal.reveal(`
     .optionshelp-container_title,
     .optionshelp-group_card,
     .about-container,
@@ -45,7 +48,7 @@ campaignsDates.forEach((campaignDate) => {
     // Variável que irá representar o dia da semana
     let weekDay;
     // Switch para atribuir um dia da semana na variável 'weekday'
-    switch(convertedDate.getDay()){
+    switch (convertedDate.getDay()) {
         case 0:
             weekDay = "Domingo"
             break
@@ -72,7 +75,7 @@ campaignsDates.forEach((campaignDate) => {
     // Variável que irá representar o mês
     let month;
     // Switch para atribuir um mês na variável 'month'
-    switch (convertedDate.getMonth()){
+    switch (convertedDate.getMonth()) {
         case 0:
             month = "Janeiro"
             break
