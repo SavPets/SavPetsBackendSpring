@@ -1,6 +1,7 @@
 package com.fatec.scc.controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fatec.scc.model.register.Register;
 import com.fatec.scc.model.register.RegisterDTO;
+import com.fatec.scc.services.Email;
 import com.fatec.scc.services.MaintainRegisterI;
 
 @RestController
@@ -29,68 +31,69 @@ public class APIHomeController {
 	@Autowired
 	MaintainRegisterI maintainRegisterI;
 	Register register;
-	
-	
+	@Autowired
+	Email email;
+
 	// @CrossOrigin desabilita o cors do spring security
-    @CrossOrigin
+	@CrossOrigin
 	@GetMapping
 	public ResponseEntity<List<Register>> FindAll() {
 		return ResponseEntity.status(HttpStatus.OK).body(maintainRegisterI.searchAll());
 	}
 
-    @CrossOrigin
+	@CrossOrigin
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> searchById(@PathVariable Long id) {
 
 		Optional<Register> registerFound = maintainRegisterI.searchById(id);
 
 		registerIsEmpty(registerFound);
-		
+
 		return ResponseEntity.status(HttpStatus.OK).body(registerFound.get());
 	}
 
 	@CrossOrigin
 	@PostMapping
 	public ResponseEntity<Object> saveRegister(@RequestBody @Valid RegisterDTO registerDTO, BindingResult result) {
-        
+
 		register = new Register();
 
-		if (result.hasErrors()) 
+		if (result.hasErrors())
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
-		
-		if (maintainRegisterI.searchByEmail(registerDTO.getEmail()).isPresent()) 
+
+		if (maintainRegisterI.searchByEmail(registerDTO.getEmail()).isPresent())
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("Departamento já cadastrado");
-		
+
 		try {
 			register.setEmail(registerDTO.getEmail());
 
-            return ResponseEntity.status(HttpStatus.CREATED)
-                .body(maintainRegisterI.save(registerDTO.returnRegister()));
-            
+			return ResponseEntity.status(HttpStatus.CREATED)
+					.body(maintainRegisterI.save(registerDTO.returnRegister()));
+
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}
 	}
-	
-    @CrossOrigin
+
+	@CrossOrigin
 	@PutMapping("/{id}")
 	public ResponseEntity<Object> updates(
-        @PathVariable long id, 
-        @RequestBody @Valid RegisterDTO registerDTO, 
-        BindingResult result) {
+			@PathVariable long id,
+			@RequestBody @Valid RegisterDTO registerDTO,
+			BindingResult result) {
 
-		if (result.hasErrors()) 
+		if (result.hasErrors())
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
-		
+
 		Optional<Register> departament = maintainRegisterI.searchById(id);
 
 		if (!departament.isEmpty()) {
-            departament = maintainRegisterI.updates(id, registerDTO.returnRegister());
+			departament = maintainRegisterI.updates(id, registerDTO.returnRegister());
 
-            return ResponseEntity.status(HttpStatus.OK).body(departament.get());
-        }
+			return ResponseEntity.status(HttpStatus.OK).body(departament.get());
+		}
 
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 	}
 
 	@CrossOrigin
@@ -102,18 +105,30 @@ public class APIHomeController {
 		if (!registerDelete.isEmpty()) {
 			maintainRegisterI.delete(registerDelete.get().getId());
 
-		    return ResponseEntity.status(HttpStatus.OK).body("Categoria excluida");
+			return ResponseEntity.status(HttpStatus.OK).body("Categoria excluida");
 		}
 
-        return registerIsEmpty(registerDelete);
+		return registerIsEmpty(registerDelete);
 	}
 
-	public ResponseEntity<Object> registerIsEmpty (Optional<Register> register) {
+	public ResponseEntity<Object> registerIsEmpty(Optional<Register> register) {
 		if (register.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 		}
 		return ResponseEntity.status(HttpStatus.OK).body(register.get());
 	}
 
-
+	@CrossOrigin
+	@PostMapping("/enviar-email")
+	public void sendEmail (@RequestBody Map<String, String> emailData) {
+		String subject = emailData.get("subject");
+    String clientEmail = emailData.get("clientEmail");
+    String content = emailData.get("content");
+		
+		try {
+			email.sendEmail(subject, clientEmail, content);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
