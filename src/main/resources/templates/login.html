@@ -3,9 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <!--=============== HEAD ===============-->
+
 <head th:insert="~{fragments/headHomeClient}"></head>
 
 <body>
+	<!--=============== SPINNER LOADING ===============-->
+	<div class="spinner_loading preloading active-loading">
+		<div></div>
+	</div>
+
 	<!--=============== ACCESSIBILITY BAR ===============-->
 	<div th:insert="~{fragments/accessibilityBar}"></div>
 
@@ -36,18 +42,19 @@
 						</div>
 
 						<div class="form-dision">
-						
-							   <div class="form-division_wrapper">
-							    <label for="email">Email *</label >
+
+							<div class="form-division_wrapper">
+								<label for="email">Email *</label>
 								<input class="form-dision_inputfull" type="email" th:field="*{email}" id="email">
 							</div>
-							
-							   <div class="form-division_wrapper">
-							    <label for="password">Senha *</label >
-								<input class="form-dision_inputfull form-dision_top_right" type="password"  th:field="*{password}" id="password">
+
+							<div class="form-division_wrapper">
+								<label for="password">Senha *</label>
+								<input class="form-dision_inputfull form-dision_top_right" type="password" th:field="*{password}"
+									id="password">
 							</div>
 						</div>
-						
+
 						<input type="submit" value="Entrar" class="btn">
 					</form>
 				</div>
@@ -61,25 +68,25 @@
 	</main>
 
 	<!--=============== FOOTER ===============-->
-    <div th:insert="~{fragments/footerHomeClient.html}"></div>
+	<div th:insert="~{fragments/footerHomeClient.html}"></div>
 
 	<!--=============== SWEET ALERT 2 ===============-->
 	<script src="js/sweetAlert2/sweetalert2@11.js"></script>
-	
+
 	<!--=============== JUST VALIDATE ===============-->
 	<script src="js/justValidate/just-validate.production.min.js"></script>
-	
+
 	<!--=============== SCRIPTS ===============-->
 	<div th:insert="~{fragments/management/scriptsHomeClient}"></div>
-    <script src="js/alertsNoMenu.js"></script>
-    <script src="/js/validations.js"></script>
-    
-    <!--=============== FUNÇÃO PARA EXECUTAR O LOGIN AO CADASTRAR ===============-->
-    <script>
-    	function login() {
+	<script src="js/alertsNoMenu.js"></script>
+	<script src="/js/validations.js"></script>
+
+	<!--=============== FUNÇÃO PARA EXECUTAR O LOGIN AO CADASTRAR ===============-->
+	<script>
+		function login() {
 			localStorage.setItem("username", "")
 		}
-    </script>
+	</script>
 </body>
 
 </html>

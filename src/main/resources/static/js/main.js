@@ -1,17 +1,14 @@
-// =============== INITIAL SETTINGS ===============
+// =============== PRE LOADING SETTINGS ===============
 const spinnerLoading = document.querySelector('.spinner_loading')
 const vlibrasWidget = document.querySelector('.vlibras-widget')
-const bodyElement = document.body
-
-bodyElement.classList.add('active-loading')
 
 window.addEventListener('load', () => {
-    bodyElement.classList.remove('active-loading')
     vlibrasWidget.classList.remove('active-loading')
     spinnerLoading.classList.remove('active-loading')
     spinnerLoading.classList.remove('preloading')
 })
 
+// =============== INITIAL SETTINGS ===============
 function onScroll() {
 
     const menu = document.querySelector('#header')
@@ -31,6 +28,8 @@ function onScroll() {
 window.addEventListener('scroll', onScroll)
 
 // =============== MENU ===============
+const bodyElement = document.body
+
 function activeMenuOnCurrentPage(){
     let page = `/${bodyElement.classList}`
     page = page.replace('contrast', '')
