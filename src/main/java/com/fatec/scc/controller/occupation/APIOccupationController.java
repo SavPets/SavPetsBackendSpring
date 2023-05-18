@@ -125,10 +125,12 @@ public class APIOccupationController {
 
 		occupationIsEmpty(occupationDelete);
 
-		maintainOccupation.delete(occupationDelete.get().getId());
-
-		return ResponseEntity.status(HttpStatus.OK).body("Cargo excluido");
-
+		if (occupationDelete.isPresent()) {
+			maintainOccupation.delete(occupationDelete.get().getId());
+			return ResponseEntity.status(HttpStatus.OK).body("Cargo excluído");
+		} else {
+			return  occupationIsEmpty(occupationDelete);
+		}
 	}
 
 	@CrossOrigin // desabilita o cors do spring security
@@ -155,8 +157,11 @@ public class APIOccupationController {
 
 				occupationDTO.returnOneOccupation());
 
-		return ResponseEntity.status(HttpStatus.OK).body(occupationUpdate.get());
-
+		if (occupationUpdate.isPresent()) {
+			return ResponseEntity.status(HttpStatus.OK).body(occupationUpdate.get());
+		} else {
+			return occupationIsEmpty(c);
+		}
 	}
 
 	@CrossOrigin // desabilita o cors do spring security
@@ -171,9 +176,13 @@ public class APIOccupationController {
 
 		occupationIsEmpty(occupationFound);
 
-		return ResponseEntity.status(HttpStatus.OK).body(occupationFound.get());
-
+		if (occupationFound.isPresent()) {
+			return ResponseEntity.status(HttpStatus.OK).body(occupationFound.get());
+		} else {
+			return occupationIsEmpty(occupationFound);
+		}
 	}
+
 
 	public ResponseEntity<Object> occupationIsEmpty (Optional<Occupation> occupation) {
 		if (occupation.isEmpty()) {
