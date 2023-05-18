@@ -3,12 +3,18 @@ const bodyElement = document.body
 // =============== MENU ===============
 function setCurrentPage() {
     const page = `/${bodyElement.classList}`
+    if (document.querySelector("body:not([class])")) {
+		return
+	}
     return document.querySelector(`.header-content_menu a[href="${page}"]`)
 }
 
 (function activeMenuOnCurrentPage() {
     const headerListOption = setCurrentPage()
 
+    if (document.querySelector("body:not([class])")) {
+		return
+	}
     headerListOption.classList.add('menu-management-active')
 })()
 
@@ -24,6 +30,10 @@ function openMobileMenu(burger) {
 
 // =============== TOP BAR ===============
 (function createBreadCrumb() {
+	if (document.querySelector("body:not([class])")) {
+		return
+	}
+	
     const topBarPath = document.querySelector('.top-bar_path:first-child')
     const currentPage = setCurrentPage().textContent.trim()
     let newPath
