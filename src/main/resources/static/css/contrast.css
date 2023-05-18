@@ -42,8 +42,10 @@ body.contrast {
     opacity: 1;
 }
 
-.contrast .scroll-down svg path {
-    fill: var(--paragraph-color) !important;
+.contrast .scroll-down svg path,
+.contrast .accessibility-group_item:first-child svg path,
+.contrast .accessibility-group_item:nth-child(2) svg path {
+    fill: var(--paragraph-color);
 }
 
 .contrast svg circle {
@@ -107,20 +109,18 @@ body.contrast {
 	border: 1px solid var(--placeholder-color);
 }
 
+.contrast a svg path,
 .contrast a span {
 	font-weight: 700;
 }
 
-.contrast a svg path {
-	font-weight: 700;
-}
-
+.contrast .disabled-link svg path,
 .contrast .disabled-link span {
 	opacity: 1 !important;
 	font-weight: 400 !important;
 }
 
-.contrast .disabled-link svg path {
-	opacity: 1 !important;
-	font-weight: 400 !important;
+.contrast .accessibility-container_group a svg path,
+.contrast .header-content_menu a svg path {
+    fill: var(--menu-links-color) !important;
 }
