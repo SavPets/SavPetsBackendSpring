@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fatec.scc.model.register.Register;
@@ -120,13 +121,14 @@ public class APIHomeController {
 
 	@CrossOrigin
 	@PostMapping("/enviar-email")
-	public void sendEmail (@RequestBody Map<String, String> emailData) {
-		String subject = emailData.get("subject");
-    String clientEmail = emailData.get("clientEmail");
-    String content = emailData.get("content");
-		
+	public void sendEmail(
+			@RequestParam("name") String name,
+			@RequestParam("clientEmail") String clientEmail,
+			@RequestParam("subject") String subject,
+			@RequestParam("content") String content) {
+
 		try {
-			email.sendEmail(subject, clientEmail, content);
+			email.sendEmail(name, clientEmail, subject, content);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

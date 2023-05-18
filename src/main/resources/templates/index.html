@@ -6,6 +6,11 @@
 <head th:insert="~{fragments/headHomeClient}"></head>
 
 <body>
+    <!--=============== SPINNER LOADING ===============-->
+    <div class="spinner_loading preloading active-loading">
+        <div></div>
+    </div>
+
     <!--=============== ACCESSIBILITY BAR ===============-->
     <div th:insert="~{fragments/accessibilityBar}"></div>
 
@@ -185,7 +190,7 @@
                     </ul>
                 </div>
 
-                <form class="form" action="" method="post">
+                <form class="form" action="/api/v1/cadastros/enviar-email" method="post" ajax="true">
                     <div class="form-instruction">
                         <p>Preenchimento obrigatório</p><span>*</span>
                     </div>
@@ -198,7 +203,7 @@
 
                         <div class="form-division_wrapper">
                             <label for="email">Email *</label >
-                            <input class="form-dision_inputfull" type="email" name="email" id="email" required>
+                            <input class="form-dision_inputfull" type="email" name="clientEmail" id="email" required>
                         </div>
 
                         <div class="form-division_wrapper">
@@ -208,7 +213,7 @@
 
                         <div class="form-division_wrapper">
                             <label for="message">Mensagem *</label >
-                            <textarea class="form-dision_inputfull form-dision_textarea" cols="30" rows="10" id="message" name="message" required></textarea>
+                            <textarea class="form-dision_inputfull form-dision_textarea" cols="30" rows="10" id="message" name="content" required></textarea>
                         </div>
                     </div>
 
@@ -224,6 +229,8 @@
     <!--=============== SCRIPTS ===============-->
     <div th:insert="~{fragments/management/scriptsHomeClient}"></div>
     <script src="/js/home.js"></script>
+    <script src="/js/dataTables/jquery-3.5.1.js"></script>
+    <script src="/js/sendEmail.js"></script>
 </body>
 
 </html>
