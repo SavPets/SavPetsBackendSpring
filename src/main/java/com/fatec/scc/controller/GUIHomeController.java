@@ -30,6 +30,8 @@ public class GUIHomeController {
 	@Autowired
 	MaintainAdoptionCampaign serviceCampaign;
 
+	private static final String CADASTRO = "cadastro";
+
 	@GetMapping("/")
 	public ModelAndView showIndex() {
 		ModelAndView mv = new ModelAndView("index");
@@ -53,7 +55,7 @@ public class GUIHomeController {
 	@GetMapping("/login")
 	public ModelAndView showLogin(Employee employee) {
 		ModelAndView mv = new ModelAndView("login");
-		mv.addObject("cadastro", employee);
+		mv.addObject(CADASTRO, employee);
 		return mv;
 	}
 	
@@ -80,7 +82,7 @@ public class GUIHomeController {
 	@GetMapping("/cadastrar")
 	public ModelAndView showISignUp(Employee employee) {
 		ModelAndView mv = new ModelAndView("signup");
-		mv.addObject("cadastro", employee);
+		mv.addObject(CADASTRO, employee);
 		return mv;
 	}
 	
@@ -113,7 +115,7 @@ public class GUIHomeController {
 	@GetMapping("/alterar-senha")
 	public ModelAndView showUpdateCadastro(Employee employee) {
 		ModelAndView mv = new ModelAndView("changePassword");
-		mv.addObject("cadastro", employee);
+		mv.addObject(CADASTRO, employee);
 		return mv;
 	}
 	
