@@ -16,11 +16,11 @@ function onScroll() {
 
     const accessibilityBar = document.querySelector('.accessibility.content')
 
-    if((scrollY >= 0) && (!AlreadyHaveClass)) {
+    if ((scrollY >= 0) && (!AlreadyHaveClass)) {
         changeColorMenuOnScroll(menu, accessibilityBar)
     }
 
-    if((scrollY <= 0) && (AlreadyHaveClass)){
+    if ((scrollY <= 0) && (AlreadyHaveClass)) {
         menu.classList.remove('fixed-menu')
         accessibilityBar.classList.remove('to-hide')
     }
@@ -30,12 +30,15 @@ window.addEventListener('scroll', onScroll)
 // =============== MENU ===============
 const bodyElement = document.body
 
-function activeMenuOnCurrentPage(){
+function activeMenuOnCurrentPage() {
     let page = `/${bodyElement.classList}`
     page = page.replace('contrast', '')
 
     const headerListOption = document.querySelector(`.header-list_option[href="${page}"]`)
-    if(headerListOption.textContent === 'Cadastre-se') {
+
+    if (!headerListOption) return
+
+    if (headerListOption.textContent === 'Cadastre-se') {
         headerListOption.classList.add('menu-active-btn')
     }
     headerListOption.classList.add('menu-active')

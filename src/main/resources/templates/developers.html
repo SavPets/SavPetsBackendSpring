@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<!--=============== HEAD ===============-->
+
+<head th:insert="~{fragments/headHomeClient}"></head>
+
+<body class="time">
+  <!--=============== SPINNER LOADING ===============-->
+  <div class="spinner_loading preloading active-loading">
+    <div></div>
+  </div>
+
+  <!--=============== ACCESSIBILITY BAR ===============-->
+  <div th:insert="~{fragments/accessibilityBar}"></div>
+
+  <!--=============== HEADER ===============-->
+  <header id="header_nom-index" th:insert="~{fragments/headerHomeClient}"></header>
+
+  <!--=============== BACK TO TOP ===============-->
+  <a th:replace="~{fragments/backToTop}"></a>
+
+  <!--=============== MAIN ===============-->
+  <main id="main">
+    <!--=============== DEVELOPERS ===============-->
+    <section class="developers content">
+      <div class="developers-container wrapper container-main_content">
+
+        <div class="developers-container_information container-information">
+          <h5>Equipe</h5>
+          <h3>Conheça o time criador da plataforma SavPets</h3>
+          <p>Uma equipe dedicada a oferecer uma plataforma de ajuda aos animais.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!--=============== FOOTER ===============-->
+  <div th:insert="~{fragments/footerHomeClient.html}"></div>
+
+  <!--=============== SCRIPTS ===============-->
+  <div th:insert="~{fragments/management/scriptsHomeClient}"></div>
+  <script src="/js/home.js"></script>
+</body>
+
+</html>

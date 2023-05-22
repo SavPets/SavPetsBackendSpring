@@ -19,7 +19,7 @@ window.addEventListener('scroll', () => {
 // =============== SCROLL REVEAL SETTINGS ===============
 scrollReveal.reveal(`
     .presentation-container_welcome
-`, { delay: 500 })
+`, { delay: 900 })
 
 scrollReveal.reveal(`
     .optionshelp-container_title,

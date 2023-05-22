@@ -45,6 +45,12 @@ public class GUIHomeController {
 
 		return mv;
 	}
+
+	@GetMapping("/time")
+	public ModelAndView showDevelopers() {
+		ModelAndView mv = new ModelAndView("developers");
+		return mv;
+	}
 	
 	@GetMapping("/guia")
 	public ModelAndView showGuide() {
