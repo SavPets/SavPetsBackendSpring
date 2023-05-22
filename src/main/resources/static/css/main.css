@@ -208,6 +208,49 @@ img {
     color: var(--secondary-color);
 }
 
+.container-row_cards {
+    display: flex;
+    flex-wrap: wrap;
+    place-content: center;
+    gap: 2.4rem;
+}
+
+.container-cards_card {
+    width: 32rem;
+    flex: 1 32rem;
+    padding-block: 2.8rem;
+    
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+
+    text-align: center;
+
+    transition: 300ms;
+}
+
+.container-cards_card:hover{
+    transform: scale(1.03);
+}
+
+.container-cards_card h4 {
+    color: var(--paragraph-color);
+
+    padding-block: 1.1rem .4rem;
+}
+
+.container-cards_card p {
+    opacity: .8;
+}
+
+.container-card_social {
+    display: flex;
+    place-content: center;
+    gap: .6rem;
+
+    margin-top: .8rem
+}
+
 /*=============== SCROLL BAR ===============*/
 ::-webkit-scrollbar {
     width: 1rem;
