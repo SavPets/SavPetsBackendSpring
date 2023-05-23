@@ -82,7 +82,7 @@ public class GUIHomeController {
 			return new RedirectView("/painel");
 		}
 
-		return new RedirectView("/login?status=Erro&text=Senha_incorreta!");
+		return new RedirectView("/login?status=Erro&text=Credenciais_invalidas!");
 	}
 	
 	@GetMapping("/cadastrar")
