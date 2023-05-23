@@ -14,7 +14,7 @@ public class Email {
   @Autowired
   private JavaMailSender mailSender;
 
-  private String savpetsMail = "parajogo1778@gmail.com";
+  private String savpetsMail = "savpetsorg@gmail.com";
 
   public void sendEmail(String name, String clientEmail, String subject, String content) throws MessagingException {
     MimeMessage mail = mailSender.createMimeMessage();
