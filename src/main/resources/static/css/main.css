@@ -446,6 +446,24 @@ a.accessibility-group_item:hover {
     filter: brightness(1.2);
 }
 
+.error {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	gap: 5rem;
+}
+
+#error-table td {
+	vertical-align: top;
+	border: solid 1px #888;
+	padding: 10px;
+}
+
+#error-image {
+	height: 30vh;
+	width: auto;
+}
+
 /* =============== RESPONSIVE SETTINGS =============== */
 @media (max-width: 825px) {
 

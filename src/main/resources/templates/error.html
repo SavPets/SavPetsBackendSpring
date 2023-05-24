@@ -1,54 +1,78 @@
-<!DOCTYPE html>
+</html><!DOCTYPE html>
+<html lang="pt-BR">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-	<style>
-		table td {
-			vertical-align: top;
-			border: solid 1px #888;
-			padding: 10px;
-		}
-	</style>
-</head>
+<!--=============== HEAD ===============-->
+
+<head th:insert="~{fragments/headHomeClient}"></head>
 
 <body>
-	<h1> Erro de acesso</h1>
-	<table>
-		<tr>
-		<th>Título</th>
-		<th>Informação</th>
-		</tr>
-		<tr>
-			<td>Date</td>
-			<td th:text="${timestamp}" />
-		</tr>
-		<tr>
-			<td>Path</td>
-			<td th:text="${path}" />
-		</tr>
-		<tr>
-			<td>Error</td>
-			<td th:text="${error}" />
-		</tr>
-		<tr>
-			<td>Status</td>
-			<td th:text="${status}" />
-		</tr>
-		<tr>
-			<td>Message</td>
-			<td th:text="${message}" />
-		</tr>
-		<tr>
-			<td>Exception</td>
-			<td th:text="${exception}" />
-		</tr>
-		<tr>
-			<td>Trace</td>
-			<td>
-				<pre th:text="${trace}" />
-			</td>
-		</tr>
-	</table>
+  <!--=============== SPINNER LOADING ===============-->
+  <div class="spinner_loading preloading active-loading">
+    <div></div>
+  </div>
+  <!--=============== ACCESSIBILITY BAR ===============-->
+  <div th:insert="~{fragments/accessibilityBar}"></div>
+
+  <!--=============== HEADER ===============-->
+  <header id="header_nom-index" th:insert="~{fragments/headerHomeClient}"></header>
+
+  <!--=============== BACK TO TOP ===============-->
+  <a th:replace="~{fragments/backToTop}"></a>
+
+  <!--=============== MAIN ===============-->
+  <main id="main">
+    <!--=============== DEVELOPERS ===============-->
+    <section class="error content">
+      <h2>Um erro foi encontrado!</h2>
+      <img src="/img/error-image.svg" alt="Ilustração de erro" id="error-image">
+	  <div>
+	  	<table id="error-table">
+			<tr>
+				<th>Título</th>
+				<th>Informação</th>
+			</tr>
+			<tr>
+				<td>Date</td>
+				<td th:text="${timestamp}" />
+			</tr>
+			<tr>
+				<td>Path</td>
+				<td th:text="${path}" />
+			</tr>
+			<tr>
+				<td>Error</td>
+				<td th:text="${error}" />
+			</tr>
+			<tr>
+				<td>Status</td>
+				<td th:text="${status}" />
+			</tr>
+			<tr>
+				<td>Message</td>
+				<td th:text="${message}" />
+			</tr>
+			<tr>
+				<td>Exception</td>
+				<td th:text="${exception}" />
+			</tr>
+			<tr>
+				<td>Trace</td>
+				<td>
+					<pre th:text="${trace}" />
+				</td>
+			</tr>
+		</table>
+	  </div>
+    </section>
+  </main>
+
+  <!--=============== FOOTER ===============-->
+  <div th:insert="~{fragments/footerHomeClient.html}"></div>
+
+  <!--=============== SCRIPTS ===============-->
+  <div th:insert="~{fragments/management/scriptsHomeClient}"></div>
+  <script src="/js/home.js"></script>
 </body>
 
 </html>
