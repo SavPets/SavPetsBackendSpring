@@ -1,9 +1,16 @@
 package com.fatec.scc.model.adoptionCampaign;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MaintainAdoptionCampaignRepository extends JpaRepository<AdoptionCampaign, Long>{
+public interface MaintainAdoptionCampaignRepository extends MongoRepository<AdoptionCampaign, Long>{
+
+	Optional<AdoptionCampaign> findById(String id);
+
+	void deleteById(String id);
 
 }
