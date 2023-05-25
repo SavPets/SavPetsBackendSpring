@@ -4,11 +4,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <!--=============== HEAD ===============-->
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!--=============== FAVICON AND TITLE ===============-->
     <link rel="shortcut icon" th:href="@{/img/favicon.ico}" type="image/x-icon">
     <title>SavPets</title>
@@ -39,10 +40,23 @@
 
         <!--=============== CONTENT ===============-->
         <main class="main">
-            <section class="main-content">
-         
-                <div id="chart">
-                
+            <section class="main-content main-register main-charts">
+                <div class="main-content_box">
+                    <div id="chart-adoptions">
+                        <div id="responsive-chart"></div>
+                    </div>
+                </div>
+
+                <div class="main-content_box">
+                    <div id="chart-animals_received">
+                        <div id="responsive-chart"></div>
+                    </div>
+                </div>
+
+                <div class="main-content_box">
+                    <div id="chart-comparison">
+                        <div id="responsive-chart"></div>
+                    </div>
                 </div>
             </section>
         </main>
@@ -50,44 +64,44 @@
 
     <!--=============== SHOW USERNAME SETTINGS ===============-->
     <script>
-		if (localStorage.getItem("username") == null)
-			window.location.href = "/login?status=Erro&text=Realize_o_login!"
-		else {
-			const username = document.getElementById("username")
-			if(!localStorage.getItem("username")) {
-				localStorage.setItem("username", username.textContent)
-				username.innerText = localStorage.getItem("username")
-			}
-			else if(username.textContent != localStorage.getItem("username")) {
-				username.innerText = localStorage.getItem("username")
-				localStorage.setItem("username", username.textContent)
-			}
-		
-			const occupation = document.getElementById("occupation")
-			if(!localStorage.getItem("occupation")) {
-				localStorage.setItem("occupation", occupation.textContent)
-				occupation.innerText = ""
-			}
-			else if(occupation.textContent !== localStorage.getItem("occupation")) {
-				localStorage.setItem("occupation", occupation.textContent)
-				occupation.innerText = ""
-			}
-			
-			const userId = document.getElementById("userId")
-			if(!localStorage.getItem("userId")) {
-				localStorage.setItem("userId", userId.textContent)
-				userId.innerText = ""
-			}
-			else if(userId.textContent !== localStorage.getItem("userId")) {
-				localStorage.setItem("userId", userId.textContent)
-				userId.innerText = ""
-			}
-		}
+        if (localStorage.getItem("username") == null)
+            window.location.href = "/login?status=Erro&text=Realize_o_login!"
+        else {
+            const username = document.getElementById("username")
+            if (!localStorage.getItem("username")) {
+                localStorage.setItem("username", username.textContent)
+                username.innerText = localStorage.getItem("username")
+            }
+            else if (username.textContent != localStorage.getItem("username")) {
+                username.innerText = localStorage.getItem("username")
+                localStorage.setItem("username", username.textContent)
+            }
+
+            const occupation = document.getElementById("occupation")
+            if (!localStorage.getItem("occupation")) {
+                localStorage.setItem("occupation", occupation.textContent)
+                occupation.innerText = ""
+            }
+            else if (occupation.textContent !== localStorage.getItem("occupation")) {
+                localStorage.setItem("occupation", occupation.textContent)
+                occupation.innerText = ""
+            }
+
+            const userId = document.getElementById("userId")
+            if (!localStorage.getItem("userId")) {
+                localStorage.setItem("userId", userId.textContent)
+                userId.innerText = ""
+            }
+            else if (userId.textContent !== localStorage.getItem("userId")) {
+                localStorage.setItem("userId", userId.textContent)
+                userId.innerText = ""
+            }
+        }
     </script>
-    
+
     <!--=============== SWEET ALERT 2 ===============-->
     <script src="/js/sweetAlert2/sweetalert2@11.js"></script>
-    
+
     <!--=============== APEX CHARTS ===============-->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="/js/chart.js"> </script>
