@@ -57,7 +57,7 @@ public class APIAdoptionCampaignController {
 
 	@CrossOrigin // desabilita o cors do spring security
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Object> deleteById(@PathVariable(value = "id") Long id) {
+	public ResponseEntity<Object> deleteById(@PathVariable(value = "id") String id) {
 		Optional<AdoptionCampaign> campaignDelete = mantemAdoptionCampaign.searchById(id);
 
 		if (campaignDelete.isPresent()) {
@@ -73,7 +73,7 @@ public class APIAdoptionCampaignController {
 
 	@CrossOrigin // desabilita o cors do spring security
 	@PutMapping("/{id}")
-	public ResponseEntity<Object> updates(@PathVariable long id, @RequestBody @Valid AdoptionCampaignDTO adoptionCampaignDTO,
+	public ResponseEntity<Object> updates(@PathVariable String id, @RequestBody @Valid AdoptionCampaignDTO adoptionCampaignDTO,
 										  BindingResult result) {
 		logger.info(">>>>>> api atualiza informações de campanha chamado");
 		if (result.hasErrors()) {
@@ -99,7 +99,7 @@ public class APIAdoptionCampaignController {
 
 	@CrossOrigin // desabilita o cors do spring security
 	@GetMapping("/{id}")
-	public ResponseEntity<Object> searchById(@PathVariable Long id) {
+	public ResponseEntity<Object> searchById(@PathVariable String id) {
 		logger.info(">>>>>> apicontroller consulta por id chamado");
 		Optional<AdoptionCampaign> campaignFound = mantemAdoptionCampaign.searchById(id);
 

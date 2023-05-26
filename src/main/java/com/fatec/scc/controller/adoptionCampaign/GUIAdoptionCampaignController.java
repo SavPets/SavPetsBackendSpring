@@ -57,15 +57,16 @@ public class GUIAdoptionCampaignController {
 	}
 
 	@GetMapping("/atualizar-campanha-adocao/{id}")
-    public ModelAndView showUpdateAdoptionCampaign(@PathVariable("id") Long id) {
+    public ModelAndView showUpdateAdoptionCampaign(@PathVariable("id") String id) {
 		ModelAndView modelAndView = new ModelAndView("adoptionCampaign/updateAdoptionCampaign");
 		modelAndView.addObject("campanha", service.searchById(id).get());
 
 		return modelAndView;
     }
 
+
 	@PostMapping("/atualizar-campanha-adocao/{id}")
-	public RedirectView updateAdoptionCampaign(@PathVariable("id") Long id, @Valid AdoptionCampaign adoptionCampaign, BindingResult result) {
+	public RedirectView updateAdoptionCampaign(@PathVariable("id") String id, @Valid AdoptionCampaign adoptionCampaign, BindingResult result) {
 		if (result.hasErrors()) {
 			adoptionCampaign.setId(id);
 			
@@ -78,7 +79,8 @@ public class GUIAdoptionCampaignController {
 	}
 
 	@GetMapping("/deletar-campanha-adocao/{id}")
-	public RedirectView deleteAdoptionCampaign(@PathVariable("id") Long id) {
+	public RedirectView deleteAdoptionCampaign(@PathVariable("id") String id) {
+		
 		service.delete(id);
 		return new RedirectView("/campanhas-adocao");
 }

@@ -35,7 +35,10 @@ public class APIMedicineController {
 
         medicineIsEmpty(medicineFound);
 
-        return ResponseEntity.status(HttpStatus.OK).body(medicineFound.get());
+        if (medicineFound.isPresent()) {
+            return ResponseEntity.status(HttpStatus.OK).body(medicineFound.get());
+        }
+        return medicineIsEmpty(medicineFound);
     }
 
     @CrossOrigin
@@ -68,15 +71,13 @@ public class APIMedicineController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
 
         Optional<Medicine> medicineUpdate = maintainMedicineI.searchById(id);
+         medicineIsEmpty(medicineUpdate);
 
         if (medicineUpdate.isPresent()) {
             medicineUpdate = maintainMedicineI.updates(id, medicineDTO.returnMedicine());
-
             return ResponseEntity.status(HttpStatus.OK).body(medicineUpdate.get());
         }
-
         return medicineIsEmpty(medicineUpdate);
-
     }
 
     @CrossOrigin

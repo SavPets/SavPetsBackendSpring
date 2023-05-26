@@ -45,10 +45,13 @@ public class APIDepartamentController {
 
 		Optional<Departament> departamentFound = maintainDepartament.searchById(id);
 
-		departamentIsEmpty(departamentFound);
-		
-		return ResponseEntity.status(HttpStatus.OK).body(departamentFound.get());
+		if (departamentFound.isPresent()) {
+			return ResponseEntity.status(HttpStatus.OK).body(departamentFound.get());
+		}
+
+		return departamentIsEmpty(departamentFound);
 	}
+
 
 	@CrossOrigin
 	@PostMapping
@@ -80,30 +83,38 @@ public class APIDepartamentController {
         @RequestBody @Valid DepartamentDTO departamentDTO, 
         BindingResult result) {
 
-		if (result.hasErrors()) 
+		if (result.hasErrors())
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Dados inválidos.");
-		
-		Optional<Departament> departamentToUpdate = maintainDepartament.searchById(id);
 
+		Optional<Departament> departamentToUpdate = maintainDepartament.searchById(id);
 		departamentIsEmpty(departamentToUpdate);
-        
-		departamentToUpdate = maintainDepartament.updates(id, departamentDTO.returnDepartament());
-        return ResponseEntity.status(HttpStatus.OK).body(departamentToUpdate.get());
+
+		if (departamentToUpdate.isPresent()) {
+			departamentToUpdate = maintainDepartament.updates(id, departamentDTO.returnDepartament());
+			return ResponseEntity.status(HttpStatus.OK).body(departamentToUpdate.get());
+		} else {
+			return departamentIsEmpty(departamentToUpdate);
+		}
 	}
 
-	@CrossOrigin
+		@CrossOrigin
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> deleteById(@PathVariable(value = "id") Long id) {
 
-		Optional<Departament> departamentToDelete = maintainDepartament.searchById(id);
+			Optional<Departament> departamentToDelete = maintainDepartament.searchById(id);
+			 departamentIsEmpty(departamentToDelete);
 
-		departamentIsEmpty(departamentToDelete);
-			
-		maintainDepartament.delete(departamentToDelete.get().getId());
-	    
-		return ResponseEntity.status(HttpStatus.OK).body("Categoria excluida");
-	}
-	
+			if (departamentToDelete.isPresent()) {
+				maintainDepartament.delete(departamentToDelete.get().getId());
+				return ResponseEntity.status(HttpStatus.OK).body("Categoria excluída");
+			}
+			return departamentIsEmpty(departamentToDelete);
+		}
+
+
+
+
+
 	public ResponseEntity<Object> departamentIsEmpty(Optional<Departament> departament) {
 		if (departament.isEmpty()) 
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");

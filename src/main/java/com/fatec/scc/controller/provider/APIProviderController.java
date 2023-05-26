@@ -83,7 +83,11 @@ public class APIProviderController {
 		Optional<Provider> c = mantemFornecedor.searchById(id);
 		providerIsEmpty	(c);
 		Optional<Provider> cliente = mantemFornecedor.updates(id, providerDTO.returnProvider());
-		return ResponseEntity.status(HttpStatus.OK).body(cliente.get());
+		if (cliente.isPresent()) {
+			return ResponseEntity.status(HttpStatus.OK).body(cliente.get());
+		} else {
+			return providerIsEmpty(cliente);
+		}
 	}
 
 	@CrossOrigin // desabilita o cors do spring security
@@ -92,7 +96,11 @@ public class APIProviderController {
 		logger.info(">>>>>> apicontroller consulta por id chamado");
 		Optional<Provider> fornecedor = mantemFornecedor.searchById(id);
 		providerIsEmpty(fornecedor);
-		return ResponseEntity.status(HttpStatus.OK).body(fornecedor.get());
+		if (fornecedor.isPresent()) {
+			return ResponseEntity.status(HttpStatus.OK).body(fornecedor.get());
+		} else {
+			return providerIsEmpty(fornecedor);
+		}
 	}
 
 	public ResponseEntity<Object> providerIsEmpty (Optional<Provider> provider) {
