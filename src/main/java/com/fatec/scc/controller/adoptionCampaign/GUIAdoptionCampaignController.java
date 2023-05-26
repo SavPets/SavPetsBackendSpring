@@ -60,7 +60,7 @@ public class GUIAdoptionCampaignController {
     public ModelAndView showUpdateAdoptionCampaign(@PathVariable("id") String id) {
 		ModelAndView modelAndView = new ModelAndView("adoptionCampaign/updateAdoptionCampaign");
 		modelAndView.addObject("campanha", service.searchById(id).get());
-
+		
 		return modelAndView;
     }
 
@@ -74,13 +74,13 @@ public class GUIAdoptionCampaignController {
 		}
 		
 		service.updates(id, adoptionCampaign);
-				
+		
 		return new RedirectView("/campanhas-adocao?status=Atualizado");
 	}
 
 	@GetMapping("/deletar-campanha-adocao/{id}")
 	public RedirectView deleteAdoptionCampaign(@PathVariable("id") String id) {
-		
+		logger.info("ID => " + id);
 		service.delete(id);
 		return new RedirectView("/campanhas-adocao");
 }
