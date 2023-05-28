@@ -36,11 +36,11 @@ class LoadDatabase {
 
 		return args -> {
 			// Campanha de adoção
-			maintainAdoptionCampaignRepository.deleteAll();
-			AdoptionCampaign adoptionCampaign = new AdoptionCampaign("Patas em Busca de Lar", "Em nosso evento, você terá a oportunidade de conhecer cães e gatos resgatados, prontos para encontrar um lar amoroso e oferecer carinho, lealdade e momentos de felicidade.", defaultDate, "07:00", "21:00", "Parque Ibirapuera");
-			maintainAdoptionCampaignRepository.save(adoptionCampaign);
-			adoptionCampaign = new AdoptionCampaign("Gatos em Busca de Lar", "Neste evento, você terá a oportunidade de conhecer gatos resgatados, prontos para encontrar um lar amoroso e oferecer carinho, lealdade e momentos de felicidade.", defaultDate, "10:00", "15:00", "Fatec Zona Leste");
-			maintainAdoptionCampaignRepository.save(adoptionCampaign);
+			//maintainAdoptionCampaignRepository.deleteAll();
+			//AdoptionCampaign adoptionCampaign = new AdoptionCampaign("Patas em Busca de Lar", "Em nosso evento, você terá a oportunidade de conhecer cães e gatos resgatados, prontos para encontrar um lar amoroso e oferecer carinho, lealdade e momentos de felicidade.", defaultDate, "07:00", "21:00", "Parque Ibirapuera");
+			//maintainAdoptionCampaignRepository.save(adoptionCampaign);
+			//adoptionCampaign = new AdoptionCampaign("Gatos em Busca de Lar", "Neste evento, você terá a oportunidade de conhecer gatos resgatados, prontos para encontrar um lar amoroso e oferecer carinho, lealdade e momentos de felicidade.", defaultDate, "10:00", "15:00", "Fatec Zona Leste");
+			//maintainAdoptionCampaignRepository.save(adoptionCampaign);
 
 			// Clientes
 			maintainClientRepository.deleteAll();
@@ -77,16 +77,16 @@ class LoadDatabase {
 			maintainAnimalReportRepository.deleteAll();
 			AnimalReport report = new AnimalReport("Teteu", "Vacina", "Pitbull-M", "2022-08-25", "Local", "Descrição Descrição");
 			maintainAnimalReportRepository.save(report);
-			AnimalReport report1 = new AnimalReport("Zeus", "Vacina", "Vira-lata-M", "2022-11-04", "Local", "Descrição Descrição");
-			maintainAnimalReportRepository.save(report1);
 			AnimalReport report2 = new AnimalReport("Magnos", "Vacina", "Vira-lata-M", "2022-12-18", "Local", "DescriçãoDescrição");
 			maintainAnimalReportRepository.save(report2);
 			AnimalReport report3 = new AnimalReport("Cacau", "Vacina", "Persa-F", "2022-12-23", "Local", "Descrição Descrição");
 			maintainAnimalReportRepository.save(report3);
-			AnimalReport report4 = new AnimalReport("Luna", "Vacina", "Persa-F", "2023-01-23", "Local", "Descrição Descrição");
-			maintainAnimalReportRepository.save(report4);
+			AnimalReport report1 = new AnimalReport("Zeus", "Vacina", "Vira-lata-M", "2022-11-04", "Local", "Descrição Descrição");
+			maintainAnimalReportRepository.save(report1);
 			AnimalReport report5 = new AnimalReport("Chloe", "Vacina", "Persa-F", "2023-02-11", "Local", "Descrição Descrição");
 			maintainAnimalReportRepository.save(report5);
+			AnimalReport report4 = new AnimalReport("Luna", "Vacina", "Persa-F", "2023-01-23", "Local", "Descrição Descrição");
+			maintainAnimalReportRepository.save(report4);
 			AnimalReport report6 = new AnimalReport("Simba", "Vacina", "Siamês-M", "2023-03-28", "Local", "Descrição 	Descrição");
 			maintainAnimalReportRepository.save(report6);
 			AnimalReport report7 = new AnimalReport("Lucy", "Vacina", "Pastor Alemão-F", "2023-04-01", "Local", "Descrição Descrição");
@@ -107,8 +107,6 @@ class LoadDatabase {
 			maintainAnimalReportRepository.save(report14);
 			AnimalReport report15 = new AnimalReport("Rex", "Vacina", "Vira-lata-M", "2023-06-03", "Local", "Descrição Descrição");
 			maintainAnimalReportRepository.save(report15);
-
-
 
 			// Adoção
 			maintainAdoptionRepository.deleteAll();
