@@ -563,6 +563,8 @@ header #header.fixed-menu {
         color: #fff;
         font-weight: 600;
         font-size: 1.6rem;
+
+        padding-block: 1rem;
     }
 
     .menu-mobile .btn-ghost{
