@@ -2,7 +2,6 @@ package com.fatec.scc.services;
 
 import com.fatec.scc.model.adoption.Adoption;
 import com.fatec.scc.model.adoption.MaintainAdoptionRepository;
-import com.fatec.scc.model.adoptionCampaign.AdoptionCampaign;
 import com.fatec.scc.model.adoptionCampaign.MaintainAdoptionCampaignRepository;
 import com.fatec.scc.model.animalCategory.AnimalCategory;
 import com.fatec.scc.model.animalCategory.MaintainAnimalCategoryRepository;
