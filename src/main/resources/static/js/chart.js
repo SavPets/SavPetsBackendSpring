@@ -49,11 +49,11 @@ function groupDataByMonth(months, initialsOfMonths) {
   const initialsOfMonths = dataForCharts.initialsOfMonths
 
   const groupedAdoptionMonths = dataForCharts.groupedAdoptionMonths
-  const maxValueForAdoptionChart = Math.max(...Object.values(groupedAdoptionMonths)) + 2
+  const maxValueForAdoptionChart = Math.max(...Object.values(groupedAdoptionMonths)) + 1
   const adoptionData = Object.values(groupedAdoptionMonths)
 
   const groupedAnimalMonths = dataForCharts.groupedAnimalMonths
-  const maxValueForAnimalChart = Math.max(...Object.values(groupedAnimalMonths)) + 2
+  const maxValueForAnimalChart = Math.max(...Object.values(groupedAnimalMonths)) + 1
   const animalData = Object.values(groupedAnimalMonths)
 
   // Criação dos gráficos
@@ -164,6 +164,9 @@ function groupDataByMonth(months, initialsOfMonths) {
           },
           yaxis: {
             labels: {
+			  formatter: function (val) {
+          return parseInt(val) === val ? val : ''
+        },
               style: {
                 fontSize: '14px'
               }
@@ -190,6 +193,11 @@ function groupDataByMonth(months, initialsOfMonths) {
       }
     },
     yaxis: {
+	  labels: {
+	  	formatter: function (val) {
+          return parseInt(val) === val ? val : ''
+        },
+	  },
       max: maxValueForAnimalChart,
     },
   }
@@ -266,6 +274,11 @@ function groupDataByMonth(months, initialsOfMonths) {
     yaxis: {
       min: 0,
       max: maxValueForAnimalChart,
+      labels: {
+	formatter: function (val) {
+          return parseInt(val) === val ? val : ''
+        }
+}
     },
     legend: {
       position: 'top',
