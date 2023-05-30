@@ -1,7 +1,6 @@
 package com.fatec.scc.controller;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -18,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fatec.scc.model.register.Register;
@@ -49,8 +49,13 @@ public class APIHomeController {
 
 		registerIsEmpty(registerFound);
 
-		return ResponseEntity.status(HttpStatus.OK).body(registerFound.get());
+		if (registerFound.isPresent()) {
+			return ResponseEntity.status(HttpStatus.OK).body(registerFound.get());
+		}
+		return registerIsEmpty(registerFound);
 	}
+
+
 
 	@CrossOrigin
 	@PostMapping
@@ -90,11 +95,13 @@ public class APIHomeController {
 		if (!departament.isEmpty()) {
 			departament = maintainRegisterI.updates(id, registerDTO.returnRegister());
 
-			return ResponseEntity.status(HttpStatus.OK).body(departament.get());
+			if (departament.isPresent()) {
+				return ResponseEntity.status(HttpStatus.OK).body(departament.get());
+			}
 		}
-
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não encontrado.");
 	}
+
 
 	@CrossOrigin
 	@DeleteMapping("/{id}")
@@ -120,13 +127,14 @@ public class APIHomeController {
 
 	@CrossOrigin
 	@PostMapping("/enviar-email")
-	public void sendEmail (@RequestBody Map<String, String> emailData) {
-		String subject = emailData.get("subject");
-    String clientEmail = emailData.get("clientEmail");
-    String content = emailData.get("content");
-		
+	public void sendEmail(
+			@RequestParam("name") String name,
+			@RequestParam("clientEmail") String clientEmail,
+			@RequestParam("subject") String subject,
+			@RequestParam("content") String content) {
+
 		try {
-			email.sendEmail(subject, clientEmail, content);
+			email.sendEmail(name, clientEmail, subject, content);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

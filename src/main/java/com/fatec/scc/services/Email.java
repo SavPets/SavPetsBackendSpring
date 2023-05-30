@@ -14,16 +14,18 @@ public class Email {
   @Autowired
   private JavaMailSender mailSender;
 
-  private String savpetsMail = "parajogo1778@gmail.com";
+  private String savpetsMail = "savpetsorg@gmail.com";
 
-  public void sendEmail(String subject, String email, String content) throws MessagingException {
-
+  public void sendEmail(String name, String clientEmail, String subject, String content) throws MessagingException {
     MimeMessage mail = mailSender.createMimeMessage();
-
     MimeMessageHelper message = new MimeMessageHelper(mail);
+
     message.setSubject(subject);
-    message.setText(content);
-    message.setFrom(email);
+    message.setText(
+        "Nome do usuário: " + name + "\n\n" +
+            "Email do usuário: " + clientEmail + "\n\n" +
+            "Mensagem: " + content);
+    message.setFrom(savpetsMail);
     message.setTo(savpetsMail);
 
     mailSender.send(mail);

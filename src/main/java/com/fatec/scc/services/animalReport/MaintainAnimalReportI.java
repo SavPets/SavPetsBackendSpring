@@ -29,11 +29,11 @@ public class MaintainAnimalReportI implements MaintainAnimalReport {
 		return repository.findAll();
 	}
 	public List<Medicine> searchAllMedicines() {
-		logger.info(">>>>>> servico consultaTodos chamado");
+		logger.info(">>>>>> servico consultaTodos chamados");
 		return repositoryM.findAll();
 	}
 	public List<AnimalCategory> searchAllCategories() {
-		logger.info(">>>>>> servico consultaTodos chamado");
+		logger.info(">>>>>> servico consultarTodos chamados");
 		return repositoryC.findAll();
 	}
 	@Override

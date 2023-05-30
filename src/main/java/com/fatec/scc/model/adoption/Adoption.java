@@ -37,6 +37,16 @@ public class Adoption {
 		this.adoptionDate= adoptionDate;
 		this.report= report;
 	}
+	
+	public Adoption(String employee,String client, Long animalReport, String animalName,
+			String adoptionDate,String report) {
+		this.employee = employee;
+		this.client= client;
+		this.animalReport= animalReport;
+		this.animalName = animalName;
+		this.adoptionDate= adoptionDate;
+		this.report= report;
+	}
 
 	public Long getId() {
 		return id;

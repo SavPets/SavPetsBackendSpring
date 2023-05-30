@@ -64,11 +64,16 @@ public class APIEmployeeController {
 
 		employeeIsEmpty(funcionario);
 
-		mantemFuncionario.delete(funcionario.get().getId());
-		return ResponseEntity.status(HttpStatus.OK).body("Funcionário excluido");
-	}
+        if (funcionario.isPresent()) {
+            mantemFuncionario.delete(funcionario.get().getId());
+            return ResponseEntity.status(HttpStatus.OK).body("Funcionário excluído");
+        }
+        return employeeIsEmpty(funcionario);
+    }
 
-	@CrossOrigin // desabilita o cors do spring security
+
+
+    @CrossOrigin // desabilita o cors do spring security
 	@PutMapping("/{id}")
 	public ResponseEntity<Object> updates(@PathVariable long id, @RequestBody @Valid EmployeeDTO employeeDTO,
 			BindingResult result) {
@@ -79,18 +84,31 @@ public class APIEmployeeController {
 		}
 		Optional<Employee> f = mantemFuncionario.searchById(id);
 		employeeIsEmpty(f);
-		Optional<Employee> func = mantemFuncionario.updates(id, employeeDTO.returnEmployee());
-		return ResponseEntity.status(HttpStatus.OK).body(func.get());
-	}
 
-	@CrossOrigin // desabilita o cors do spring security
+		Optional<Employee> func = mantemFuncionario.updates(id, employeeDTO.returnEmployee());
+        if (func.isPresent()) {
+            return ResponseEntity.status(HttpStatus.OK).body(func.get());
+        }
+        return employeeIsEmpty(f);
+    }
+
+
+
+
+    @CrossOrigin // desabilita o cors do spring security
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> searchById(@PathVariable Long id) {
-		logger.info(">>>>>> apicontroller consulta por id chamado");
-		Optional<Employee> funcionario = mantemFuncionario.searchById(id);
-		employeeIsEmpty(funcionario);
-		return ResponseEntity.status(HttpStatus.OK).body(funcionario.get());
-	}
+        logger.info(">>>>>> apicontroller consulta por id chamado");
+        Optional<Employee> funcionario = mantemFuncionario.searchById(id);
+
+         employeeIsEmpty(funcionario);
+
+        if (funcionario.isPresent()) {
+            return ResponseEntity.status(HttpStatus.OK).body(funcionario.get());
+        }
+        return employeeIsEmpty(funcionario);
+
+    }
 
 	public ResponseEntity<Object> employeeIsEmpty (Optional<Employee> employee) {
 		if (employee.isEmpty()) {

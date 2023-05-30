@@ -21,7 +21,7 @@ import com.fatec.scc.model.adoption.AdoptionDTO;
 import com.fatec.scc.services.adoption.MaintainAdoptionI;
 
 @RestController
-@RequestMapping("/api/v1/adoacao")
+@RequestMapping("/api/v1/adocao")
 public class APIAdoptionController {
 	@Autowired
 	MaintainAdoptionI maintainAdoption;

@@ -29,23 +29,27 @@ public class MaintainAdoptionI implements MaintainAdoption {
 	MaintainAnimalReportRepository repositoryA;
 	@Autowired
 	MaintainAdoptionRepository repository;
-	
 
-	
+
+	private static final String LOG_MESSAGE = ">>>>>> servico consultaTodos chamado";
+
+
+
+
 	public List<Adoption> searchAll() {
-		logger.info(">>>>>> servico consultaTodos chamado");
+		logger.info(LOG_MESSAGE);
 		return repository.findAll();
 	}
 	public List<Employee> searchAllEmployee() {
-		logger.info(">>>>>> servico consultaTodos chamado");
+		logger.info(LOG_MESSAGE);
 		return repositoryE.findAll();
 	}
 	public List<Client> searchAllClient() {
-		logger.info(">>>>>> servico consultaTodos chamado");
+		logger.info(LOG_MESSAGE);
 		return repositoryC.findAll();
 	}
 	public List<AnimalReport> searchAllAnimalReport() {
-		logger.info(">>>>>> servico consultaTodos chamado");
+		logger.info(LOG_MESSAGE);
 		return repositoryA.findAll();
 	}
 	

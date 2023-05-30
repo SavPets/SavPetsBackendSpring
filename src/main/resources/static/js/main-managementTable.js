@@ -35,12 +35,12 @@ function showDeleteConfirmationModal(event) {
 
 function executeDeleteMethod(event) {
     const deleteBtn = event.target.closest('a')
+    const url = deleteBtn.href.split('/')
+    
+    let endpoint = url.filter(Boolean)[2]  // 0º(http)://1º(host)/2º(objective)/3º(id)
+    endpoint = '/' + endpoint
 
-    let url = deleteBtn.href.split('/')
-    url = url.filter(Boolean)[2]  // 0º(http)://1º(host)/2º(objective)/3º(id)
-    url = '/' + url
+    const id = url.filter(Boolean)[3]
 
-    const id = deleteBtn.href.charAt(deleteBtn.href.length - 1)
-
-    window.location.href = `${url}/${id}`
+    window.location.href = `${endpoint}/${id}`
 }

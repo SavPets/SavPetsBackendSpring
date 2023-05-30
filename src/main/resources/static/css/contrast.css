@@ -86,8 +86,10 @@ body.contrast {
 .contrast .form-dision_inputfull,
 .contrast .form-dision_inputfull option,
 .contrast input[type="date"],
-.contrast input[type="time"] {
-    color: var(--primary-color);
+.contrast input[type="time"],
+.contrast .container-cards_card h4,
+.contrast .container-cards_card p {
+    color: var(--primary-color) !important;
 }
 
 .contrast .campaign-container .campaign-content{
@@ -123,4 +125,26 @@ body.contrast {
 .contrast .accessibility-container_group a svg path,
 .contrast .header-content_menu a svg path {
     fill: var(--menu-links-color) !important;
+}
+
+.contrast text.apexcharts-title-text, 
+.contrast text.apexcharts-text.apexcharts-xaxis-label,
+.contrast text.apexcharts-text.apexcharts-yaxis-label{
+    fill: #fff;
+}
+
+
+.contrast .apexcharts-tooltip.apexcharts-active {
+	background-color: #000;
+		color: #fff;
+
+}
+
+.contrast .apexcharts-tooltip-title {
+	background-color: #000 !important;
+	color: #fff;
+}
+
+.contrast .apexcharts-menu-icon svg{
+fill: rgb(255, 255, 128);	
 }

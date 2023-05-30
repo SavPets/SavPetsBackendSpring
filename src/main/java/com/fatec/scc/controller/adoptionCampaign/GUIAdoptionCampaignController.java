@@ -26,7 +26,7 @@ public class GUIAdoptionCampaignController {
 	MaintainAdoptionCampaign service;
 
 	@GetMapping("/campanhas-adocao")
-	public ModelAndView showAdoptionCampaign(AdoptionCampaign campaign) {
+	public ModelAndView showAdoptionCampaign(AdoptionCampaignDTO campaign) {
 		ModelAndView modelAndView = new ModelAndView("adoptionCampaign/adoptionCampaign");
 		modelAndView.addObject("campanhasAdocao", service.searchAll());
 
@@ -34,7 +34,7 @@ public class GUIAdoptionCampaignController {
 	}
 
 	@GetMapping("/criar-campanha-adocao")
-    public ModelAndView showCreateAdoptionCampaign(AdoptionCampaign campaign) {
+    public ModelAndView showCreateAdoptionCampaign(AdoptionCampaignDTO campaign) {
 		ModelAndView modelAndView = new ModelAndView("adoptionCampaign/createAdoptionCampaign");
 		modelAndView.addObject("campanha", campaign);
 		
@@ -57,15 +57,16 @@ public class GUIAdoptionCampaignController {
 	}
 
 	@GetMapping("/atualizar-campanha-adocao/{id}")
-    public ModelAndView showUpdateAdoptionCampaign(@PathVariable("id") Long id) {
+    public ModelAndView showUpdateAdoptionCampaign(@PathVariable("id") String id) {
 		ModelAndView modelAndView = new ModelAndView("adoptionCampaign/updateAdoptionCampaign");
 		modelAndView.addObject("campanha", service.searchById(id).get());
-
+		
 		return modelAndView;
     }
 
+
 	@PostMapping("/atualizar-campanha-adocao/{id}")
-	public RedirectView updateAdoptionCampaign(@PathVariable("id") Long id, @Valid AdoptionCampaign adoptionCampaign, BindingResult result) {
+	public RedirectView updateAdoptionCampaign(@PathVariable("id") String id, @Valid AdoptionCampaign adoptionCampaign, BindingResult result) {
 		if (result.hasErrors()) {
 			adoptionCampaign.setId(id);
 			
@@ -73,12 +74,12 @@ public class GUIAdoptionCampaignController {
 		}
 		
 		service.updates(id, adoptionCampaign);
-				
+		
 		return new RedirectView("/campanhas-adocao?status=Atualizado");
 	}
 
 	@GetMapping("/deletar-campanha-adocao/{id}")
-	public RedirectView deleteAdoptionCampaign(@PathVariable("id") Long id) {
+	public RedirectView deleteAdoptionCampaign(@PathVariable("id") String id) {
 		service.delete(id);
 		return new RedirectView("/campanhas-adocao");
 }

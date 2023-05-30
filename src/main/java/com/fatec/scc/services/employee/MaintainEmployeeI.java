@@ -24,9 +24,10 @@ public class MaintainEmployeeI implements MaintainEmployee {
 	MaintainDepartamentRepository repositoryD;
 	@Autowired
 	MaintainOccupationRepository repositoryO;
+	private static final String LOG_MESSAGE = ">>>>>> servico consultaTodos chamado";
 
 	public List<Employee> searchAll() {
-		logger.info(">>>>>> servico consultaTodos chamado");
+		logger.info(LOG_MESSAGE);
 		return repository.findAll();
 	}
 
@@ -75,13 +76,13 @@ public class MaintainEmployeeI implements MaintainEmployee {
 
 	@Override
 	public List<Departament> searchAllDepartaments() {
-		logger.info(">>>>>> servico consultaTodos chamado");
+		logger.info(LOG_MESSAGE);
 		return repositoryD.findAll();
 	}
 
 	@Override
 	public List<Occupation> searchAllOccupations() {
-		logger.info(">>>>>> servico consultaTodos chamado");
+		logger.info(LOG_MESSAGE);
 		return repositoryO.findAll();
 	}
 

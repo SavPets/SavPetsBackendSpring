@@ -84,7 +84,7 @@ header #header.fixed-menu {
 /*======================================*/
 
 .presentation-container{
-    background: url(../img/background-image.png) no-repeat 62%;
+    background: url(../img/background-image-min.png) no-repeat 62%;
     background-size: cover;
 
     min-height: calc(100vh - 3.1rem);
@@ -161,18 +161,18 @@ header #header.fixed-menu {
 
     max-width: 45rem;
     border-radius: 1rem;
-    background: url(../img/option-help1.png) right bottom no-repeat;
+    background: url(../img/option-help1-min.png) right bottom no-repeat;
     background-size: contain;
 
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .optionshelp-group_card:nth-child(2) {
-    background-image: url(../img/option-help2.png);
+    background-image: url(../img/option-help2-min.png);
 }
 
 .optionshelp-group_card:nth-child(3) {
-    background-image: url(../img/option-help3.png);
+    background-image: url(../img/option-help3-min.png);
 }
 
 .optionshelp-card_information{
@@ -563,6 +563,8 @@ header #header.fixed-menu {
         color: #fff;
         font-weight: 600;
         font-size: 1.6rem;
+
+        padding-block: 1rem;
     }
 
     .menu-mobile .btn-ghost{

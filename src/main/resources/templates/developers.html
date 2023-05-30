@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<!--=============== HEAD ===============-->
+
+<head th:insert="~{fragments/headHomeClient}"></head>
+
+<body class="time">
+  <!--=============== SPINNER LOADING ===============-->
+  <div class="spinner_loading preloading active-loading">
+    <div></div>
+  </div>
+
+  <!--=============== ACCESSIBILITY BAR ===============-->
+  <div th:insert="~{fragments/accessibilityBar}"></div>
+
+  <!--=============== HEADER ===============-->
+  <header id="header_nom-index" th:insert="~{fragments/headerHomeClient}"></header>
+
+  <!--=============== BACK TO TOP ===============-->
+  <a th:replace="~{fragments/backToTop}"></a>
+
+  <!--=============== MAIN ===============-->
+  <main id="main">
+    <!--=============== DEVELOPERS ===============-->
+    <section class="developers content">
+      <div class="developers-container wrapper container-main_content">
+
+        <div class="developers-container_information container-information">
+          <h5>Equipe</h5>
+          <h3>Conheça o time criador da plataforma SavPets</h3>
+          <p>Uma equipe dedicada a oferecer uma plataforma de ajuda aos animais.</p>
+        </div>
+
+        <div class="developers-container_content container-row_cards">
+          <div class="developers-content_card container-cards_card">
+            <img src="/img/team-member1.svg" alt="Ícone de membro da equipe">
+
+            <h4>André Luiz</h4>
+            <p>Design</p>
+
+            <div class="developers-card_social container-card_social">
+              <a href="https://github.com/eoAndrelz" target="_blank"><img src="/img/icon-github.svg" alt="Ícone do github"></a>
+              <a href="https://www.linkedin.com/in/andr%C3%A9-luiz-santos-86b49b231/" target="_blank"><img src="/img/icon-linkedin-secondary-color.svg" alt="Ícone do linkedin"></a>
+            </div>
+          </div>
+
+          <div class="developers-content_card container-cards_card">
+            <img src="/img/team-member2.svg" alt="Ícone de membro da equipe">
+
+            <h4>Guilherme Gonçalves</h4>
+            <p>Back-end</p>
+
+            <div class="developers-card_social container-card_social">
+              <a href="https://github.com/guilhermegg8" target="_blank"><img src="/img/icon-github.svg" alt="Ícone do github"></a>
+              <a href="https://www.linkedin.com/in/guilherme-gon%C3%A7alves-a900101b1/" target="_blank"><img src="/img/icon-linkedin-secondary-color.svg" alt="Ícone do linkedin"></a>
+            </div>
+          </div>
+
+          <div class="developers-content_card container-cards_card">
+            <img src="/img/team-member3.svg" alt="Ícone de membro da equipe">
+
+            <h4>Gustavo Nascimento</h4>
+            <p>Front-end</p>
+
+            <div class="developers-card_social container-card_social">
+              <a href="https://github.com/Gustavo-Nasc" target="_blank"><img src="/img/icon-github.svg" alt="Ícone do github"></a>
+              <a href="https://www.linkedin.com/in/gustanascsouza/" target="_blank"><img src="/img/icon-linkedin-secondary-color.svg" alt="Ícone do linkedin"></a>
+            </div>
+          </div>
+
+          <div class="developers-content_card container-cards_card">
+            <img src="/img/team-member4.svg" alt="Ícone de membro da equipe">
+
+            <h4>Mateus Santana</h4>
+            <p>Full-stack</p>
+
+            <div class="developers-card_social container-card_social">
+              <a href="https://github.com/mateussantanasilva" target="_blank"><img src="/img/icon-github.svg" alt="Ícone do github"></a>
+              <a href="https://www.linkedin.com/in/mateus-santana-silva/" target="_blank"><img src="/img/icon-linkedin-secondary-color.svg" alt="Ícone do linkedin"></a>
+            </div>
+          </div>
+
+          <div class="developers-content_card container-cards_card">
+            <img src="/img/team-member5.svg" alt="Ícone de membro da equipe">
+
+            <h4>Pedro Pessina</h4>
+            <p>Back-end</p>
+
+            <div class="developers-card_social container-card_social">
+              <a href="https://github.com/Pessinaaa" target="_blank"><img src="/img/icon-github.svg" alt="Ícone do github"></a>
+              <a href="https://www.linkedin.com/in/pedro-pessina/" target="_blank"><img src="/img/icon-linkedin-secondary-color.svg" alt="Ícone do linkedin"></a>
+            </div>
+          </div>
+
+          <div class="developers-content_card container-cards_card">
+            <img src="/img/team-member6.svg" alt="Ícone de membro da equipe">
+
+            <h4>Vicenzzo Toth</h4>
+            <p>Mobile</p>
+
+            <div class="developers-card_social container-card_social">
+              <a href="https://github.com/Vicenzzo" target="_blank"><img src="/img/icon-github.svg" alt="Ícone do github"></a>
+              <a href="https://www.linkedin.com/in/vicenzzototh-dev/" target="_blank"><img src="/img/icon-linkedin-secondary-color.svg" alt="Ícone do linkedin"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!--=============== FOOTER ===============-->
+  <div th:insert="~{fragments/footerHomeClient.html}"></div>
+
+  <!--=============== SCRIPTS ===============-->
+  <div th:insert="~{fragments/management/scriptsHomeClient}"></div>
+  <script src="/js/home.js"></script>
+</body>
+
+</html>
