@@ -76,9 +76,25 @@ Grupo SavPets
 | ------------ | ------------------------------------------------------------------------ |
 | REQ01CT01 | Dado (setup) que o email do usuario não está cadastrado; Quando (ação) o usuário confirma o register; Então (resultado esperado) o sistema envia uma mensagem de register realizado com sucesso |
 | REQ01CT02 | Dado (setup) que o email do usuario está cadastrado; Quando (ação) o usuário confirma o register; Então (resultado esperado) o sistema rejeita e envia uma mensagem de dados inválidos |
-| REQ02CT01 | Dado (setup) 
+| REQ02CT01 | Dado (setup) que os dados de Fornecedor não esta cadastrado; Quando (ação) o funcionario confirma o registro; Então(resultado esperado) o sistema envia uma mensagem de registro realizado com sucesso|
+| REQ02CT02 | Dado (setup) que os dados de Fornecedor esta cadastrado; Quando (ação) o funcionario confirma o registro; Então(resultado esperado) o sistema rejeita e envia uma mensagem de dados invalidos|
+| REQ03CT01 | Dado (setup) que os dados de Medicamento não esta cadastrado; Quando (ação) o funcionario confirma o registro; Então(resultado esperado) o sistema envia uma mensagem de registro realizado com sucesso|
+| REQ03CT02 | Dado (setup) que os dados de Medicamento esta cadastrado; Quando (ação) o funcionario confirma o registro; Então(resultado esperado) o sistema rejeita e envia uma mensagem de dados invalidos|
+
 >
 O modelo de dominio (Larman, 2006 - classes conceituais ou classes de negócio) foi definido considerando as seguintes classes:
+
+### Tecnologias Usadas
+
+|Tecnologias| Descrição|
+|------|---------------|
+|SpringBoot|Spring Boot é uma ferramenta que nasceu a partir do Spring, um framework desenvolvido para a plataforma Java baseado nos padrões de projetos, inversão de controle e injeção de dependência.|
+|Thymeleaf|O Thymeleaf é um mecanismo de modelo Java XML/XHTML/HTML5 que pode funcionar em ambientes da Web e não Web. Ele é mais adequado para servir XHTML/HTML5 na camada de visualização de aplicativos da Web baseados em MVC|
+|JustValidation.Js| Biblioteca de Validação de campos|
+|ApexChart.Js| Biblioteca Open-Source de graficos para registro de dados|
+|MongoDB|MongoDB é um software de banco de dados orientado a documentos livre, de código aberto e multiplataforma .Classificado como um programa de banco de dados NoSQL, o MongoDB usa documentos semelhantes a JSON com esquemas|
+
+
 
 >A entidade Cliente foi identificada como um serviço (ERL, 2007 - serviço do tipo entidade) o contrado das operações de sistema (LARMAN, 2006, pag.140) foram definidas no diagrama abaixo.
 ```mermaid
