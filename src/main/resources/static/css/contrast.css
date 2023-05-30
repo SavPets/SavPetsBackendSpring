@@ -126,3 +126,26 @@ body.contrast {
 .contrast .header-content_menu a svg path {
     fill: var(--menu-links-color) !important;
 }
+.contrast text.apexcharts-title-text {
+    fill: red;
+}
+
+.contrast text.apexcharts-text.apexcharts-xaxis-label{
+	fill: red;
+}
+
+
+.contrast text.apexcharts-text.apexcharts-yaxis-label{
+	fill: red;
+}
+
+.contrast .apexcharts-tooltip{
+	background-color: red;
+}
+.contrast .apexcharts-tooltip.apexcharts-active {
+	background-color: red;
+}
+.contrast .apexcharts-tooltip-title .apexcharts-active {
+	background-color: red;
+}
+

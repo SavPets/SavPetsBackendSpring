@@ -288,6 +288,7 @@ function groupDataByMonth(months, initialsOfMonths) {
       offsetX: -5
     }
   }
+  
 
   const chartAdoptions = new ApexCharts(document.querySelector('#chart-adoptions'), optionsAdoptions)
   const chartAnimalsReceived = new ApexCharts(document.querySelector('#chart-animals_received'), optionsAnimalsReceived)
@@ -297,3 +298,9 @@ function groupDataByMonth(months, initialsOfMonths) {
   chartAnimalsReceived.render()
   chartComparison.render()
 })()
+
+const elementTheme = document.querySelectorAll(".apexcharts-theme-light")
+
+elementTheme.forEach((element) => {
+	element.classList.remove("apexcharts-theme-light")
+})
