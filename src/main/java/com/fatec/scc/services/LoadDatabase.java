@@ -26,7 +26,7 @@ import com.fatec.scc.model.provider.MaintainProviderRepository;
 @Configuration
 class LoadDatabase {
 //	@SuppressWarnings("unused")
-	final String defaultDate = "2023-05-15";
+	static final String defaultDate = "2023-05-15";
 	
 	@Bean
 	CommandLineRunner initDatabase(MaintainAdoptionCampaignRepository maintainAdoptionCampaignRepository, MaintainEmployeeRepository maintainEmployeeRepository, MaintainOccupationRepository maintainOccupationRepository,
@@ -86,7 +86,7 @@ class LoadDatabase {
 			maintainAnimalReportRepository.save(report5);
 			AnimalReport report4 = new AnimalReport("Luna", "Vacina", "Persa-F", "2023-01-23", "Local", "Descrição Descrição");
 			maintainAnimalReportRepository.save(report4);
-			AnimalReport report6 = new AnimalReport("Simba", "Vacina", "Siamês-M", "2023-03-28", "Local", "Descrição 	Descrição");
+			AnimalReport report6 = new AnimalReport("Simba", "Vacina", "Siamês-M", "2023-03-28", "Local", "Descrição Descrição");
 			maintainAnimalReportRepository.save(report6);
 			AnimalReport report7 = new AnimalReport("Lucy", "Vacina", "Pastor Alemão-F", "2023-04-01", "Local", "Descrição Descrição");
 			maintainAnimalReportRepository.save(report7);

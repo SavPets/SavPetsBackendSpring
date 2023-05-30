@@ -26,7 +26,7 @@ public class GUIAdoptionCampaignController {
 	MaintainAdoptionCampaign service;
 
 	@GetMapping("/campanhas-adocao")
-	public ModelAndView showAdoptionCampaign(AdoptionCampaign campaign) {
+	public ModelAndView showAdoptionCampaign(AdoptionCampaignDTO campaign) {
 		ModelAndView modelAndView = new ModelAndView("adoptionCampaign/adoptionCampaign");
 		modelAndView.addObject("campanhasAdocao", service.searchAll());
 
@@ -34,7 +34,7 @@ public class GUIAdoptionCampaignController {
 	}
 
 	@GetMapping("/criar-campanha-adocao")
-    public ModelAndView showCreateAdoptionCampaign(AdoptionCampaign campaign) {
+    public ModelAndView showCreateAdoptionCampaign(AdoptionCampaignDTO campaign) {
 		ModelAndView modelAndView = new ModelAndView("adoptionCampaign/createAdoptionCampaign");
 		modelAndView.addObject("campanha", campaign);
 		
@@ -80,7 +80,6 @@ public class GUIAdoptionCampaignController {
 
 	@GetMapping("/deletar-campanha-adocao/{id}")
 	public RedirectView deleteAdoptionCampaign(@PathVariable("id") String id) {
-		logger.info("ID => " + id);
 		service.delete(id);
 		return new RedirectView("/campanhas-adocao");
 }
