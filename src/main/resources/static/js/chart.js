@@ -299,8 +299,3 @@ function groupDataByMonth(months, initialsOfMonths) {
   chartComparison.render()
 })()
 
-const elementTheme = document.querySelectorAll(".apexcharts-theme-light")
-
-elementTheme.forEach((element) => {
-	element.classList.remove("apexcharts-theme-light")
-})

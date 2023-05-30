@@ -126,26 +126,25 @@ body.contrast {
 .contrast .header-content_menu a svg path {
     fill: var(--menu-links-color) !important;
 }
-.contrast text.apexcharts-title-text {
-    fill: red;
-}
 
-.contrast text.apexcharts-text.apexcharts-xaxis-label{
-	fill: red;
-}
-
-
+.contrast text.apexcharts-title-text, 
+.contrast text.apexcharts-text.apexcharts-xaxis-label,
 .contrast text.apexcharts-text.apexcharts-yaxis-label{
-	fill: red;
+    fill: #fff;
 }
 
-.contrast .apexcharts-tooltip{
-	background-color: red;
-}
+
 .contrast .apexcharts-tooltip.apexcharts-active {
-	background-color: red;
-}
-.contrast .apexcharts-tooltip-title .apexcharts-active {
-	background-color: red;
+	background-color: #000;
+		color: #fff;
+
 }
 
+.contrast .apexcharts-tooltip-title {
+	background-color: #000 !important;
+	color: #fff;
+}
+
+.contrast .apexcharts-menu-icon svg{
+fill: rgb(255, 255, 128);	
+}
