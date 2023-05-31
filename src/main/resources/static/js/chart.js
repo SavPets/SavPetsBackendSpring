@@ -122,9 +122,9 @@ function groupDataByMonth(months, initialsOfMonths) {
       }
     },
     yaxis: {
-	  labels: {
-		formatter: function (val) {
-			return val.toFixed(0)
+	labels: {
+	  	formatter: function (val) {
+          return val.toFixed(0)
         },
 	  },
       max: maxValueForAdoptionChart,
@@ -175,11 +175,6 @@ function groupDataByMonth(months, initialsOfMonths) {
             }
           },
           xaxis: {
-			labels:{
-				formatter: function (val) {
-          			return parseInt(val) === val ? val : ''
-        		},
-			},
             max: maxValueForAnimalChart,
           }
         }
@@ -282,10 +277,10 @@ function groupDataByMonth(months, initialsOfMonths) {
       min: 0,
       max: maxValueForAnimalChart,
       labels: {
-	formatter: function (val) {
+	  	formatter: function (val) {
           return parseInt(val) === val ? val : ''
-        }
-}
+        },
+	  },
     },
     legend: {
       position: 'top',
