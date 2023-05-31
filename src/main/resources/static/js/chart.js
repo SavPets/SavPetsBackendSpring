@@ -122,6 +122,11 @@ function groupDataByMonth(months, initialsOfMonths) {
       }
     },
     yaxis: {
+	  labels: {
+		formatter: function (val) {
+			return val.toFixed(0)
+        },
+	  },
       max: maxValueForAdoptionChart,
     },
   }
@@ -164,15 +169,17 @@ function groupDataByMonth(months, initialsOfMonths) {
           },
           yaxis: {
             labels: {
-			  formatter: function (val) {
-          return parseInt(val) === val ? val : ''
-        },
               style: {
                 fontSize: '14px'
               }
             }
           },
           xaxis: {
+			labels:{
+				formatter: function (val) {
+          			return parseInt(val) === val ? val : ''
+        		},
+			},
             max: maxValueForAnimalChart,
           }
         }
