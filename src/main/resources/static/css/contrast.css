@@ -145,6 +145,24 @@ body.contrast {
 	color: #fff;
 }
 
-.contrast .apexcharts-menu-icon svg{
-fill: rgb(255, 255, 128);	
+.contrast .apexcharts-menu-icon svg,
+.contrast .apexcharts-zoomin-icon svg,
+.contrast .apexcharts-zoomout-icon svg{
+    fill: #fff;
+}
+
+.contrast .apexcharts-xaxistooltip.apexcharts-xaxistooltip-bottom{
+    background-color: #000000 !important;
+    color: #ffffff;
+}
+
+.contrast .apexcharts-menu.apexcharts-menu-open{
+    background-color: #000000 !important;
+    color: #ffffff;
+}
+
+.contrast .apexcharts-menu-item.exportPNG:hover,
+.contrast .apexcharts-menu-item.exportSVG:hover,
+.contrast .apexcharts-menu-item.exportCSV:hover{
+    background-color: #262323;
 }
