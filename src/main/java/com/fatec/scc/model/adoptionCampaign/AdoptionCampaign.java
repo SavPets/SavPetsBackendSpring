@@ -1,17 +1,13 @@
 package com.fatec.scc.model.adoptionCampaign;
 
 import javax.validation.constraints.NotBlank;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import org.springframework.data.mongodb.core.mapping.Document;
 import jakarta.persistence.Id;
 
-@Entity
+@Document(collection = "Campanhas-de-adocao")
 public class AdoptionCampaign {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private String id;
 	@NotBlank(message = "O nome da campanha é obrigatório")
 	private String name;
 	@NotBlank(message = "A descrição da campanha é obrigatória")
@@ -37,10 +33,10 @@ public class AdoptionCampaign {
 		this.location = location;
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

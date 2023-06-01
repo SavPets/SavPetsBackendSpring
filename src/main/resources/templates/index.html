@@ -3,9 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <!--=============== HEAD ===============-->
+
 <head th:insert="~{fragments/headHomeClient}"></head>
 
 <body>
+    <!--=============== SPINNER LOADING ===============-->
+    <div class="spinner_loading preloading active-loading">
+        <div></div>
+    </div>
+
     <!--=============== ACCESSIBILITY BAR ===============-->
     <div th:insert="~{fragments/accessibilityBar}"></div>
 
@@ -29,16 +35,18 @@
 
                     <div class="presentation-welcome-btns">
                         <a class="btn" href="#content">Saiba mais</a>
-                        <a class="btn btn-ghost" href="javascript:void(0)">Adote um animal</a>
+                        <a class="btn btn-ghost" href="/campanhas">Adote um animal</a>
                     </div>
                 </div>
             </div>
             <a class="scroll-down" href="#content">
-            	<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-	                <circle cx="20" cy="20" r="20" fill="#313f8c"></circle>
-	                <path d="M20 27V13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-	                <path d="M13 20L20 13L27 20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-            	</svg>
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="20" r="20" fill="#313f8c"></circle>
+                    <path d="M20 27V13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    </path>
+                    <path d="M13 20L20 13L27 20" stroke="white" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </svg>
             </a>
         </section>
 
@@ -82,11 +90,15 @@
         <!--=============== ABOUT ===============-->
         <section id="about" class="about content">
             <div class="about-container wrapper">
-                <img src="/img/about-woman-dog.png" alt="Imagem de uma mulher segurando um cachorro">
+                <img src="/img/about-woman-dog-min.png" alt="Imagem de uma mulher segurando um cachorro">
 
                 <div class="about-container_description">
                     <h2>Junte-se a uma plataforma dedicada a auxiliar os animais</h2>
-                    <p>A SavPets é uma comunidade pronta a ajudar os animais que precisam de algum cuidado ou atenção. Nela você poderá entrar em contato para fornecer ajuda ou qualquer apoio que puder, seja financeira ou voluntariado. Além disso, você poderá visualizar eventos de campanhas de adoção, contribuindo para encontrar lares amorosos para os animais necessitados. Junte-se a nós e faça a diferença na vida dessas adoráveis criaturas.</p>
+                    <p>A SavPets é uma comunidade pronta a ajudar os animais que precisam de algum cuidado ou atenção.
+                        Nela você poderá entrar em contato para fornecer ajuda ou qualquer apoio que puder, seja
+                        financeira ou voluntariado. Além disso, você poderá visualizar eventos de campanhas de adoção,
+                        contribuindo para encontrar lares amorosos para os animais necessitados. Junte-se a nós e faça a
+                        diferença na vida dessas adoráveis criaturas.</p>
                 </div>
             </div>
         </section>
@@ -96,8 +108,10 @@
             <div class="difference-container wrapper">
                 <div class="difference-container_description">
                     <h2>O que nos torna diferentes dos outros</h2>
-                    <p>Aqui o importante é a proteção e felicidade dos animais. Na SavPets, você pode contribuir adotando um animal em uma das várias campanhas de adoção que organizamos ou contribuindo com o que estiver ao seu alcance.</p>
-                    <a class="btn" href="javascript:void(0)">Veja mais</a>
+                    <p>Aqui o importante é a proteção e felicidade dos animais. Na SavPets, você pode contribuir
+                        adotando um animal em uma das várias campanhas de adoção que organizamos ou contribuindo com o
+                        que estiver ao seu alcance.</p>
+                    <a class="btn" href="/campanhas">Veja mais</a>
                 </div>
 
                 <div class="difference-container_highlights">
@@ -153,7 +167,7 @@
                         oferecendo todo o suporte necessário para que isso possa se tornar cada vez mais realidade.</p>
                 </div>
 
-                <a class="btn" href="javascript:void(0)">Começar</a>
+                <a class="btn" href="/campanhas">Começar</a>
             </div>
         </section>
 
@@ -178,37 +192,38 @@
                         </li>
 
                         <li class="contact-options_item">
-                            <a href="javascript:void(0)"><img src="/img/icon-email.svg"
+                            <a href="mailto:savpetsorg@gmail.com" target="_blank"><img src="/img/icon-email.svg"
                                     alt="Ícone do email com link da savpets"></a>
                             <p>savpets@gmail.com</p>
                         </li>
                     </ul>
                 </div>
 
-                <form class="form" action="" method="post">
+                <form class="form" action="/api/v1/cadastros/enviar-email" method="post" ajax="true">
                     <div class="form-instruction">
                         <p>Preenchimento obrigatório</p><span>*</span>
                     </div>
 
                     <div class="form-dision">
                         <div class="form-division_wrapper">
-                            <label for="name">Nome *</label >
+                            <label for="name">Nome *</label>
                             <input class="form-dision_inputfull" type="text" name="name" id="name" required>
                         </div>
 
                         <div class="form-division_wrapper">
-                            <label for="email">Email *</label >
-                            <input class="form-dision_inputfull" type="email" name="email" id="email" required>
+                            <label for="email">Email *</label>
+                            <input class="form-dision_inputfull" type="email" name="clientEmail" id="email" required>
                         </div>
 
                         <div class="form-division_wrapper">
-                            <label for="topic">Assunto *</label >
+                            <label for="topic">Assunto *</label>
                             <input id="topic" class="form-dision_inputfull" type="text" name="subject" required>
                         </div>
 
                         <div class="form-division_wrapper">
-                            <label for="message">Mensagem *</label >
-                            <textarea class="form-dision_inputfull form-dision_textarea" cols="30" rows="10" id="message" name="message" required></textarea>
+                            <label for="message">Mensagem *</label>
+                            <textarea class="form-dision_inputfull form-dision_textarea" cols="30" rows="10"
+                                id="message" name="content" required></textarea>
                         </div>
                     </div>
 
@@ -221,9 +236,14 @@
     <!--=============== FOOTER ===============-->
     <div th:insert="~{fragments/footerHomeClient.html}"></div>
 
+    <!--=============== SWEET ALERT 2 ===============-->
+    <script src="/js/sweetAlert2/sweetalert2@11.js"></script>
+
     <!--=============== SCRIPTS ===============-->
     <div th:insert="~{fragments/management/scriptsHomeClient}"></div>
     <script src="/js/home.js"></script>
+    <script src="/js/dataTables/jquery-3.5.1.js"></script>
+    <script src="/js/sendEmail.js"></script>
 </body>
 
 </html>

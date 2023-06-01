@@ -4,14 +4,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <!--=============== HEAD ===============-->
+
 <head th:insert="~{fragments/headHomeClient}"></head>
 
 <body>
-	<!--=============== ACCESSIBILITY BAR ===============-->
-	<div th:insert="~{fragments/accessibilityBar}"></div>
+    <!--=============== SPINNER LOADING ===============-->
+    <div class="spinner_loading preloading active-loading">
+        <div></div>
+    </div>
 
-	<!--=============== HEADER ===============-->
-	<div th:insert="~{fragments/headerHomeClient}"></div>
+    <!--=============== ACCESSIBILITY BAR ===============-->
+    <div th:insert="~{fragments/accessibilityBar}"></div>
+
+    <!--=============== HEADER ===============-->
+    <div th:insert="~{fragments/headerHomeClient}"></div>
 
     <!--=============== MAIN ===============-->
     <main id="main">
@@ -29,39 +35,45 @@
                     </div>
                 </div>
                 <div class="identify-container_form container-form">
-                    <form class="form" th:action="@{/criar-cadastro}" th:object="${cadastro}" method="post" onSubmit="login()">
+                    <form class="form" th:action="@{/criar-cadastro}" th:object="${cadastro}" method="post"
+                        onSubmit="login()">
                         <div class="form-instruction">
                             <p>Preenchimento obrigatório</p><span>*</span>
                         </div>
                         <div class="form-dision">
-                        
-                               <div class="form-division_wrapper">
-                               <label for="name">Nome *</label >
-                                <input class="form-dision_inputfull" type="text"  name="firstName" th:field="*{name}" id="name">
+
+                            <div class="form-division_wrapper">
+                                <label for="name">Nome *</label>
+                                <input class="form-dision_inputfull" type="text" name="firstName" th:field="*{name}"
+                                    id="name">
                             </div>
-                            
-                              <div class="form-division_wrapper">
-                              <label for="lastName">Último Nome *</label >
-                                <input class="form-dision_inputfull" type="text" name="lastName"th:field="*{surname}" id="lastName">
+
+                            <div class="form-division_wrapper">
+                                <label for="lastName">Último Nome *</label>
+                                <input class="form-dision_inputfull" type="text" name="lastName" th:field="*{surname}"
+                                    id="lastName">
                             </div>
-                            
-                              <div class="form-division_wrapper">
-                         		<label for="email">Email *</label >
-                                <input class="form-dision_inputfull" type="email"  name="email" th:field="*{email}" id="email">
+
+                            <div class="form-division_wrapper">
+                                <label for="email">Email *</label>
+                                <input class="form-dision_inputfull" type="email" name="email" th:field="*{email}"
+                                    id="email">
                             </div>
-                            
-                               <div class="form-division_wrapper">
-                               <label for="password">Senha *</label >
-                                <input class="form-dision_inputfull" type="password" name="password" th:field="*{password}" id="password">
+
+                            <div class="form-division_wrapper">
+                                <label for="password">Senha *</label>
+                                <input class="form-dision_inputfull" type="password" name="password"
+                                    th:field="*{password}" id="password">
                             </div>
-                            
-                               <div class="form-division_wrapper">
-                               <label for="repeatPassword">Confirmar Senha *</label >
-                                <input class="form-dision_inputfull" type="password" name="confirmedPassword" th:field="*{repeatPassword}" id="repeatPassword">
+
+                            <div class="form-division_wrapper">
+                                <label for="repeatPassword">Confirmar Senha *</label>
+                                <input class="form-dision_inputfull" type="password" name="confirmedPassword"
+                                    th:field="*{repeatPassword}" id="repeatPassword">
                             </div>
                         </div>
 
-    					<input type="submit" value="Cadastrar" class="btn">
+                        <input type="submit" value="Cadastrar" class="btn">
                     </form>
                 </div>
                 <div class="identify-container_alternative container-alternative">
@@ -74,23 +86,24 @@
 
     <!--=============== FOOTER ===============-->
     <div th:insert="~{fragments/footerHomeClient.html}"></div>
-    
+
     <!--=============== SWEET ALERT 2 ===============-->
-	<script src="js/sweetAlert2/sweetalert2@11.js"></script>
-	
-	<!--=============== JUST VALIDATE ===============-->
-	<script src="js/justValidate/just-validate.production.min.js"></script>
-    
-	<!--=============== SCRIPTS ===============-->
-	<div th:insert="~{fragments/management/scriptsHomeClient}"></div>
+    <script src="js/sweetAlert2/sweetalert2@11.js"></script>
+
+    <!--=============== JUST VALIDATE ===============-->
+    <script src="js/justValidate/just-validate.production.min.js"></script>
+
+    <!--=============== SCRIPTS ===============-->
+    <div th:insert="~{fragments/management/scriptsHomeClient}"></div>
     <script src="js/alertsNoMenu.js"></script>
     <script src="/js/validations.js"></script>
-    
+
     <!--=============== FUNÇÃO PARA EXECUTAR O LOGIN AO CADASTRAR ===============-->
     <script>
-    	function login() {
-			localStorage.setItem("username", "")
-		}
+        function login() {
+            localStorage.setItem("username", "")
+        }
     </script>
 </body>
+
 </html>

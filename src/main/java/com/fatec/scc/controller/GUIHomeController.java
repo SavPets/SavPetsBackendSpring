@@ -30,6 +30,8 @@ public class GUIHomeController {
 	@Autowired
 	MaintainAdoptionCampaign serviceCampaign;
 
+	private static final String CADASTRO = "cadastro";
+
 	@GetMapping("/")
 	public ModelAndView showIndex() {
 		ModelAndView mv = new ModelAndView("index");
@@ -43,6 +45,12 @@ public class GUIHomeController {
 
 		return mv;
 	}
+
+	@GetMapping("/time")
+	public ModelAndView showDevelopers() {
+		ModelAndView mv = new ModelAndView("developers");
+		return mv;
+	}
 	
 	@GetMapping("/guia")
 	public ModelAndView showGuide() {
@@ -53,7 +61,7 @@ public class GUIHomeController {
 	@GetMapping("/login")
 	public ModelAndView showLogin(Employee employee) {
 		ModelAndView mv = new ModelAndView("login");
-		mv.addObject("cadastro", employee);
+		mv.addObject(CADASTRO, employee);
 		return mv;
 	}
 	
@@ -74,13 +82,13 @@ public class GUIHomeController {
 			return new RedirectView("/painel");
 		}
 
-		return new RedirectView("/login?status=Erro&text=Senha_incorreta!");
+		return new RedirectView("/login?status=Erro&text=Credenciais_invalidas!");
 	}
 	
 	@GetMapping("/cadastrar")
 	public ModelAndView showISignUp(Employee employee) {
 		ModelAndView mv = new ModelAndView("signup");
-		mv.addObject("cadastro", employee);
+		mv.addObject(CADASTRO, employee);
 		return mv;
 	}
 	
@@ -113,7 +121,7 @@ public class GUIHomeController {
 	@GetMapping("/alterar-senha")
 	public ModelAndView showUpdateCadastro(Employee employee) {
 		ModelAndView mv = new ModelAndView("changePassword");
-		mv.addObject("cadastro", employee);
+		mv.addObject(CADASTRO, employee);
 		return mv;
 	}
 	

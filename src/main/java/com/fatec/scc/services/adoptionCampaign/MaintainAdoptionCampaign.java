@@ -10,11 +10,11 @@ public interface MaintainAdoptionCampaign {
 
 	Object searchAll();
 
-	Optional<AdoptionCampaign> searchById(Long id);
+	Optional<AdoptionCampaign> searchById(String id);
 	
 	Optional<AdoptionCampaign> save(@Valid AdoptionCampaign adoptionCampaign);
 
-	Optional<AdoptionCampaign> updates(Long id, AdoptionCampaign adoptionCampaign);
+	Optional<AdoptionCampaign> updates(String id, AdoptionCampaign adoptionCampaign);
 
-	void delete(Long id);
+	void delete(String id);
 }

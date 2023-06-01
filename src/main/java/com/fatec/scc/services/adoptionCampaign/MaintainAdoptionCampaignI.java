@@ -24,7 +24,7 @@ public class MaintainAdoptionCampaignI implements MaintainAdoptionCampaign {
 	}
 	
 	@Override
-	public Optional<AdoptionCampaign> searchById(Long id) {
+	public Optional<AdoptionCampaign> searchById(String id) {
 		logger.info(">>>>>> servico consultaPorId chamado");
 		return repository.findById(id);
 	}
@@ -36,7 +36,7 @@ public class MaintainAdoptionCampaignI implements MaintainAdoptionCampaign {
 	}
 
 	@Override
-	public Optional<AdoptionCampaign> updates(Long id, AdoptionCampaign adoptionCampaign) {
+	public Optional<AdoptionCampaign> updates(String id, AdoptionCampaign adoptionCampaign) {
 		logger.info(">>>>>> 1.servico atualiza informações de campanha chamado");
 		AdoptionCampaign modifiedCampaign = new AdoptionCampaign(adoptionCampaign.getName(), adoptionCampaign.getDescription(), adoptionCampaign.getDate(), adoptionCampaign.getStartTime(),
 				adoptionCampaign.getEndTime(), adoptionCampaign.getLocation());
@@ -47,7 +47,7 @@ public class MaintainAdoptionCampaignI implements MaintainAdoptionCampaign {
 	}
 
 	@Override
-	public void delete(Long id) {
+	public void delete(String id) {
 		logger.info(">>>>>> servico delete por id chamado");
 		repository.deleteById(id);
 	}

@@ -3,6 +3,8 @@ package com.fatec.scc.controller.animalCategory;
 import javax.validation.Valid;
 
 import com.fatec.scc.model.animalCategory.AnimalCategory;
+import com.fatec.scc.model.animalCategory.AnimalCategoryDTO;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +48,7 @@ public class GUIAnimalCategoryController {
     }
 
     @PostMapping("/criar-categoria-animal")
-	public RedirectView createAnimalCategory(@Valid AnimalCategory animalCategory, BindingResult result) {
+	public RedirectView createAnimalCategory(@Valid AnimalCategoryDTO animalCategory, BindingResult result) {
 		if (service.existsByNameAndRaceAndGenderAndSizeAndCoatColor(animalCategory.getName(), animalCategory.getRace(), animalCategory.getGender(), animalCategory.getSize(),
 				animalCategory.getCoatColor())) {
 			return new RedirectView("/criar-categoria-animal?status=Erro&text=Animal_existente!");
@@ -56,11 +58,11 @@ public class GUIAnimalCategoryController {
 			return new RedirectView("/criar-categoria-animal?status=Erro&text=Revise_os_campos_do_registro!");
 		}
 
-		if (!service.save(animalCategory).isPresent()) {
+		if (!service.save(animalCategory.retornaUmaCategoriaAnimal()).isPresent()) {
 			ModelAndView modelAndView = new ModelAndView("animalCategory/createAnimalCategory");
 			modelAndView.addObject("message", "Dados invalidos");
 		}
-
+		
 		return new RedirectView("/categorias-animais?status=Cadastrado");
 	}
 

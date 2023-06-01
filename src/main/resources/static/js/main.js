@@ -1,7 +1,14 @@
-// =============== INITIAL SETTINGS ===============
-window.addEventListener('scroll', onScroll)
-const bodyElement = document.body
+// =============== PRE LOADING SETTINGS ===============
+const spinnerLoading = document.querySelector('.spinner_loading')
+const vlibrasWidget = document.querySelector('.vlibras-widget')
 
+window.addEventListener('load', () => {
+    vlibrasWidget.classList.remove('active-loading')
+    spinnerLoading.classList.remove('active-loading')
+    spinnerLoading.classList.remove('preloading')
+})
+
+// =============== INITIAL SETTINGS ===============
 function onScroll() {
 
     const menu = document.querySelector('#header')
@@ -9,27 +16,34 @@ function onScroll() {
 
     const accessibilityBar = document.querySelector('.accessibility.content')
 
-    if((scrollY >= 0) && (!AlreadyHaveClass)) {
+    if ((scrollY >= 0) && (!AlreadyHaveClass)) {
         changeColorMenuOnScroll(menu, accessibilityBar)
     }
 
-    if((scrollY <= 0) && (AlreadyHaveClass)){
+    if ((scrollY <= 0) && (AlreadyHaveClass)) {
         menu.classList.remove('fixed-menu')
         accessibilityBar.classList.remove('to-hide')
     }
 }
+window.addEventListener('scroll', onScroll)
 
 // =============== MENU ===============
-(function activeMenuOnCurrentPage(){
+const bodyElement = document.body
+
+function activeMenuOnCurrentPage() {
     let page = `/${bodyElement.classList}`
     page = page.replace('contrast', '')
 
     const headerListOption = document.querySelector(`.header-list_option[href="${page}"]`)
-    if(headerListOption.textContent === 'Cadastre-se') {
+
+    if (!headerListOption) return
+
+    if (headerListOption.textContent === 'Cadastre-se') {
         headerListOption.classList.add('menu-active-btn')
     }
     headerListOption.classList.add('menu-active')
-})()
+}
+activeMenuOnCurrentPage()
 
 function changeColorMenuOnScroll(menu, accessibilityBar) {
     menu.classList.add('fixed-menu')
@@ -42,7 +56,6 @@ const burger = document.querySelector('.burger')
 const menuMobile = document.querySelector('.menu-mobile')
 const containerMain = document.querySelector('.container-main_content')
 const form = document.querySelector('.form')
-const vlibrasWidget = document.querySelector('.vlibras-widget')
 
 // Aparecem na home
 const containerWelcome = document.querySelector('.presentation-container_welcome')

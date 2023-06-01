@@ -38,7 +38,6 @@
                                     <table id="example" class="table table-striped display nowrap" cellspacing="0" style="width:100%">
                                         <thead>
                                             <tr>
-                                                <th>Código</th>
                                                 <th>Nome do evento</th>
                                                 <th>Data</th>
                                                 <th>Início do evento</th>
@@ -50,7 +49,6 @@
                                         </thead>
                                         <tbody>
                                             <tr th:each="CampanhaAdocao : ${campanhasAdocao}">
-                                                <td th:text="${CampanhaAdocao.id}"></td>
                                                 <td th:text="${CampanhaAdocao.name}"></td>
                                                 <td th:text="${CampanhaAdocao.date}"></td>
                                                 <td th:text="${CampanhaAdocao.startTime}"></td>

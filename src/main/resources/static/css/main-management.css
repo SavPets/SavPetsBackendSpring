@@ -380,6 +380,12 @@ a.accessibility-group_item:hover {
     margin-block: 2.5rem;
 }
 
+.main-content.main-charts {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
 .main-content_img-default {
     width: min(40rem, 100%);
 }
@@ -404,6 +410,15 @@ a.accessibility-group_item:hover {
     background-color: #fff;
     border: 1px solid rgba(82, 87, 96, 0.2);
     border-radius: .4rem;
+}
+
+.main-charts > .main-content_box {
+    flex: 1 1 29.8rem;
+    margin-inline: 0;
+}
+
+.main-charts > .main-content_box:last-child {
+    flex: 1 1 calc(100vw - 24rem);
 }
 
 .main-content_box>.btn {
@@ -450,6 +465,12 @@ a.accessibility-group_item:hover {
 }
 
 /* =============== RESPONSIVE SETTINGS =============== */
+/* @media (max-width: 900px) {
+    .main-content.main-charts {
+        flex-direction: column;
+    }
+} */
+
 @media (max-width: 768px) {
     :root {
         --width-nav: min(10rem, 18%);
@@ -546,7 +567,6 @@ a.accessibility-group_item:hover {
         padding-inline: 1.5rem;
     }
 }
-
 
 @media (max-width: 450px) {
 
