@@ -83,7 +83,7 @@ public class MaintainAnimalCategoryI implements MaintainAnimalCategory {
 		logger.info(">>>>>> 1.servico atualiza informações de cliente chamado");
 		
 		AnimalCategory animalCategoryModificado = new AnimalCategory(animalCategory.getName(), animalCategory.getRace(), animalCategory.getGender(),
-				animalCategory.getSize(), animalCategory.getCoatColor());
+				animalCategory.getSize(), animalCategory.getCoatColor(), animalCategory.getAnimalCategoryFull());
 		animalCategoryModificado.setId(id);
 		
 		logger.info(">>>>>> 2. servico atualiza informacoes de cliente cep valido para o id => %id", animalCategoryModificado.getId());

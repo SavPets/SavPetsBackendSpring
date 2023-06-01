@@ -55,7 +55,7 @@
                                     <label for="necessaryToSelect">Categoria Animal *</label>
                                     <select id="necessaryToSelect" class="form-dision_inputfull" th:field="*{animalCategory}">
 									    <option selected hidden value="">Selecione uma opção</option>
-								        <option th:each="CategoriaAnimal : ${categoriasAnimais}" th:value="${CategoriaAnimal.race}" th:text="${CategoriaAnimal.race}"></option>
+								        <option th:each="CategoriaAnimal : ${categoriasAnimais}" th:value="${CategoriaAnimal.animalCategoryFull}" th:text="${CategoriaAnimal.animalCategoryFull}"></option>
 								    </select>
                                 </div>
 

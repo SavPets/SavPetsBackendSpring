@@ -61,15 +61,15 @@ class LoadDatabase {
 
 			// Categoria de animais
 			maintainAnimalCategoryRepository.deleteAll();
-			AnimalCategory category = new AnimalCategory("Pitbull-M", "Pitbull", "Macho", "Grande", "Preto");
+			AnimalCategory category = new AnimalCategory("Cachorro", "Pitbull", "Macho", "Grande", "Preto", "Cachorro - Pitbull - Macho - Grande - Preto");
 			maintainAnimalCategoryRepository.save(category);
-			AnimalCategory category2 = new AnimalCategory("Vira-lata-M", "Vira-lata", "Macho", "Grande", "Marrom");
+			AnimalCategory category2 = new AnimalCategory("Cachorro", "Vira-lata", "Macho", "Grande", "Marrom", "Cachorro - Vira-lata - Macho - Grande - Marrom");
 			maintainAnimalCategoryRepository.save(category2);
-			AnimalCategory category3 = new AnimalCategory("Persa-F", "Persa", "Fêmea", "Pequeno", "Branoa");
+			AnimalCategory category3 = new AnimalCategory("Gato", "Persa", "Fêmea", "Pequeno", "Branco", "Gato - Persa - Fêmea - Pequeno - Branco");
 			maintainAnimalCategoryRepository.save(category3);
-			AnimalCategory category4 = new AnimalCategory("Pastor Alemão-F", "Pastor Alemão", "Fêmea", "Pequeno", "Branco");
+			AnimalCategory category4 = new AnimalCategory("Cachorro", "Pastor Alemão", "Fêmea", "Pequeno", "Branco", "Cachorro - Pastor Alemão - Fêmea - Pequeno - Branco");
 			maintainAnimalCategoryRepository.save(category4);
-			AnimalCategory category5 = new AnimalCategory("Siamês-M", "Siamês", "Macho", "Pequeno", "Branco");
+			AnimalCategory category5 = new AnimalCategory("Gato", "Siamês", "Macho", "Pequeno", "Branco", "Gato - Siamês - Macho - Pequeno - Branco");
 			maintainAnimalCategoryRepository.save(category5);
 
 			// Relatório de animais
