@@ -37,6 +37,15 @@ public class AnimalCategory {
 		this.coatColor = coatColor;
 		this.animalCategoryFull = animalCategoryFull;
 	}
+	
+	public AnimalCategory(String name, String race, String gender, String size, String coatColor) {
+		this.name = name;
+		this.race = race;
+		this.gender = gender;
+		this.size = size;
+		this.coatColor = coatColor;
+		this.animalCategoryFull = name + " - " + race + " - " + gender + " - " + size + " - " + coatColor;
+	}
 
 	public AnimalCategory() {
 	}

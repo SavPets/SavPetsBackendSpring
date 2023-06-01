@@ -18,8 +18,6 @@ public class AnimalCategoryDTO {
 
 	@NotBlank(message = "A cor da pelagem deve ser informada")
 	private String coatColor;
-	
-	private String animalCategoryFull;
 
 	public AnimalCategoryDTO(String name, String race, String gender, String size, String coatColor) {
 		this.name = name;
@@ -27,7 +25,6 @@ public class AnimalCategoryDTO {
 		this.gender = gender;
 		this.size = size;
 		this.coatColor = coatColor;
-		this.animalCategoryFull = name + " - " + race + " - " + gender + " - " + size + " - " + coatColor;
 	}
 
 	public AnimalCategoryDTO() {
@@ -73,16 +70,8 @@ public class AnimalCategoryDTO {
 	public void setCoatColor(String coatColor) {
 		this.coatColor = coatColor;
 	}
-	
-	public String getAnimalCategoryFull() {
-		return animalCategoryFull;
-	}
-
-	public void setAnimalCategoryFull(String animalCategoryFull) {
-		this.animalCategoryFull = animalCategoryFull;
-	}
 
 	public AnimalCategory retornaUmaCategoriaAnimal() {
-		return new AnimalCategory(name, race, gender, size, coatColor, animalCategoryFull);
+		return new AnimalCategory(name, race, gender, size, coatColor);
 	}
 }
