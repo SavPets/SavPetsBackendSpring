@@ -169,19 +169,19 @@ class LoadDatabase {
 
 			// Funcionário
 			maintainEmployeeRepository.deleteAll();
-			Employee employee = new Employee("ADMIN", "ADMIN", "admin.admin@email.com", "123123aA!", "123123aA!", "10101010101", "11111111", "Rua do adm", 1, "Casa do adm", "123", "ADM", "Administrador");
+			Employee employee = new Employee("ADMIN", "ADMIN", "admin.admin@email.com", "123123aA!", "123123aA!", "10101010101", "11111111", "Rua do adm", 1, "Casa do adm", "123", "Administração", "Administrador");
 			maintainEmployeeRepository.save(employee);
-			employee = new Employee("Pedro", "Pessina", "pedro.pessina@gmail.com", "123123aA!", "123123aA!", "111.111.111-11", "03882-100", "Rua Sebastião da Silva Bueno", 1, "", "111", "VET", "Veterinário");
+			employee = new Employee("Pedro", "Pessina", "pedro.pessina@gmail.com", "123123aA!", "123123aA!", "111.111.111-11", "03882-100", "Rua Sebastião da Silva Bueno", 1, "", "111", "Veterinário", "Veterinário");
 			maintainEmployeeRepository.save(employee);
-			employee = new Employee("Guilherme", "Gonçalves", "guilherme.goncalves@gmail.com", "123123aA!", "123123aA!", "222.222.222-22", "81925-109", "Rua Iguana", 144, "", "222", "ADM", "Almoxarife");
+			employee = new Employee("Guilherme", "Gonçalves", "guilherme.goncalves@gmail.com", "123123aA!", "123123aA!", "222.222.222-22", "81925-109", "Rua Iguana", 144, "", "222", "Administração", "Almoxarife");
 			maintainEmployeeRepository.save(employee);
-			employee = new Employee("Mateus", "Santana", "mateus.santana@gmail.com", "123123aA!", "123123aA!", "333.333.333-33", "79491-583", "Avenida Lobo", 52, "", "333", "LIM", "Auxiliar");
+			employee = new Employee("Mateus", "Santana", "mateus.santana@gmail.com", "123123aA!", "123123aA!", "333.333.333-33", "79491-583", "Avenida Lobo", 52, "", "333", "Limpeza", "Auxiliar");
 			maintainEmployeeRepository.save(employee);
-			employee = new Employee("André", "Luiz", "andre.luiz@gmail.com", "123123aA!", "123123aA!", "444.444.444-44", "54554-333", "Rua Garça", 24, "", "444", "ADM", "Gerente");
+			employee = new Employee("André", "Luiz", "andre.luiz@gmail.com", "123123aA!", "123123aA!", "444.444.444-44", "54554-333", "Rua Garça", 24, "", "444", "Administração", "Gerente");
 			maintainEmployeeRepository.save(employee);
-			employee = new Employee("Gustavo", "Nascimento", "gustavo.nascimento@gmail.com", "123123aA!", "123123aA!", "555.555.555-55", "18435-651", "Avenida Aricanduva", 18112, "", "555", "VET", "Veterinário");
+			employee = new Employee("Gustavo", "Nascimento", "gustavo.nascimento@gmail.com", "123123aA!", "123123aA!", "555.555.555-55", "18435-651", "Avenida Aricanduva", 18112, "", "555", "Veterinário", "Veterinário");
 			maintainEmployeeRepository.save(employee);
-			employee = new Employee("Vicenzzo", "Toth", "vicenzzo.toth@gmail.com", "123123aA!", "123123aA!", "666.666.666-66", "75216-849", "Rua dos Bois", 14, "", "666", "TI", "Almoxarife");
+			employee = new Employee("Vicenzzo", "Toth", "vicenzzo.toth@gmail.com", "123123aA!", "123123aA!", "666.666.666-66", "75216-849", "Rua dos Bois", 14, "", "666", "Tecnologia da informação", "Almoxarife");
 			maintainEmployeeRepository.save(employee);
 			
 			};
