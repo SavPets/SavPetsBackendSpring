@@ -12,7 +12,7 @@ Grupo SavPets
 > O PDS segue uma abordagem interativa incremental adaptada do Scrum. Cada interação tem uma definição de pronto estabelecida com objetivo de controlar a qualidade.
 
 ##### Estudo de Caso – Sistema de Gestão
-> A SavPets será uma empresa/organização voluntária, na qual ajudará os animais que forem encontrados e encaminhados para ela. Com esse sistema, será capaz de gerenciar de maneira eficiente e eficaz os dados e departamentos da empresa com o objetivo de tornar o trabalho mais claro e fácil, podendo se concentrar em outros aspectos. O sistema será capaz de permitir maior facilidade durante o gerenciamento e controle do funcionamento da organização, com funções claras e objetivas para todos que são responsáveis por registrar novos cadastros, adoções ou atualizações de registros, e aqueles que necessitam desenvolver relatórios e análises sobre os dados de cada atividade realizada pelos diferentes departamentos existentes. 
+> A SavPets é um sistema/organização voluntária, na qual ajudará os animais que forem encontrados e encaminhados para ela. Com esse sistema, será capaz de gerenciar de maneira eficiente e eficaz os dados e departamentos da empresa com o objetivo de tornar o trabalho mais claro e fácil, podendo se concentrar em outros aspectos. O sistema será capaz de permitir maior facilidade durante o gerenciamento e controle do funcionamento da organização, com funções claras e objetivas para todos que são responsáveis por registrar novos cadastros, adoções ou atualizações de registros, e aqueles que necessitam desenvolver relatórios e análises sobre os dados de cada atividade realizada pelos diferentes departamentos existentes. 
 
 ##### Product Backlog
 | Requisito |Temas| Descrição |
@@ -83,6 +83,8 @@ Grupo SavPets
 
 >
 O modelo de dominio (Larman, 2006 - classes conceituais ou classes de negócio) foi definido considerando as seguintes classes:
+(![CRD SavPets](https://github.com/SavPets/SavPetsBackendSpring/assets/99415610/73318bc7-d08e-435b-af2c-0147eccd8633)
+
 
 ### Tecnologias Usadas
 
@@ -96,7 +98,10 @@ O modelo de dominio (Larman, 2006 - classes conceituais ou classes de negócio) 
 |dataTables| Biblioteca para a criação de tabelas |
 |SweetAlert2| Bibliotecas de alertas de aviso|
 
-![modelo de dominio com relação ](blob:https://www.odwebp.svc.ms/2f2a94ff-c331-4a15-9048-7c828a2bd6d5)
+### Relatorio SonarLint
+
+> Após o uso da extensão SonarLint, reconhecemos por volta de 750 erros, porem após analise critica sobre o projeto, foi reconhecido que a maioria dos erros expostos foram de bibiliotecas exportadas, porem aqueles que necessitavam uma analise profunda e revendo as regras de negocio do sistema, atualmente temos por volta de 10 modificações não crucias avistada pela extensão.
+
 
 >A entidade Cliente foi identificada como um serviço (ERL, 2007 - serviço do tipo entidade) o contrado das operações de sistema (LARMAN, 2006, pag.140) foram definidas no diagrama abaixo.
 ```mermaid
