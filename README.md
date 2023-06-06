@@ -93,6 +93,8 @@ O modelo de dominio (Larman, 2006 - classes conceituais ou classes de negócio) 
 |JustValidation.Js| Biblioteca de Validação de campos|
 |ApexChart.Js| Biblioteca Open-Source de graficos para registro de dados|
 |MongoDB|MongoDB é um software de banco de dados orientado a documentos livre, de código aberto e multiplataforma .Classificado como um programa de banco de dados NoSQL, o MongoDB usa documentos semelhantes a JSON com esquemas|
+|dataTables| biblioteca para a criação de tabelas |
+|SweetAlert2| bibliotecas de alertas de aviso|
 
 
 
