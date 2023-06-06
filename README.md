@@ -93,10 +93,10 @@ O modelo de dominio (Larman, 2006 - classes conceituais ou classes de negócio) 
 |JustValidation.Js| Biblioteca de Validação de campos|
 |ApexChart.Js| Biblioteca Open-Source de graficos para registro de dados|
 |MongoDB|MongoDB é um software de banco de dados orientado a documentos livre, de código aberto e multiplataforma .Classificado como um programa de banco de dados NoSQL, o MongoDB usa documentos semelhantes a JSON com esquemas|
-|dataTables| biblioteca para a criação de tabelas |
-|SweetAlert2| bibliotecas de alertas de aviso|
+|dataTables| Biblioteca para a criação de tabelas |
+|SweetAlert2| Bibliotecas de alertas de aviso|
 
-
+![modelo de dominio com relação ](blob:https://www.odwebp.svc.ms/2f2a94ff-c331-4a15-9048-7c828a2bd6d5)
 
 >A entidade Cliente foi identificada como um serviço (ERL, 2007 - serviço do tipo entidade) o contrado das operações de sistema (LARMAN, 2006, pag.140) foram definidas no diagrama abaixo.
 ```mermaid
@@ -121,6 +121,7 @@ MaintainEmployeeRepository -->> MaintainEmployeeI: List[]
 MaintainEmployeeI-->> APIEmployeeController: List[]
 APIEmployeeController -->> Funcionario: JSon[]
 ```
+
 >Referencias
 - [1] KRUCHTEN, Philippe. Reference: Title: Architectural blueprints—the “4+ 1” view model of software architecture. IEEE software, v. 12, n. 6, 1995.
 - [2] RICHARDSON, Chris. Microservices patterns: with examples in Java. Simon and Schuster, 2018.
